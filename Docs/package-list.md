@@ -1,4 +1,6 @@
-**This list is optimized for S24+ (Exynos) but you can create your own list . Use Tier 3 with caution if you relyon Knox/Samsung Pay or core system integrity features.**
+**This list is optimized for S24+ (Exynos) but you can create your own list for your device with these [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).
+
+Use Tier 3 with caution if you relyon Knox/Samsung Pay or core system integrity features.**
 
 ### 🟢 TIER 1: Redundancy & Telemetry (Safe)
 Useless software layers or redundant telemetry services. No impact on core One UI functionality.
