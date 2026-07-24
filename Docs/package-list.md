@@ -1,4 +1,4 @@
-**This list is optimized for S24+ (Exynos) but you can create your own list for your device with these [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).
+**This list is optimized for S24+ (Exynos) but you can create your own list for your device with these [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).**
 
 Use Tier 3 with caution if you relyon Knox/Samsung Pay or core system integrity features.**
 
