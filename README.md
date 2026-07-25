@@ -25,7 +25,7 @@
 >
 > **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
-[Dictionnary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/edit/main/README.md#dictionnary-technical-context) 
+[Dictionnary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
 
 After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
 
