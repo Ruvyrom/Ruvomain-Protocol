@@ -31,7 +31,7 @@ I’ve started putting my **Ruvomain-PBD** is a zero-dependency, professional-gr
 *You have a specific device? Create your JSON profile, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
 Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
 
-Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions).
+Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
 
 ***Note:***
 >This project is maintained manually. I wrote these scripts because I was tired of the bloat on my S24+. No AI fluff, just pure Bash and system-level configuration for people who value their time and privacy.
