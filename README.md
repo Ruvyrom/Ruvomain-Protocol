@@ -26,6 +26,8 @@
 > **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
 <details>
+<summary><b>Dictionnary : technical context</b></summary>
+<details>
 <summary><b>What is ADB? (Forbeginners)</b></summary>
 
 ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
@@ -49,6 +51,7 @@ JSON acts as our "configuration layer." It is a simple, human-readable format th
 <summary><b>What is Git? (Why it matters)</b></summary>
 
 Git is our "version control" system. Think of it as a time machine for the RuvomainProtocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—notjust a static file.
+</details>
 </details>
 
 After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
