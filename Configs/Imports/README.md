@@ -20,3 +20,11 @@ For using your liste with Ruvomain-pbd script:
 - You have tested the debloat list on your own device.
 
 - You keep the minimalist philosophy of the project.
+
+**Naming Convention for Imports:**
+`[Philosophy]-[DeviceName]-[OSVersion].json`
+*Example:*
+
+*Baremetal-Pixel6-LOS232.json*
+
+*Degoogle-OP15-OxyOS*.json*
