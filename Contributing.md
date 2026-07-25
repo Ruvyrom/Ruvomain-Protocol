@@ -14,6 +14,7 @@ Please ensure:
 
 **Naming Convention for Imports:**
 `[Philosophy]-[DeviceName]-[OSVersion].json`
+
 *Example:*
 
 *Baremetal-Pixel6-LOS232.json*
