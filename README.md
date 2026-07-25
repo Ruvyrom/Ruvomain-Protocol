@@ -156,7 +156,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 >A comprehensive guide to the secure control interface.-->
 
 - [JSON files importation](/Configs/Imports/README.md)
->How to import your personnal .json list files (for S24+ or other devices) with v2 version of Manual Execution script.
+>How to import your personnal .json list files (for S24+ or other devices) for using with Ruvomain-pbd script.
 
 - [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
 >Technical details on system hardening and resource management.
