@@ -5,6 +5,7 @@ Thanks for your interest in improving the Ruvomain Protocol!
 *The Ruvomain Protocol relies on precision. I do not scrape external lists to avoid technical debt and instability. To ensure the integrity of the Protocol, users are invited to curate, test, and submit their owndevice-specific profiles. Your PR is your signature.*
 
 You have a specific device? Create your JSON profile, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
+Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json).
 
 Please ensure:
 - The JSON syntax is valid.
