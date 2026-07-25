@@ -14,7 +14,9 @@ Please ensure:
 
 **Naming Convention for Imports:**
 `[Philosophy]-[DeviceName]-[OSVersion].json`
-*Example: Baremetal-Pixel6-LOS232.json*
+*Example:
+Baremetal-Pixel6-LOS232.json
+Degoogle-OP15-OxyOS*.json
 
 # Note for skeptics:
 This structure is designed to be auditable, not just automated. Everything here is hand-coded to ensure 0-day debloat safety.
