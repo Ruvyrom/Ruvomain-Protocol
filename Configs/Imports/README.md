@@ -29,4 +29,4 @@ For using your liste with Ruvomain-pbd script:
 
 *Degoogle-OP15-OxyOS15.json*
 
-Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions)
+Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
