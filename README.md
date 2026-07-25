@@ -21,7 +21,7 @@
 <img src="https://img.shields.io/badge/| License MIT-black?logo=conventionalcommits&logoColor=f5f5f5&style=flat-square" alt=License>
 </p>
 
-> This project is a tool to surgically remove unwanted apps from Samsung phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
+> This project is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
 >
 > **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
