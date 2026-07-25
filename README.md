@@ -28,7 +28,7 @@ After 16 years of messing around with Android modding, I finally got tired of re
 
 I’ve started putting my **Ruvomain-PBD** is a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
 
-*If you successfully deployed Ruvomain on a non-Samsung device, please open an Issue with your device name and a list of removed packages. Let's make this truly universal.
+*You have a specific device? Create your JSON profile, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
 Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json) and submit a PR*
 
 ***Note:***
