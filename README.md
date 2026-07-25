@@ -1,6 +1,6 @@
 # Ruvomain Protocol v3
 <p align="center">
-<img src="https://img.shields.io/badge/Status | Stable-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Status"> &nbsp; <img src="https://img.shields.io/badge/Clones | 1702 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Total clones">
+<img src="https://img.shields.io/badge/Status | Stable-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Status"> &nbsp; <img src="https://img.shields.io/badge/Clones | 1824 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Total clones">
 </p>
 <!-- ![Stars](https://img.shields.io/github/stars/TonUtilisateur/TonRepo?style=flat-square&color=blue)
 ![Forks](https://img.shields.io/github/forks/Ruvyrom/Ruvomain-Protocole?style=flat-square&color=lightgrey) &nbsp; 
