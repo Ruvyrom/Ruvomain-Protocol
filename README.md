@@ -25,7 +25,7 @@
 >
 > **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
-After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
+After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB [(Android Debug Bridge)](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/UNDERSTANDING-ADB.md#what-is-adb) commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
 
 I’ve started putting my **Ruvomain-PBD** is a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
 
