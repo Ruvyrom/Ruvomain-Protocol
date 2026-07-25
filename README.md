@@ -212,7 +212,7 @@ For support, discussions, and the latest news on the Ruvomain Protocol, join our
 ---
 ### Dictionnary: Technical Context
 <details>
-<summary><b>What is ADB? (Forbeginners)</b></summary>
+<summary><b>⚙️ What is ADB? (Forbeginners)</b></summary>
 
 ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
 
@@ -220,19 +220,19 @@ For the Ruvomain Protocol, ADB is our primary "privileged channel." It allows us
 </details>
 
 <details>
-<summary><b>What is Bash? (Why we use it)</b></summary>
+<summary><b>🐚 What is Bash? (Why we use it)</b></summary>
 
 Bash is the scripting language that powers the Ruvomain Protocol. We chose it for one reason: <b>transparency</b>. Unlike closed-source tools that hide their logic in a "blackbox," our Bash scripts are written in plain, readable text. This means you can personally audit, verify, and understand every single command before it touches your device. It is the foundation of a truly trust-based and auditable system.
 </details>
 
 <details>
-<summary><b>What is JSON? (Our configuration layer)</b></summary>
+<summary><b>📄 What is JSON? (Our configuration layer)</b></summary>
 
 JSON acts as our "configuration layer." It is a simple, human-readable format that holds the data for the protocol, essentially acting as a map that tells the scripts exactly which packages to target. By separating our data (the JSON files) from our logic (the Bashscripts), we keep the protocol modular and incredibly easy to customize. You don't need to be a coder to manage these lists; you just need to edit the map.
 </details>
 
 <details>
-<summary><b>What is Git? (Why it matters)</b></summary>
+<summary><b>🔄 What is Git? (Why it matters)</b></summary>
 
 Git is our "version control" system. Think of it as a time machine for the RuvomainProtocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—notjust a static file.
 </details>
@@ -250,5 +250,3 @@ Stable environment. No critical system crashes or UI stutters detected in daily 
 
 ---
 *My other project on github for [Google Pixel6, LineageOS Vanilla 23.2](https://github.com/Ruvyrom/Ruvyrom/tree/main)*
-
-***Stay clean, stay fast, stay Ruvomain.*** 🚀
