@@ -7,7 +7,7 @@
 ![Watchers](https://img.shields.io/github/watchers/Ruvyrom/Ruvomain-Protocole?style=flat-square&color=lightgrey) -->
 
 ![](assets/ruvomain.jpg)
-<p align="center"> Universal Protocol with Pure Bash Debloater and system management for Samsung S24+ or other Android devices.</p>
+<p align="center"> Universal Protocol with Pure Bash Debloater and system management for Samsung S24+ & other Android devices.</p>
 
 ---
 <p align="center">
