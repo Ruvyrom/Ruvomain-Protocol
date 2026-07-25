@@ -2,9 +2,6 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Status | Stable-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Status"> &nbsp; <img src="https://img.shields.io/badge/Clones | 1824 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Total clones">
 </p>
-<!-- ![Stars](https://img.shields.io/github/stars/TonUtilisateur/TonRepo?style=flat-square&color=blue)
-![Forks](https://img.shields.io/github/forks/Ruvyrom/Ruvomain-Protocole?style=flat-square&color=lightgrey) &nbsp; 
-![Watchers](https://img.shields.io/github/watchers/Ruvyrom/Ruvomain-Protocole?style=flat-square&color=lightgrey) -->
 
 ![](assets/ruvomain.jpg)
 <p align="center"> Universal Protocol with Pure Bash Debloater and system management for Samsung S24+ & other Android devices.</p>
@@ -23,6 +20,10 @@
 <p align="center">
 <img src="https://img.shields.io/badge/| License MIT-black?logo=conventionalcommits&logoColor=f5f5f5&style=flat-square" alt=License>
 </p>
+
+> This project is a tool to surgically remove unwanted apps from Samsung phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
+>
+> **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
 After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
 
