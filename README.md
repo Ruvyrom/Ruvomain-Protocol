@@ -26,7 +26,7 @@
 > **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
 
 <details>
-<summary><b>Dictionnary : technical context</b></summary>
+<summary><b>Dictionnary : Technical Context</b></summary>
 <details>
 <summary><b>What is ADB? (Forbeginners)</b></summary>
 
