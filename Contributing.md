@@ -12,5 +12,9 @@ Please ensure:
 - You have tested the debloat list on your own device.
 - You keep the minimalist philosophy of the project.
 
+**Naming Convention for Imports:**
+`[Philosophy]-[DeviceName]-[OSVersion].json`
+*Example: Baremetal-Pixel6-LOS232.json*
+
 # Note for skeptics:
 This structure is designed to be auditable, not just automated. Everything here is hand-coded to ensure 0-day debloat safety.
