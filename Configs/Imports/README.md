@@ -27,4 +27,4 @@ For using your liste with Ruvomain-pbd script:
 
 *Baremetal-Pixel6-LOS232.json*
 
-*Degoogle-OP15-OxyOS.json*
+*Degoogle-OP15-OxyOS15.json*
