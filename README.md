@@ -40,6 +40,7 @@ Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ru
 
 <details>
 <summary><b>Need help with your first contribution ? </b></summary>
+  
 Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
 </details>
 
