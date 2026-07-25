@@ -1,9 +1,10 @@
 ### JSON files importation
 
-You have the possibility to **import** your **personnal `*.json` files** list (for S24+ or other devices) with v3 version script for Linux/Termux/macOS and /Configs/Imports folder:
+*"You have a specific device? Create your JSON profile, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community."*
 
 - You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json)**
 
+For using your liste with Ruvomain-pbd script:
 - **Copy** your files in `./Configs/Imports` folder
 
 - **Execute** script and select option 4 when prompted
