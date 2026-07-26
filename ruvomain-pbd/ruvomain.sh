@@ -4,25 +4,29 @@
 # Created by Ruvyrom
 set -euo pipefail
 
+# --- Dynamic Path Resolution ---
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 # --- Library Injection ---
-LIB_PATH="$(dirname "$0")/lib/json-walk.sh"
+LIB_PATH="$REPO_DIR/lib/json-walk.sh"
 if [ ! -f "$LIB_PATH" ]; then
-echo "[!] CRITICAL: lib/json-walk.sh not found. Infrastructure integrity compromised."
-exit 1
+    printf "[!] CRITICAL: %s not found. Infrastructure integrity compromised.\n" "$LIB_PATH" >&2
+    exit 1
 fi
 source "$LIB_PATH"
 
-if [[ ! -x "$(dirname "$0")/lib/json-walk.sh" ]]; then
-chmod +x "$(dirname "$0")/lib/json-walk.sh"
+if [[ ! -x "$LIB_PATH" ]]; then
+    chmod +x "$LIB_PATH"
 fi
 
-# --- Styles---
+# --- Styles ---
 BOLD='\033[1m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
 show_logo() {
-cat <<- "EOF"
+    cat <<- "EOF"
     ____                                    _     
    / __ \__  ___   ______  ____ ___  ____ _(_)___ 
   / /_/ / / / / | / / __ \/ __ `__ \/ __ `/ / __ \
@@ -35,122 +39,138 @@ cat <<- "EOF"
 EOF
 }
 
-show_logo
-echo -e "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}"
-echo "------------------------------------------"
-CURRENT_MODEL=$(getprop ro.product.model2>/dev/null || adb shell getprop ro.product.model 2>/dev/null)
-echo-e "Device detected: ${BOLD}${CURRENT_MODEL:-Unknown}${NC}"
-echo "------------------------------------------"
- 
-if command -v adb &> /dev/null; then
-log_info "Installing ADB"
-if [ -d "/data/data/com.termux" ]; then pkg install -y android-tools
-elif command -v apt &> /dev/null; then sudo apt install -y android-tools-adb
-elif command -v pacman &> /dev/null; then
-sudo pacman -S --noconfirm android-tools
-elif command -v dnf &> /dev/null; then
-sudo dnf install -y android-tools
-else return 1; fi
-fi
+ensure_adb() {
+    if command -v adb &>/dev/null; then
+        return 0
+    fi
+
+    printf "[+] ADB not found. Attempting auto-installation...\n"
+    if [ -d "/data/data/com.termux" ]; then
+        pkg install -y android-tools
+    elif command -v apt-get &>/dev/null; then
+        sudo apt-get update && sudo apt-get install -y android-tools-adb
+    elif command -v pacman &>/dev/null; then
+        sudo pacman -S --noconfirm android-tools
+    elif command -v dnf &>/dev/null; then
+        sudo dnf install -y android-tools
+    else
+        printf "[!] ERROR: No supported package manager found to install ADB. Please install ADB manually.\n" >&2
+        return 1
+    fi
 }
+
+show_logo
+printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
+printf "%s\n" "------------------------------------------"
+CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
+printf "Device detected: ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
+printf "%s\n" "------------------------------------------"
+
+ensure_adb
 
 # --- Infrastructure Helpers (Visitors) ---
 get_json_val() {
-local file="$1"
-local target_key="$2"
-local found="N/A"
+    local file="$1"
+    local target_key="$2"
+    local found="N/A"
 
-visitor() {
-if [[ "$1" == "key" && "$2" == "$target_key" ]]; then
-STATE="capture"
-elif [[ "$STATE" == "capture" && "$1" == "string" ]]; then
-found="$2"
-STATE="done"
-fi
-}
-STATE="idle"
-json_walk "$(<"$file")" visitor
-echo "$found"
+    visitor() {
+        if [[ "$1" == "key" && "$2" == "$target_key" ]]; then
+            STATE="capture"
+        elif [[ "$STATE" == "capture" && "$1" == "string" ]]; then
+            found="$2"
+            STATE="done"
+        fi
+    }
+    STATE="idle"
+    json_walk "$(<"$file")" visitor
+    printf "%s\n" "$found"
 }
 
 get_packages() {
-local file="$1"
-PACKAGES=()
+    local file="$1"
+    PACKAGES=()
 
-pkg_visitor() {
-if [[ "$1" == "key" && "$2" == "packageName" ]]; then
-STATE="capturing"
-elif [[ "$STATE" == "capturing" && "$1" == "string" ]]; then
-PACKAGES+=("$2")
-STATE="idle"
-fi
-}
-STATE="idle"
-json_walk "$(<"$file")" pkg_visitor
+    pkg_visitor() {
+        if [[ "$1" == "key" && "$2" == "packageName" ]]; then
+            STATE="capturing"
+        elif [[ "$STATE" == "capturing" && "$1" == "string" ]]; then
+            PACKAGES+=("$2")
+            STATE="idle"
+        fi
+    }
+    STATE="idle"
+    json_walk "$(<"$file")" pkg_visitor
 }
 
-# --- Environment Setup
+# --- Environment Setup ---
 if [ -d "/data/data/com.termux" ] || [ -f "/system/bin/pm" ]; then
-EXEC="pm uninstall -k --user 0"
+    EXEC="pm uninstall -k --user 0"
 else
-EXEC="adb shell pm uninstall -k --user 0"
+    EXEC="adb shell pm uninstall -k --user 0"
 fi
 
 # --- Menu Logic ---
-function select_import_from_folder() {
-local import_dir="../../Configs/Imports"
-[ ! -d "$import_dir" ] && echo"[!] Folder not found." && return 1
-local files=("$import_dir"/*.json)
-[ ! -e "${files[0]}" ] && echo "[!] No configs found." && return 1
+select_import_from_folder() {
+    local import_dir="$REPO_DIR/Configs/Imports"
+    if [ ! -d "$import_dir" ]; then
+        printf "[!] Folder not found: %s\n" "$import_dir" >&2
+        return 1
+    fi
+    local files=("$import_dir"/*.json)
+    if [ ! -e "${files[0]}" ]; then
+        printf "[!] No configs found in %s\n" "$import_dir" >&2
+        return 1
+    fi
 
-select opt in "${files[@]}" "Return to main menu"; do
-if [[ "$opt" == "Return to main menu" ]]; then return 1; fi
-if [ -f "$opt" ]; then
-JSON_FILE="$opt"
-echo "--- Configuration Details ---"
-echo "Name: $(get_json_val "$opt""name")"
-echo "Version: $(get_json_val "$opt" "version")"
-read -r -p "Apply? (y/N): " confirm
-[[ "$confirm" == [yY] ]] && return 0 || return 1
-fi
-done
+    select opt in "${files[@]}" "Return to main menu"; do
+        if [[ "$opt" == "Return to main menu" ]]; then return 1; fi
+        if [ -f "$opt" ]; then
+            JSON_FILE="$opt"
+            printf "%s\n" "--- Configuration Details ---"
+            printf "Name: %s\n" "$(get_json_val "$opt" "name")"
+            printf "Version: %s\n" "$(get_json_val "$opt" "version")"
+            read -r -p "Apply? (y/N): " confirm
+            [[ "$confirm" == [yY] ]] && return 0 || return 1
+        fi
+    done
 }
 
 # --- Configuration ---
-CONFIG_DIR="../../Configs/S24+"
+CONFIG_DIR="$REPO_DIR/Configs/S24+"
 FILE_T1="$CONFIG_DIR/ruvomain_tier1_stable.json"
 FILE_T2="$CONFIG_DIR/ruvomain_tier2_stable.json"
 FILE_T3="$CONFIG_DIR/ruvomain_tier3_stable.json"
 
-echo "========================================"
-echo "   RUVOMAIN PROTOCOL - DEPLOYMENT      "
-echo "========================================"
-echo "1) Apply Tier 1 (Safe)"
-echo "2) Apply Tier 2 (Balanced)"
-echo "3) Apply Tier 3 (Extreme)"
-echo "4) Load external JSON from /Imports"
-echo "----------------------------------------"
+printf "%s\n" "========================================"
+printf "%s\n" "   RUVOMAIN PROTOCOL - DEPLOYMENT      "
+printf "%s\n" "========================================"
+printf "1) Apply Tier 1 (Safe)\n"
+printf "2) Apply Tier 2 (Balanced)\n"
+printf "3) Apply Tier 3 (Extreme)\n"
+printf "4) Load external JSON from /Imports\n"
+printf "%s\n" "----------------------------------------"
 read -r -p "Your choice (1-4): " choice
 
 case $choice in
-1) JSON_FILE=$FILE_T1; TIER="Tier 1 (Safe)" ;;
-2) JSON_FILE=$FILE_T2; TIER="Tier 2 (Balanced)" ;;
-3) JSON_FILE=$FILE_T3; TIER="Tier 3 (Extreme)" ;;
-4)
-if ! select_import_from_folder; then
-echo "Operation cancelled. Returning to main menu..."
-exit 1
-fi
-TIER="External Configuration ($JSON_FILE)"
-;;
-*)
-echo "Invalid option. Exiting."
-exit 1
-;;
+    1) JSON_FILE=$FILE_T1; TIER="Tier 1 (Safe)" ;;
+    2) JSON_FILE=$FILE_T2; TIER="Tier 2 (Balanced)" ;;
+    3) JSON_FILE=$FILE_T3; TIER="Tier 3 (Extreme)" ;;
+    4)
+        if ! select_import_from_folder; then
+            printf "Operation cancelled. Returning to main menu...\n"
+            exit 1
+        fi
+        TIER="External Configuration ($JSON_FILE)"
+        ;;
+    *)
+        printf "Invalid option. Exiting.\n"
+        exit 1
+        ;;
 esac
 
 # --- Final Execution ---
-echo "[+] Deploying configuration: $JSON_FILE"
+printf "[+] Deploying configuration: %s\n" "$JSON_FILE"
 
 SUCCESS_COUNT=0
 FAILED_COUNT=0
@@ -158,27 +178,28 @@ FAILED_COUNT=0
 get_packages "$JSON_FILE"
 
 if [[ "$(get_json_val "$JSON_FILE" "apps")" == "N/A" ]]; then
-echo "[!] CRITICAL: Invalid Ruvomain file (missing 'apps' key)."
-exit 1
+    printf "[!] CRITICAL: Invalid Ruvomain file (missing 'apps' key).\n" >&2
+    exit 1
 fi
 
 for pkg in "${PACKAGES[@]}"; do
-echo -n "Processing: $pkg ... "
+    printf "Processing: %s ... " "$pkg"
 
-if $EXEC "$pkg" > /dev/null 2>&1; then
-echo "[OK]"
-((SUCCESS_COUNT++))
-else
-echo "[FAILED]"
-((FAILED_COUNT++))
-fi
+    if $EXEC "$pkg" > /dev/null 2>&1; then
+        printf "[OK]\n"
+        ((SUCCESS_COUNT++))
+    else
+        printf "[FAILED]\n"
+        ((FAILED_COUNT++))
+    fi
 done
 
-echo "========================================"
-echo "Report:"
-echo "  Packages removed: $SUCCESS_COUNT"
-echo "  Failures: $FAILED_COUNT"
-echo
+printf "%s\n" "========================================"
+printf "Report:\n"
+printf "  Packages removed: %d\n" "$SUCCESS_COUNT"
+printf "  Failures: %d\n" "$FAILED_COUNT"
+printf "\n"
+printf "%s\n" "========================================"
+printf "Operation finished. Sovereignty restored.\n"
 
-echo "========================================"
-echo "Operation finished. Sovereignty restored."
+
