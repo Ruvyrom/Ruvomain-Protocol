@@ -34,7 +34,7 @@ I’ve started putting my **Ruvomain-PBD** is a zero-dependency, professional-gr
 <details>
 <summary><b>You have a specific device? Create your JSON profile </b></summary>
 
-Place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
+Fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
 Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
 </details>
 
