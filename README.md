@@ -68,9 +68,31 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
 
 ---
+### 📸 Proof of Concept
+| Energy Efficiency | Low Comsumption |
+| :---: | :---: |
+| <img src="assets/accu-93.jpg" width="200"> | <img src="assets/battery2.jpg" width="200"> |
+| 10h+ SOT achieved on a S24+ Exynos. Proving that the Ruvomain Protocol Optimize battery life | Low energy consumption in standby mode |
+
+| Resource Management | Connectivity |
+| :---: | :---: |
+| <img src="assets/ram1.jpg" width="200"> | <img src="assets/thermalg2.jpg" width="200"> |
+| Optimized background processes in RAM. | The CPU is not overloaded, which limits heat generation and allows for a deep sleep state. |
+
+---
 ## 🚀 Technical Architecture
 
 The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser written in pure Bash. It processes your configurations natively, ensuring compatibility across Linux, Termux, and Android without requiring external binaries like `jq`.
+
+---
+## ⚖️ Comparison Matrix
+
+| Feature | Standard Approach (Canta/Shizuku)| **Ruvomain-PBD** |
+| :--- | :--- | :--- |
+| **Dependencies** | Java, Shizuku, Canta, `jq` | **None (Zero-Dependency)** |
+| **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
+| **Auditability** | Limited (Black-box) | **Total (Native Bash)** |
+| **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
 
 ---
 ## Contributing
@@ -86,16 +108,6 @@ Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ru
   
 Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
 </details>
-
----
-## ⚖️ Comparison Matrix
-
-| Feature | Standard Approach (Canta/Shizuku)| **Ruvomain-PBD** |
-| :--- | :--- | :--- |
-| **Dependencies** | Java, Shizuku, Canta, `jq` | **None (Zero-Dependency)** |
-| **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
-| **Auditability** | Limited (Black-box) | **Total (Native Bash)** |
-| **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
 
 ---
 ## Documentation
@@ -129,10 +141,6 @@ To gain a deeper understanding of the technical and operational aspects of the p
 >Information regarding code transparency, audit processes, and system integrity maintenance.
 
 ---
-Got questions? Reddit is the place to discuss builds.
->[r/Ruvomain](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
-
----
 ### 👥 Community & Credits
 For support, discussions, and the latest news on the Ruvomain Protocol, join our Community on:
 [Reddit](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
@@ -140,10 +148,6 @@ For support, discussions, and the latest news on the Ruvomain Protocol, join our
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169).
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
-
----
-### 📸 Proof of Concept
-<img src="assets/accu-93.jpg" width="400"><img src="assets/battery2.jpg" width="400"><img src="assets/thermalg2.jpg" width="400"> <img src="assets/thermalg-cpu.jpg" width="400"> <img src="assets/thermalg-temp.jpg" width="400"> <img src="assets/ram1.jpg" width="400">
 
 ---
 ### Dictionnary: Technical Context
