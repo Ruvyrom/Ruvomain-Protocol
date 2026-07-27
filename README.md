@@ -3,8 +3,13 @@
 <img src="https://img.shields.io/badge/Status | Stable-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Status"> &nbsp; <img src="https://img.shields.io/badge/Clones | 2028 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Total clones">
 </p>
 
-![](assets/ruvomain.jpg)
-<p align="center"> Universal Protocol with Pure Bash Debloater and system management for Samsung S24+ & other Android devices.</p>
+<div align="center">
+<img src="assets/ruvomain.jpg" width="300">
+<br>
+<strong>Universal Protocol with Pure Bash</strong><br>
+<strong>Debloater and system management for</strong><br>
+<strong>Samsung S24+ & other Android devices.</strong>
+</div>
 
 ---
 <p align="center">
@@ -21,41 +26,20 @@
 <img src="https://img.shields.io/badge/| License MIT-black?logo=conventionalcommits&logoColor=f5f5f5&style=flat-square" alt=License>
 </p>
 
-> This project is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
->
-> **Note:** This tool runs via the command line (terminal). It’s built for users who want deep control over their device. If you're looking for a "one-click" app with a standard interface, this might not be for you.
+The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
+It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
 
 [Dictionnary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
 
-After 16 years of messing around with Android modding, I finally got tired of re-running the same ADB commands every time Samsung pushes a security patch or I need to re-provisionmy environment.
-
-I’ve started putting my **Ruvomain-PBD** is a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
-
-<details>
-<summary><b>You have a specific device? Create your JSON profile </b></summary>
-
-Fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
-Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
-</details>
-
-<details>
-<summary><b>Need help with your first contribution ? </b></summary>
-  
-Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
-</details>
-
-***Note:***
->This project is maintained manually. I wrote these scripts because I was tired of the bloat on my S24+. No AI fluff, just pure Bash and system-level configuration for people who value their time and privacy.
-
 ---
 ### Table of Contents
-[Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation)
+[All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation)
 
 [Features](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#features)
 
 [Technical Architecture](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#-technical-architecture) 
 
-**[Quick Start](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Quick-Start-Guide.md)**
+**[Quick Start Guide](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Quick-Start-Guide.md)**
 
 [Comparaison Matrix](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-comparison-matrix) 
 
@@ -68,10 +52,6 @@ Need help with your first contribution? [Consult this guide](https://github.com/
 [Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
 
 [Hall of Fame](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#hall-of-fame)
-
----
-Got questions? Reddit is the place to discuss builds.
->[r/Ruvomain](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
 
 ---
 ## Features: 
@@ -89,6 +69,26 @@ Got questions? Reddit is the place to discuss builds.
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
 
 ---
+## 🚀 Technical Architecture
+
+The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser written in pure Bash. It processes your configurations natively, ensuring compatibility across Linux, Termux, and Android without requiring external binaries like `jq`.
+
+---
+## Contributing
+<details>
+<summary><b>You have a specific device? Create your JSON profile </b></summary>
+
+Fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
+Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
+</details>
+
+<details>
+<summary><b>Need help with your first contribution ? </b></summary>
+  
+Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
+</details>
+
+---
 ## ⚖️ Comparison Matrix
 
 | Feature | Standard Approach (Canta/Shizuku)| **Ruvomain-PBD** |
@@ -97,11 +97,6 @@ Got questions? Reddit is the place to discuss builds.
 | **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
 | **Auditability** | Limited (Black-box) | **Total (Native Bash)** |
 | **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
-
----
-## 🚀 Technical Architecture
-
-The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser written in pure Bash. It processes your configurations natively, ensuring compatibility across Linux, Termux, and Android without requiring external binaries like `jq`.
 
 ---
 ## Documentation
@@ -140,13 +135,11 @@ Got questions? Reddit is the place to discuss builds.
 
 ---
 ### 👥 Community & Credits
-For support, discussions, and the latest news on the Ruvomain Protocol, join our Community:
->[Reddit](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
->[Telegram Channel](https://t.me/ruvomain)
+For support, discussions, and the latest news on the Ruvomain Protocol, join our Community on:
+[Reddit](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
 
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169).
-*   **Architecture:** Formal acknowledgment of the Canta workflow by [Samolego](https://samolego.github.io/Canta/).
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
 
 ---
@@ -191,6 +184,10 @@ Stable environment. No critical system crashes or UI stutters detected in daily 
 ### 🏆 Hall of Fame
 * **Institutional Censorship:** Term "Ruvomain" filtered on XDA; posting rights revoked on r/androidroot.
 * **Diagnosis:** The protocol's surgical efficiency threatens the root-dependency paradigm. We don't ask for permission to optimize; we just do it.
+
+---
+Got questions? Reddit is the place to discuss builds.
+>[r/Ruvomain](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
 
 ---
 *My other project on github for [Google Pixel6, LineageOS Vanilla 23.2](https://github.com/Ruvyrom/Ruvyrom/tree/main)*
