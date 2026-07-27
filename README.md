@@ -3,7 +3,7 @@
 </p>
 
 <div align="center">
-<img src="assets/ruvomain.jpg" width="300">
+<img src="assets/ruvomain.png" width="300">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
 <strong>Debloater and system management for</strong><br>
