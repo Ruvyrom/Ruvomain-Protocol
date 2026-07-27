@@ -1,4 +1,3 @@
-# Ruvomain Protocol v3
 <p align="center">
 <img src="https://img.shields.io/badge/Status | Stable-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Status"> &nbsp; <img src="https://img.shields.io/badge/Clones | 2028 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=flat-square" alt="Total clones">
 </p>
@@ -33,9 +32,9 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 ---
 ### Table of Contents
-**[Quick Start Guide](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Quick-Start-Guide.md)** How to use Ruvomain-pbd
+**[Quick Start Guide](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Quick-Start-Guide.md)**
 
-[All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation) for understand protocol
+[All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation)
 
 [Features](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#features)
 
