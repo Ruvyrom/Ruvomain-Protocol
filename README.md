@@ -68,7 +68,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
 
 ---
-### 📸 Proof of Concept
+### 📸 Proof Screenshot
 | Energy Efficiency | Low Comsumption |
 | :---: | :---: |
 | <img src="assets/accu-93.jpg" width="200"> | <img src="assets/battery2.jpg" width="200"> |
