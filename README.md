@@ -46,7 +46,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 [Why JSON and Pure Bash?](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Why-JSON-Parsing-Pure-Bash-guarantee-privacy.md#why-json-parsing--pure-bash-guarantee-privacy) 
 
-[Community and Credits](https://github.com/Ruvyrom/Ruvomain-Protocole/tree/main#-community--credits)
+[Credits](https://github.com/Ruvyrom/Ruvomain-Protocole/tree/main#-community--credits)
 
 [Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
 
@@ -139,9 +139,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 >Information regarding code transparency, audit processes, and system integrity maintenance.
 
 ---
-### 👥 Community & Credits
-For support, discussions, and the latest news on the Ruvomain Protocol, join our Community on:
-[Reddit](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
+### 👥 Credits
 
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169) and OneUI 8.0 JSON config file.
