@@ -2,7 +2,6 @@
   "name": "Ruvomain Protocol T3",
   "description": "Tier 3 - Replacement Required (Advanced)",
   "createdDate": 1780047654302,
-  "version": "1.0",
   "apps": [
         {
       "packageName": "com.samsung.android.bixby.agent"
