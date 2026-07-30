@@ -56,9 +56,6 @@ brew install git android-platform-tools
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-```bash
-cd Ruvomain-Protocole/ruvomain-pdb
-```
 
 4. **Verify device connection:**
 ```bash
