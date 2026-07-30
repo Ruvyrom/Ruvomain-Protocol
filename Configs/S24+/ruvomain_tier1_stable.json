@@ -1,7 +1,7 @@
 {
   "name": "Ruvomain Protocol Tier1",
   "description": "Tier 1 - Safe for everyone",
-  "createdDate": 1780047654302,
+  "version": "1.0",
   "apps": [
     {
       "packageName": "com.samsung.android.bixby.agent"
