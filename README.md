@@ -146,7 +146,7 @@ For support, discussions, and the latest news on the Ruvomain Protocol, join our
 [Reddit](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
 
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
-*   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169).
+*   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169) and OneUI 8.0 JSON config file.
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
 
 ---
