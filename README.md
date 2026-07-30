@@ -50,8 +50,6 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 [Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
 
-[Hall of Fame](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#hall-of-fame)
-
 ---
 ## Features: 
 "Surgical Minimalism" is the art of achieving maximum efficiency through the smallest possible codebase. By eliminating external dependencies, we reduce the system's attack surface and ensure absolute transparency.
@@ -183,10 +181,6 @@ Stable environment. No critical system crashes or UI stutters detected in daily 
 
 ## ⚠️ Disclaimer
 *I am not responsible for any issues resulting from system modifications. Always perform a data backup before deployment.*
-
-### 🏆 Hall of Fame
-* **Institutional Censorship:** Term "Ruvomain" filtered on XDA; posting rights revoked on r/androidroot; Banned from posting and commenting on r/GalaxyS24; A majority of my posts removed from r/degoogle.
-* **Diagnosis:** The protocol's surgical efficiency threatens the root-dependency paradigm. We don't ask for permission to optimize; we just do it.
 
 ---
 Got questions? Reddit is the place to discuss builds.
