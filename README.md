@@ -46,7 +46,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 [Why JSON and Pure Bash?](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Why-JSON-Parsing-Pure-Bash-guarantee-privacy.md#why-json-parsing--pure-bash-guarantee-privacy) 
 
-[Credits](https://github.com/Ruvyrom/Ruvomain-Protocole/tree/main#-community--credits)
+[Credits](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/README.md#-credits)
 
 [Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
 
