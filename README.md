@@ -72,7 +72,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 | <img src="assets/accu-93.jpg" width="200"> | <img src="assets/battery2.jpg" width="200"> |
 | 10h+ SOT achieved on a S24+ Exynos. Proving that the Ruvomain Protocol Optimize battery life | Low energy consumption in standby mode |
 
-| Resource Management | Thermal managemant |
+| Resource Management | CPU & Thermal Management |
 | :---: | :---: |
 | <img src="assets/ram1.jpg" width="200"> | <img src="assets/thermalg2.jpg" width="200"> |
 | Optimized background processes in RAM. | The CPU is not overloaded, which limits heat generation and allows for a deep sleep state. |
