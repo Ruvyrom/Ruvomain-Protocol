@@ -11,7 +11,7 @@ REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 # --- Library Injection ---
 LIB_PATH="$REPO_DIR/lib/json-walk.sh"
 if [ ! -f "$LIB_PATH" ]; then
-    printf "[!] CRITICAL: %s not found. Infrastructure integrity compromised.\n" "$LIB_PATH" >&2
+    printf "${RED}[!] CRITICAL: %s not found. Infrastructure integrity compromised.\n${NC} " "$LIB_PATH" >&2
     exit 1
 fi
 source "$LIB_PATH"
@@ -21,9 +21,7 @@ if [[ ! -x "$LIB_PATH" ]]; then
 fi
 
 # --- Styles ---
-BOLD='\033[1m'
-CYAN='\033[0;36m'
-NC='\033[0m'
+source "$REPO_DIR/lib/styles.sh"
 
 show_logo() {
     cat <<- "EOF"
@@ -44,7 +42,8 @@ ensure_adb() {
         return 0
     fi
 
-    printf "[+] ADB not found. Attempting auto-installation...\n"
+    printf "${RED}[!] ADB not found.${NC}\n"
+    printf "${GREEN}[+] Attempting auto-installation...${NC}\n"
     if [ -d "/data/data/com.termux" ]; then
         pkg install -y android-tools
     elif command -v apt-get &>/dev/null; then
@@ -54,7 +53,7 @@ ensure_adb() {
     elif command -v dnf &>/dev/null; then
         sudo dnf install -y android-tools
     else
-        printf "[!] ERROR: No supported package manager found to install ADB. Please install ADB manually.\n" >&2
+        printf "${RED}[!] ERROR: No supported package manager found to install ADB. Please install ADB manually.${NC}\n" >&2
         return 1
     fi
 }
@@ -114,12 +113,12 @@ fi
 select_import_from_folder() {
     local import_dir="$REPO_DIR/Configs/Imports"
     if [ ! -d "$import_dir" ]; then
-        printf "[!] Folder not found: %s\n" "$import_dir" >&2
+        printf "${RED}[!] Folder not found: %s${NC}\n" "$import_dir" >&2
         return 1
     fi
     local files=("$import_dir"/*.json)
     if [ ! -e "${files[0]}" ]; then
-        printf "[!] No configs found in %s\n" "$import_dir" >&2
+        printf "${RED}[!] No configs found in %s\n${NC}" "$import_dir" >&2
         return 1
     fi
 
@@ -201,5 +200,3 @@ printf "  Failures: %d\n" "$FAILED_COUNT"
 printf "\n"
 printf "%s\n" "========================================"
 printf "Operation finished. Sovereignty restored.\n"
-
-
