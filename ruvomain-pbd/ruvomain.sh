@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Ruvomain ADB-Termux Debloater (Pure Bash / Zero-Dependency)
-# Version 3.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
+# Version 4.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
 # Created by Ruvyrom
 set -euo pipefail
 
