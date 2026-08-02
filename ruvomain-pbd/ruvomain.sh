@@ -4,19 +4,26 @@
 # Created by Ruvyrom
 set -euo pipefail
 
-mkdir -p logs
-find logs/ -name "ruvomain-*.log" -mtime +30 -delete
-
-LOGFILE="logs/ruvomain-$(date +%Y%m%d_%H%M%S).log"
-exec > >(tee -a "$LOGFILE") 2>&1
-
-# --- Sources ---
-source "$REPO_DIR/lib/styles.sh"
-source "$REPO_DIR/lib/ensure-adb.sh"
-
 # --- Dynamic Path Resolution ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+STYLE_DIR="$REPO_DIR/lib/styles.sh"
+ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
+
+# --- Sources ---
+chmod +x "$STYLE_DIR"
+chmod +x "$ENSURE_DIR"
+source "$STYLE_DIR"
+source "$ENSURE_DIR"
+
+# --- Logs ---
+mkdir -p "$REPO_DIR/logs"
+find "$REPO_DIR/logs" -name "ruvomain-*.log" -mtime +30 -delete
+
+LOGFILE="$REPO_DIR/logs/ruvomain-$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOGFILE") 2>&1
+
+ensure_adb || exit 1
 
 # --- Library Injection ---
 LIB_PATH="$REPO_DIR/lib/json-walk.sh"
@@ -44,35 +51,12 @@ show_logo() {
 EOF
 }
 
-ensure_adb() {
-    if command -v adb &>/dev/null; then
-        return 0
-    fi
-
-    printf "${RED}[!] ADB not found.${NC}\n"
-    printf "${GREEN}[+] Attempting auto-installation...${NC}\n"
-    if [ -d "/data/data/com.termux" ]; then
-        pkg install -y android-tools
-    elif command -v apt-get &>/dev/null; then
-        sudo apt-get update && sudo apt-get install -y android-tools-adb
-    elif command -v pacman &>/dev/null; then
-        sudo pacman -S --noconfirm android-tools
-    elif command -v dnf &>/dev/null; then
-        sudo dnf install -y android-tools
-    else
-        printf "${RED}[!] ERROR: No supported package manager found to install ADB. Please install ADB manually.${NC}\n" >&2
-        return 1
-    fi
-}
-
 show_logo
 printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
 printf "%s\n" "------------------------------------------"
 CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
 printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 printf "%s\n" "------------------------------------------"
-
-ensure_adb
 
 # --- Infrastructure Helpers (Visitors) ---
 get_json_val() {
