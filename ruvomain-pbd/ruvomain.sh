@@ -9,19 +9,20 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
+LOGS_DIR="$REPO_DIR/lib/logs.sh"
+LOGO_DIR="$REPO_DIR/lib/logo.sh"
 
 # --- Sources ---
 chmod +x "$STYLE_DIR"
 chmod +x "$ENSURE_DIR"
+chmod +x "$LOGS_DIR"
+chmod +x "$LOGO_DIR"
 source "$STYLE_DIR"
 source "$ENSURE_DIR"
+source "$LOGS_DIR"
+source "$LOGO_DIR"
 
-# --- Logs ---
-mkdir -p "$REPO_DIR/logs"
-find "$REPO_DIR/logs" -name "ruvomain-*.log" -mtime +30 -delete
-
-LOGFILE="$REPO_DIR/logs/ruvomain-$(date +%Y%m%d_%H%M%S).log"
-exec > >(tee -a "$LOGFILE") 2>&1
+init_logs
 
 ensure_adb || exit 1
 
@@ -36,20 +37,6 @@ source "$LIB_PATH"
 if [[ ! -x "$LIB_PATH" ]]; then
     chmod +x "$LIB_PATH"
 fi
-
-show_logo() {
-    cat <<- "EOF"
-    ____                                    _     
-   / __ \__  ___   ______  ____ ___  ____ _(_)___ 
-  / /_/ / / / / | / / __ \/ __ `__ \/ __ `/ / __ \
- / _, _/ /_/ /| |/ / /_/ / / / / / / /_/ / / / / /
-/_/ |_|\__,_/ |___/\____/_/ /_/ /_/\__,_/_/_/ /_/ 
-   / __ \_________  / /_____  _________  / /__    
-  / /_/ / ___/ __ \/ __/ __ \/ ___/ __ \/ / _ \   
- / ____/ /  / /_/ / /_/ /_/ / /__/ /_/ / /  __/   
-/_/   /_/   \____/\__/\____/\___/\____/_/\___/    
-EOF
-}
 
 show_logo
 printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
