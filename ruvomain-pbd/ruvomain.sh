@@ -34,19 +34,16 @@ source "$VISITOR_DIR"
 source "$MODEL_DIR"
 source "$ENV_DIR"
 
+# --- Initialization ---
 init_logs
-
 ensure_adb || exit 1
-
-injection
-
 show_logo
-
 model
-
-visitor
-
 env
+
+# --- Modules Execution ---
+injection
+visitor
 
 # --- Menu Logic ---
 select_import_from_folder() {
