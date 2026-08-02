@@ -201,3 +201,13 @@ printf "  ${CYAN}Failures: %d${NC}\n" "$FAILED_COUNT"
 printf "\n"
 printf "%s\n" "${CYAN}========================================${NC}\n"
 printf "${GREEN}Operation finished. Sovereignty restored.${NC}\n"
+
+printf "${WHITE}Rebooting device...${NC}\n"
+read -r -p "${CYAN}Do you want to reboot your device? (y/n): ${NC}\n" reboot_choice
+if [[ "$reboot_choice" =~ ^[Yy]$ ]]; then
+    adb -s "$CURRENT_MODEL" reboot
+    printf "${GREEN}Reboot command sent to device.${NC}\n"
+else
+    printf "${YELLOW}Reboot skipped.${NC}"
+fi
+echo
