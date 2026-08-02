@@ -4,6 +4,12 @@
 # Created by Ruvyrom
 set -euo pipefail
 
+mkdir -p logs
+find logs/ -name "ruvomain-*.log" -mtime +30 -delete
+
+LOGFILE="logs/ruvomain-$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOGFILE") 2>&1
+
 # --- Styles ---
 source "$REPO_DIR/lib/styles.sh"
 
@@ -205,9 +211,8 @@ printf "${GREEN}Operation finished. Sovereignty restored.${NC}\n"
 printf "${WHITE}Rebooting device...${NC}\n"
 read -r -p "${CYAN}Do you want to reboot your device? (y/n): ${NC}\n" reboot_choice
 if [[ "$reboot_choice" =~ ^[Yy]$ ]]; then
-    adb -s "$CURRENT_MODEL" reboot
+    adb reboot
     printf "${GREEN}Reboot command sent to device.${NC}\n"
 else
     printf "${YELLOW}Reboot skipped.${NC}"
 fi
-echo
