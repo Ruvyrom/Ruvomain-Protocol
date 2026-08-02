@@ -10,8 +10,9 @@ find logs/ -name "ruvomain-*.log" -mtime +30 -delete
 LOGFILE="logs/ruvomain-$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOGFILE") 2>&1
 
-# --- Styles ---
+# --- Sources ---
 source "$REPO_DIR/lib/styles.sh"
+source "$REPO_DIR/lib/ensure-adb.sh"
 
 # --- Dynamic Path Resolution ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
