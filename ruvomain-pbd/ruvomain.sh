@@ -11,32 +11,25 @@ STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
 LOGS_DIR="$REPO_DIR/lib/logs.sh"
 LOGO_DIR="$REPO_DIR/lib/logo.sh"
+INJECTION_DIR="$REPO_DIR/lib/injection.sh"
 
 # --- Sources ---
 chmod +x "$STYLE_DIR"
 chmod +x "$ENSURE_DIR"
 chmod +x "$LOGS_DIR"
 chmod +x "$LOGO_DIR"
+chmod +x "$INJECTION_DIR"
 source "$STYLE_DIR"
 source "$ENSURE_DIR"
 source "$LOGS_DIR"
 source "$LOGO_DIR"
+source "$INJECTION_DIR" 
 
 init_logs
 
 ensure_adb || exit 1
 
-# --- Library Injection ---
-LIB_PATH="$REPO_DIR/lib/json-walk.sh"
-if [ ! -f "$LIB_PATH" ]; then
-    printf "${RED}[!] CRITICAL: %s not found. Infrastructure integrity compromised.\n${NC} " "$LIB_PATH" >&2
-    exit 1
-fi
-source "$LIB_PATH"
-
-if [[ ! -x "$LIB_PATH" ]]; then
-    chmod +x "$LIB_PATH"
-fi
+injection
 
 show_logo
 printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
