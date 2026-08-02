@@ -4,6 +4,9 @@
 # Created by Ruvyrom
 set -euo pipefail
 
+# --- Styles ---
+source "$REPO_DIR/lib/styles.sh"
+
 # --- Dynamic Path Resolution ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -19,9 +22,6 @@ source "$LIB_PATH"
 if [[ ! -x "$LIB_PATH" ]]; then
     chmod +x "$LIB_PATH"
 fi
-
-# --- Styles ---
-source "$REPO_DIR/lib/styles.sh"
 
 show_logo() {
     cat <<- "EOF"
@@ -62,7 +62,7 @@ show_logo
 printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
 printf "%s\n" "------------------------------------------"
 CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
-printf "Device detected: ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
+printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 printf "%s\n" "------------------------------------------"
 
 ensure_adb
@@ -141,35 +141,36 @@ FILE_T1="$CONFIG_DIR/ruvomain_tier1_stable.json"
 FILE_T2="$CONFIG_DIR/ruvomain_tier2_stable.json"
 FILE_T3="$CONFIG_DIR/ruvomain_tier3_stable.json"
 
-printf "%s\n" "========================================"
-printf "%s\n" "   RUVOMAIN PROTOCOL - DEPLOYMENT      "
-printf "%s\n" "========================================"
-printf "1) Apply Tier 1 (Safe)\n"
-printf "2) Apply Tier 2 (Balanced)\n"
-printf "3) Apply Tier 3 (Extreme)\n"
-printf "4) Load external JSON from /Imports\n"
+printf "%s\n" "${CYAN}========================================${NC}\n"
+printf "%s\n" "   ${CYAN}RUVOMAIN PROTOCOL - DEPLOYMENT${NC}      "
+printf "%s\n" "${CYAN}========================================${NC}\n"
+printf "1) ${GREEN}Apply Tier 1 (Safe)${NC}\n"
+printf "2) ${YELLOW}Apply Tier 2 (Balanced)${NC}\n"
+printf "3) ${RED}Apply Tier 3 (Extreme)${NC}\n"
+printf "4) ${BLUE}Load external JSON from /Imports${NC}\n"
 printf "%s\n" "----------------------------------------"
-read -r -p "Your choice (1-4): " choice
+read -r -p "${CYAN}Your choice (1-4): ${NC}" choice
+printf "\n" 
 
 case $choice in
-    1) JSON_FILE=$FILE_T1; TIER="Tier 1 (Safe)" ;;
-    2) JSON_FILE=$FILE_T2; TIER="Tier 2 (Balanced)" ;;
-    3) JSON_FILE=$FILE_T3; TIER="Tier 3 (Extreme)" ;;
+    1) JSON_FILE=$FILE_T1; TIER="${GREEN}Tier 1 (Safe)${NC}" ;;
+    2) JSON_FILE=$FILE_T2; TIER="${YELLOW}Tier 2 (Balanced)${NC}" ;;
+    3) JSON_FILE=$FILE_T3; TIER="${RED}Tier 3 (Extreme)${NC}" ;;
     4)
         if ! select_import_from_folder; then
-            printf "Operation cancelled. Returning to main menu...\n"
+            printf "${RED}Operation cancelled. Returning to main menu...${NC}\n"
             exit 1
         fi
-        TIER="External Configuration ($JSON_FILE)"
+        TIER="${BLUE}External Configuration${NC} ($JSON_FILE)"
         ;;
     *)
-        printf "Invalid option. Exiting.\n"
+        printf "${RED}Invalid option. Exiting.${NC}\n"
         exit 1
         ;;
 esac
 
 # --- Final Execution ---
-printf "[+] Deploying configuration: %s\n" "$JSON_FILE"
+printf "${GREEN}[+] Deploying configuration: %s${NC}\n" "$JSON_FILE"
 
 SUCCESS_COUNT=0
 FAILED_COUNT=0
@@ -177,26 +178,26 @@ FAILED_COUNT=0
 get_packages "$JSON_FILE"
 
 if [[ "$(get_json_val "$JSON_FILE" "apps")" == "N/A" ]]; then
-    printf "[!] CRITICAL: Invalid Ruvomain file (missing 'apps' key).\n" >&2
+    printf "${RED}[!] CRITICAL: Invalid Ruvomain file (missing 'apps' key).${NC}\n" >&2
     exit 1
 fi
 
 for pkg in "${PACKAGES[@]}"; do
-    printf "Processing: %s ... " "$pkg"
+    printf "${BLUE}Processing: %s ... ${NC}" "$pkg"
 
     if $EXEC "$pkg" > /dev/null 2>&1; then
-        printf "[OK]\n"
+        printf "${GREEN}[OK]${NC}\n"
         ((SUCCESS_COUNT++))
     else
-        printf "[FAILED]\n"
+        printf "${RED}[FAILED]${NC}\n"
         ((FAILED_COUNT++))
     fi
 done
 
-printf "%s\n" "========================================"
-printf "Report:\n"
-printf "  Packages removed: %d\n" "$SUCCESS_COUNT"
-printf "  Failures: %d\n" "$FAILED_COUNT"
+printf "%s\n" "${CYAN}========================================${NC}\n"
+printf "${CYAN}Report:${NC}\n"
+printf "  ${CYAN}Packages removed:${NC} %d\n" "$SUCCESS_COUNT"
+printf "  ${CYAN}Failures: %d${NC}\n" "$FAILED_COUNT"
 printf "\n"
-printf "%s\n" "========================================"
-printf "Operation finished. Sovereignty restored.\n"
+printf "%s\n" "${CYAN}========================================${NC}\n"
+printf "${GREEN}Operation finished. Sovereignty restored.${NC}\n"
