@@ -12,6 +12,9 @@ ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
 LOGS_DIR="$REPO_DIR/lib/logs.sh"
 LOGO_DIR="$REPO_DIR/lib/logo.sh"
 INJECTION_DIR="$REPO_DIR/lib/injection.sh"
+VISITOR_DIR="$REPO_DIR/lib/visitor.sh"
+MODEL_DIR="$REPO_DIR/lib/model.sh"
+ENV_DIR="$REPO_DIR/lib/env.sh"
 
 # --- Sources ---
 chmod +x "$STYLE_DIR"
@@ -19,11 +22,17 @@ chmod +x "$ENSURE_DIR"
 chmod +x "$LOGS_DIR"
 chmod +x "$LOGO_DIR"
 chmod +x "$INJECTION_DIR"
+chmod +x "$VISITOR_DIR"
+chmod +x "$MODEL_DIR"
+chmod +x "$ENV_DIR"
 source "$STYLE_DIR"
 source "$ENSURE_DIR"
 source "$LOGS_DIR"
 source "$LOGO_DIR"
-source "$INJECTION_DIR" 
+source "$INJECTION_DIR"
+source "$VISITOR_DIR"
+source "$MODEL_DIR"
+source "$ENV_DIR"
 
 init_logs
 
@@ -32,53 +41,12 @@ ensure_adb || exit 1
 injection
 
 show_logo
-printf "${CYAN}${BOLD}Ruvomain-PBD | Pure Bash Debloater${NC}\n"
-printf "%s\n" "------------------------------------------"
-CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
-printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
-printf "%s\n" "------------------------------------------"
 
-# --- Infrastructure Helpers (Visitors) ---
-get_json_val() {
-    local file="$1"
-    local target_key="$2"
-    local found="N/A"
+model
 
-    visitor() {
-        if [[ "$1" == "key" && "$2" == "$target_key" ]]; then
-            STATE="capture"
-        elif [[ "$STATE" == "capture" && "$1" == "string" ]]; then
-            found="$2"
-            STATE="done"
-        fi
-    }
-    STATE="idle"
-    json_walk "$(<"$file")" visitor
-    printf "%s\n" "$found"
-}
+visitor
 
-get_packages() {
-    local file="$1"
-    PACKAGES=()
-
-    pkg_visitor() {
-        if [[ "$1" == "key" && "$2" == "packageName" ]]; then
-            STATE="capturing"
-        elif [[ "$STATE" == "capturing" && "$1" == "string" ]]; then
-            PACKAGES+=("$2")
-            STATE="idle"
-        fi
-    }
-    STATE="idle"
-    json_walk "$(<"$file")" pkg_visitor
-}
-
-# --- Environment Setup ---
-if [ -d "/data/data/com.termux" ] || [ -f "/system/bin/pm" ]; then
-    EXEC="pm uninstall -k --user 0"
-else
-    EXEC="adb shell pm uninstall -k --user 0"
-fi
+env
 
 # --- Menu Logic ---
 select_import_from_folder() {
