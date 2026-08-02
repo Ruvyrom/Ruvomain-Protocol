@@ -11,3 +11,4 @@ source "$LIB_PATH"
 if [[ ! -x "$LIB_PATH" ]]; then
     chmod +x "$LIB_PATH"
 fi
+} 
