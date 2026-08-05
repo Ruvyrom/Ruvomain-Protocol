@@ -22,7 +22,7 @@
 <img src="https://img.shields.io/badge/No Root-FE7A16?style=flat-square"> &nbsp; <img src="https://img.shields.io/badge/Thermal Optimized-FFB3C7?style=flat-square"> &nbsp; <img src="https://img.shields.io/badge/Privacy Focused-%23FF0000.svg?style=flat-square">
 </p>
 <p align="center">
-<img src="https://img.shields.io/badge/| License MIT-black?logo=conventionalcommits&logoColor=f5f5f5&style=flat-square" alt=License>
+<img src="https://img.shields.io/badge/| License GPLv3-black?logo=conventionalcommits&logoColor=f5f5f5&style=flat-square" alt=License>
 </p>
 
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
