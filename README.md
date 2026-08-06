@@ -123,7 +123,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 - [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
 >Technical details on system hardening and resource management.
 
-- [Package List](Docs/package-list.md) (S24+)
+- [Package List](Docs/Tiers-list.md) (S24+)
 >A detailed list of components targeted by the protocol.
 
 - [Replacement](/Docs/Remplacement.md)
