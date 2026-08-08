@@ -183,7 +183,7 @@ Stable environment. No critical system crashes or UI stutters detected in daily 
 
 ---
 Got questions? Reddit is the place to discuss builds.
->[r/Ruvomain](https://www.reddit.com/r/Ruvomain/s/9HlpNjl2M7)
+>[r/ZeroBloat](https://www.reddit.com/r/ZeroBloat/s/wqYVGfBb6D)
 
 ---
 *My other project on github for [Google Pixel6, LineageOS Vanilla 23.2](https://github.com/Ruvyrom/Ruvyrom/tree/main)*
