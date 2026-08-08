@@ -1,7 +1,7 @@
 {
   "name": "NAME OF YOUR FILE HERE",
   "description": "YOUR DESCRIPTION HERE",
-  "author": "USERNAME"
+  "author": "USERNAME",
   "version": "NUMBER VERSION",
   "apps": [
     {
