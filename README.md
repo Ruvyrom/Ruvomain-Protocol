@@ -142,6 +142,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 ### 👥 Credits
 
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
+*   Thanks to [Dyokism](https://github.com/dyokism) for code contribution.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169) and OneUI 8.0 JSON config file.
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
 
