@@ -1,43 +1,5 @@
 #!/usr/bin/env bash
 
-# Usage:
-#
-#   json_walk '{"label": "abc", "items": []}'  # prints events to stdout
-#
-# emits:
-#
-#   start_object
-#   key\tlabel
-#   string\tabc
-#   key\titems
-#   start_array
-#   end_array
-#   end_object
-#
-# Or:
-#
-#   json_walk "$json" my_visitor
-#
-# calls:
-#
-#   my_visitor start_array
-#   my_visitor key label
-#   ...
-#
-# stdout mode prints raw tab-separated fields.
-#
-# events are:
-#
-#   start_array
-#   end_array
-#   start_object
-#   end_object
-#   key <key>
-#   string <value>
-#   number <value>
-#   boolean <true|false>
-#   null
-
 jsonwalk_json=
 jsonwalk_pos=0
 jsonwalk_visitor=
