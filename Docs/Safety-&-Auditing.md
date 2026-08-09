@@ -2,15 +2,6 @@
 
 The Ruvomain Protocol is designed with security, transparency, and system integrity as its core pillars. This document outlines our approach to ensuring the safety of your deviceand the reliability of our automation scripts.
 
-## Static Analysis (Audit)
-To prevent unexpected behaviors and ensure script reliability, all protocol scripts undergo static analysis using **ShellCheck**.
-
-- **Why it matters:** ShellCheck identifies potential bugs, quoting issues, and logical errors in shell scripts before execution.
-- **How to run the audit:**
-You can verify the integrity of the scripts at any time by running:
-`make audit`
-This ensures that every line of code complies with POSIX standards and avoids common scripting pitfalls.
-
 ## System Integrity(Samsung Knox)
 The Ruvomain Protocol is strictly non-destructive. Our approach respects the integrity of your device's security architecture:
 
