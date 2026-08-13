@@ -1,5 +1,4 @@
 ## ⚙️ Quick Start
-**Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
 
 ### Ruvomain-installer (Pure Bash Installer)
 Local, offline-capable usage.
