@@ -6,7 +6,8 @@
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
-<strong>Debloater and system management for</strong><br>
+<strong>Debloater and apk Installer 
+  with system management for</strong><br>
 <strong>Samsung S24+ & other Android devices.</strong>
 </div>
 
