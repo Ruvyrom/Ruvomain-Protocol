@@ -31,9 +31,9 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 ## 🚀 Ready to deploy?
 
-For Ruvomain-pbd script: read the [Debloater Quick Start Guide](Docs/Quick-Start-Guide.md), 
+For Ruvomain-pbd script: read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**, 
 
-**(NEW)** For ruvomain-installer script : read the [Installer Quick Start Guide](Docs/Installer-Quick-Start.md),
+**(NEW)** For ruvomain-installer script : read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
 
 For started in minutes
 
