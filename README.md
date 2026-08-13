@@ -86,6 +86,9 @@ For started in minutes
 >
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
 
+**APK Installation via ADB:**
+With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
+
 ---
 ### 📸 Proof Screenshot
 | Updates | Low Comsumption |
