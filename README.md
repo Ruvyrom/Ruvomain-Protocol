@@ -29,14 +29,17 @@
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
 It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model. You can also install your own apk via ADB with **ruvomain-installer** script.
 
-The Ruvomain Workflow
+**The Ruvomain Workflow**
 1. **Setup :** Clone the repo.
 
-2. **Clean :** Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json.
+2. **Clean :**
+Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json`. (script detect and autoinstall android-tools) 
 
-3. **Deploy :** Run`./ruvomain-installer/installer.sh` to push your curated apps from `./Apps/`.
+4. **Deploy :**
+Run`./ruvomain-installer/installer.sh` to push your curated apps from `./Apps/`. (script detect and autoinstall android-tools) 
 
-4. **Integrity :** Your device is now Ruvomain-Compliant.
+6. **Integrity :**
+Your device is now Ruvomain-Compliant.
 
 ## 🚀 Ready to deploy?
 
