@@ -28,11 +28,12 @@
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
 It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
 
+"🚀**Ready to deploy?** Read the [Quick Start Guide](Docs/Quick-Start-Guide.md) toget started in minutes.
+
 [Dictionnary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
 
 ---
 ### Table of Contents
-**[Quick Start Guide](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/Quick-Start-Guide.md)**
 
 [All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation)
 
