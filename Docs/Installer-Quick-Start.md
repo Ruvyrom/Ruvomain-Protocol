@@ -1,4 +1,4 @@
-## ⚙️ Quick Start
+## ⚙️ Quick Start for ruvomain-installer script
 
 ### Ruvomain-installer (Pure Bash Installer)
 Local, offline-capable usage.
