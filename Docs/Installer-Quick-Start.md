@@ -1,5 +1,7 @@
 ## ⚙️ Quick Start for ruvomain-installer script
 
+*Pro-Tip: Keep your APK folder clean.The installer will process every file found in `./ruvomain-installer/Apps`. Keep only the necessary versions to maintainyour system efficiency.*
+
 ### Ruvomain-installer (Pure Bash Installer)
 Local, offline-capable usage.
 
