@@ -22,7 +22,7 @@ Enable USB Debugging on your phone:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
-- **Paste your personnal `.apk` file `./ruvomain-installer/Apps`
+- **Paste your personnal `.apk` file `./ruvomain-installer/Apps`**
 
 - **Navigate:**
 ```bash
@@ -55,7 +55,7 @@ brew install git android-platform-tools
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-4. **Paste your personnal `.apk` file `./ruvomain-installer/Apps`
+4. **Paste your personnal `.apk` file `./ruvomain-installer/Apps`**
 
 5. **Verify device connection:**
 ```bash
