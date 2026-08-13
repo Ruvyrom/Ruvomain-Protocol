@@ -20,3 +20,4 @@ if [ ! -d "$APP_DIR" ]; then
 echo -e "${RED}[ERROR]${NC}Directory $APP_DIR not found."
 exit 1
 fi
+}
