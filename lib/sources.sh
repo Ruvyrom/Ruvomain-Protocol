@@ -2,8 +2,6 @@
 
 sources() {
 # --- Dynamic Path Resolution ---
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
 LOGS_DIR="$REPO_DIR/lib/logs.sh"
