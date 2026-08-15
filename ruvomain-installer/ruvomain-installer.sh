@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Ruvomain ADB-Termux Installer (Pure Bash / Zero-Dependency)
+# Install your multiple own apk via adb. Place your apk files in ./ruvomain-installer/Apps folder.
 # Version 1.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
 # Created by Ruvyrom
 set -euo pipefail
