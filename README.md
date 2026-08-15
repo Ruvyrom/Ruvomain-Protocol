@@ -30,7 +30,7 @@
 </p>
 
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access. It’s designed to be safe, clean, and keep your device integrity intact.
-It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
+It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model. It 100% compatible with Canta .json restoration list files.
 
 **You can also install your own apk via ADB with ***ruvomain-installer*** script.**
 
@@ -39,7 +39,8 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 1. **Setup :** Clone the repo.
 
 2. **Clean :**
-Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json`. (script detect and autoinstall android-tools) 
+Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json`. (script detect and autoinstall android-tools)
+*You can import your Canta restauration file.*
 
 4. **Deploy :**
 Run`./ruvomain-installer/installer.sh` to push your curated apps from `./Apps/`. (script detect and autoinstall android-tools) 
@@ -54,7 +55,7 @@ Your device is now Ruvomain-Compliant.
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal JSON lists in ./Configs/Imports
+# Place your personal or Canta JSON lists in ./Configs/Imports
 cd Ruvomain-Protocol
 ./ruvomain.sh
 ```
@@ -108,6 +109,8 @@ For started in minutes
 >Automatic installation of ADB for Debian, Arch, and Fedora-based distributions, as well as for Termux 
 >
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
+
+**Interoperability** 100% compatible with Canta .json restoration lists.
 
 **APK Installation via ADB:**
 With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
