@@ -6,7 +6,7 @@ echo "[*] Initializing environment..."
 
 # 1. Installing dependencies
 echo "[*] Installing required tools (android-tools, git)..."
-pkg update && pkg install android-tools git -y
+pkg update && pkg install android-tools -y
 
 # 2. Granting storage access
 echo "[*] Requesting storage access (please confirm thepopup)..."
