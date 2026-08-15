@@ -5,7 +5,7 @@ You have a specific device? Create your JSON profile, fork this repo, place it i
 - You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json)**
 
 For using your liste with Ruvomain-pbd script:
-- **Copy** your files in `./Configs/Imports` folder
+- **Copy** your personal or Canta .json restoration files in `./Configs/Imports` folder
 
 - **Execute** script and select option 4 when prompted
 
@@ -20,6 +20,8 @@ For using your liste with Ruvomain-pbd script:
 - You have tested the debloat list on your own device.
 
 - You keep the minimalist philosophy of the project.
+
+- Contribute with Pull Request.
 
 **Naming Convention for Imports:**
 `[Philosophy]-[DeviceName]-[OSVersion].json`
