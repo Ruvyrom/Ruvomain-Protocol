@@ -1,6 +1,6 @@
 ### JSON files importation
 
-You have a specific device? Create your JSON profile, fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community."
+You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community."
 
 - You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json)**
 
