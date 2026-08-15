@@ -99,6 +99,8 @@ For started in minutes
 ## Features: 
 "Surgical Minimalism" is the art of achieving maximum efficiency through the smallest possible codebase. By eliminating external dependencies, we reduce the system's attack surface and ensure absolute transparency.
 
+**Interoperability:** 100% compatible with **Canta** .json restoration lists.
+
 **Zero-Dependency:** No Java, no **Zero-Dependency:** No Java, no middleware, no pre-compiled binaries. Just pure shell.
 
 **Auditable:** Every line of code is human-readable. You own the process from end to end.
@@ -109,8 +111,6 @@ For started in minutes
 >Automatic installation of ADB for Debian, Arch, and Fedora-based distributions, as well as for Termux 
 >
 >Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
-
-**Interoperability** 100% compatible with Canta .json restoration lists.
 
 **APK Installation via ADB:**
 With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
