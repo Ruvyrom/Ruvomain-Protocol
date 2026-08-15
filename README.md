@@ -57,7 +57,7 @@ On Linux:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 # Place your personal or Canta JSON lists in ./Configs/Imports
 cd ./Ruvomain-Protocol/ruvomain-pbd
-./ruvomain.sh
+chmod +x ruvomain.sh & ./ruvomain.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
@@ -68,7 +68,7 @@ On Linux:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 # Place your personal apk files in ./ruvomain-installer/Apps
 cd ./Ruvomain-Protocol/ruvomain-installer
-./ruvomain-installer.sh
+chmod +x ruvomain-installer.sh ./ruvomain-installer.sh
 ```
 For Termux, MacOS read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
 
