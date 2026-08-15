@@ -60,7 +60,7 @@ Your device is now Ruvomain-Compliant.
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal JSON lists 
+# Place your personal JSON lists in ./Configs/Imports
 cd Ruvomain-Protocol
 ./ruvomain.sh
 ```
@@ -70,7 +70,7 @@ For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guid
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal apk files in ./Apps
+# Place your personal apk files in ./ruvomain-installer/Apps
 cd Ruvomain-Protocol
 ./ruvomain-installer.sh.sh
 ```
