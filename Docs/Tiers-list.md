@@ -1,4 +1,6 @@
-**This list is optimized for S24+ (Exynos) but you can create your own list for your device with these [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).**
+**You can import your personal JSON list file or your Canta restoration JSON list in ./Configs/imports. [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).**
+
+**This list below is optimized for S24+ (Exynos)**
 
 `⚠️ Use Tier 3 with caution if you rely on Knox/Samsung Pay or core system integrity features.**`
 
