@@ -58,6 +58,8 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 
 If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.**
 
+No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
+
 **2. Manual execution:**
 **Grant Storage Access:**
 ```bash
