@@ -23,7 +23,7 @@ Enable USB Debugging on your phone:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
-- **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
 
 - **Navigate:**
 ```bash
@@ -39,16 +39,21 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 
 **1. Semi-Automatic setup execution** (Install adb, git, pair & connect):
 
-Setup:
+**Setup:**
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 cd ./Ruvomain-Protocole/ruvomain-pdb/
 chmod +x termux-setup.sh && ./termux-setup.sh
 ```
-Execute debloater script:
+- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+
+**Execute** debloater script:
 ```bash
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
+`***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.`
+
+If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.**
 
 **2. Manual execution:**
 **Grant Storage Access:**
@@ -88,13 +93,13 @@ adb connect <IP>:<PORT>
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-- **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
 
 - **Navigate:**
 ```bash
 cd ./Ruvomain-Protocole/ruvomain-pdb/
 ```
-***Note :** Makesure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, thecommand above is correct.*
+***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 - **Execute:**
 ```bash
