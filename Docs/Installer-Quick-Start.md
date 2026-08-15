@@ -37,13 +37,82 @@ chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
 ```
 
 ### 📱 For Termux users
-- **Grant Storage Access:**
+
+**1. Semi-Automatic setup execution** (Install adb, pair & connect):
+
+**Setup:**
+```bash
+pkg install git
+```
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+cd ./Ruvomain-Protocole/ruvomain-installer/
+chmod +x termux-setup.sh && ./termux-setup.sh
+```
+- **Place** your multiple apk files to ./ruvomain-installer/Apps
+
+**Execute** installer script:
+```bash
+chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
+```
+***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.
+
+If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+
+**2. Manual execution:**
+**Grant Storage Access:**
 ```bash
 termux-setup-storage
 ```
  (Accept the permission prompt)
 
-- **Deploy:** Follow the same steps as the [Linux](https://github.com/Ruvyrom/Ruvomain-Protocole/tree/main#-for-linux-users) deployment above.
+**Deploy:**
+
+- ```bash
+  pkg install android-tools git -y
+  ```
+- Enable "Wireless Debugging" in Developer Options.
+
+- Click the text "Wireless debugging" (not the button) to open the menu
+
+- Click on "Pair device with a QR code" or "Pair with a pairing code"
+
+- Note down the IP address, the port, and the pairing code.
+
+- Use `adb pair` and `adb connect` within Termux to link your local ADB client to the system server.
+
+>**Pair the terminal (it will ask you for the code).**
+>
+>adb pair
+```bash
+adb pair <IP>:<PORT>
+```
+>**Connect the terminal**
+>
+>adb connect
+```bash
+adb connect <IP>:<PORT>
+```
+- **Clone the repo:**
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+```
+- **Navigate:**
+```bash
+cd ./Ruvomain-Protocole/ruvomain-installer/
+```
+***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
+
+No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
+
+- **Place** your multiple apk files to ./ruvomain-installer/Apps
+
+- **Execute:**
+```bash
+chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
+```
+***Note:** If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+
 
 ### 🍎 For MacOS users:
 1. Install [Homebrew](https://brew.sh/) if you haven't already.
