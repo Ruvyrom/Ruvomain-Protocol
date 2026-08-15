@@ -2,7 +2,7 @@
 <img src="https://img.shields.io/badge/Status | Stable-000000?logo=github&logoColor=white&style=for-the-badge&color=161b22" alt="Status"height="25"> &nbsp; <img src="https://img.shields.io/badge/Clones | 489 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=for-the-badge&color=161b22" alt="Total clones"height="25">
 </p>
 
-<div align="center">
+<div align="center"; style="background-color: #161b22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
