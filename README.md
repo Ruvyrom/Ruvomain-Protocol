@@ -61,6 +61,7 @@ cd Ruvomain-Protocol
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
 **(NEW)** **For ruvomain-installer script**(Pure Bash Installer):
+
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
