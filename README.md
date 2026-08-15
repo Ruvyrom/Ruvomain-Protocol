@@ -68,7 +68,7 @@ On Linux:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 # Place your personal apk files in ./ruvomain-installer/Apps
 cd ./Ruvomain-Protocol/ruvomain-installer
-chmod +x ruvomain-installer.sh ./ruvomain-installer.sh
+chmod +x ruvomain-installer.sh & ./ruvomain-installer.sh
 ```
 For Termux, MacOS read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
 
