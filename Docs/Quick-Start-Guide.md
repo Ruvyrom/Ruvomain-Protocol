@@ -37,9 +37,12 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 
 ### 📱 For Termux users (Wireless)
 
-**1. Semi-Automatic setup execution** (Install adb, git, pair & connect):
+**1. Semi-Automatic setup execution** (Install adb, pair & connect):
 
 **Setup:**
+```bash
+pkg install git
+```
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 cd ./Ruvomain-Protocole/ruvomain-pdb/
