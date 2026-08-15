@@ -9,6 +9,7 @@
 Useless software layers or redundant telemetry services. No impact on core One UI functionality.
  
 **• Bixby & Assistants:**
+
 `com.samsung.android.bixby.agent`:
 Bixby voice assistant
 
