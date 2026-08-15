@@ -40,6 +40,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 2. **Clean :**
 Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json`. (script detect and autoinstall android-tools)
+
 *You can import your Canta restauration file.*
 
 4. **Deploy :**
