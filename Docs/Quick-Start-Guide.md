@@ -51,7 +51,7 @@ chmod +x termux-setup.sh && ./termux-setup.sh
 ```bash
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
-`***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.`
+***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.
 
 If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.**
 
