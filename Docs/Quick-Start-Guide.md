@@ -36,6 +36,21 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 
 ### 📱 For Termux users (Wireless)
+
+**1. Semi-Automatic setup execution** (Install adb, git, pair & connect):
+
+Setup:
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+cd ./Ruvomain-Protocole/ruvomain-pdb/
+chmod +x termux-setup.sh && ./termux-setup.sh
+```
+Execute debloater script:
+```bash
+chmod +x ruvomain.sh && ./ruvomain.sh
+```
+
+**2. Manual execution:**
 **Grant Storage Access:**
 ```bash
 termux-setup-storage
