@@ -14,7 +14,9 @@ Enable USB Debugging on your phone:
 
 ### 🐧 For Linux users:
 1. **Prerequisites:**
-  
+
+- `git` for clone repo. 
+
 - `adb` (The script will attempt an android-tools auto-installation if missing).
 
 2. **Deployment:**
