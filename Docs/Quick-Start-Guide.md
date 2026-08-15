@@ -23,7 +23,7 @@ Enable USB Debugging on your phone:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
-- **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal configuration file (for s24+ or other Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+- **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
 
 - **Navigate:**
 ```bash
@@ -63,7 +63,7 @@ adb devices
 ```
 *(If "unauthorized", check your phonescreen and tap "Always allow")*
 
-5. **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal configuration file (for s24+ or other Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+5. **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
 
 6. **Execute:**
 ```bash
