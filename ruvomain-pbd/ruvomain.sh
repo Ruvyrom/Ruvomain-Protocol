@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Ruvomain ADB-Termux Debloater (Pure Bash / Zero-Dependency)
+# You can apply tiers list for S24+ or use your own json debloat list file. Place your *.json file in ./Configs/Import and select it via option 4.
 # Version 4.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
 # Created by Ruvyrom
 set -euo pipefail
