@@ -55,9 +55,26 @@ Your device is now Ruvomain-Compliant.
 
 ## 🚀 Ready to deploy?
 
-For Ruvomain-pbd script: read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**, 
+**For Ruvomain-pbd script** (Pure Bash Debloater):
 
-**(NEW)** For ruvomain-installer script : read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
+On Linux:
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol
+# Place your personal JSON lists 
+cd Ruvomain-Protocol
+./ruvomain.sh
+```
+For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
+
+**(NEW)** **For ruvomain-installer script**(Pure Bash Installer):
+On Linux:
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol
+# Place your personal apk files in ./Apps
+cd Ruvomain-Protocol
+./ruvomain-installer.sh.sh
+```
+For Termux, MacOS read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
 
 For started in minutes
 
