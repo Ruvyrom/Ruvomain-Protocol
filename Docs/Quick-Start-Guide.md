@@ -35,14 +35,59 @@ cd ./Ruvomain-Protocole/ruvomain-pdb/
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 
-### 📱 For Termux users
-- **Grant Storage Access:**
+### 📱 For Termux users (Wireless)
+**Grant Storage Access:**
 ```bash
 termux-setup-storage
 ```
  (Accept the permission prompt)
 
-- **Deploy:** Follow the same steps as the [Linux](https://github.com/Ruvyrom/Ruvomain-Protocole/tree/main#-for-linux-users) deployment above.
+**Deploy:**
+
+- ```bash
+  pkg install android-tools git -y
+  ```
+- Enable "Wireless Debugging" in Developer Options.
+
+- Click the text "Wireless debugging" (not the button) to open the menu
+
+- Click on "Pair device with a QR code" or "Pair with a pairing code"
+
+- Note down the IP address, the port, and the pairing code.
+
+- Use `adb pair` and `adb connect` within Termux to link your local ADB client to the system server.
+
+>**Pair the terminal (it will ask you for the code).**
+>
+>adb pair
+```bash
+adb pair <IP>:<PORT>
+```
+>**Connect the terminal**
+>
+>adb connect
+```bash
+adb connect <IP>:<PORT>
+```
+- **Clone the repo:**
+```bash
+git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+```
+- **(Optional) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+
+- **Navigate:**
+```bash
+cd ./Ruvomain-Protocole/ruvomain-pdb/
+```
+***Note :** Makesure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, thecommand above is correct.*
+
+- **Execute:**
+```bash
+chmod +x ruvomain.sh && ./ruvomain.sh
+```
+***Note :**If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+
+No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
 
 ### 🍎 For MacOS users:
 1. Install [Homebrew](https://brew.sh/) if you haven't already.
