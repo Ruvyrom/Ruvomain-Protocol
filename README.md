@@ -1,8 +1,8 @@
 <p align="center">
-<img src="https://img.shields.io/badge/Status | Stable-000000?logo=github&logoColor=white&style=for-the-badge&color=161b22" alt="Status"height="25"> &nbsp; <img src="https://img.shields.io/badge/Clones | 489 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=for-the-badge&color=161b22" alt="Total clones"height="25">
+<img src="https://img.shields.io/badge/Status | Stable-000000?logo=github&logoColor=white&style=for-the-badge&color=151B22" alt="Status"height="25"> &nbsp; <img src="https://img.shields.io/badge/Clones | 489 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=for-the-badge&color=151B22" alt="Total clones"height="25">
 </p>
 
-<div align="center"; style="background-color: #161b22; display: inline-block">
+<div align="center"; style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
@@ -13,20 +13,20 @@
 
 &nbsp;
 <p align="center">
-<img src="https://img.shields.io/badge/| Bash-4EAA25?logo=gnubash&logoColor=4EAA25&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/| JSON-000?logo=json&logoColor=fff&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/| ADB-3DDC84?logo=android&logoColor=3DDC84&style=for-the-badge&color=161b22"height="25">
-<img src="https://img.shields.io/badge/| Linux-yellow?&logo=linux&logoColor=yellow&style=for-the-badge&color=161b22"height="25"> &nbsp; 
-<img src="https://img.shields.io/badge/| Termux-000000?logo=iterm2&logoColor=fff&style=for-the-badge&color=161b22"height="25" > &nbsp; 
-<img src="https://img.shields.io/badge/| MacOS-magenta?&logo=Apple&logoColor=magenta&style=for-the-badge&color=161b22"height="25" >
-<img src="https://img.shields.io/badge/| Android Debloater and Installer-3DDC88?logo=android&logoColor=3DDC88&style=for-the-badge&color=161b22"height="25">  &nbsp;
-<img src="https://img.shields.io/badge/| S24+ Debloat-003087?logo=samsung&logoColor=003087&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/| OneUI 8.5-FFC517?logo=samsung&logoColor=003087&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/| Exynos Optimized-764ABC?logo=samsung&logoColor=003087&style=for-the-badge&color=161b22" alt="Device"height="25"> 
-<img src="https://img.shields.io/badge/No Root-FE7A16?&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/Thermal Optimized-FFB3C7?&style=for-the-badge&color=161b22"height="25"> &nbsp;
-<img src="https://img.shields.io/badge/Privacy Focused-%23FF0000.svg?&style=for-the-badge&color=161b22"height="25">
-<img src="https://img.shields.io/badge/| License GPLv3-black?logo=conventionalcommits&logoColor=f5f5f5&style=for-the-badge&color=161b22" alt="License"height="25">
+<img src="https://img.shields.io/badge/| Bash-4EAA25?logo=gnubash&logoColor=4EAA25&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/| JSON-000?logo=json&logoColor=fff&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/| ADB-3DDC84?logo=android&logoColor=3DDC84&style=for-the-badge&color=151B22"height="25">
+<img src="https://img.shields.io/badge/| Linux-yellow?&logo=linux&logoColor=yellow&style=for-the-badge&color=151B22"height="25"> &nbsp; 
+<img src="https://img.shields.io/badge/| Termux-000000?logo=iterm2&logoColor=fff&style=for-the-badge&color=151B22"height="25" > &nbsp; 
+<img src="https://img.shields.io/badge/| MacOS-magenta?&logo=Apple&logoColor=magenta&style=for-the-badge&color=151B22"height="25" >
+<img src="https://img.shields.io/badge/| Android Debloater and Installer-3DDC88?logo=android&logoColor=3DDC88&style=for-the-badge&color=151B22"height="25">  &nbsp;
+<img src="https://img.shields.io/badge/| S24+ Debloat-003087?logo=samsung&logoColor=003087&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/| OneUI 8.5-FFC517?logo=samsung&logoColor=003087&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/| Exynos Optimized-764ABC?logo=samsung&logoColor=003087&style=for-the-badge&color=151B22" alt="Device"height="25"> 
+<img src="https://img.shields.io/badge/No Root-FE7A16?&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/Thermal Optimized-FFB3C7?&style=for-the-badge&color=151B22"height="25"> &nbsp;
+<img src="https://img.shields.io/badge/Privacy Focused-%23FF0000.svg?&style=for-the-badge&color=151B22"height="25">
+<img src="https://img.shields.io/badge/| License GPLv3-black?logo=conventionalcommits&logoColor=f5f5f5&style=for-the-badge&color=151B22" alt="License"height="25">
 </p>
 
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
