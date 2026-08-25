@@ -31,7 +31,7 @@
 
 The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
-**It 100% compatible with Canta .json restoration list files.**
+**It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
 
 **You can also install your own apk via ADB with ***ruvomain-installer*** script.**
 
