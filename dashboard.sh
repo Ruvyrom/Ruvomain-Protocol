@@ -26,7 +26,7 @@ chmod +x ./termux-setup.sh
 
 # Define the options
 options=(
-"Termux Setup (Setup Termux before scripts exexution)"
+"Termux Setup (Semi-auto Termux setup)"
 "Installer (APK installation)"
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
