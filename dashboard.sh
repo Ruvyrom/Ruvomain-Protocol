@@ -34,7 +34,7 @@ options=(
 "Exit"
 )
 
-PS3="Select a module to execute (1-5): "
+PS3="Select a module to execute (1-6): "
 select opt in "${options[@]}"; do
 case $opt in
 "Termux Setup (Setup Termux before scripts exexution)")
@@ -61,6 +61,6 @@ break
 echo "Exiting protocol..."
 exit 0
 ;;
-*) echo -e "${RED}Invalid option. Please choose 1-5.${NC}";;
+*) echo -e "${RED}Invalid option. Please choose 1-6.${NC}";;
 esac
 done
