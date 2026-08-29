@@ -5,8 +5,18 @@
 echo "[*] Initializing environment..."
 
 # 1. Installing dependencies
-echo "[*] Installing required tools (android-tools, git)..."
-pkg update && pkg install android-tools jq -y
+echo "[*] Installing required tools (android-tools)..."
+pkg update -y
+
+if ! command -v adb &> /dev/null; then
+echo "[!] ADB not found, installing..."
+pkg install android-tools -y
+fi
+
+if ! command -v jq &> /dev/null; then
+echo "[!] ADB not found, installing..."
+pkg install jq -y
+fi
 
 # 2. Granting storage access
 echo "[*] Requesting storage access (please confirm thepopup)..."
