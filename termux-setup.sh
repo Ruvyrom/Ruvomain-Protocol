@@ -1,6 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # --- Ruvomain Protocol - Termux Setup Script ---
+# version: v2.0.0
 
 echo "[*] Initializing environment..."
 
