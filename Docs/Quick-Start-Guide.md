@@ -31,7 +31,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 cd ./Ruvomain-Protocole
 ```
 
-- **Execute ADB App-Manager dashboard:**
+- **Execute ADB App-Manager (RAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -51,7 +51,7 @@ chmod +x termux-setup.sh && ./termux-setup.sh
 ```
 - **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** *.json in `/Configs`
 
-**Execute** ADB App-Manager dashboard:
+**Execute ADB App-Manager (RAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -107,7 +107,7 @@ cd ./Ruvomain-Protocole
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
-- **Execute ADB App-Manager dashboard:**
+- **Execute ADB App-Manager (RAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -136,7 +136,7 @@ adb devices
 
 5. **(Optionak) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices)  in `/Configs`
 
-6. **Execute ADB App-Manager dashboard:**
+6. **Execute ADB App-Manager (RAAM) dashboard:**
 ```bash
 cd ./Ruvomain-Protocole
 ```
