@@ -1,7 +1,7 @@
 ## ⚙️ Quick Start
 **Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
 
-### Ruvomain ADB App-Manager (RAAM)
+### Ruvomain ADB Apps-Manager (RAAM)
 
 Enable USB Debugging on your phone: 
 >
@@ -34,7 +34,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 cd ./Ruvomain-Protocole
 ```
 
-- **Execute Universal ADB App-Manager (URAAM) dashboard:**
+- **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -58,7 +58,7 @@ chmod +x termux-setup.sh && ./termux-setup.sh
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-**Execute Universal ADB App-Manager (URAAM) dashboard:**
+**Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -118,7 +118,7 @@ cd ./Ruvomain-Protocole
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
-- **Execute Universal ADB App-Manager (URAAM) dashboard:**
+- **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -151,7 +151,7 @@ adb devices
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-6. **Execute Universal ADB App-Manager (URAAM) dashboard:**
+6. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
 cd ./Ruvomain-Protocole
 ```
