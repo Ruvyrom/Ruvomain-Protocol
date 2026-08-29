@@ -5,8 +5,7 @@
 <div align="center"; style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
-<strong>Universal Protocol with Bash scripts</strong></br>
-<strong>Ruvomain ADB App-Manager [RAAM]</strong>
+<strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
 <br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
 <strong>for ALL Android devices.</strong>
 </div>
@@ -30,19 +29,19 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The RUVOMAIN ADB APP-MANAGER (RAAM) scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
 
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
 ---
-**UPDATE (08.29.2026): 1 Dashboard, 4 BASH script for Ruvomain ADB App-Manager**
+**UPDATE (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB App-Manager (URAAM)**
 
 ---
 ## 🚀 Ready to deploy?
 
-**RUVOMAIN ADB APP-MANAGER (RAAM):**
+**UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
 
 Enable USB Debugging on your phone:
 
@@ -130,7 +129,7 @@ With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup
 ---
 ## ⚖️ Comparison Matrix
 
-| Feature | Standard Approach (Canta/Shizuku)| **Ruvomain-PBD** |
+| Feature | Standard Approach (Canta/Shizuku)| **Ruvomain URAAM** |
 | :--- | :--- | :--- |
 | **Dependencies** | Java, Shizuku, Canta | **jq** |
 | **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
