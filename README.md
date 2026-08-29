@@ -6,7 +6,7 @@
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
-<strong>ADB App manager (debloat, Restore, backup list (json files) and apk Installer)
+<strong>ADB App manager (Debloat, Restore, Backup list [json files] and APK Installer)
   with system management for</strong><br>
 <strong>All Android devices.</strong>
 </div>
@@ -29,8 +29,8 @@
 <img src="https://img.shields.io/badge/| License GPLv3-black?logo=conventionalcommits&logoColor=f5f5f5&style=for-the-badge&color=151B22" alt="License"height="25">
 </p>
 
-The **Ruvomain-pbd** script is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
-It's a zero-dependency, professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
+The **Ruvomain-AppManager** scripts is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
 **It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
 
 **You can also install your own apk via ADB with ***ruvomain-installer*** script.**
