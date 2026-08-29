@@ -29,16 +29,14 @@
 <img src="https://img.shields.io/badge/| License GPLv3-black?logo=conventionalcommits&logoColor=f5f5f5&style=for-the-badge&color=151B22" alt="License"height="25">
 </p>
 
-The **Ruvomain-AppManager** scripts is a tool to surgically remove unwanted apps from Samsung and other phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
-Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a 100% native Bash execution model.
+The **Ruvomain ADB App-Manager** scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
-
-**You can also install your own apk via ADB with ***ruvomain-installer*** script.**
 
 *I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*
 
 ---
-**NEXT UPDATE: 4 BASH script for Ruvomain ADB App-Manager**
+**NEXT UPDATE: 1 Dashboard, 4 BASH script for Ruvomain ADB App-Manager**
 
 ---
 ## 🚀 Ready to deploy?
