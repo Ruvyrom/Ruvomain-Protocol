@@ -43,7 +43,7 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 ---
 ## 🚀 Ready to deploy?
 
-**For Ruvomain-pbd script** (Pure Bash Debloater):
+**PURE BASH ADB APP MANAGER:**
 
 On Linux:
 ```bash
