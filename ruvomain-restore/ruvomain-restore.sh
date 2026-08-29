@@ -18,9 +18,9 @@ exit 1
 fi
 sources
 
+show_logo
 init_logs-restore
 env_detect
-show_logo
 ensure-adb
 ensure-jq
 
