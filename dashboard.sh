@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Ruvomain-Protocol Control Center
 # Surgical access to your protocol modules
+# Version: v2.0.0
 
 # Colors
 BLUE='\033[0;34m'
