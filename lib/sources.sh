@@ -4,7 +4,7 @@ sources() {
 # --- Dynamic Path Resolution ---
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
-ENSUREJQ_DIR="$REPO_DIR/lib/ensure-jq.sh
+ENSUREJQ_DIR="$REPO_DIR/lib/ensure-jq.sh"
 LOGS_DIR="$REPO_DIR/lib/logs.sh"
 LOGO_DIR="$REPO_DIR/lib/logo.sh"
 MODEL_DIR="$REPO_DIR/lib/model.sh"
