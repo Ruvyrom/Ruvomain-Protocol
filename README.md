@@ -134,7 +134,7 @@ With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup
 <summary><b>You have a specific device? Create your JSON profile </b></summary>
 
 Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
-Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
+Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation).*
 </details>
 
 <details>
@@ -153,7 +153,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 <!--- [Using the Makefile](/Docs/Using-the-Makefile.md)
 >A comprehensive guide to the secure control interface.-->
 
-- [JSON files importation]([/Configs/Imports/README.md](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation))
+- [JSON files importation](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation)
 >How to import your personnal .json list files (for S24+ or other devices) for using with Ruvomain-pbd script.
 
 - [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
