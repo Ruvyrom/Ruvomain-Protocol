@@ -38,22 +38,9 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 *I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*
 
 ---
-**NEXT UPDATE: ADB BACKUP AND RESTORATION WITH JSON FILES 100% BASH SCRIPTS**
+**NEXT UPDATE: 4 BASH script for Ruvomain ADB App-Manager**
 
 ---
-**The Ruvomain Workflow**
-1. **Setup :** Clone the repo.
-
-2. **#Execution :**
-Run `chmod +x./dashboard.sh && ./dashboard.sh` (Pure Bash App Manager)
-Select:
-to purge bloatware defined in `Configs/*.json., (script detect and autoinstall android-tools)
-
-*You can import your Canta restauration file.*
-
-6. **Integrity :**
-Your device is now Ruvomain-Compliant.
-
 ## 🚀 Ready to deploy?
 
 **For Ruvomain-pbd script** (Pure Bash Debloater):
@@ -73,6 +60,8 @@ chmod +x dashboard.sh & ./dashboard.sh
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
 For started in minutes
+
+*You can import your Canta restauration file.*
 
 ---
 ### Table of Contents
