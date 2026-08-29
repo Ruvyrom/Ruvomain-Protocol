@@ -44,13 +44,12 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 **The Ruvomain Workflow**
 1. **Setup :** Clone the repo.
 
-2. **Clean :**
-Run `./ruvomain-debloat/ruvomain-debloat.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/*.json. (script detect and autoinstall android-tools)
+2. **#Execution :**
+Run `chmod +x./dashboard.sh && ./dashboard.sh` (Pure Bash App Manager)
+Select:
+to purge bloatware defined in `Configs/*.json., (script detect and autoinstall android-tools)
 
 *You can import your Canta restauration file.*
-
-4. **Deploy :**
-Run`./ruvomain-installer/installer.sh` to push your curated apps from `./Apps/`. (script detect and autoinstall android-tools [adb]) 
 
 6. **Integrity :**
 Your device is now Ruvomain-Compliant.
@@ -62,22 +61,16 @@ Your device is now Ruvomain-Compliant.
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal or Canta JSON lists in ./Configs
-cd ./Ruvomain-Protocol/ruvomain-debloat
-chmod +x ruvomain-debloat.sh & ./ruvomain-debloat.sh
+```
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+```bash
+cd ./Ruvomain-Protocol
+chmod +x dashboard.sh & ./dashboard.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
-
-**(NEW)** **For ruvomain-installer script**(Pure Bash Installer):
-
-On Linux:
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal apk files in ./ruvomain-installer/Apps
-cd ./Ruvomain-Protocol/ruvomain-installer
-chmod +x ruvomain-installer.sh & ./ruvomain-installer.sh
-```
-For Termux, MacOS read the **[Installer Quick Start Guide](Docs/Installer-Quick-Start.md)**,
 
 For started in minutes
 
