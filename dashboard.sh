@@ -22,9 +22,12 @@ chmod +x "$mod"/*.sh
 fi
 done
 
+chmod +x ./termux-setup.sh
+
 # Define the options
 options=(
-"Installer (Manage Initial Setup)"
+"Termux Setup (Setup Termux before scripts exexution)"
+"Installer (APK installation)"
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
 "Restore (Revert/Install Apps)"
@@ -34,6 +37,10 @@ options=(
 PS3="Select a module to execute (1-5): "
 select opt in "${options[@]}"; do
 case $opt in
+"Termux Setup (Setup Termux before scripts exexution)")
+./termux-setup.sh
+break
+;;
 "Installer (Manage Initial Setup)")
 ./ruvomain-installer/ruvomain-installer.sh
 break
