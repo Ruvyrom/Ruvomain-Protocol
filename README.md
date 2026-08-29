@@ -86,21 +86,25 @@ For started in minutes
 ## Features: 
 "Surgical Minimalism" is the art of achieving maximum efficiency through the smallest possible codebase. By eliminating external dependencies, we reduce the system's attack surface and ensure absolute transparency.
 
-**Interoperability:** 100% compatible with **Canta** .json restoration lists.
-
-**Zero-Dependency:** No Java, no **Zero-Dependency:** No Java, no middleware, no pre-compiled binaries. Just pure shell.
+**Interoperability:** 100% compatible with **Canta** .json restoration lists. (ruvomain-debloat, ruvomain-restore)
 
 **Auditable:** Every line of code is human-readable. You own the process from end to end.
 
 **Autonomous:** The protocol executes, performs the surgical strike, and terminates. No resident services (daemons) remain in the background.
 
-**Automated:**
->Automatic installation of ADB for Debian, Arch, and Fedora-based distributions, as well as for Termux 
->
->Select the list to apply (e.g., ruvomain_tier1_stable or your own file), and Ruvomain takes care of the debloating for you.
-
 **APK Installation via ADB:**
 With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
+
+**Backup to .json list**
+With ruvomain-backup, backup your uninstalled apps list to .json file for restore later.
+
+**Restore uninstalled apps via ADB**
+With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
+
+**Automated:**
+>Automatic installation of ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
+>
+>Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and Ruvomain takes care of the debloating/restoring for you.
 
 ---
 ### 📸 Proof Screenshot
@@ -113,11 +117,6 @@ With ruvomain-installer script you can install your own multiple apk files via A
 | :---: | :---: |
 | <img src="assets/ram1.jpg" width="200"> | <img src="assets/thermalg2.jpg" width="200"> |
 | Optimized background processes in RAM. | The CPU is not overloaded, which limits heat generation and allows for a deep sleep state and 10h+ SOT. |
-
----
-## 🚀 Technical Architecture
-
-The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser written in pure Bash. It processes your configurations natively, ensuring compatibility across Linux, Termux, and Android without requiring external binaries like `jq`.
 
 ---
 ## ⚖️ Comparison Matrix
