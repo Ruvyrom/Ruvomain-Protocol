@@ -8,7 +8,7 @@ printf "${RED}[!] Configuration file not found: %s${NC}\n" "$JSON_FILE"
 return 1
 fi
 
-# Vérification connexion ADB
+# ADB connection verification
 if ! adb devices | grep -q "device$"; then
 printf "${RED}[!] No device detected via ADB.${NC}\n"
 return 1
@@ -19,8 +19,8 @@ printf"${CYAN}[+] Processing: %s${NC}\n" "$JSON_FILE"
 local SUCCESS=0
 local FAILED=0
 
-# Lecture du JSON via jq sans mapfile (plus portable)
-whileread -r pkg; do
+# JSON reading via jq without mapfile
+while read -r pkg; do
 [[ -z "$pkg" ]] && continue
 
 printf "${CYAN}Uninstalling: %s ... ${NC}" "$pkg"
