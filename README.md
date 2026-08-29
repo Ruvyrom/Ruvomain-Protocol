@@ -42,7 +42,7 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 ---
 ## 🚀 Ready to deploy?
 
-**RUVOMAIN ADB APP-MANAGER:**
+**RUVOMAIN ADB APP-MANAGER (RAAM):**
 
 Enable USB Debugging on your phone:
 
