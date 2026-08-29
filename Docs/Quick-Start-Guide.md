@@ -42,7 +42,7 @@ adb connect <IP>:<PORT>
 ```
 
 *Note:*
-*- If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
+*If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 
 ### 🐧 For Linux users:
