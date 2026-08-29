@@ -30,7 +30,7 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The **Ruvomain ADB App-Manager** scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The RUVOMAIN ADB APP-MANAGER (RAAM) scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
 
