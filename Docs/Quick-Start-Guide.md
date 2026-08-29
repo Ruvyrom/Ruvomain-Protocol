@@ -24,14 +24,17 @@ Enable USB Debugging on your phone:
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
-- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 - **Navigate:**
 ```bash
 cd ./Ruvomain-Protocole
 ```
 
-- **Execute ADB App-Manager (RAAM) dashboard:**
+- **Execute Universal ADB App-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -49,9 +52,13 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 cd ./Ruvomain-Protocole
 chmod +x termux-setup.sh && ./termux-setup.sh
 ```
-- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** *.json in `/Configs`
 
-**Execute ADB App-Manager (RAAM) dashboard:**
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+
+**Execute Universal ADB App-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -99,7 +106,11 @@ adb connect <IP>:<PORT>
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 - **Navigate:**
 ```bash
@@ -107,7 +118,7 @@ cd ./Ruvomain-Protocole
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
-- **Execute ADB App-Manager (RAAM) dashboard:**
+- **Execute Universal ADB App-Manager (URAAM) dashboard:**
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -134,9 +145,13 @@ adb devices
 ```
 *(If "unauthorized", check your phonescreen and tap "Always allow")*
 
-5. **(Optionak) [import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices)  in `/Configs`
+5.
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-6. **Execute ADB App-Manager (RAAM) dashboard:**
+6. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 ```bash
 cd ./Ruvomain-Protocole
 ```
