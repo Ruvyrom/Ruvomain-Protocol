@@ -41,6 +41,10 @@ adb pair <IP>:<PORT>
 adb connect <IP>:<PORT>
 ```
 
+*Note:
+- If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.
+- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
+
 ### 🐧 For Linux users:
 1. **Prerequisites:**
 
@@ -94,7 +98,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
-*If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+*If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appears in `adb devices`.*
 
 No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
 
