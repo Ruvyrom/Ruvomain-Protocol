@@ -43,6 +43,14 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 
 **PURE BASH ADB APP MANAGER:**
 
+Enable USB Debugging on your phone:
+
+Settings > About Phone > Tap "Build Number" 7 times
+
+Settings > Developer Options > Enable "USB Debugging"
+
+Connect your phone to your PC via USB
+
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
