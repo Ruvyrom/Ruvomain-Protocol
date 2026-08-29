@@ -18,6 +18,7 @@ exit 1
 fi
 sources
 
+init_logs-restore
 env_detect
 show_logo
 ensure-adb
