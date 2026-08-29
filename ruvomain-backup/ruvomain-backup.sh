@@ -20,8 +20,8 @@ sources
 
 # --- Initialization ---
 init_logs-backup
-ensure_adb || exit 1
 show_logo
+ensure_adb || exit 1
 
 # --- Execution
 generate_snapshot
