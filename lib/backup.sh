@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 generate_snapshot() {
-backups_dir="./backups"
+backups_dir="$BACKUPS_DIR"
 mkdir -p "$backups_dir"
 local output_file="$backups_dir/backup_$(date +%Y%m%d_%H%M%S).json"
 
