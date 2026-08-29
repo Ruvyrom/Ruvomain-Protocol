@@ -12,7 +12,7 @@ clear
 echo -e "${BLUE}=========================================="
 echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
 echo -e "==========================================${NC}"
-
+show_logo
 # --- Auto-fix Permissions (Targeted) ---
 modules=("ruvomain-installer" "ruvomain-debloat" "ruvomain-backup" "ruvomain-restore")
 
