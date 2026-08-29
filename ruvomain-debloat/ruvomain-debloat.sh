@@ -26,3 +26,6 @@ echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
 ensure-adb
 ensure-jq
 debloat
+final
+
+echo -e "${GREEN}=== Operation finished===${NC}"
