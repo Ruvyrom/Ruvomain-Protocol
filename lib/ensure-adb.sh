@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 android-tools="$1"; 
-android-tools-adb="$2";
+adb="$2";
 sudo="$3";
 
 ensure_adb() {
-    if command -v adb &>/dev/null; then
+    if command -v "$2" &>/dev/null; then
         return 0
     fi
 
