@@ -17,7 +17,7 @@ Enable USB Debugging on your phone:
 
 - `git` for clone repo. 
 
-- `adb` (The script will attempt an android-tools auto-installation if missing).
+- `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).
 
 2. **Deployment:**
 - **Clone the repo:**
@@ -29,12 +29,12 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 
 - **Navigate:**
 ```bash
-cd ./Ruvomain-Protocole/ruvomain-pdb/
+cd ./Ruvomain-Protocole
 ```
 
 - **Execute:**
 ```bash
-chmod +x ruvomain.sh && ./ruvomain.sh
+chmod +x dashboard.sh && ./dashboard.sh
 ```
 
 ### 📱 For Termux users (Wireless)
@@ -54,7 +54,7 @@ chmod +x termux-setup.sh && ./termux-setup.sh
 
 **Execute** debloater script:
 ```bash
-chmod +x ruvomain.sh && ./ruvomain.sh
+chmod +x dashboard.sh && ./dashboard.sh
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
@@ -72,7 +72,7 @@ termux-setup-storage
 **Deploy:**
 
 - ```bash
-  pkg install android-tools git -y
+  pkg install android-tools jq git -y
   ```
 - Enable "Wireless Debugging" in Developer Options.
 
@@ -100,17 +100,17 @@ adb connect <IP>:<PORT>
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
+- **[import](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/README.md) your personnal or Canta .json restoration list (all Android devices) or Modify** ruvomain_tier*_stable.json in `/Configs/S24+`
 
 - **Navigate:**
 ```bash
-cd ./Ruvomain-Protocole/ruvomain-pdb/
+cd ./Ruvomain-Protocole/
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 - **Execute:**
 ```bash
-chmod +x ruvomain.sh && ./ruvomain.sh
+chmod +x dashboard.sh && ./dashboard.sh
 ```
 ***Note:** If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
 
@@ -121,7 +121,7 @@ No Root or Shizuku required. Your Ruvomain Protocol communicates directly via lo
 
 2. **Install ADB:**
 ```bash
-brew install git android-platform-tools
+brew install git android-platform-tools jq
 ```
 
 3. **Clone the protocol:**
@@ -139,10 +139,10 @@ adb devices
 
 6. **Execute:**
 ```bash
-cd ./Ruvomain-Protocole/Ruvomain-pdb/
+cd ./Ruvomain-Protocole/
 ```
 ```bash
-./ruvomain.sh
+chmod +x ./dashboard.sh && dashboard.sh
 ```
 
 **Finalize:** Reboot the device.
