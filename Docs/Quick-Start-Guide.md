@@ -3,13 +3,43 @@
 
 ### Universal Ruvomain ADB Apps-Manager (URAAM)
 
-Enable USB Debugging on your phone: 
+**1. Enable USB Debugging on your phone:**
 >
->Settings > About Phone > Tap "Build Number" 7 times
+>>Settings > About Phone > Tap "Build Number" 7 times
 >
->Settings > Developer Options > Enable "USB Debugging"
+>>Settings > Developer Options > Enable "USB Debugging"
 >
->Connect your phone to your PC via USB
+>>Connect your phone to your PC via USB
+
+or
+
+**2. Use Wireless Debuging:**
+
+- On your phone:
+>>Settings > About Phone > Tap "Build Number" 7 times
+>
+>>Settings > Developer Options > Enable "Wireless Debugging"
+>
+>>Click the text "Wireless debugging" (not the button) to open the menu
+>
+>>Click on "Pair device with a QR code" or "Pair with a pairing code"
+>
+>>Note down the IP address, the port, and the pairing code.
+
+- On your PC in your terminal:
+>
+>>Use `adb pair` and `adb connect` in your terminal to link your ADB client to the system server.
+>
+>>**Pair the terminal (it will ask you for the code).**
+>
+```bash
+adb pair <IP>:<PORT>
+```
+>>**Connect the terminal**
+>
+```bash
+adb connect <IP>:<PORT>
+```
 
 ### 🐧 For Linux users:
 1. **Prerequisites:**
@@ -90,15 +120,13 @@ termux-setup-storage
 
 - Use `adb pair` and `adb connect` within Termux to link your local ADB client to the system server.
 
->**Pair the terminal (it will ask you for the code).**
+>>**Pair the terminal (it will ask you for the code).**
 >
->adb pair
 ```bash
 adb pair <IP>:<PORT>
 ```
->**Connect the terminal**
+>>**Connect the terminal**
 >
->adb connect
 ```bash
 adb connect <IP>:<PORT>
 ```
