@@ -61,7 +61,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 ```bash
 cd ./Ruvomain-Protocol
-chmod +x dashboard.sh & ./dashboard.sh
+chmod +x dashboard.sh && ./dashboard.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
