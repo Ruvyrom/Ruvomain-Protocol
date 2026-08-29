@@ -11,10 +11,8 @@ ensure_adb() {
 
     printf "${RED}[!] ADB not found.${NC}\n"
     printf "${GREEN}[+] Attempting auto-installation...${NC}\n"
-    if [ -d "/data/data/com.termux" ]; then
-        pkg install -y "$1"
-    elif command -v apt-get &>/dev/null; then
-        "$3" apt-get update && sudo apt-get install -y "$2"
+    if command -v apt-get &>/dev/null; then
+        "$3" apt-get update && "$3" apt-get install -y "$2"
     elif command -v pacman &>/dev/null; then
         "$3" pacman -S --noconfirm "$1"
     elif command -v dnf &>/dev/null; then
