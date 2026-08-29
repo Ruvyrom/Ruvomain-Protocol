@@ -5,10 +5,10 @@
 <div align="center"; style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
-<strong>Universal Protocol with Pure Bash</strong><br>
-<strong>ADB App manager (Debloat, Restore, Backup list [json files] and APK Installer)
-  with system management for</strong><br>
-<strong>All Android devices.</strong>
+<strong>Universal Protocol with Bash scripts</strong></br>
+<strong>Ruvomain ADB App-Manager [RAAM]</strong>
+<br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
+<strong>for ALL Android devices.</strong>
 </div>
 
 &nbsp;
