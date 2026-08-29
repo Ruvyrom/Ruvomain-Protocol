@@ -2,7 +2,6 @@
 **Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
 
 ### Ruvomain ADB App-Manager (RAAM)
-Local, offline-capable usage.
 
 Enable USB Debugging on your phone: 
 >
