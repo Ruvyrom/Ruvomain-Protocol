@@ -18,7 +18,7 @@ INSTALLER_DIR="$REPO_DIR/lib/installer.sh"
 BACKUP_DIR="$REPO_DIR/lib/backup.sh"
 ENVB_DIR="$REPO_DIR/lib/envb.sh"
 LOGSBACKUP_DIR="$REPO_DIR/lib/logs-backup.sh"
-BACKUPS_DIR="$REPO_DIR/ruvomain-backup/backups/"
+BACKUPS_DIR="$(dirname "$0")/../ruvomain-backup/backups"
 
 # --- Sources ---
 chmod +x "$STYLE_DIR"
