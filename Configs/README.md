@@ -34,10 +34,10 @@ For using your liste with Ruvomain-pbd script:
 Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
 
 
-### Protocol Hierarchy
+### Protocol Hierarchy (for S24+ Ewynos)
 The protocol is modular, allowing users to choose their level of optimization. *Tierslists are provided as standardized defaults, but the architecture is designed for you to edit `tier*.json` files to fit your specific operational requirements.*
 
-You can modify .json files if you want keep a fonctionality in /Configs/S24+
+You can modify .json files if you want keep a fonctionality in /Configs
 
 | Tier | Strategy| Recommended For |
 |:---|:---|:---|
