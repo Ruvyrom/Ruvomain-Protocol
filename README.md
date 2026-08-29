@@ -45,7 +45,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 1. **Setup :** Clone the repo.
 
 2. **Clean :**
-Run `./ruvomain-pdb/ruvomain.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/imports/*.json` or `/Configs/S24+/*.json`. (script detect and autoinstall android-tools)
+Run `./ruvomain-debloat/ruvomain-debloat.sh` (Pure Bash Debloater) to purge bloatware defined in `Configs/*.json. (script detect and autoinstall android-tools)
 
 *You can import your Canta restauration file.*
 
@@ -62,9 +62,9 @@ Your device is now Ruvomain-Compliant.
 On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-# Place your personal or Canta JSON lists in ./Configs/Imports
-cd ./Ruvomain-Protocol/ruvomain-pbd
-chmod +x ruvomain.sh & ./ruvomain.sh
+# Place your personal or Canta JSON lists in ./Configs
+cd ./Ruvomain-Protocol/ruvomain-debloat
+chmod +x ruvomain-debloat.sh & ./ruvomain-debloat.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
@@ -144,7 +144,7 @@ The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser 
 
 | Feature | Standard Approach (Canta/Shizuku)| **Ruvomain-PBD** |
 | :--- | :--- | :--- |
-| **Dependencies** | Java, Shizuku, Canta, `jq` | **None (Zero-Dependency)** |
+| **Dependencies** | Java, Shizuku, Canta | **jq** |
 | **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
 | **Auditability** | Limited (Black-box) | **Total (Native Bash)** |
 | **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
@@ -154,7 +154,7 @@ The core of **Ruvomain-PBD** is `json-walk`, an event-driven (SAX-style) parser 
 <details>
 <summary><b>You have a specific device? Create your JSON profile </b></summary>
 
-Fork this repo, place it in `/Configs/Imports`, and submit a Pull Request. Your configuration will then be available to the entire community.
+Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
 Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).*
 </details>
 
