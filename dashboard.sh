@@ -14,7 +14,6 @@ echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
 echo -e "==========================================${NC}"
 
 # --- Auto-fix Permissions (Targeted) ---
-# On ne cible que les dossiers de modules connus
 modules=("ruvomain-installer" "ruvomain-debloat" "ruvomain-backup" "ruvomain-restore")
 
 for mod in "${modules[@]}"; do
