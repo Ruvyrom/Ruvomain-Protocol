@@ -6,7 +6,7 @@
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Protocol with Pure Bash</strong><br>
-<strong>ADB Debloater and apk Installer 
+<strong>ADB App manager (debloat, Restore, backup list (json files) and apk Installer)
   with system management for</strong><br>
 <strong>All Android devices.</strong>
 </div>
