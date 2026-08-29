@@ -1,7 +1,7 @@
 ## ⚙️ Quick Start
 **Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
 
-### Ruvomain ADB Apps-Manager (RAAM)
+### Universal Ruvomain ADB Apps-Manager (URAAM)
 
 Enable USB Debugging on your phone: 
 >
