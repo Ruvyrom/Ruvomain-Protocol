@@ -1,44 +1,55 @@
 #!/usr/bin/env bash
 
-final() {
-printf "${GREEN}[+] Deploying configuration: %s${NC}\n" "$JSON_FILE"
+final(){
+local JSON_FILE="$1"
 
-SUCCESS_COUNT=0
-FAILED_COUNT=0
-
-get_packages "$JSON_FILE"
-
-if [[ "$(get_json_val "$JSON_FILE" "apps")" == "N/A" ]]; then
-    printf "${RED}[!] CRITICAL: Invalid Ruvomain file (missing 'apps' key).${NC}\n" >&2
-    exit 1
+if [[ ! -f "$JSON_FILE" ]]; then
+printf "${RED}[!] Configuration file not found: %s${NC}\n" "$JSON_FILE"
+return 1
 fi
 
-for pkg in "${PACKAGES[@]}"; do
-    printf "${BLUE}Processing: %s ... ${NC}" "$pkg"
+# Vérification connexion ADB
+if ! adb devices | grep -q "device$"; then
+printf "${RED}[!] No device detected via ADB.${NC}\n"
+return 1
+fi
 
-    if $EXEC "$pkg" > /dev/null 2>&1; then
-        printf "${GREEN}[OK]${NC}\n"
-        ((SUCCESS_COUNT++))
-    else
-        printf "${RED}[FAILED]${NC}\n"
-        ((FAILED_COUNT++))
-    fi
-done
+printf"${CYAN}[+] Processing: %s${NC}\n" "$JSON_FILE"
 
-printf "%s\n" "${CYAN}========================================${NC}\n"
-printf "${CYAN}Report:${NC}\n"
-printf "  ${CYAN}Packages removed:${NC} %d\n" "$SUCCESS_COUNT"
-printf "  ${CYAN}Failures: %d${NC}\n" "$FAILED_COUNT"
-printf "\n"
-printf "%s\n" "${CYAN}========================================${NC}\n"
-printf "${GREEN}Operation finished. Sovereignty restored.${NC}\n"
+local SUCCESS=0
+local FAILED=0
 
-printf "${WHITE}Rebooting device...${NC}\n"
-read -r -p "${CYAN}Do you want to reboot your device? (y/n): ${NC}\n" reboot_choice
-if [[ "$reboot_choice" =~ ^[Yy]$ ]]; then
-    adb reboot
-    printf "${GREEN}Reboot command sent to device.${NC}\n"
+# Lecture du JSON via jq sans mapfile (plus portable)
+whileread -r pkg; do
+[[ -z "$pkg" ]] && continue
+
+printf "${CYAN}Uninstalling: %s ... ${NC}" "$pkg"
+if $EXEC "$pkg" >/dev/null 2>&1; then
+printf "${GREEN}[OK]${NC}\n"
+((SUCCESS++))
 else
-    printf "${YELLOW}Reboot skipped.${NC}"
+printf"${RED}[FAILED]${NC}\n"
+((FAILED++))
+fi
+done < <(jq -r '.apps[]' "$JSON_FILE")
+
+# Rapport
+printf "\n${CYAN}--- Final Report ---${NC}\n"
+printf "Successfully removed: %d\n" "$SUCCESS"
+printf "Errors: %d\n" "$FAILED"
+printf "${CYAN}--------------------${NC}\n"
+
+# Option de reboot
+read -r -p "Reboot device? (y/n): " confirm
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+adb reboot
+fi
+}
+
+# --- Main Entry ---
+if [[ -z "$1" ]]; then
+printf "Usage: %s <config.json>\n" "$0"
+else
+final "$1"
 fi
 } 
