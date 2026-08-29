@@ -5,7 +5,7 @@
 <div align="center"; style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
-<strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
+<strong>Universal Ruvomain ADB Apps-Manager [URAAM]</strong>
 <br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
 <strong>for ALL Android devices.</strong>
 </div>
@@ -29,19 +29,19 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts is a tool to surgically remove unwanted apps from all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It 100% compatible with Canta .json restoration list files. (you can restore your Canta list without Shizuku/Canta)**
 
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
 ---
-**UPDATE (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB App-Manager (URAAM)**
+**UPDATE (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB Apps-Manager (URAAM)**
 
 ---
 ## 🚀 Ready to deploy?
 
-**UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
+**UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM):**
 
 Enable USB Debugging on your phone:
 
@@ -197,7 +197,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
 
-For the Ruvomain Protocol, ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for ourapproach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
+For the Universal Ruvomain ADB Apps-Manager (URAAM), ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
 </details>
 
 <details>
@@ -215,7 +215,7 @@ JSON acts as our "configuration layer." It is a simple, human-readable format th
 <details>
 <summary><b>🔄 What is Git? (Why it matters)</b></summary>
 
-Git is our "version control" system. Think of it as a time machine for the RuvomainProtocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—notjust a static file.
+Git is our "version control" system. Think of it as a time machine for the RuvomainProtocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
 </details>
 
 ---
