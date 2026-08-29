@@ -2,7 +2,7 @@
 
 You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community."
 
-- You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json)**
+- You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json)**
 
 For using your liste with Ruvomain-pbd script:
 - **Copy** your personal or Canta .json restoration files in `./Configs/Imports` folder
