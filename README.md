@@ -11,8 +11,6 @@
 <strong>All Android devices.</strong>
 </div>
 
-**NEXT UPDATE: ADB BACKUP AND RESTORATION WITH JSON FILES 100% BASH SCRIPTS
-
 &nbsp;
 <p align="center">
 <img src="https://img.shields.io/badge/| Bash-4EAA25?logo=gnubash&logoColor=4EAA25&style=for-the-badge&color=151B22"height="25"> &nbsp;
@@ -39,6 +37,7 @@ It's a zero-dependency, professional-grade infrastructure for system optimizatio
 
 *I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*
 
+**NEXT UPDATE: ADB BACKUP AND RESTORATION WITH JSON FILES 100% BASH SCRIPTS**
 ---
 **The Ruvomain Workflow**
 1. **Setup :** Clone the repo.
