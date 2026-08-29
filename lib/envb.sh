@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-env() {
+envb() {
 if [ -d "/data/data/com.termux" ] || [ -f "/system/bin/pm" ]; then
     EXEC="pm install-existing --user0"
 else
