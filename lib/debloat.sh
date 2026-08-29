@@ -24,7 +24,7 @@ echo -e "${RED}Invalid selection, please try again.${NC}"
 fi
 done
 
-# --- Restoration ---
+# --- Debloating ---
 
 # Extract packages
 mapfile -t PACKAGES < <(jq -r '.apps[].packageName' "$file" 2>/dev/null)
