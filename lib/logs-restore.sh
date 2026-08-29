@@ -2,7 +2,7 @@
 
 "$REPO_DIR/ruvomain-restore/logs"="$1";
 
-init_logs-backup() {
+init_logs-restore() {
 mkdir -p "$1"
 
 find "$1" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
