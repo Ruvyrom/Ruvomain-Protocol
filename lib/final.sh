@@ -33,13 +33,13 @@ printf"${RED}[FAILED]${NC}\n"
 fi
 done < <(jq -r '.apps[]' "$JSON_FILE")
 
-# Rapport
+# Report
 printf "\n${CYAN}--- Final Report ---${NC}\n"
 printf "Successfully removed: %d\n" "$SUCCESS"
 printf "Errors: %d\n" "$FAILED"
 printf "${CYAN}--------------------${NC}\n"
 
-# Option de reboot
+# Reboot option
 read -r -p "Reboot device? (y/n): " confirm
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
 adb reboot
@@ -52,4 +52,3 @@ printf "Usage: %s <config.json>\n" "$0"
 else
 final "$1"
 fi
-} 
