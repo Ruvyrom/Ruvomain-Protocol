@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # --- Dynamic Path Resolution and sources ---
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"&& pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 APP_DIR="./Apps"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
