@@ -24,7 +24,7 @@ echo "--------------------------------------------------------"
 read -p "[?] Enter IP addressand port for PAIRING (e.g., 192.168.1.5:41234): " pair_target
 adb pair $pair_target
 
-echo "[*] Now, use the connection port displayed in the Wireless debuggingmenu."
+echo "[*] Now, use the connection port displayed in the Wireless debugging menu."
 read -p "[?] Enter IP address and port for CONNECTION (e.g., 192.168.1.5:33456): " connect_target
 adb connect $connect_target
 
