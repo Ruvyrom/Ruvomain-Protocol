@@ -5,7 +5,7 @@ You have a specific device? Create your JSON list or Canta restoration JSON list
 - You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json)**
 
 For using your liste with Ruvomain-pbd script:
-- **Copy** your personal or Canta .json restoration files in `./Configs/Imports` folder
+- **Copy** your personal or Canta .json restoration files in `./Configs` folder
 
 - **Execute** script and select option 4 when prompted
 
