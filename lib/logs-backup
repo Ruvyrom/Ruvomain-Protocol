@@ -5,7 +5,7 @@
 init_logs-backup() {
 mkdir -p "$1"
 
-find "$1" -name "ruvomain-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "$1" -name "ruvomain-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
 
 LOGFILE="$1"/ruvomain-backup-$(date +%Y%m%d_%H%M%S).log"
 
