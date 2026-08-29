@@ -46,5 +46,3 @@ else
 echo -e "${RED}Failed (already uninstall or not found)${NC}"
 fi
 done
-
-echo -e "${GREEN}=== Operation finished===${NC}"
