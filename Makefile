@@ -14,8 +14,6 @@
 # For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 # Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-cd ./Ruvomain-Protocol
-
 .PHONY: all dashboard debloat backup restore install clean
 
 # Default action: run the dashboard
