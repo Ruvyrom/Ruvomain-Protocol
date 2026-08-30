@@ -73,7 +73,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
-For execute other make command use help in Makefile and execute a script individually:
+For execute other make command use help in Makefile:
 ```bash
 cd ./Ruvomain-Protocol
 make help
