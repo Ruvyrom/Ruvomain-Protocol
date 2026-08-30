@@ -4,16 +4,23 @@
 ### Universal Ruvomain ADB Apps-Manager (URAAM)
 
 **1. Enable USB Debugging on your phone:**
->
+
+<details>
+<summary>Configuration</summary>
+
 >>Settings > About Phone > Tap "Build Number" 7 times
 >
 >>Settings > Developer Options > Enable "USB Debugging"
 >
 >>Connect your phone to your PC via USB
+</details>
 
-or
+OR
 
 **2. Use Wireless Debuging:**
+
+<details>
+<summary>Configuration</summary>
 
 - On your phone:
 >>Settings > About Phone > Tap "Build Number" 7 times
@@ -26,7 +33,7 @@ or
 >
 >>Note down the IP address, the port, and the pairing code.
 
-- On your PC in your terminal:
+- On your PC in your terminal (WSL/Linux/Mac):
 >
 >>Use `adb pair` and `adb connect` in your terminal to link your ADB client to the system server.
 >
@@ -40,15 +47,34 @@ adb pair <IP>:<PORT>
 ```bash
 adb connect <IP>:<PORT>
 ```
+</details>
 
 *Note:*
-*If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
+
+*- If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
+
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 
-### 🐧 For Linux users:
+### 🐧 For Linux & WSL users:
 1. **Prerequisites:**
 
-- `git` for clone repo. 
+- `git` for clone repo
+<details>
+ <summary>Installation:</summary>
+
+>>Debian, Ubuntu, WSL
+```bash
+sudo apt install git - y
+```
+>>Arch based
+```bash
+sudo pacman -S --no-confirm git
+```
+>>Fedora based
+```bash
+sudo dnf install - y git
+```
+</details>
 
 - `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).
 
