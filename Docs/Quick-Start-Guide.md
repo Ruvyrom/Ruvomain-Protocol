@@ -63,13 +63,15 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-- **Navigate:**
-```bash
-cd ./Ruvomain-Protocole
-```
-
 - **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
+make -C ./Ruvomain-Protocol
+```
+
+OR
+
+```bash
+cd ./Ruvomain-Protocole
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
@@ -83,8 +85,7 @@ pkg install git
 ```
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
-cd ./Ruvomain-Protocole
-chmod +x termux-setup.sh && ./termux-setup.sh
+make termux -C ./Ruvomain-Protocol
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
@@ -93,6 +94,12 @@ chmod +x termux-setup.sh && ./termux-setup.sh
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+```bash
+make -C ./Ruvomain-Protocol
+```
+
+OR
+
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -151,6 +158,13 @@ cd ./Ruvomain-Protocole
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 - **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+
+```bash
+make -C ./Ruvomain-Protocol
+```
+
+OR
+
 ```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
@@ -184,6 +198,13 @@ adb devices
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 6. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+
+```bash
+make -C ./Ruvomain-Protocol
+```
+
+OR
+
 ```bash
 cd ./Ruvomain-Protocole
 ```
