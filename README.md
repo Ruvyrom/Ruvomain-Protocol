@@ -75,7 +75,7 @@ For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guid
 
 For execute other make command use help in Makefile and execute a script individually:
 ```bash
-cd ./Ruvomain-Protocole
+cd ./Ruvomain-Protocol
 make help
 ```
 ---
