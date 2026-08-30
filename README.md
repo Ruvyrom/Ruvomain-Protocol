@@ -43,15 +43,18 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 
 **UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM):**
 
-Enable USB Debugging on your phone:
+<details>
+<summary>Enable USB Debugging on your phone:</summary>
 
 Settings > About Phone > Tap "Build Number" 7 times
 
 Settings > Developer Options > Enable "USB Debugging"
 
 Connect your phone to your PC via USB
+</details>
 
 On Linux:
+
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 ```
@@ -71,7 +74,9 @@ OR
 cd ./Ruvomain-Protocol
 chmod +x dashboard.sh && ./dashboard.sh
 ```
-For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
+</details>
+
+For more detailled instruction for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
 For execute other make command use help in Makefile:
 ```bash
@@ -100,28 +105,52 @@ make help
 [Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
 
 ---
-## Features: 
+## ⚙️ Features: 
 "Surgical Minimalism" is the art of achieving maximum efficiency through the smallest possible codebase. By eliminating external dependencies, we reduce the system's attack surface and ensure absolute transparency.
 
-**Interoperability:** 100% compatible with **Canta** .json restoration lists. (ruvomain-debloat, ruvomain-restore)
+<details>
+<summary><b>Interoperability:</b></summary>
 
-**Auditable:** Every line of code is human-readable. You own the process from end to end.
+>100% compatible with **Canta** .json restoration lists. (ruvomain-debloat, ruvomain-restore)
+</details>
 
-**Autonomous:** The protocol executes, performs the surgical strike, and terminates. No resident services (daemons) remain in the background.
+<details>
+<summary><b>Auditable:</b></summary>
 
-**APK Installation via ADB:**
-With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
+>Every line of code is human-readable. You own the process from end to end.
+</details>
 
-**Backup to .json list**
-With ruvomain-backup, backup your uninstalled apps list to .json file for restore later.
+<details>
+<summary><b>Autonomous:</b></summary>
 
-**Restore uninstalled apps via ADB**
-With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
+>The protocol executes, performs the surgical strike, and terminates. No resident services (daemons) remain in the background.
+</details>
 
-**Automated:**
+<details>
+<summary><b>APK Installation via ADB:</b></summary>
+
+>With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
+</details>
+
+<details>
+<summary><b>Backup to .json list</b></summary>
+
+>With ruvomain-backup, backup your uninstalled apps list to .json file for restore later.
+</details>
+
+<details>
+<summary><b>Restore uninstalled apps via ADB</b></summary>
+
+>With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
+</details>
+
+<details>
+<summary><b>Automated:</b></summary>
+
 >Automatic installation of ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
->
+
 >Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and Ruvomain takes care of the debloating/restoring for you.
+</details>
 
 ---
 ### 📸 Proof Screenshot
@@ -146,7 +175,7 @@ With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup
 | **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
 
 ---
-## Contributing
+## 👥 Contributing
 <details>
 <summary><b>You have a specific device? Create your JSON profile </b></summary>
 
@@ -161,25 +190,30 @@ Need help with your first contribution? [Consult this guide](https://github.com/
 </details>
 
 ---
-## Documentation
+## 📖 Documentation
 To gain a deeper understanding of the technical and operational aspects of the protocol, please refer to the following files located in the `/Docs` directory:
 
+<details>
+<summary><b>Clic to view documentation</b></summary>
+
 - [Protocol Hierarchy](/Docs/Protocol-Hierarchy.md) (3 tiers packages list exemple for S24+)
+
 >An overview of the protocol's global architecture.
 
-<!--- [Using the Makefile](/Docs/Using-the-Makefile.md)
->A comprehensive guide to the secure control interface.-->
-
 - [JSON files importation](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation)
+
 >How to import your personnal .json list files (for S24+ or other devices) for using with Ruvomain-pbd script.
 
 - [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
+
 >Technical details on system hardening and resource management.
 
 - [Package List](Docs/Tiers-list.md) (S24+)
+
 >A detailed list of components targeted by the protocol.
 
 - [Replacement](/Docs/Remplacement.md)
+
 >Documentation regarding software substitution processes and procedures.Users on different hardware or firmware versions should exercise caution and verify package dependencies before execution.
 
 - [Interface Setup](/Docs/Interface-Setup.md)
@@ -190,6 +224,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 - [Safety & Auditing](Docs/Safety-&-Auditing.md)
 >Information regarding code transparency, audit processes, and system integrity maintenance.
+</details>
 
 ---
 ### 👥 Credits
