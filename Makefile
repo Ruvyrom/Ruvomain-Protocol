@@ -30,7 +30,7 @@ debloat:
 
 backup:
 @chmod +x ./ruvomain-backup/ruvomain-backup.sh
-./ruvomain-backup
+./ruvomain-backup.sh
 
 restore:
 @chmod +x ./ruvomain-restore/ruvomain-restore.sh
@@ -46,13 +46,13 @@ termux:
 
 clean:
 @echo "Cleaning up temporary files..."
-rm -f ./ruvomain-debloat/logs/*.log
-rm -f ./ruvomain-restore/logs/*.log
-rm -f ./ruvomain-backup/logs/*.log
+-rm -f ./ruvomain-debloat/logs/*.log
+-rm -f ./ruvomain-restore/logs/*.log
+-rm -f ./ruvomain-backup/logs/*.log
 
 bclean:
 @echo "Cleaning up backup JSON files..."
-rm -f ./ruvomain-backup/backups/*.json
+-rm -f ./ruvomain-backup/backups/*.json
 
 help:
 @echo "Ruvomain-Protocol available commands:"
