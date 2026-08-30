@@ -79,17 +79,26 @@ sudo dnf install - y git
 - `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).
 
 2. **Deployment:**
+
+<details>
+<summary><b></b>Execution:</b></summary>
+
 - **Clone the repo:**
+  
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+  
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+  
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+  
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 3. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+
 ```bash
 make -C ./Ruvomain-Protocol
 ```
@@ -101,25 +110,34 @@ cd ./Ruvomain-Protocole
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
+</details>
+
 ### 📱 For Termux users (Wireless)
 
 **1. Semi-Automatic setup execution** (Install adb, pair & connect):
 
-**Setup:**
+<details>
+<summary><b></b>Setup:</b></summary>
+ 
 ```bash
 pkg install git
 ```
+
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 make termux -C ./Ruvomain-Protocol
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+  
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+  
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+  
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+
 ```bash
 make -C ./Ruvomain-Protocol
 ```
@@ -130,24 +148,32 @@ OR
 cd ./Ruvomain-Protocole
 chmod +x dashboard.sh && ./dashboard.sh
 ```
+
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 *If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appears in `adb devices`.*
 
 No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
+</details>
 
 **2. Manual execution:**
-**Grant Storage Access:**
+
+<details>
+<summary><b></b>Setup:</b></summary>
+ 
+1- **Grant Storage Access:**
+
 ```bash
 termux-setup-storage
 ```
  (Accept the permission prompt)
 
-**Deploy:**
+2- **Deploy:**
 
 - ```bash
   pkg install android-tools jq git -y
   ```
+  
 - Enable "Wireless Debugging" in Developer Options.
 
 - Click the text "Wireless debugging" (not the button) to open the menu
@@ -159,30 +185,30 @@ termux-setup-storage
 - Use `adb pair` and `adb connect` within Termux to link your local ADB client to the system server.
 
 >>**Pair the terminal (it will ask you for the code).**
->
+
 ```bash
 adb pair <IP>:<PORT>
 ```
+
 >>**Connect the terminal**
->
+
 ```bash
 adb connect <IP>:<PORT>
 ```
-- **Clone the repo:**
+
+3- **Clone the repo:**
+  
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+  
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+  
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+  
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
-
-- **Navigate:**
-```bash
-cd ./Ruvomain-Protocole
-```
-***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 - **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 
@@ -193,13 +219,23 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
+cd ./Ruvomain-Protocole
 chmod +x dashboard.sh && ./dashboard.sh
 ```
-***Note:** If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+
+***Note:***
+*- If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+
+*- Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
 No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
+</details>
 
 ### 🍎 For MacOS users:
+
+<details>
+<summary><b></b>Execution:</b></summary>
+ 
 1. Install [Homebrew](https://brew.sh/) if you haven't already.
 
 2. **Install ADB:**
@@ -208,11 +244,13 @@ brew install git android-platform-tools jq
 ```
 
 3. **Clone the protocol:**
+
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
 4. **Verify device connection:**
+
 ```bash
 adb devices
 ```
@@ -220,8 +258,11 @@ adb devices
 
 5.
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
+
+- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 6. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
@@ -235,8 +276,11 @@ OR
 ```bash
 cd ./Ruvomain-Protocole
 ```
+
 ```bash
 chmod +x ./dashboard.sh && dashboard.sh
 ```
+
+</details>
 
 **Finalize:** Reboot the device.
