@@ -89,7 +89,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 - For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-- **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+3. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
 ```bash
 make -C ./Ruvomain-Protocol
 ```
