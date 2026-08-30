@@ -73,9 +73,10 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```
 For Termux, MacOS read the **[Debloater Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
-For started in minutes
-
-*You can import your Canta restauration file.*
+For execute other make command use help in Makefile and execute a script individually:
+```bash
+cd ./Ruvomain-Protocole
+make help
 
 ---
 ### Table of Contents
