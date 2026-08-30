@@ -101,6 +101,7 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
+cd ./Ruvomain-Protocole
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 ***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
