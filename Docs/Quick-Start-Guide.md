@@ -47,13 +47,13 @@ adb pair <IP>:<PORT>
 ```bash
 adb connect <IP>:<PORT>
 ```
-</details>
 
 *Note:*
 
 *- If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
 
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
+</details>
 
 ### 🐧 For Linux & WSL users:
 1. **Prerequisites:**
