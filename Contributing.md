@@ -14,7 +14,7 @@ OR
 
 Your configuration will then be available to the entire community.
 
-**Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/structure-example.json).
+**Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json).
 
 Please ensure:
 - The JSON syntax is valid.
