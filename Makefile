@@ -7,6 +7,7 @@
 #   make restore  (run restore script)
 #   make install  (run install script)
 #   make clean    (run clean logs)
+#   make bclean   (run clean backup)
 #   make help     (run command help)
 #
 # For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
@@ -49,10 +50,16 @@ rm -f ./ruvomain-debloat/logs/*.log
 rm -f ./ruvomain-restore/logs/*.log
 rm -f ./ruvomain-backup/logs/*.log
 
+bclean:
+@echo "Cleaning up backup JSON files..."
+rm -f ./ruvomain-backup/backups/*.json
+
 help:
 @echo "Ruvomain-Protocol available commands:"
 @echo "  make         - Runs the dashboard"
+@echo "  make termux  - Runs Termux setup"
 @echo "  make debloat - Runs the debloat module"
 @echo "  make backup  - Runs the backup module"
 @echo "  make restore - Runs the restore module"
 @echo "  make install - Runs the installer module"
+@echo "  make clean   - Runs clean logs"
