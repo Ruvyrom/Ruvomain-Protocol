@@ -7,3 +7,6 @@ You can execute it directly:
 ```bash
 make backup -C ./Ruvomain-Protocol
 ```
+**Requirements: (Script auto-install these if missing)**
+*`adb` (Android Debug Bridge)
+* `jq`
