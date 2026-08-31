@@ -3,8 +3,7 @@
 This script backup your uninstalled apps list in a JSON file for execute later for debloat or restore via ruvomain-debloat, ruvomain-restore or Canta.
 It put `backup_*.json` in `./ruvomain-backup/backups` Ruvomain Protocol directory
 
-You can execute it directly:
-
+---
 **1. Enable USB Debugging on your phone:**
 
 <details>
@@ -56,6 +55,8 @@ adb connect <IP>:<PORT>
 
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 </details>
+
+You can execute it directly:
 
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
