@@ -19,21 +19,17 @@ Enable USB Debugging on your phone:
 - `adb` (The script will attempt an android-tools auto-installation if missing).
 
 2. **Deployment:**
+
 - **Clone the repo:**
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
 
-- **Paste your personnal `.apk` file `./ruvomain-installer/Apps`**
+- **Place your personnal `.apk` file `./ruvomain-installer/Apps`**
 
-- **Navigate:**
+3. **Execute:**
 ```bash
-cd ./Ruvomain-Protocole/ruvomain-installer/
-```
-
-- **Execute:**
-```bash
-chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
+make install -C ./Ruvomain-Protocol
 ```
 
 ### 📱 For Termux users
@@ -97,22 +93,20 @@ adb connect <IP>:<PORT>
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
 ```
-- **Navigate:**
-```bash
-cd ./Ruvomain-Protocole/ruvomain-installer/
-```
-***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
-
-No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
 
 - **Place** your multiple apk files to ./ruvomain-installer/Apps
 
 - **Execute:**
 ```bash
+cd ./Ruvomain-Protocole/ruvomain-installer/
 chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
 ```
-***Note:** If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
 
+***Note:***
+*- If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+*- Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home* folder, the command above is correct.*
+
+No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
 
 ### 🍎 For MacOS users:
 1. Install [Homebrew](https://brew.sh/) if you haven't already.
