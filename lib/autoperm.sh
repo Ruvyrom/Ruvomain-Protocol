@@ -30,8 +30,8 @@ else
 printf "[!] Error : Module %s not found.\n" "$mod" >&2
 fi
 done
+} 
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 autoperm
 fi
-} 
