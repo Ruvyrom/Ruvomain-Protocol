@@ -1,4 +1,4 @@
-### JSON files importation
+### Contributing - JSON files importation
 
 You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community."
 
