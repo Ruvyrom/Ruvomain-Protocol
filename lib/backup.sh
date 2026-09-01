@@ -5,6 +5,16 @@ backups_dir="$BACKUPS_DIR"
 mkdir -p "$backups_dir"
 local output_file="$backups_dir/backup_$(date +%Y%m%d_%H%M%S).json"
 
+# --- Confirmation ---
+echo "--- Warning ---"
+echo "You are about to create backup.*json."
+read -p "Are you sure you want to proceed? (y/N): " confirm
+
+if [[ $confirm != "y" && $confirm != "Y" ]]; then
+echo "Operation cancelled."
+exit 0
+fi
+
 echo "--- Generating snapshot: $output_file---"
 
 # Creation of the header according to protocol schema
