@@ -22,3 +22,7 @@ done
 
 echo -e "${GREEN}[DONE]${NC} Deployment complete."
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+installer()
+fi
