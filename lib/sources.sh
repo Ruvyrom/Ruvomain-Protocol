@@ -36,42 +36,10 @@ DEBLOAT_DIR="$REPO_DIR/lib/debloat.sh"
 RESTORE_DIR="$REPO_DIR/lib/restore.sh"
 AUTOP_DIR="$REPO_DIR/lib/autoperm.sh"
 
-# --- Execution Permissions ---
-chmod +x "$STYLE_DIR"
-chmod +x "$ENSURE_DIR"
-chmod +x "$ENSUREJQ_DIR"
-chmod +x "$LOGS_DIR"
-chmod +x "$LOGO_DIR"
-chmod +x "$MODEL_DIR"
-chmod +x "$ENV_DIR"
-chmod +x "$MENU_DIR"
-chmod +x "$FINAL_DIR"
-chmod +x "$CHECK_DIR"
-chmod +x "$INSTALLER_DIR"
-chmod +x "$BACKUP_DIR" 
-chmod +x "$LOGSBACKUP_DIR"
-chmod +x "$LOGSRESTORE_DIR"
-chmod +x "$DEBLOAT_DIR"
-chmod +x "$RESTORE_DIR"
-chmod +x "$AUTOP_DIR"
+# --- Sources & Execution Permissions ---
+MODULES_DIR=("$STYLE_DIR" "$ENSURE_DIR" "$ENSUREJQ_DIR" "$LOGS_DIR" "$LOGO_DIR" "$MODEL_DIR" "$ENV_DIR" "$MENU_DIR" "$FINAL_DIR" "$CHECK_DIR" "$INSTALLER_DIR" "$BACKUP_DIR" "$LOGSBACKUP_DIR" "$LOGSRESTORE_DIR" "$DEBLOAT_DIR" "$RESTORE_DIR" "$AUTOP_DIR")
 
-# --- Sources ---
-source "$STYLE_DIR"
-source "$ENSURE_DIR"
-source "$ENSUREJQ_DIR"
-source "$LOGS_DIR"
-source "$LOGO_DIR"
-source "$MODEL_DIR"
-source "$ENV_DIR"
-source "$MENU_DIR"
-source "$CONFIGS_DIR"
-source "$FINAL_DIR"
-source "$CHECK_DIR"
-source "$INSTALLER_DIR"
-source "$BACKUP_DIR"
-source "$LOGSBACKUP_DIR"
-source "$LOGSRESTORE_DIR"
-source "$DEBLOAT_DIR"
-source "$RESTORE_DIR"
-source "$AUTOP_DIR"
+for mod in "${MODULES_DIR[@]}"; do
+[ -f "$mod" ] && chmod +x "$mod" && source "$mod"
+done
 } 
