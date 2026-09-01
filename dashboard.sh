@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Universal Ruvomain ADB Apps-Manager (URAAM) - Control Center
 # Surgical access to your protocol modules
-# Version: v2.0.0
+# Version: v3.0.0
 
 # --- Dynamic Path Resolution and sources---
 REPO_DIR="$(cd "./Ruvomain-Protocol" && pwd)"
