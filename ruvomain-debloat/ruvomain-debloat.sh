@@ -2,7 +2,7 @@
 # Ruvomain ADB-Termux Debloater script ( Bash/JQ )
 # You can apply your own json debloat list file. Use or place your *.json file in ./Configs and select it in menu.
 # Version 5.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
-# Created by Ruvyrom
+# Created by Ruvyrom {https://github.com/Ruvyrom/Ruvomain-Protocol)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
