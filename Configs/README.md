@@ -2,26 +2,41 @@
 
 You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community."
 
-- You **must** create your JSON file list with **THIS STRUCTURE**: **[structure-example.json](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json)**
+- You **must** create your JSON file list with **THIS STRUCTURE**:
 
-For using your liste with Ruvomain-pbd script:
+```json
+{
+  "name": "NAME OF YOUR FILE HERE",
+  "description": "YOUR DESCRIPTION HERE",
+  "author": "USERNAME",
+  "version": "NUMBER VERSION",
+  "apps": [
+    {
+      "packageName": "your.package.name"
+    },
+    {
+      "packageName": "your.package.name"
+    }
+   ]
+  }
+```
+
+For using your liste with URAAM ruvomain-debloat script:
 - **Copy** your personal or Canta .json restoration files in `./Configs` folder
 
-- **Execute** script and select option 4 when prompted
+- **Execute** script and select your json file
 
-- **Select** your file, confirm and it applying
-
-**Feel free to share your files to help grow the community!**
+**Feel free to share your files with Pull Request in ./Configs, to help grow the community!**
 
 **Please ensure:**
 
 - The JSON syntax is [valid](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/structure-example.json).
 
-- You have tested the debloat list on your own device.
+- You have tested the debloat/restore list on your own device.
 
 - You keep the minimalist philosophy of the project.
 
-- Contribute with Pull Request.
+You can contribute with Pull Request.
 
 **Naming Convention for Imports:**
 `[Philosophy]-[DeviceName]-[OSVersion].json`
