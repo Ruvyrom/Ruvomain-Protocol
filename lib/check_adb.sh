@@ -21,3 +21,7 @@ echo -e "${RED}[ERROR]${NC}Directory $APP_DIR not found."
 exit 1
 fi
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+check_adb()
+fi
