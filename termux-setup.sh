@@ -23,13 +23,34 @@ pkg update -y
 
 if ! command -v adb &> /dev/null; then
 echo "[!] ADB not found, installing..."
-pkg install android-tools -y
 fi
 
-if ! command -v jq &> /dev/null; then
-echo "[!] ADB not found, installing..."
-pkg install jq -y
+# --- Confirmation ---
+echo "--- Warning ---"
+echo "You are about to install ADB."
+read -p "Are you sure you want to proceed? (y/N): " confirm
+
+if [[ $confirm != "y" && $confirm != "Y" ]]; then
+echo "Operation cancelled."
+exit 0
 fi
+
+pkg install android-tools -y
+
+if ! command -v jq &> /dev/null; then
+echo "[!] JQ not found, installing..."
+
+# --- Confirmation ---
+echo "--- Warning ---"
+echo "You are about to install JQ"
+read -p "Are you sure you want to proceed? (y/N): " confirm
+
+if [[ $confirm != "y" && $confirm != "Y" ]]; then
+echo "Operation cancelled."
+exit 0
+fi
+
+pkg install jq -y
 
 # 2. Granting storage access
 echo "[*] Requesting storage access (please confirm thepopup)..."
