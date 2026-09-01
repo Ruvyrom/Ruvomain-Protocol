@@ -183,7 +183,7 @@ make help
 <summary><b>You have a specific device? Create your JSON profile </b></summary>
 
 Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
-Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation).*
+Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).*
 </details>
 
 <details>
