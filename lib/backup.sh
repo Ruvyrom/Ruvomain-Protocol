@@ -20,7 +20,7 @@ echo '  "apps":['
 # Retrieval and formatting of packages
 # 'pm list packages -u' displays: package:com.example.app
 local packages
-packages=$(adb shell pm list packages -u | sed 's/package://g' | sort)
+packages=$($EXEC pm list packages -u | sed 's/package://g' | grep -v '^$' | sort) || { echo "Erreur lors de la récupération des apps";return 1; }
 
 if [[ -z "$packages" ]]; then
 echo "[!] Error : Unable to retrieve the list of packages. Check ADB."
