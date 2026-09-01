@@ -14,7 +14,7 @@ fi
 
 vl_menu() {
 clear
-echo "--- Santé du Système ---"
+echo "--- System's health ---"
 $EXEC dumpsys battery | grep "level"
 $EXEC shell dumpsys cpuinfo | head -n 1
 
