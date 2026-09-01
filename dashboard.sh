@@ -21,14 +21,7 @@ echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
 echo -e "==========================================${NC}"
 show_logo
 
-# --- Auto-fix Permissions (Targeted) ---
-modules=(""$t" "$r2""$i"/"$r1""$i".sh" "$r2""$d"/"$r1""$d".sh" ""$r2""$b"/"$r1""$b".sh" ""$r2""$r3"/"$r1""$r3".sh")
-
-for mod in "${modules[@]}"; do
-if [ -f "$mod" ]; then
-chmod +x "$mod"
-fi
-done
+autoperm
 
 # Define the options
 options=(
