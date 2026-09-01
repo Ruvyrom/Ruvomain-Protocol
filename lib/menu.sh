@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 menu() {
-echo "--- Santé du Système ---"
+echo "--- System's health ---"
 $EXEC dumpsys battery | grep "level"
 $EXEC dumpsys cpuinfo | head -n 1
 
