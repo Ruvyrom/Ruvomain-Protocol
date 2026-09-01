@@ -25,6 +25,8 @@ BACKUPS_DIR="$(dirname "$0")/../ruvomain-backup/backups"
 DEBLOAT_DIR="$REPO_DIR/lib/debloat.sh"
 RESTORE_DIR="$REPO_DIR/lib/restore.sh"
 AUTOP_DIR="$REPO_DIR/lib/autoperm.sh"
+VLOGS_DIR="$REPO_DIR/lib/view-logs.sh"
+VLMENU_DIR="$REPO_DIR/lib/vl-menu.sh"
 
 # --- Sources & Execution Permissions ---
 MODULES_DIR=(
@@ -45,6 +47,8 @@ MODULES_DIR=(
 "$DEBLOAT_DIR"
 "$RESTORE_DIR"
 "$AUTOP_DIR"
+"$VLOGS_DIR"
+"$VLMENU_DIR"
 )
 
 for mod in "${MODULES[@]}"; do
