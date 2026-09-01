@@ -4,7 +4,7 @@
 # Version: v2.0.0
 
 # --- Dynamic Path Resolution and sources---
-REPO_DIR="$(cd "./Ruvomain-Protocole" && pwd)"
+REPO_DIR="$(cd "./Ruvomain-Protocol" && pwd)"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
