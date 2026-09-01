@@ -6,7 +6,7 @@
 # --- Dynamic Path Resolution and sources---
 REPO_DIR="$(dirname "$(readlink -f"$0")")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
-if [ -f "$SOURCES_DIR" ]; then
+if [ -z "$SOURCES_LOADED" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
 else
@@ -14,6 +14,7 @@ echo "Error: Could not find $SOURCES_DIR"
 exit 1
 fi
 sources
+export SOURCES_LOADED=1
 
 clear
 show_logo
