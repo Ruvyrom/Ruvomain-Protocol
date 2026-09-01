@@ -3,11 +3,11 @@
 init_logs-restore() {
 local log_dir="${1:-$REPO_DIR/ruvomain-restore/logs}"
 
-mkdir -p "$logdir"
+mkdir -p "$log_dir"
 
-find "$logdir" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "$log_dir" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
 
-LOGFILE="$logdir"/ruvomain-restore-$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="$log_dir"/ruvomain-restore-$(date +%Y%m%d_%H%M%S).log"
 
 exec > >(tee -a "$LOGFILE") 2>&1
 }
