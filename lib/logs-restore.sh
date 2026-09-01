@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 init_logs-restore() {
-mkdir -p $REPO_DIR/ruvomain-restore/logs
+mkdir -p "$REPO_DIR/ruvomain-restore/logs"
 
 find "$REPO_DIR/ruvomain-restore/logs" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
 
