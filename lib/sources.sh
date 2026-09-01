@@ -3,6 +3,7 @@
 REPO_DIR="${REPO_DIR:-$(dirname "$(readlink -f "$0")")}"
 
 sources() {
+[[ -n "$SOURCES_LOADED" ]] && return
 # --- Dynamic Path Resolution ---
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
@@ -54,6 +55,8 @@ else
 printf "[!] Error : Module %s not found.\n" "$mod" >&2
 fi
 done
+
+SOURCES_LOADED=1
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
