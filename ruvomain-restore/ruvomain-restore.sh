@@ -27,3 +27,10 @@ ensure_jq || exit 1
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Restoration ===${NC}"
 
 restore
+
+echo "--------------------------------------------------"
+echo "Operation completed successfully."
+echo "If URAAM has been useful to you, a star on GitHub is"
+echo "the best way to support the project:"
+echo "https://github.com/ton-pseudo/ruvomain-protocol"
+echo "--------------------------------------------------"
