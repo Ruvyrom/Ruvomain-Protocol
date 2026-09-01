@@ -11,3 +11,7 @@ LOGFILE="$1"/ruvomain-debloat-$(date +%Y%m%d_%H%M%S).log"
 
 exec > >(tee -a "$LOGFILE") 2>&1
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+init_logs()
+fi
