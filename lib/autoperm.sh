@@ -15,11 +15,11 @@ sources
 
 # --- Auto-fix Permissions (Targeted) ---
 modules=("
-"${./termux-setup.sh}"
-"${./ruvomain-installer/ruvomain-installer.sh}"
-"${./ruvomain-debloat/ruvomain-debloat.sh"
-"${./ruvomain-backup/ruvomain-backup.sh}"
-"${./ruvomain-restore/ruvomain-restore.sh"
+"$REPO_DIR/termux-setup.sh"
+"$REPO_DIR/ruvomain-installer/ruvomain-installer.sh"
+"$REPO_DIR/ruvomain-debloat/ruvomain-debloat.sh"
+"$REPO_DIR/ruvomain-backup/ruvomain-backup.sh"
+"$REPO_DIR/ruvomain-restore/ruvomain-restore.sh"
 )
 
 for mod in "${modules[@]}"; do
