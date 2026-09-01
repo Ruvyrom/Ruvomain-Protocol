@@ -12,6 +12,7 @@ sources() {
 "debloat"="$d";
 "backup"="$b";
 "restore"="$r3";
+"$REPO_DIR/ruvomain-backup/logs"="$bl";
 
 # --- Dynamic Path Resolution ---
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
