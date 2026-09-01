@@ -30,6 +30,7 @@ LOGSRESTORE_DIR="$REPO_DIR/lib/logs-restore.sh"
 BACKUPS_DIR="$(dirname "$0")/../ruvomain-backup/backups"
 DEBLOAT_DIR="$REPO_DIR/lib/debloat.sh"
 RESTORE_DIR="$REPO_DIR/lib/restore.sh"
+AUTOP_DIR="$REPO_DIR/lib/autoperm.sh"
 
 # --- Execution Permissions ---
 chmod +x "$STYLE_DIR"
@@ -48,6 +49,7 @@ chmod +x "$LOGSBACKUP_DIR"
 chmod +x "$LOGSRESTORE_DIR"
 chmod +x "$DEBLOAT_DIR"
 chmod +x "$RESTORE_DIR"
+chmod +x "$AUTOP_DIR"
 
 # --- Sources ---
 source "$STYLE_DIR"
@@ -67,4 +69,5 @@ source "$LOGSBACKUP_DIR"
 source "$LOGSRESTORE_DIR"
 source "$DEBLOAT_DIR"
 source "$RESTORE_DIR"
+source "$AUTOP_DIR"
 } 
