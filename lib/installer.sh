@@ -2,7 +2,7 @@
 
 installer() {
 # Installation process
-echo-e "${GREEN}[INFO]${NC} Deploying packages..."
+echo -e "${GREEN}[INFO]${NC} Deploying packages..."
 
 for apk in "$APP_DIR"/*.apk; do
 if [ -f "$apk" ]; then
