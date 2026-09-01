@@ -27,3 +27,10 @@ check_adb
 
 ## --- Installation ---
 installer
+
+echo "--------------------------------------------------"
+echo "Operation completed successfully."
+echo "If URAAM has been useful to you, a star on GitHub is"
+echo "the best way to support the project:"
+echo "https://github.com/ton-pseudo/ruvomain-protocol"
+echo "--------------------------------------------------"
