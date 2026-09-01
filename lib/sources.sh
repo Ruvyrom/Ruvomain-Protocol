@@ -2,7 +2,7 @@
 
 sources() {
 # --- Dynamic Path Resolution ---
-STYLE_DIR="$"$rdl"styles.sh"
+STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
 ENSUREJQ_DIR="$REPO_DIR/lib/ensure-jq.sh"
 LOGS_DIR="$REPO_DIR/lib/logs.sh"
