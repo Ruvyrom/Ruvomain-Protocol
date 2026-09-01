@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
 sources() {
+#Variable
+"ruvomain-"="$r1";
+"./ruvomain-"="$r2";
+"./termux-setup.sh"="$t";
+"installer"="$i";
+"debloat"="$d";
+"backup"="$b";
+"restore"="$r3";
+
 # --- Dynamic Path Resolution ---
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
 ENSURE_DIR="$REPO_DIR/lib/ensure-adb.sh"
@@ -22,7 +31,7 @@ BACKUPS_DIR="$(dirname "$0")/../ruvomain-backup/backups"
 DEBLOAT_DIR="$REPO_DIR/lib/debloat.sh"
 RESTORE_DIR="$REPO_DIR/lib/restore.sh"
 
-# --- Sources ---
+# --- Execution Permissions ---
 chmod +x "$STYLE_DIR"
 chmod +x "$ENSURE_DIR"
 chmod +x "$ENSUREJQ_DIR"
@@ -39,6 +48,8 @@ chmod +x "$LOGSBACKUP_DIR"
 chmod +x "$LOGSRESTORE_DIR"
 chmod +x "$DEBLOAT_DIR"
 chmod +x "$RESTORE_DIR"
+
+# --- Sources ---
 source "$STYLE_DIR"
 source "$ENSURE_DIR"
 source "$ENSUREJQ_DIR"
