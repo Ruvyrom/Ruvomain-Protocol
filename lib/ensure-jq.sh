@@ -16,11 +16,11 @@ y|Y)
 printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
 # 3. Existing installation logic
 if command -v apt-get >/dev/null; then
-"$3" apt-get update && "$3" apt-get install -y jq
+sudo apt-get update && sudo apt-get install -y jq
 elif command -v pacman >/dev/null; then
-"$3" pacman -S --noconfirm jq
+sudo pacman -S --noconfirm jq
 elif command -v dnf >/dev/null; then
-"$3" dnf install -y jq
+sudo dnf install -y jq
 else
 printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
 return1
