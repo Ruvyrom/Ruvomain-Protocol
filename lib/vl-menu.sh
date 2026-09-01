@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+REPO_DIR="$(cd "./Ruvomain-Protocol" && pwd)"
+SOURCES_DIR="$REPO_DIR/lib/sources.sh"
+if [ -f "$SOURCES_DIR" ]; then
+chmod +x "$SOURCES_DIR"
+source "$SOURCES_DIR"
+else
+echo "Error: Could not find $SOURCES_DIR"
+exit 1
+fi
+sources
+
 vl_menu() {
 clear
 echo "Select log type you want see"
