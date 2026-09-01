@@ -19,8 +19,6 @@ echo -e "${RED}✗${NC} Installation failed."
 fi
 fi
 done
-
-echo -e "${GREEN}[DONE]${NC} Deployment complete."
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
