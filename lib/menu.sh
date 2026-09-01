@@ -8,6 +8,7 @@ options=(
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
 "Restore (Revert/Install Apps)"
+"View Logs"
 "Exit"
 )
 
@@ -33,6 +34,9 @@ $REPO_DIR/ruvomain-backup/ruvomain-backup.sh
 clear
 $REPO_DIR/ruvomain-restore/ruvomain-restore.sh
 ;;
+"View Logs")
+clear
+vl_menu
 "Exit")
 echo "Exiting protocol..."
 exit 0
