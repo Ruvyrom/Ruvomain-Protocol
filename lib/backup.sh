@@ -22,6 +22,11 @@ echo '  "apps":['
 local packages
 packages=$(adb shell pm list packages -u | sed 's/package://g' | sort)
 
+if [[ -z "$packages" ]]; then
+echo "[!] Erreur : Impossible de récupérer la liste des packages. VérifieADB."
+return 1
+fi
+
 local pkg_array=($packages)
 local total=${#pkg_array[@]}
 local count=0
@@ -47,3 +52,7 @@ echo '}' >> "$output_file"
 
 echo "--- Snapshot completed successfully: $output_file ---"
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+generate_snapshot
+fi
