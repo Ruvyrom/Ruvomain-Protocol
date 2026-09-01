@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 menu() {
-clear
 options=(
 "Termux Setup (Semi auto Termux setup)"
 "Installer (APK installation)"
