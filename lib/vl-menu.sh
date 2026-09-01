@@ -38,8 +38,7 @@ clear
 view_blogs
 ;;
 "Return to Dashboard")
-clear
-menu
+break
 ;;
 "Exit")
 echo "Exiting protocol..."
