@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 init_logs() {
-mkdir -p $REPO_DIR/ruvomain-debloat/logs
+local log_dir="${1:-$REPO_DIR/ruvomain-debloat/logs}"
 
-find "$REPO_DIR/ruvomain-debloat/logs" -name "ruvomain-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
+mkdir -p "$log_dir"
 
-LOGFILE="$REPO_DIR/ruvomain-debloat/logs/ruvomain-debloat-$(date +%Y%m%d_%H%M%S).log"
+find "$log_dir" -name "ruvomain-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
+
+LOGFILE="$log_dir"/ruvomain-debloat-$(date +%Y%m%d_%H%M%S).log"
 
 exec > >(tee -a "$LOGFILE") 2>&1
 }
