@@ -28,4 +28,9 @@ ensure_adb || exit 1
 # --- Execution
 generate_snapshot
 
-
+echo "--------------------------------------------------"
+echo "Opération terminée avec succès."
+echo "Si URAAM vous a été utile, uneétoile sur GitHub est"
+echo "le meilleur moyen de soutenir le projet :"
+echo "https://github.com/ton-pseudo/ruvomain-protocol"
+echo "--------------------------------------------------"
