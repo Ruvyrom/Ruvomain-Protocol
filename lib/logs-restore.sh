@@ -5,7 +5,7 @@ local log_dir="${1:-$REPO_DIR/ruvomain-restore/logs}"
 
 mkdir -p "$logdir"
 
-find "$REPO_DIR/ruvomain-restore/logs" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "logdir" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
 
 LOGFILE="$logdir"/ruvomain-restore-$(date +%Y%m%d_%H%M%S).log"
 
