@@ -25,8 +25,13 @@ modules=("
 for mod in "${modules[@]}"; do
 if [ -f "$mod" ]; then
 chmod +x "$mod"
+printf "${GREEN}[✓] Permissions applied: %s${NC}\n" "$(basename "$mod")"
 else
 printf "[!] Error : Module %s not found.\n" "$mod" >&2
 fi
 done
-}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+autoperm
+fi
+} 
