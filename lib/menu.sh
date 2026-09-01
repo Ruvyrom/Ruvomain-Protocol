@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 menu() {
+echo "--- Santé du Système ---"
+$EXEC dumpsys battery | grep "level"
+$EXEC dumpsys cpuinfo | head -n 1
+
 options=(
 "Termux Setup (Semi auto Termux setup)"
 "Installer (APK installation)"
