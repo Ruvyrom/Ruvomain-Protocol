@@ -15,14 +15,6 @@ exit 1
 fi
 sources
 
-"ruvomain-"="$r1";
-"./ruvomain-"="$r2";
-"./termux-setup.sh"="$t";
-"installer"="$i";
-"debloat"="$d";
-"backup"="$b";
-"restore"="$r3";
-
 clear
 echo -e "${BLUE}=========================================="
 echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
