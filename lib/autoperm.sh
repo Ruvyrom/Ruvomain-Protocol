@@ -14,11 +14,19 @@ fi
 sources
 
 # --- Auto-fix Permissions (Targeted) ---
-modules=(""$t" ""$r2""$i"/"$r1""$i".sh" ""$r2""$d"/"$r1""$d".sh" ""$r2""$b"/"$r1""$b".sh" ""$r2""$r3"/"$r1""$r3".sh")
+modules=("
+"${./termux-setup.sh}"
+"${./ruvomain-installer/ruvomain-installer.sh}"
+"${./ruvomain-debloat/ruvomain-debloat.sh"
+"${./ruvomain-backup/ruvomain-backup.sh}"
+"${./ruvomain-restore/ruvomain-restore.sh"
+)
 
 for mod in "${modules[@]}"; do
 if [ -f "$mod" ]; then
 chmod +x "$mod"
+else
+printf "[!] Error : Module %s not found.\n" "$mod" >&2
 fi
 done
 }
