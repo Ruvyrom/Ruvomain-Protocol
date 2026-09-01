@@ -20,7 +20,7 @@ echo '  "apps":['
 # Retrieval and formatting of packages
 # 'pm list packages -u' displays: package:com.example.app
 local packages
-packages=$($EXEC pm list packages -u | sed 's/package://g' | grep -v '^$' | sort) || { echo "Erreur lors de la récupération des apps";return 1; }
+packages=$($EXEC pm list packages -u | sed 's/package://g' | grep -v '^$' | sort) || { echo "Error: Failed to retrieve package list.";return 1; }
 
 if [[ -z "$packages" ]]; then
 echo "[!] Error : Unable to retrieve the list of packages. Check ADB."
