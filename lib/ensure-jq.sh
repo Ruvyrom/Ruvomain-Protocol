@@ -1,23 +1,34 @@
 #!/usr/bin/env bash
 
-jq="$1"; 
-sudo="$2";
-
 ensure_jq() {
-    if command -v "$1" &>/dev/null; then
-        return 0
-    fi
+# 1. Verify if ADBis installed
+if command -v jq >/dev/null; then
+printf "${GREEN}[✓] JQ is already installed and ready to use.${NC}\n"
+return 0
+fi
 
-    printf "${RED}[!] ADB not found.${NC}\n"
-    printf "${GREEN}[+] Attempting auto-installation...${NC}\n"
-    if command -v apt-get &>/dev/null; then
-        "$2" apt-get update && "$2" apt-get install -y "$1"
-    elif command -v pacman &>/dev/null; then
-        "$2" pacman -S --noconfirm "$1"
-    elif command -v dnf &>/dev/null; then
-        "$2" dnf install -y "$1"
-    else
-        printf "${RED}[!] ERROR: No supported package manager found to install JQ. Please install JQ manually.${NC}\n" >&2
-        return 1
-    fi
+# 2. If not found, ask for confirmation
+printf "${RED}[!] jq is not detected onyour system.${NC}\n"
+read -p "Do you want to install jq now? (y/n) : " choice
+
+case "$choice" in
+y|Y)
+printf "${GREEN}[+] Attemptingautomatic installation...${NC}\n"
+# 3. Existing installation logic
+if command -v apt-get >/dev/null; then
+"$3" apt-get update && "$3" apt-get install -y jq
+elif command -v pacman >/dev/null; then
+"$3" pacman -S --noconfirm jq
+elif command -v dnf >/dev/null; then
+"$3" dnf install -y jq
+else
+printf"${RED}[!] Package manager not supported. Please install jq manually.${NC}\n" >&2
+return1
+fi
+;;
+*)
+printf "${YELLOW}[-] Installation cancelled. jq is required for the project to work properly.${NC}\n"
+return 1
+;;
+esac
 }
