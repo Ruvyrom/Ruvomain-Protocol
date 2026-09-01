@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-android-tools="$1"; 
-adb="$2";
-sudo="$3";
-
 ensure_adb() {
     if command -v "$2" &>/dev/null; then
         return 0
