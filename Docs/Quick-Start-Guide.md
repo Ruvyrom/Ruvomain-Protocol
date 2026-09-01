@@ -17,7 +17,7 @@
 
 OR
 
-**2. Use Wireless Debuging:**
+**2. Use Wireless Debuging:** (recommended for Termux, WSL)
 
 <details>
 <summary>Configuration</summary>
