@@ -22,6 +22,6 @@ echo -e "==========================================${NC}"
 show_logo
 
 autoperm
-ensure-adb
-ensure-jq
+ensure-adb || exit 1
+ensure-jq || exit 1
 menu
