@@ -15,18 +15,22 @@ PS3="Select a module to execute (1-6): "
 select opt in "${options[@]}"; do
 case $opt in
 "Termux Setup (Setup Termux before scripts exexution)")
+clear
 $REPO_DIR/termux-setup.sh
 ;;
 "Installer (APK installation)")
+clear
 $REPO_DIR/ruvomain-installer/ruvomain-installer.sh
 ;;
 "Debloat (System Optimization)")
 $REPO_DIR/ruvomain-debloat/ruvomain-debloat.sh
 ;;
 "Backup (Snapshot Data)")
+clear
 $REPO_DIR/ruvomain-backup/ruvomain-backup.sh
 ;;
 "Restore (Revert/Reinstall Apps)")
+clear
 $REPO_DIR/ruvomain-restore/ruvomain-restore.sh
 ;;
 "Exit")
