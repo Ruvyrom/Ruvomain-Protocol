@@ -29,4 +29,9 @@ ensure_jq || exit 1
 debloat
 final
 
-echo -e "${GREEN}=== Operation finished===${NC}"
+echo "--------------------------------------------------"
+echo "Operation completed successfully."
+echo "If URAAM has been useful to you, a star on GitHub is"
+echo "the best way to support the project:"
+echo "https://github.com/ton-pseudo/ruvomain-protocol"
+echo "--------------------------------------------------"
