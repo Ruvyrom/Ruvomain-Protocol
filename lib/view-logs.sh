@@ -1,75 +1,30 @@
 #!/usr/bin/env bash
 
-RD="ruvomain-debloat"
-RB="ruvomain-backup"
-RR="ruvomain-restore"
+view_logs_generic() {
+local target_dir="$1"
+local log_pattern="$2"
 
-view_dlogs(){
-if ls $REPO_DIR/$RD/logs/$RD*.log >/dev/null 2>&1; then
-
+if ls "$REPO_DIR/$target_dir/logs/$log_pattern"*.log >/dev/null 2>&1; then
 if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
-nano "$REPO_DIR/$RD/logs/"*.log
-
+echo -e "${GREEN}Openinglogs with nano...${NC}"
+nano "$REPO_DIR/$target_dir/logs/$log_pattern"*.log
 elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
-cat "$REPO_DIR/$RD/logs/"*.log| less
-
+echo -e "${YELLOW}Nanonot found. Using less...${NC}"
+cat "$REPO_DIR/$target_dir/logs/$log_pattern"*.log | less
 else
-echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
-cat "$REPO_DIR/$RD/logs/"*.log
+echo -e "${YELLOW}Using cat (no nano/less found):${NC}"
+cat "$REPO_DIR/$target_dir/logs/$log_pattern"*.log
 fi
-
 else
-echo -e "${RED}No log files found in $REPO_DIR/$RD/logs/${NC}"
+echo -e "${RED}No log files found in $target_dir/logs/${NC}"
 sleep 2
 fi
 }
 
-view-blogs(){
-if ls $REPO_DIR/$RB/logs/$RB*.log >/dev/null 2>&1; then
-
-if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
-nano "$REPO_DIR/$RB/logs/"*.log
-
-elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
-cat "$REPO_DIR/$RB/logs/"*.log| less
-
-else
-echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
-cat "$REPO_DIR/$RB/logs/"*.log
-fi
-
-else
-echo -e "${RED}No log files found in $REPO_DIR/$RB/logs/${NC}"
-sleep 2
-fi
-}
-
-view_rlogs(){
-if ls $REPO_DIR/$RR/logs/$RR*.log >/dev/null 2>&1; then
-
-if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
-nano "$REPO_DIR/$RR/logs/"*.log
-
-elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
-cat "$REPO_DIR/$RR/logs/"*.log| less
-
-else
-echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
-cat "$REPO_DIR/$RR/logs/"*.log
-fi
-
-else
-echo -e "${RED}No log files found in $REPO_DIR/$RR/logs/${NC}"
-sleep 2
-fi
-}
+view_dlogs() { view_logs_generic "ruvomain-debloat" "ruvomain-debloat"; }
+view_blogs() { view_logs_generic "ruvomain-backup" "ruvomain-backup"; }
+view_rlogs() { view_logs_generic "ruvomain-restore" "ruvomain-restore"; }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-view-logs()
+view_logs_generic()
 fi
