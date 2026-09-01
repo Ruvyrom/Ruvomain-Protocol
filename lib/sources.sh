@@ -24,9 +24,36 @@ RESTORE_DIR="$REPO_DIR/lib/restore.sh"
 AUTOP_DIR="$REPO_DIR/lib/autoperm.sh"
 
 # --- Sources & Execution Permissions ---
-MODULES_DIR=("$STYLE_DIR" "$ENSURE_DIR" "$ENSUREJQ_DIR" "$LOGS_DIR" "$LOGO_DIR" "$MODEL_DIR" "$ENV_DIR" "$MENU_DIR" "$FINAL_DIR" "$CHECK_DIR" "$INSTALLER_DIR" "$BACKUP_DIR" "$LOGSBACKUP_DIR" "$LOGSRESTORE_DIR" "$DEBLOAT_DIR" "$RESTORE_DIR" "$AUTOP_DIR")
+MODULES_DIR=(
+"$STYLE_DIR"
+"$ENSURE_DIR"
+"$ENSUREJQ_DIR"
+"$LOGS_DIR"
+"$LOGO_DIR"
+"$MODEL_DIR"
+"$ENV_DIR"
+"$MENU_DIR"
+"$FINAL_DIR"
+"$CHECK_DIR"
+"$INSTALLER_DIR"
+"$BACKUP_DIR"
+"$LOGSBACKUP_DIR"
+"$LOGSRESTORE_DIR"
+"$DEBLOAT_DIR"
+"$RESTORE_DIR"
+"$AUTOP_DIR"
+)
 
-for mod in "${MODULES_DIR[@]}"; do
-[ -f "$mod" ] && chmod +x "$mod" && source "$mod"
+for mod in "${MODULES[@]}"; do
+if [[ -f "$mod" ]]; then
+chmod +x "$mod"
+source "$mod"
+else
+printf "[!] Error : Module %s not found.\n" "$mod" >&2
+fi
 done
-} 
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+sources()
+fi
