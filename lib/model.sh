@@ -7,3 +7,7 @@ CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.pro
 printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 printf "%s\n" "${CYAN}------------------------------------------${NC}\n"
 } 
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+model()
+fi
