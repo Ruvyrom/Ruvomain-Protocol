@@ -87,6 +87,8 @@ make help
 ---
 ### Table of Contents
 
+[Contributing](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main#-contributing)
+
 [Dictionary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
 
 [All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#documentation)
