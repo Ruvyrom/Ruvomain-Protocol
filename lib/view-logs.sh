@@ -4,7 +4,7 @@ RD="ruvomain-debloat"
 RB="ruvomain-backup"
 RR="ruvomain-restore"
 
-view_logs(){
+view_dlogs(){
 if ls $REPO_DIR/$RD/logs/$RD*.log >/dev/null 2>&1; then
 
 if command -v nano >/dev/null 2>&1; then
