@@ -46,8 +46,6 @@ else
 echo -e "${RED}Failed (already present or not found)${NC}"
 fi
 done
-
-echo -e "${GREEN}=== Operation finished===${NC}"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
