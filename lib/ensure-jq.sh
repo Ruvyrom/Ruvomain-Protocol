@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 ensure_jq() {
-# 1. Verify if ADBis installed
+# 1. Verify if JQ is installed
 if command -v jq >/dev/null; then
 printf "${GREEN}[✓] JQ is already installed and ready to use.${NC}\n"
 return 0
 fi
 
 # 2. If not found, ask for confirmation
-printf "${RED}[!] jq is not detected onyour system.${NC}\n"
-read -p "Do you want to install jq now? (y/n) : " choice
+printf "${RED}[!] JQ is not detected onyour system.${NC}\n"
+read -p "Do you want to install JQ now? (y/n) : " choice
 
 case "$choice" in
 y|Y)
@@ -22,12 +22,12 @@ elif command -v pacman >/dev/null; then
 elif command -v dnf >/dev/null; then
 "$3" dnf install -y jq
 else
-printf "${RED}[!] Package manager not supported. Please install jq manually.${NC}\n" >&2
+printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
 return1
 fi
 ;;
 *)
-printf "${YELLOW}[-] Installation cancelled. jq is required for the project to work properly.${NC}\n"
+printf "${YELLOW}[-] Installation cancelled. JQ is required for the project to work properly.${NC}\n"
 return 1
 ;;
 esac
