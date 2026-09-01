@@ -13,7 +13,7 @@ read -p "Do you want to install jq now? (y/n) : " choice
 
 case "$choice" in
 y|Y)
-printf "${GREEN}[+] Attemptingautomatic installation...${NC}\n"
+printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
 # 3. Existing installation logic
 if command -v apt-get >/dev/null; then
 "$3" apt-get update && "$3" apt-get install -y jq
@@ -22,7 +22,7 @@ elif command -v pacman >/dev/null; then
 elif command -v dnf >/dev/null; then
 "$3" dnf install -y jq
 else
-printf"${RED}[!] Package manager not supported. Please install jq manually.${NC}\n" >&2
+printf "${RED}[!] Package manager not supported. Please install jq manually.${NC}\n" >&2
 return1
 fi
 ;;
