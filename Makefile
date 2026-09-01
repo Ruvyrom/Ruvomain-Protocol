@@ -11,8 +11,11 @@
 #   make help     (run command help)
 #
 # For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+#
 # For Ruvomain-installer, place your APK files in ./ruvomain-installer/Apps
+#
 # For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+#
 # Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
 .PHONY: all dashboard termux debloat backup restore install clean bclean help
