@@ -34,7 +34,7 @@ menu
 echo "Exiting protocol..."
 exit 0
 ;;
-*) echo -e "${RED}Invalid option. Please choose 1-6.${NC}";;
+*) echo -e "${RED}Invalid option. Please choose 1-5.${NC}";;
 esac
 done
 }
