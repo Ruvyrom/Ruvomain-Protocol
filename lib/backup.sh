@@ -23,7 +23,7 @@ local packages
 packages=$(adb shell pm list packages -u | sed 's/package://g' | sort)
 
 if [[ -z "$packages" ]]; then
-echo "[!] Erreur : Impossible de récupérer la liste des packages. VérifieADB."
+echo "[!] Error : Unable to retrieve the list of packages. Check ADB."
 return 1
 fi
 
