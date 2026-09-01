@@ -17,14 +17,14 @@ exit 1
 fi
 sources
 
+show_logo
 init_logs
 env_detect
-show_logo
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
 
-ensure_adb
-ensure_jq
+ensure_adb || exit 1
+ensure_jq || exit 1
 debloat
 final
 
