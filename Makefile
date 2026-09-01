@@ -63,3 +63,4 @@ help:
 @echo "  make restore - Runs the restore module"
 @echo "  make install - Runs the installer module"
 @echo "  make clean   - Runs clean logs"
+@echo "  make bclean  - Runs clean backup
