@@ -2,6 +2,9 @@
 
 sources() {
 #Variable
+"android-tools"="$1"; 
+"adb"="$2";
+"sudo"="$3";
 "ruvomain-"="$r1";
 "./ruvomain-"="$r2";
 "./termux-setup.sh"="$t";
