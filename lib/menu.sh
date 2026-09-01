@@ -35,3 +35,4 @@ exit 0
 *) echo -e "${RED}Invalid option. Please choose 1-6.${NC}";;
 esac
 done
+}
