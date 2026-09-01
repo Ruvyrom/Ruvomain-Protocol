@@ -3,7 +3,7 @@
 menu() {
 clear
 options=(
-"Termux Setup (Semi-auto Termux setup)"
+"Termux Setup (Semi auto Termux setup)"
 "Installer (APK installation)"
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
@@ -12,10 +12,10 @@ options=(
 "Exit"
 )
 
-PS3="Select a module to execute (1-6): "
+PS3="Select a module to execute (1-7): "
 select opt in "${options[@]}"; do
 case $opt in
-"Termux Setup (Setup Termux before scripts exexution)")
+"Termux Setup (Semi auto Termux setuo)")
 clear
 $REPO_DIR/termux-setup.sh
 ;;
@@ -37,6 +37,7 @@ $REPO_DIR/ruvomain-restore/ruvomain-restore.sh
 "View Logs")
 clear
 vl_menu
+;;
 "Exit")
 echo "Exiting protocol..."
 exit 0
