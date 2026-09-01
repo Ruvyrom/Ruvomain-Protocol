@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPO_DIR="$(cd "./Ruvomain-Protocol" && pwd)"
+REPO_DIR="$(dirname "$(dirname "$(readlink -f"$0")")")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
