@@ -18,7 +18,6 @@ echo "--- Santé du Système ---"
 adbshell dumpsys battery | grep "level"
 adb shell dumpsys cpuinfo | head -n 1
 
-echo "Select log type you want see"
 options=(
 "Debloat Logs"
 "Restore Logs"
