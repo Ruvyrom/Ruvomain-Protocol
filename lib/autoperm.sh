@@ -22,3 +22,4 @@ if [ -f "$mod" ]; then
 chmod +x "$mod"
 fi
 done
+}
