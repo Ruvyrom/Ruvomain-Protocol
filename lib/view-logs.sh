@@ -1,25 +1,71 @@
 #!/usr/bin/env bash
 
+RD="ruvomain-debloat"
+RB="ruvomain-backup"
+RR="ruvomain-restore"
+
 view_logs(){
-if ls $REPO_DIR/ruvomain-debloat/logs/ruvomain-debloat*.log >/dev/null 2>&1; then
-if ls $REPO_DIR/ruvomain-backup/logs/*.log >/dev/null 2>&1; then
-if ls $REPO_DIR/ruvomain-restore/logs/*.log >/dev/null 2>&1; then
+if ls $REPO_DIR/$RD/logs/$RD*.log >/dev/null 2>&1; then
 
 if command -v nano >/dev/null 2>&1; then
 echo -e "${GREEN}Opening logs with nano...${NC}"
-nano "$REPO_DIR/logs/"*.log
+nano "$REPO_DIR/$RD/logs/"*.log
 
 elif command -v less >/dev/null 2>&1; then
-echo -e"${YELLOW}Nano not found. Using less...${NC}"
-cat "$REPO_DIR/logs/"*.log| less
+echo -e "${YELLOW}Nano not found. Using less...${NC}"
+cat "$REPO_DIR/$RD/logs/"*.log| less
 
 else
 echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
-cat "$REPO_DIR/ruvomain-debloat/logs/"*.log
+cat "$REPO_DIR/$RD/logs/"*.log
 fi
 
 else
-echo -e "${RED}No log files found in $REPO_DIR/ruvomain-debloat/logs/${NC}"
+echo -e "${RED}No log files found in $REPO_DIR/$RD/logs/${NC}"
+sleep 2
+fi
+}
+
+view-blogs(){
+if ls $REPO_DIR/$RB/logs/$RB*.log >/dev/null 2>&1; then
+
+if command -v nano >/dev/null 2>&1; then
+echo -e "${GREEN}Opening logs with nano...${NC}"
+nano "$REPO_DIR/$RB/logs/"*.log
+
+elif command -v less >/dev/null 2>&1; then
+echo -e "${YELLOW}Nano not found. Using less...${NC}"
+cat "$REPO_DIR/$RB/logs/"*.log| less
+
+else
+echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
+cat "$REPO_DIR/$RB/logs/"*.log
+fi
+
+else
+echo -e "${RED}No log files found in $REPO_DIR/$RB/logs/${NC}"
+sleep 2
+fi
+}
+
+view_rlogs(){
+if ls $REPO_DIR/$RR/logs/$RR*.log >/dev/null 2>&1; then
+
+if command -v nano >/dev/null 2>&1; then
+echo -e "${GREEN}Opening logs with nano...${NC}"
+nano "$REPO_DIR/$RR/logs/"*.log
+
+elif command -v less >/dev/null 2>&1; then
+echo -e "${YELLOW}Nano not found. Using less...${NC}"
+cat "$REPO_DIR/$RR/logs/"*.log| less
+
+else
+echo -e "${YELLOW}Nano and less not found. Dumping to screen:${NC}"
+cat "$REPO_DIR/$RR/logs/"*.log
+fi
+
+else
+echo -e "${RED}No log files found in $REPO_DIR/$RR/logs/${NC}"
 sleep 2
 fi
 }
