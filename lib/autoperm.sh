@@ -14,7 +14,7 @@ fi
 sources
 
 # --- Auto-fix Permissions (Targeted) ---
-modules=("
+modules=(
 "$REPO_DIR/termux-setup.sh"
 "$REPO_DIR/ruvomain-installer/ruvomain-installer.sh"
 "$REPO_DIR/ruvomain-debloat/ruvomain-debloat.sh"
