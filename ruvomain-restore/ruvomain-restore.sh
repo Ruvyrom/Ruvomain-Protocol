@@ -21,8 +21,8 @@ sources
 show_logo
 init_logs-restore
 env_detect
-ensure-adb
-ensure-jq
+ensure_adb
+ensure_jq
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Restoration ===${NC}"
 
