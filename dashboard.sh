@@ -16,12 +16,12 @@ fi
 sources
 
 clear
+show_logo
 echo -e "${BLUE}=========================================="
 echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
 echo -e "==========================================${NC}"
-show_logo
 
-autoperm
 ensure-adb || exit 1
 ensure-jq || exit 1
+autoperm
 menu
