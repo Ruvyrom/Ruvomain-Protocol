@@ -2,7 +2,7 @@
 
 ensure_adb() {
 # 1. Verify if ADB is installed
-if command -v "$2" >/dev/null; then
+if command -v adb >/dev/null; then
 printf "${GREEN}[✓] ADB is already installed and ready to use.${NC}\n"
 return 0
 fi
@@ -16,11 +16,11 @@ y|Y)
 printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
 # 3. Existing installation logic
 if command -v apt-get >/dev/null; then
-"$3" apt-get update && "$3" apt-get install -y "$2"
+sudo apt-get update && sudo apt-get install -y adb
 elif command -v pacman >/dev/null; then
-"$3" pacman -S --noconfirm "$1"
+sudo pacman -S --noconfirm android-tools
 elif command -v dnf >/dev/null; then
-"$3" dnf install -y "$1"
+sudo dnf install -y android-tools
 else
 printf "${RED}[!] Package manager not supported. Please install ADB manually.${NC}\n" >&2
 return1
