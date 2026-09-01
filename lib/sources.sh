@@ -60,7 +60,7 @@ printf "[!] Error : Module %s not found.\n" "$mod" >&2
 fi
 done
 
-SOURCES_LOADED=1
+export SOURCES_LOADED=1
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
