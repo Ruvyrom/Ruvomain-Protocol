@@ -48,3 +48,8 @@ fi
 done
 
 echo -e "${GREEN}=== Operation finished===${NC}"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+restore()
+fi
