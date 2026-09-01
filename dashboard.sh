@@ -4,7 +4,7 @@
 # Version: v3.0.0
 
 # --- Dynamic Path Resolution and sources---
-REPO_DIR="$(dirname "$(dirname "$(readlink -f"$0")")")"
+REPO_DIR="$(dirname "$(readlink -f"$0")")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
