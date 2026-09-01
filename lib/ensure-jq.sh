@@ -32,3 +32,7 @@ return 1
 ;;
 esac
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+ensure_jq()
+fi
