@@ -9,3 +9,7 @@ EXEC="adb shell"
 echo-e "${BLUE}[Remote Linux/ADB Mode detected]${NC}"
 fi
 } 
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+env_detect()
+fi
