@@ -23,8 +23,8 @@ show_logo
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
 
-ensure-adb
-ensure-jq
+ensure_adb
+ensure_jq
 debloat
 final
 
