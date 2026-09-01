@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+REPO_DIR="${REPO_DIR:-$(dirname "$(readlink -f "$0")")}"
+
 sources() {
 # --- Dynamic Path Resolution ---
 STYLE_DIR="$REPO_DIR/lib/styles.sh"
