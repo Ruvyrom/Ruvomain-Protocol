@@ -29,8 +29,8 @@ ensure_adb || exit 1
 generate_snapshot
 
 echo "--------------------------------------------------"
-echo "Opération terminée avec succès."
-echo "Si URAAM vous a été utile, uneétoile sur GitHub est"
-echo "le meilleur moyen de soutenir le projet :"
+echo "Operation completed successfully."
+echo "If URAAM has been useful to you, a star on GitHub is"
+echo "the best way to support the project:"
 echo "https://github.com/ton-pseudo/ruvomain-protocol"
 echo "--------------------------------------------------"
