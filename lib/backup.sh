@@ -50,9 +50,6 @@ done
 echo '  ]' >> "$output_file"
 echo '}' >> "$output_file"
 
-echo "--- Snapshot completed successfully: $output_file ---"
-}
-
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 generate_snapshot
 fi
