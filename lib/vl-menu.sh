@@ -15,8 +15,8 @@ fi
 vl_menu() {
 clear
 echo "--- Santé du Système ---"
-adbshell dumpsys battery | grep "level"
-adb shell dumpsys cpuinfo | head -n 1
+$EXEC dumpsys battery | grep "level"
+$EXEC shell dumpsys cpuinfo | head -n 1
 
 options=(
 "Debloat Logs"
