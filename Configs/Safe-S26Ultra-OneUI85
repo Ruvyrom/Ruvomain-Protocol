@@ -1,0 +1,53 @@
+{
+  "name": "Samsung/Google Safe Debloat List",
+  "description": "Safe debloat list targeting promotional apps, background services, Google telemetry, and unused integrations.",
+  "author": "Ruvyrom",
+  "version": "1.0",
+  "apps":[
+    {
+    "packageName": "com.mygalaxy"
+    },
+    {
+    "packageName": "com.samsung.android.app.moments"
+    },
+    {
+    "packageName": "com.samsung.android.app.watchmanagerstub"
+    },
+    {
+    "packageName": "com.samsung.android.beaconmanager"
+    },
+    {
+    "packageName": "com.samsung.android.inputshare"
+    },
+    {
+    "packageName": "com.samsung.android.liveeffectservice"
+    },
+    {
+    "packageName": "com.samsung.android.smartsuggestions"
+    },
+    {
+    "packageName": "com.samsung.android.stickercenter"
+    },
+    {
+    "packageName": "com.samsung.safetyinformation"
+    },
+    {
+    "packageName": "com.sec.android.app.personalization"
+    },
+    {
+    "packageName": "com.google.android.adservices.api"
+    },
+    {
+    "packageName": "com.google.android.apps.restore"
+    },
+    {
+    "packageName": "com.google.android.feedback"
+    },
+    {
+    "packageName": "com.google.android.printservice.recommendation"
+    },
+    {
+    "packageName": "com.google.android.gms.supervision"
+    }
+  ]
+}
