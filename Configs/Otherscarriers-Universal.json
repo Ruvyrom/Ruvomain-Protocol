@@ -1,7 +1,7 @@
 {
   "name": "Others Carriers Debloat",
   "description": "Removes carrier-specific bloatware, preloaded portals, and telemetry from international carriers (Telstra, Rogers, Bell, SK Telecom, KT Olleh, NTT Docomo).",
-  "author": "Ruvomain",
+  "author": "Ruvyrom",
   "version": "1.0.0",
   "apps":[
     {
