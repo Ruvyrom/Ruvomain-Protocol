@@ -1,0 +1,32 @@
+{
+  "name": "EU Carriers Debloat",
+  "description": "Removes carrier-specific bloatware, preloaded carrier apps, and telemetry from European carriers (Orange, Vodafone, EE, Three, O2).",
+  "author": "Ruvomain",
+  "version": "1.0",
+  "apps":[
+    {
+    "packageName": "com.orange.appshop"
+    },
+    {
+    "packageName": "com.orange.mail.fr"
+    },
+    {
+    "packageName": "com.orange.orangeetmoi"
+    },
+    {
+    "packageName": "com.orange.owtv"
+    },
+    {
+    "packageName": "com.vodafone.mcare.client"
+    },
+    {
+    "packageName": "ee.android.client.retail"
+    },
+    {
+    "packageName": "com.three.mydashboard"
+    },
+    {
+    "packageName": "de.o2.android.mein.o2"
+    }
+  ]
+}
