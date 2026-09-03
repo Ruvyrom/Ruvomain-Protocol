@@ -15,7 +15,7 @@
 3.**Real Metrics vs. Forum Drama:**
 - 📉 Idle drain: minimal background wakeups.
 - 🧠RAM footprint: ~8 GB free out of 12 GB on Samsung One UI.
-- 🔋 Real-world SoT: 10h–11h+ validated under thermal throttling limits.
+- 🔋 Real-world SoT: 9h–10h+ validated under thermal throttling limits.
 
 👉 **Looking for the actual, maintained code?**
 Head over to the main branch: [Ruvomain Protocol / URAAM](https://github.com/Ruvyrom/Ruvomain-Protocol) or our [Codeberg Mirror](https://codeberg.org/ruvyrom/Ruvomain-Protocol/src/branch/main).
