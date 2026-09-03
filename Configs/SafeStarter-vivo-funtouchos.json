@@ -1,0 +1,41 @@
+{
+  "name": "Vivo/Iqoo Starter List",
+  "description": "FuntouchOS/OriginOS Starter Package List",
+  "author": "Ruvyrom",
+  "version": "1.0",
+  "apps": [
+    {
+      "packageName": "com.vivo.appstore"
+    },
+    {
+      "packageName": "com.vivo.website"
+    },
+    {
+      "packageName": "com.vivo.game"
+    },
+    {
+      "packageName": "com.vivo.minigamecenter"
+    },
+    {
+      "packageName": "com.vivo.agent"
+    },
+    {
+      "packageName": "com.vivo.smartshot"
+    },
+    {
+      "packageName": "com.vivo.weather"
+    },
+    {
+      "packageName": "com.vivo.assistant"
+    },
+    {
+      "packageName": "com.bbk.account"
+    },
+    {
+      "packageName": "com.bbk.cloud"
+    },
+    {
+      "packageName": "com.vivo.browser"
+    }
+   ]
+  }
