@@ -1,0 +1,89 @@
+{
+  "name": "Xiaomi MIUI HyperOS Debloat",
+  "description": "Removes Xiaomi/MIUI/HyperOS bloatware, system ads (MSA, Joyose), telemetry, app store (GetApps), and preloaded Mi services.",
+  "author": "Ruvyrom",
+  "version": "1.0",
+  "apps":[
+    {
+    "packageName": "com.mi.globalbrowser"
+    },
+    {
+    "packageName": "com.miui.videoplayer"
+    },
+    {
+    "packageName": "com.miui.player"
+    },
+    {
+    "packageName": "com.miui.analytics"
+    },
+    {
+    "packageName": "com.miui.msa.global"
+    },
+    {
+    "packageName": "com.miui.daemon"
+    },
+    {
+    "packageName": "com.miui.mishare.connectivity"
+    },
+    {
+    "packageName": "com.miui.cloudservice"
+    },
+    {
+    "packageName": "com.miui.cloudbackup"
+    },
+    {
+    "packageName": "com.xiaomi.mipicks"
+    },
+    {
+    "packageName": "com.miui.guardprovider"
+    },
+    {
+    "packageName":"com.android.thememanager"
+    },
+    {
+    "packageName": "com.miui.cleanmaster"
+    },
+    {
+    "packageName": "com.xiaomi.gamecenter.sdk.service"
+    },
+    {
+    "packageName": "com.miui.android.fashiongallery"
+    },
+    {
+    "packageName": "com.miui.voiceassist"
+    },
+    {
+    "packageName":"com.xiaomi.joyose"
+    },
+    {
+    "packageName": "com.mipay.wallet.in"
+    },
+    {
+    "packageName": "com.mipay.wallet"
+    },
+    {
+    "packageName": "com.xiaomi.simactivate.service"
+    },
+    {
+    "packageName": "com.xiaomi.calendar"
+    },
+    {
+    "packageName": "com.miui.gallery"
+    },
+    {
+    "packageName": "com.miui.weather2"
+    },
+    {
+    "packageName": "com.miui.compass"
+    },
+    {
+    "packageName": "com.xiaomi.scanner"
+    },
+    {
+    "packageName": "com.miui.yellowpage"
+    },
+    {
+    "packageName": "com.miui.bugreport"
+    }
+  ]
+}
