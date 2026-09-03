@@ -3,7 +3,7 @@
 
 ### Universal Ruvomain ADB Apps-Manager (URAAM)
 
-**1. Enable USB Debugging on your phone:**
+**1. Enable USB Debugging on your Android device:**
 
 <details>
 <summary>Configuration</summary>
@@ -12,7 +12,7 @@
 >
 >>Settings > Developer Options > Enable "USB Debugging"
 >
->>Connect your phone to your PC via USB
+>>Connect your Android device to your PC via USB
 </details>
 
 OR
@@ -50,7 +50,7 @@ adb connect <IP>:<PORT>
 
 *Note:*
 
-*- If adb connection fails, ensure your PC and Phone are on the same Wi-Fi network.*
+*- If adb connection fails, ensure your PC and Android device are on the same Wi-Fi network.*
 
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 </details>
