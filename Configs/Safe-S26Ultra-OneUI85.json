@@ -48,6 +48,57 @@
     },
     {
     "packageName": "com.google.android.gms.supervision"
-    }
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_ar_ae_m00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_de_de_f00"
+    },
+    {
+    "packageName":"com.samsung.SMT.lang_en_gb_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_es_es_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_es_mx_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_es_us_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_fr_fr_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_hi_in_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_id_id_f00"
+    },
+    {
+     "packageName": "com.samsung.SMT.lang_it_it_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_pl_pl_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_pt_br_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_ru_ru_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_th_th_f00"
+    },
+    {
+    "packageName": "com.samsung.SMT.lang_vi_vn_f00"
+    },
+    {
+    "packageName": "com.touchtype.swiftkey"
+    },
+    {
+    "packageName": "com.swiftkey.swiftkeyconfigurator"
+    } 
   ]
 }
