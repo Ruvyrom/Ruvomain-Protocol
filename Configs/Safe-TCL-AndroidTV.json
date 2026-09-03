@@ -1,0 +1,41 @@
+{
+  "name": "TCL AndroidTV Debloat",
+  "description": "Removes TCL-specific bloatware, telemetry, screen ad services, and preloaded apps on TCL Android TV and Google TV devices.",
+  "author": "Ruvyrom",
+  "version": "1.0",
+  "apps":[
+    {
+    "packageName": "com.tcl.browser"
+    },
+    {
+    "packageName": "com.tcl.tv.appstore"
+    },
+    {
+    "packageName": "com.tcl.tv.cast"
+    },
+    {
+    "packageName": "com.tcl.usercenter"
+    },
+    {
+    "packageName": "com.tcl.tclaccount"
+    },
+    {
+    "packageName": "com.tcl.tv.tcloudaccount"
+    },
+    {
+    "packageName": "com.tcl.gallery"
+    },
+    {
+     "packageName": "com.tcl.mediacenter"
+    },
+    {
+    "packageName": "com.tcl.screenadservice"
+    },
+    {
+    "packageName":"com.tcl.screensaver"
+    },
+    {
+    "packageName": "com.tcl.eula"
+    }
+  ]
+}
