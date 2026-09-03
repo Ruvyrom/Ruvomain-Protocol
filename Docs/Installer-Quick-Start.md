@@ -5,7 +5,7 @@
 ### Ruvomain-installer (Pure Bash Installer)
 Local, offline-capable usage.
 
-Enable USB Debugging on your phone: 
+Enable USB Debugging on your Android device: 
 >
 >Settings > About Phone > Tap "Build Number" 7 times
 >
