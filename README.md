@@ -45,13 +45,13 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 **UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM):**
 
 <details>
-<summary>Enable USB Debugging on your phone:</summary>
+<summary>Enable USB Debugging on your device:</summary>
 
-Settings > About Phone > Tap "Build Number" 7 times
+Settings > About phone > Tap "Build Number" 7 times
 
 Settings > Developer Options > Enable "USB Debugging"
 
-Connect your phone to your PC via USB
+Connect your device to your PC via USB
 </details>
 
 On Linux:
