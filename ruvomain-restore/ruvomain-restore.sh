@@ -7,17 +7,17 @@ set -euo pipefail
 
 # --- Dynamic Path Resolution and sources---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="$(dirname "$(dirname "$(readlink -f"$0")")")"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
-if [ -z "$SOURCES_LOADED" ]; then
+if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
 else
 echo "Error: Could not find $SOURCES_DIR"
 exit 1
-fi
 sources
 export SOURCES_LOADED=1
+fi
 
 show_logo
 init_logs-restore
