@@ -10,9 +10,7 @@ echo -e "Installing: $(basename "$apk")"
 
 # -r: Replace existing application
 # -g: Grant all runtime permissions (minimizes interaction)
-adb install -r -g "$apk" | grep -v "Success"
-
-if[ $? -eq 0 ]; then
+if adb install -r -g "$apk" >/dev/null 2>&1; then
 echo -e "${GREEN}✓${NC} Successfully installed."
 else
 echo -e "${RED}✗${NC} Installation failed."
