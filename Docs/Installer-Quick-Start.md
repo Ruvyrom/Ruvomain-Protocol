@@ -22,7 +22,7 @@ Enable USB Debugging on your Android device:
 
 - **Clone the repo:**
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
 - **Place your personnal `.apk` file `./ruvomain-installer/Apps`**
@@ -41,8 +41,8 @@ make install -C ./Ruvomain-Protocol
 pkg install git
 ```
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
-cd ./Ruvomain-Protocole/ruvomain-installer/
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
+cd ./Ruvomain-Protocol/ruvomain-installer/
 chmod +x termux-setup.sh && ./termux-setup.sh
 ```
 - **Place** your multiple apk files to ./ruvomain-installer/Apps
@@ -91,14 +91,14 @@ adb connect <IP>:<PORT>
 ```
 - **Clone the repo:**
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
 - **Place** your multiple apk files to ./ruvomain-installer/Apps
 
 - **Execute:**
 ```bash
-cd ./Ruvomain-Protocole/ruvomain-installer/
+cd ./Ruvomain-Protocol/ruvomain-installer/
 chmod +x ruvomain-installer.sh && ./ruvomain-installer.sh
 ```
 
@@ -118,7 +118,7 @@ brew install git android-platform-tools
 
 3. **Clone the protocol:**
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 4. **Paste your personnal `.apk` file `./ruvomain-installer/Apps`**
 
@@ -130,7 +130,7 @@ adb devices
 
 6. **Execute:**
 ```bash
-cd ./Ruvomain-Protocole/Ruvomain-installer/
+cd ./Ruvomain-Protocol/Ruvomain-installer/
 ```
 ```bash
 ./ruvomain-installer.sh
