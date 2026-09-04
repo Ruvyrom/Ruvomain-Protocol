@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-init_logs-backup() {
+init_logs_backup() {
 local log_dir="${1:-$REPO_DIR/ruvomain-backup/logs}"
 
 mkdir -p "$log_dir"
