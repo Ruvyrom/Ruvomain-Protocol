@@ -7,10 +7,10 @@ set -euo pipefail
 
 # --- Dynamic Path Resolution and sources ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="$(dirname "$(dirname "$(readlink -f"$0")")")"
-APP_DIR="./Apps"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+APP_DIR="$SCRIPT_DIR/Apps"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
-if [ -f "$SOURCES_LOADED" ]; then
+if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
 else
