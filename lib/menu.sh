@@ -49,3 +49,7 @@ exit 0
 esac
 done
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+menu
+fi
