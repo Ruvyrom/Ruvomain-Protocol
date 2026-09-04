@@ -30,7 +30,7 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts is a tool suite to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts are tools to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It is 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
 
@@ -78,7 +78,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```
 </details>
 
-For more detailled instructions for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
+For more detailed instructions for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
 For execute other make command use help in Makefile:
 ```bash
@@ -156,7 +156,7 @@ make help
 
 ---
 ### 📸 Proof Screenshot
-| Updates | Low Comsumption |
+| Updates | Low Consumption |
 | :---: | :---: |
 | <img src="assets/update.jpg" width="200"> | <img src="assets/battery2.jpg" width="200"> |
 | You can make official updates without problem | Low energy consumption in standby mode |
@@ -174,7 +174,7 @@ make help
 | **Dependencies** | Java, Shizuku, Canta | **jq** |
 | **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
 | **Auditability** | Limited (Black-box) | **Total (Native Bash)** |
-| **Complexity** | High(Multi-layered) | **Minimalist (Surgical)** |
+| **Complexity** | High (Multi-layered) | **Minimalist (Surgical)** |
 
 ---
 ## 👥 Contributing
@@ -182,7 +182,7 @@ make help
 **You have a specific device? Create your JSON file list or import Canta backup list file!**
 
 Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
-For create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).
+To create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).
 
 >**Need help with your first contribution?** *[Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.*
 
@@ -191,7 +191,7 @@ For create your JSON list file or import Canta backup [following the contributin
 To gain a deeper understanding of the technical and operational aspects of the protocol, please refer to the following files located in the `/Docs` directory:
 
 <details>
-<summary><b>Clic to view documentation</b></summary>
+<summary><b>Click to view documentation</b></summary>
 
 - [Protocol Hierarchy](/Docs/Protocol-Hierarchy.md) (3 tiers packages list exemple for S24+)
 
