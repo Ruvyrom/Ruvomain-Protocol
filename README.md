@@ -30,17 +30,16 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts is a tool to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts is a tool suite to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
-**It 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
+**It is 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
 
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
 ---
-**Update (09.04.2026): 7 new json files added in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs)** (Safe lists for Samsung 26 Ultra, Xiaomi, Vivo, TCL AndroidTV and carriers bloatware)
-
-**Update (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB Apps-Manager (URAAM)**
-
+> **🚀 Latest Updates:**
+> - **2026-03-09:** Added 7 new curated JSON configurations in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs) (Safelists for Samsung Galaxy S24/S25 One UI, Xiaomi HyperOS, Vivo, TCL Android TV and carrier bloatware).
+> - **2026-02-28:** Released unified Dashboard TUI + 4 modular core BASH engines for URAAM.
 ---
 ## 🚀 Ready to deploy?
 
@@ -79,7 +78,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```
 </details>
 
-For more detailled instruction for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
+For more detailled instructions for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
 For execute other make command use help in Makefile:
 ```bash
@@ -236,7 +235,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
 
 ---
-### Dictionnary: Technical Context
+### Dictionary: Technical Context
 <details>
 <summary><b>⚙️ What is ADB? (Forbeginners)</b></summary>
 
