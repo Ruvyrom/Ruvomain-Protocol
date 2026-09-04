@@ -19,7 +19,7 @@ sources
 fi
 
 show_logo
-init_logs-restore
+init_logs_restore
 env_detect
 ensure_adb || exit 1
 ensure_jq || exit 1
