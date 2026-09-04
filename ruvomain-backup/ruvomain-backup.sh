@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Ruvomain ADB-Termux backup script (Bash/jq)
 # You can backup your user uninstalled file in JSON list.
-# Version 1.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
+# Version 2.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
 # Created by Ruvyrom
 set -euo pipefail
 
