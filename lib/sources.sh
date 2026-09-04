@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-REPO_DIR="${REPO_DIR:-$(dirname "$(readlink -f "$0")")}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
 sources() {
 [[ -n "$SOURCES_LOADED" ]] && return
@@ -21,7 +22,6 @@ INSTALLER_DIR="$REPO_DIR/lib/installer.sh"
 BACKUP_DIR="$REPO_DIR/lib/backup.sh"
 LOGSBACKUP_DIR="$REPO_DIR/lib/logs-backup.sh"
 LOGSRESTORE_DIR="$REPO_DIR/lib/logs-restore.sh"
-BACKUPS_DIR="$(dirname "$0")/../ruvomain-backup/backups"
 DEBLOAT_DIR="$REPO_DIR/lib/debloat.sh"
 RESTORE_DIR="$REPO_DIR/lib/restore.sh"
 AUTOP_DIR="$REPO_DIR/lib/autoperm.sh"
@@ -51,7 +51,7 @@ MODULES_DIR=(
 "$VLMENU_DIR"
 )
 
-for mod in "${MODULES[@]}"; do
+for mod in "${MODULES_DIR[@]}"; do
 if [[ -f "$mod" ]]; then
 chmod +x "$mod"
 source "$mod"
@@ -64,5 +64,5 @@ export SOURCES_LOADED=1
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-sources()
+sources
 fi
