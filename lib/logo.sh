@@ -15,5 +15,5 @@ EOF
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-show_logo()
+show_logo
 fi
