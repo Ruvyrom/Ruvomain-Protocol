@@ -64,7 +64,7 @@ adb connect <IP>:<PORT>
 
 >>Debian, Ubuntu, WSL
 ```bash
-sudo apt install git - y
+sudo apt install git -y
 ```
 >>Arch based
 ```bash
@@ -72,7 +72,7 @@ sudo pacman -S --no-confirm git
 ```
 >>Fedora based
 ```bash
-sudo dnf install - y git
+sudo dnf install -y git
 ```
 </details>
 
