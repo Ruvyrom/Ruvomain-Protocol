@@ -26,5 +26,5 @@ view_blogs() { view_logs_generic "ruvomain-backup" "ruvomain-backup"; }
 view_rlogs() { view_logs_generic "ruvomain-restore" "ruvomain-restore"; }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-view_logs_generic()
+view_logs_generic
 fi
