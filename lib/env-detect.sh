@@ -11,5 +11,5 @@ fi
 } 
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-env_detect()
+env_detect
 fi
