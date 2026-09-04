@@ -23,6 +23,7 @@ init_logs 2>/dev/null || true
 env_detect
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
+echo -e "${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in ./Configs via the selection menu.${NC}"
 
 ensure_adb || exit 1
 ensure_jq || exit 1
