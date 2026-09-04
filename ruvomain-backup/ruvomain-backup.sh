@@ -9,17 +9,18 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
+
 if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
+sources
 else
 echo "Error: Could not find $SOURCES_DIR"
 exit 1
-sources
 fi
 
 # --- Initialization ---
-init_logs-backup
+init_logs_backup 2>/dev/null || true
 show_logo
 ensure_adb || exit 1
 
