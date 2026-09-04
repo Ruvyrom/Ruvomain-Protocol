@@ -11,3 +11,7 @@ printf "%s\n" "${CYAN}------------------------------------------${NC}\n"
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 model()
 fi
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+model
+fi
