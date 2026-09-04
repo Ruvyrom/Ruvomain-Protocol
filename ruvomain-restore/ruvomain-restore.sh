@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Ruvomain ADB-Termux Restorer script ( Bash/JQ )
 # You can apply your own json debloat list file. Use or place your *.json file in ./ruvomain-backup/backups and select it in menu.
-# Version 2.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
+# Version 3.0.0 (Refactored for Ruvomain Protocol - Surgical Minimalism)
 # Created by Ruvyrom (https://github.com/Ruvyrom/Ruvomain-Protocol)
 set -euo pipefail
 
