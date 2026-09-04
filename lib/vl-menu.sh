@@ -54,5 +54,5 @@ done
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-vl_menu()
+vl_menu
 fi
