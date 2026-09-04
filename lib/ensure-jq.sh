@@ -34,5 +34,5 @@ esac
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-ensure_jq()
+ensure_jq
 fi
