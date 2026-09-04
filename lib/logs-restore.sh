@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-init_logs-restore() {
+init_logs_restore() {
 local log_dir="${1:-$REPO_DIR/ruvomain-restore/logs}"
 
 mkdir -p "$log_dir"
