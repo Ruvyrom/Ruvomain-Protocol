@@ -4,17 +4,18 @@
 # Version: v3.0.0
 
 # --- Dynamic Path Resolution and sources---
-REPO_DIR="$(dirname "$(readlink -f"$0")")"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
-if [ -z "$SOURCES_LOADED" ]; then
+
+if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
+sources
 else
 echo "Error: Could not find $SOURCES_DIR"
 exit 1
 fi
-sources
-export SOURCES_LOADED=1
 
 clear
 show_logo
