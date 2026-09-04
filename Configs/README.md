@@ -2,7 +2,7 @@ The lists above are compatible with Ruvomain Apps-Manager & Canta.
 
 ### Contributing - JSON files importation
 
-You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community."
+You have a specific device? Create your JSON list or Canta restoration JSON list, fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
 
 - You **must** create your JSON file list with **THIS STRUCTURE**:
 
@@ -28,7 +28,7 @@ For using your liste with URAAM ruvomain-debloat script:
 
 - **Execute** script and select your json file
 
-**Feel free to share your files with Pull Request in ./Configs, to help grow the community!**
+**Feel free to share your files with Pull Request in `./Configs`, to help grow the community!**
 
 **Please ensure:**
 
@@ -63,8 +63,8 @@ You can modify .json files if you want keep a fonctionality in /Configs
 | **Tier 2 (Advanced/Balanced)** | AI Telemetry & Cloud Bloat | Users prioritizing privacy & efficiency. |
 | **Tier 3 (Surgical/Extreme)** | Ghost Mode (System Core) | Advanced users building a bare-metal experience. |
 
-The protocol keep `Samsung Camera` and `gallery`, `Dolby Atmos`, `Samsung Screenshot`, `OneUI launcher`.
-For privacy, you can block internet connexion (with firewall) for these apps without problem.
+The protocol keeps `Samsung Camera` and `gallery`, `Dolby Atmos`, `Samsung Screenshot`, `OneUI launcher`.
+For privacy, you can block internet connection (via firewall) for these apps without problem.
 
 **For view packages list and descriptions see the /docs/[package-list.md](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Docs/package-list.md)**
 
