@@ -19,7 +19,7 @@ exit 1
 fi
 
 show_logo
-init_logs
+init_logs 2>/dev/null || true
 env_detect
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
