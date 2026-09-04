@@ -59,7 +59,7 @@ adb connect <IP>:<PORT>
 You can execute it directly:
 
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 make restore -C ./Ruvomain-Protocol
 ```
 
