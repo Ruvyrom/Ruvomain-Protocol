@@ -179,15 +179,12 @@ make help
 ---
 ## 👥 Contributing
 
-**You have a specific device? Create your JSON file list or import from Canta backup!**
+**You have a specific device? Create your JSON file list or import Canta backup list file!**
 
 Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
-Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json). More information [here](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).*
-</details>
+For create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).
 
-**Need help with your first contribution?**
-  
-Need help with your first contribution? [Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.
+>**Need help with your first contribution?** *[Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.*
 
 ---
 ## 📖 Documentation
