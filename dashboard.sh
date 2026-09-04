@@ -4,7 +4,7 @@
 # Version: v3.0.0
 
 # --- Dynamic Path Resolution and sources---
-REPO_DIR="$(dirname "$SCRIPT_DIR")"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 
 if [ -f "$SOURCES_DIR" ]; then
