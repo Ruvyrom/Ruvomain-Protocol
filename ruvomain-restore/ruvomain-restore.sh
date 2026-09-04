@@ -9,6 +9,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
+
 if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
