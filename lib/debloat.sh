@@ -40,7 +40,7 @@ for pkg in "${PACKAGES[@]}"; do
 echo -n "Debloating $pkg: "
 
 # Execute command
-if $EXEC "pm uninstall -k --user 0" "$pkg" > /dev/null 2>&1; then
+if $EXEC pm uninstall -k --user 0 "$pkg" > /dev/null 2>&1; then
 echo -e "${GREEN}Success${NC}"
 else
 echo -e "${RED}Failed (already uninstall or not found)${NC}"
