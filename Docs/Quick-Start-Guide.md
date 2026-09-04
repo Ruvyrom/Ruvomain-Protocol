@@ -86,7 +86,7 @@ sudo dnf install - y git
 - **Clone the repo:**
   
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
@@ -106,7 +106,7 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
-cd ./Ruvomain-Protocole
+cd ./Ruvomain-Protocol
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
@@ -124,7 +124,7 @@ pkg install git
 ```
 
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 make termux -C ./Ruvomain-Protocol
 ```
 
@@ -145,7 +145,7 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
-cd ./Ruvomain-Protocole
+cd ./Ruvomain-Protocol
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
@@ -199,7 +199,7 @@ adb connect <IP>:<PORT>
 3- **Clone the repo:**
   
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
@@ -219,7 +219,7 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
-cd ./Ruvomain-Protocole
+cd ./Ruvomain-Protocol
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
@@ -246,7 +246,7 @@ brew install git android-platform-tools jq
 3. **Clone the protocol:**
 
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocole.git
+git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
 4. **Verify device connection:**
@@ -274,7 +274,7 @@ make -C ./Ruvomain-Protocol
 OR
 
 ```bash
-cd ./Ruvomain-Protocole
+cd ./Ruvomain-Protocol
 ```
 
 ```bash
