@@ -2,7 +2,7 @@
 
 > *"Congratulations! You just clicked a link from an outdated witch-hunt thread on XDA."*
 
-###📌 Context & FAQ / Mise au point
+###📌 Context & FAQ
 
 1. **Why is this path archived/moved?**
 - The Ruvomain Protocol evolves continuously through regular refactoring, automated testing, and active Git commits.
