@@ -16,9 +16,8 @@ source "$SOURCES_DIR"
 else
 echo "Error: Could not find $SOURCES_DIR"
 exit 1
-fi
 sources
-export SOURCES_LOADED=1
+fi
 
 # --- Initialization ---
 show_logo
