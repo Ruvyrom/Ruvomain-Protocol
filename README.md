@@ -37,7 +37,9 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
 ---
-**UPDATE (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB Apps-Manager (URAAM)**
+**Update (09.04.2026): 7 new json files added in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs)** (Safe lists for Samsung 26 Ultra, Xiaomi, Vivo, TCL AndroidTV and carriers bloatware)
+
+**Update (08.29.2026): 1 Dashboard, 4 BASH script for Universal Ruvomain ADB Apps-Manager (URAAM)**
 
 ---
 ## 🚀 Ready to deploy?
