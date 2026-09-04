@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 init_logs_backup() {
-local log_dir="$REPO_DIR/ruvomain-backup/logs"
+local base_dir="${REPO_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+local log_dir="${1:-$base_dir/ruvomain-backuo/logs}"
 
 mkdir -p "$log_dir"
 
@@ -13,5 +14,5 @@ exec > >(tee -a "$LOGFILE") 2>&1
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-init_log-backup
+init_logs_backup
 fi
