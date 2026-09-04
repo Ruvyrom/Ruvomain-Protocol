@@ -6,9 +6,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="$(dirname "$(dirname "$(readlink -f"$0")")")"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
-if [ -z "$SOURCES_LOADED" ]; then
+if [ -f "$SOURCES_DIR" ]; then
 chmod +x "$SOURCES_DIR"
 source "$SOURCES_DIR"
 else
@@ -27,7 +27,6 @@ echo -e "${BLUE}=== Ruvomain-Protocol: Package Debloater ===${NC}"
 ensure_adb || exit 1
 ensure_jq || exit 1
 debloat
-final
 
 echo "--------------------------------------------------"
 echo "Operation completed successfully."
