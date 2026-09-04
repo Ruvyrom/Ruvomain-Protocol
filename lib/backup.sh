@@ -59,6 +59,7 @@ done
 # Closing the JSON
 echo '  ]' >> "$output_file"
 echo '}' >> "$output_file"
+} 
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 generate_snapshot
