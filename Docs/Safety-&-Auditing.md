@@ -1,6 +1,6 @@
 # Safety & Auditing
 
-The Ruvomain Protocol is designed with security, transparency, and system integrity as its core pillars. This document outlines our approach to ensuring the safety of your device and the reliability of our automation scripts.
+The Ruvomain Protocol with URAAM - Universal Ruvomain ADB App-Manager are designed with security, transparency, and system integrity as its core pillars. This document outlines our approach to ensuring the safety of your device and the reliability of our automation scripts.
 
 ## System Integrity (Samsung Knox)
 The Ruvomain Protocol is strictly non-destructive. Our approach respects the integrity of your device's security architecture:
