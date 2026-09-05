@@ -19,8 +19,14 @@ fi
 clear
 show_logo
 echo -e "${BLUE}=========================================="
-echo -e "   RUVOMAIN-PROTOCOL | CONTROL CENTER"
+echo -e " URAAM RUVOMAIN ADB APP-MANAGER | CONTROL CENTER"
 echo -e "==========================================${NC}"
+echo -e "before use a script:"
+echo -e "For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs"
+echo -e "For Ruvomain-installer, place your APK files in ./ruvomain-installer/Apps"
+echo -e "For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups"
+echo -e "Ruvomain-backup places your backup .json file in /ruvomain-backup/backups"
+
 
 ensure-adb || exit 1
 ensure-jq || exit 1
