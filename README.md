@@ -38,7 +38,7 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 
 ---
 > **🚀 Latest Updates:**
-> - **2026-03-09:** Added 7 new curated JSON configurations in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs) (Safelists for Samsung Galaxy S26 Ultra, Xiaomi HyperOS, Vivo/Iqoo, TCL Android TV and carrier bloatware).
+> - **2026-03-09:** Added 7 new curated JSON configurations in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs) (Safelists for Samsung Galaxy S26 Ultra, Xiaomi HyperOS, Vivo/Iqoo, TCL Android TV, carrier bloatware and Meta preinstalled services).
 > - **2026-02-28:** Released unified Dashboard TUI + 4 modular core BASH engines for URAAM.
 ---
 ## 🚀 Ready to deploy?
