@@ -11,6 +11,7 @@
 2. **Is this project a "scam"?**
 - It's 100% open-source Bash & JSON. There are no binaries, no telemetry, no paid tiers, and no root requirements.
 - Everything is inspectable, auditable, and run locally via ADB.
+- Package definitions and safe removal classifications adapted from[Universal Android Debloater Next Generation (UAD-NG)](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation).
 
 3.**Real Metrics vs. Forum Drama:**
 - 📉 Idle drain: minimal background wakeups.
