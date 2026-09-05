@@ -1,7 +1,7 @@
 ## ⚙️ Quick Start
 **Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
 
-### Universal Ruvomain ADB Apps-Manager (URAAM)
+### Universal Ruvomain ADB App-Manager (URAAM)
 
 **1. Enable USB Debugging on your Android device:**
 
@@ -97,7 +97,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
   
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-3. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+3. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
@@ -136,7 +136,7 @@ make termux -C ./Ruvomain-Protocol
   
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-**Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+**Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
@@ -210,7 +210,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
   
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-- **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+- **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
@@ -265,7 +265,7 @@ adb devices
 
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-6. **Execute Universal ADB Apps-Manager (URAAM) dashboard:**
+6. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
