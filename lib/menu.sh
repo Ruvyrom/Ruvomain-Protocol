@@ -10,7 +10,7 @@ options=(
 "Installer (APK installation)"
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
-"Restore (Revert/Install Apps)"
+"Restore (Revert/Reinstall Apps)"
 "View Logs"
 "Exit"
 )
@@ -18,7 +18,7 @@ options=(
 PS3="Select a module to execute (1-7): "
 select opt in "${options[@]}"; do
 case $opt in
-"Termux Setup (Semi auto Termux setuo)")
+"Termux Setup (Semi auto Termux setup)")
 clear
 $REPO_DIR/termux-setup.sh
 ;;
@@ -45,7 +45,7 @@ vl_menu
 echo "Exiting protocol..."
 exit 0
 ;;
-*) echo -e "${RED}Invalid option. Please choose 1-6.${NC}";;
+*) echo -e "${RED}Invalid option. Please choose 1-7.${NC}";;
 esac
 done
 }
