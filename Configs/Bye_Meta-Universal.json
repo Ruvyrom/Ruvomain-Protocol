@@ -1,0 +1,20 @@
+{
+  "name": "Universal Meta Services Debloat/Restore",
+  "description": "Removes preinstalled Meta-specific bloatware.",
+  "author": "Ruvyrom",
+  "version": "1.0.0",
+  "apps":[
+    {
+      "packageName": "com.facebook.katana"
+    },
+    {
+      "packageName": "com.facebook.system"
+    },
+    {
+      "packageName": "com.facebook.services"
+    },
+    {
+      "packageName": "com.facebook.appmanager"
+    }
+  ]
+}
