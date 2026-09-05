@@ -5,22 +5,22 @@
   "version": "1.0.0",
   "apps":[
     {
-    "packageName": "com.telstra.telephony.exttelephony"
+      "packageName": "com.telstra.telephony.exttelephony"
     },
     {
-    "packageName": "com.rogers.drs.client"
+      "packageName": "com.rogers.drs.client"
     },
     {
-    "packageName": "ca.bell.app.cmp"
+      "packageName": "ca.bell.app.cmp"
     },
     {
-    "packageName": "com.skt.skaf.A000Z00040"
+      "packageName": "com.skt.skaf.A000Z00040"
     },
     {
-    "packageName": "com.kt.olleh.storefront"
+      "packageName": "com.kt.olleh.storefront"
     },
     {
-    "packageName":"com.nttdocomo.android.dhome"
+      "packageName":"com.nttdocomo.android.dhome"
     }
   ]
 }
