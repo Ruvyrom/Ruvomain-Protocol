@@ -1,4 +1,4 @@
-The lists above are compatible with Ruvomain Apps-Manager & Canta.
+The lists above are compatible with Ruvomain App-Manager & Canta.
 
 ### Contributing - JSON files importation
 
