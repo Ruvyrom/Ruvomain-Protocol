@@ -1,0 +1,83 @@
+{
+"name": "Sony Xperia Safe Debloat",
+"description": "Safe debloat profile for Sony Xperia devices. Removes telemetry, retail demos, promo hubs and non-essential bundled apps while preserving Pro camera and audio engines.",
+"author": "Ruvyrom",
+"version": "1.0",
+"apps":[
+{
+"packageName": "com.sonyericsson.idd.agent"
+},
+{
+"packageName": "com.sonymobile.idd.agent"
+},
+{
+"packageName": "com.sonymobile.anondata"
+},
+{
+"packageName": "com.sonymobile.xperialounge.services"
+},
+{
+"packageName": "com.sonymobile.advancedwidget.entrance"
+},
+{
+"packageName": "com.sonymobile.support"
+},
+{
+"packageName": "com.sonymobile.retaildemo"
+},
+{
+"packageName": "com.sonymobile.demoapp"
+},
+{
+"packageName": "com.sonymobile.rcahandler"
+},
+{
+"packageName": "com.sonymobile.pip"
+},
+{
+"packageName": "com.sonymobile.entrance"
+},
+{
+"packageName": "com.sonyericsson.xhs"
+},
+{
+"packageName": "com.sonymobile.storage.ext"
+},
+{
+"packageName": "com.sony.selp.macadservice"
+},
+{
+"packageName": "com.sonymobile.deviceconfigtool"
+},
+{
+"packageName": "com.sonymobile.cta"
+},
+{
+"packageName": "com.sonymobile.customizationselector"
+},
+{
+"packageName": "com.sonyericsson.album"
+},
+{
+"packageName": "com.sonymobile.scan3d"
+},
+{
+"packageName": "com.sonymobile.moviecreator"
+},
+{
+"packageName": "com.sonymobile.moviecreator.rmm"
+},
+{
+"packageName": "com.sonymobile.pitchblack.system"
+},
+{
+"packageName": "com.sonyericsson.music"
+},
+{
+"packageName": "com.sony.tvsideview.videoplayer"
+},
+{
+"packageName":"com.sonymobile.xperiatransfermobile"
+}
+]
+}
