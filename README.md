@@ -224,6 +224,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 ---
 ### 👥 Credits
 
+*   Package definitions and safe removal classifications adapted from [Universal Android Debloater Next Generation (UAD-NG)](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation).
 *   "100% Bash Parser for JSON" - thanks to [smmoosavi](https://github.com/smmoosavi/json-walk) for json-walk.
 *   Thanks to [Dyokism](https://github.com/dyokism) for code contribution.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169) and OneUI 8.0 JSON config file.
