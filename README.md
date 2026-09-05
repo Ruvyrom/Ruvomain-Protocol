@@ -5,7 +5,7 @@
 <div align="center"; style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
-<strong>Universal Ruvomain ADB Apps-Manager [URAAM]</strong>
+<strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
 <br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
 <strong>for ALL Android devices.</strong>
 </div>
@@ -30,7 +30,7 @@
 </p>
 
 <div align="center"; style="display: inline-block">
-The UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM) scripts are tools to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) scripts are tools to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It is 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
 
@@ -43,7 +43,7 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 ---
 ## 🚀 Ready to deploy?
 
-**UNIVERSAL RUVOMAIN ADB APPS-MANAGER (URAAM):**
+**UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
 
 <details>
 <summary>Enable USB Debugging on your device:</summary>
@@ -65,7 +65,7 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 - For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-**Execute Universal Ruvomain ADB Apps-Manager (URAAM):**
+**Execute Universal Ruvomain ADB App-Manager (URAAM):**
 ```bash
 make -C ./Ruvomain-Protocol
 ```
@@ -88,15 +88,13 @@ make help
 ---
 ### Table of Contents
 
+[Features](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#features)
+
 [Contributing](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main#-contributing)
 
 [Dictionary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
 
 [All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/README.md#-documentation)
-
-[Features](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#features)
-
-[Technical Architecture](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#-technical-architecture) 
 
 [Comparaison Matrix](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-comparison-matrix) 
 
@@ -238,7 +236,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
 
-For the Universal Ruvomain ADB Apps-Manager (URAAM), ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
+For the Universal Ruvomain ADB App-Manager (URAAM), ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
 </details>
 
 <details>
@@ -256,7 +254,7 @@ JSON acts as our "configuration layer." It is a simple, human-readable format th
 <details>
 <summary><b>🔄 What is Git? (Why it matters)</b></summary>
 
-Git is our "version control" system. Think of it as a time machine for the RuvomainProtocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
+Git is our "version control" system. Think of it as a time machine for the Ruvomain Protocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
 </details>
 
 ---
