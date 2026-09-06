@@ -27,6 +27,7 @@ echo -e "${RED}Before finalizing execution, place your personal Canta JSON lists
 
 ensure_adb || exit 1
 ensure_jq || exit 1
+check_adb
 debloat
 
 echo "--------------------------------------------------"
