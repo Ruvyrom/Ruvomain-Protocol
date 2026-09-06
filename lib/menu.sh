@@ -6,7 +6,7 @@ $EXEC dumpsys battery | grep "level"
 $EXEC dumpsys cpuinfo | head -n 1
 
 options=(
-"Termux Setup (Semi auto Termux setup)"
+"ADB Setup (Wireless ADB setup)"
 "Installer (APK installation)"
 "Debloat (System Optimization)"
 "Backup (Snapshot Data)"
@@ -18,9 +18,9 @@ options=(
 PS3="Select a module to execute (1-7): "
 select opt in "${options[@]}"; do
 case $opt in
-"Termux Setup (Semi auto Termux setup)")
+"ADB Setup (Wireless ADB setup)")
 clear
-$REPO_DIR/termux-setup.sh
+$REPO_DIR/wireless_adb-setup.sh
 ;;
 "Installer (APK installation)")
 clear
