@@ -16,7 +16,7 @@ fi
 
 # --- Auto-fix Permissions (Targeted) ---
 modules=(
-"$REPO_DIR/termux-setup.sh"
+"$REPO_DIR/wireless_adb-setup.sh"
 "$REPO_DIR/ruvomain-installer/ruvomain-installer.sh"
 "$REPO_DIR/ruvomain-debloat/ruvomain-debloat.sh"
 "$REPO_DIR/ruvomain-backup/ruvomain-backup.sh"
