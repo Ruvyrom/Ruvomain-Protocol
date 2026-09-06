@@ -17,7 +17,7 @@
 
 OR
 
-**2. Use Wireless Debuging:**
+**2. Use Wireless Debugging:**
 
 <details>
 <summary>Configuration</summary>
@@ -39,6 +39,9 @@ OR
 >
 ```bash
 cd ./Ruvomain-Protocol
+```
+>
+```bash
 chmod +x wireless_adb-setup.sh && ./wireless_adb-setup.sh
 ```
 >
@@ -58,6 +61,8 @@ adb connect <IP>:<PORT>
 ```
 
 *Note:*
+
+*Note: `<PORT>` for pairing is differentfrom the connection `<PORT>` on Android 11+.*
 
 *- If adb connection fails, ensure your PC and Android device are on the same Wi-Fi network.*
 
@@ -116,6 +121,9 @@ OR
 
 ```bash
 cd ./Ruvomain-Protocol
+```
+
+```bash
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
@@ -123,18 +131,17 @@ chmod +x dashboard.sh && ./dashboard.sh
 
 ### 📱 For Termux users (You can use with root, Shizuku Rish or wireless ADB)
 
-**1. Semi-Automatic setup execution** (Install adb, pair & connect):
-
 <details>
-<summary><b></b>Setup:</b></summary>
- 
+<summary><b></b>Execution:</b></summary>
+
+**Install git:**
 ```bash
 pkg install git
 ```
 
+**Clone the repo:**
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
-make termux -C ./Ruvomain-Protocol
 ```
 
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
@@ -158,86 +165,12 @@ cd ./Ruvomain-Protocol
 chmod +x dashboard.sh && ./dashboard.sh
 ```
 
-***Note :** Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
-
-*If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appears in `adb devices`.*
-
-No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
-</details>
-
-**2. Manual execution:**
-
-<details>
-<summary><b></b>Setup:</b></summary>
- 
-1- **Grant Storage Access:**
-
-```bash
-termux-setup-storage
-```
- (Accept the permission prompt)
-
-2- **Deploy:**
-
-- ```bash
-  pkg install android-tools jq git -y
-  ```
-  
-- Enable "Wireless Debugging" in Developer Options.
-
-- Click the text "Wireless debugging" (not the button) to open the menu
-
-- Click on "Pair device with a QR code" or "Pair with a pairing code"
-
-- Note down the IP address, the port, and the pairing code.
-
-- Use `adb pair` and `adb connect` within Termux to link your local ADB client to the system server.
-
->>**Pair the terminal (it will ask you for the code).**
-
-```bash
-adb pair <IP>:<PORT>
-```
-
->>**Connect the terminal**
-
-```bash
-adb connect <IP>:<PORT>
-```
-
-3- **Clone the repo:**
-  
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
-```
-
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-  
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
-  
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
-  
-- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
-
-- **Execute Universal ADB App-Manager (URAAM) dashboard:**
-
-```bash
-make -C ./Ruvomain-Protocol
-```
-
-OR
-
-```bash
-cd ./Ruvomain-Protocol
-chmod +x dashboard.sh && ./dashboard.sh
-```
-
-***Note:***
-*- If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appearsin `adb devices`.*
+***Note :***
 
 *- Make sure you run these commands from the directory where you cloned the repository. If you are in your Termux home folder, the command above is correct.*
 
-No Root or Shizuku required. Your Ruvomain Protocol communicates directly via local ADB socket.
+*- If `adb` fails, run `adb kill-server && adb start-server` and ensure your device appears in `adb devices`.*
+
 </details>
 
 ### 🍎 For MacOS users:
