@@ -5,15 +5,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 
-if [ -f "$SOURCES_DIR" ]; then
-chmod +x "$SOURCES_DIR"
-source "$SOURCES_DIR"
-sources
-else
-echo "Error: Could not find $SOURCES_DIR"
-exit 1
-fi
-
 # --- Auto-fix Permissions (Targeted) ---
 modules=(
 "$REPO_DIR/wireless_adb-setup.sh"
@@ -33,6 +24,10 @@ fi
 done
 } 
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if[ "${BASH_SOURCE[0]}" = "$0" ]; then
+if [ -f "$SOURCES_DIR" ]; then
+source "$SOURCES_DIR"
+sources
+fi
 autoperm
 fi
