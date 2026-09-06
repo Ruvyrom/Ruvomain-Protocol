@@ -21,6 +21,10 @@ fi
 
 # --- Initialization ---
 show_logo
+echo -e "${BLUE}=========================================="
+echo -e "URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR"
+echo -e "==========================================${NC}"
+
 init_logs_backup 2>/dev/null || true
 ensure_adb || exit 1
 check_adb
