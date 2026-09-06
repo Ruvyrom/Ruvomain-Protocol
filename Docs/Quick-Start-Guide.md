@@ -42,7 +42,7 @@ cd ./Ruvomain-Protocol
 chmod +x wireless_adb-setup.sh && ./wireless_adb-setup.sh
 ```
 >
->or manually:
+Or manually:
 >
 >>Use `adb pair` and `adb connect` in your terminal to link your ADB client to the system server.
 >
