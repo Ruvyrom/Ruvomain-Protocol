@@ -16,7 +16,6 @@ y|Y)
 printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
 # 3. Existing installation logic
 if command -v pkg >/dev/null; then
-echo -e "ADB installation with PKG..."
 pkg install -y adb
 elif command -v apt-get >/dev/null; then
 sudo apt-get update && sudo apt-get install -y adb
