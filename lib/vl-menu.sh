@@ -4,18 +4,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 SOURCES_DIR="$REPO_DIR/lib/sources.sh"
 
-if [ -f "$SOURCES_DIR" ]; then
-chmod +x "$SOURCES_DIR"
-source "$SOURCES_DIR"
-sources
-else
-echo "Error: Could not find $SOURCES_DIR"
-exit 1
-fi
-
 vl_menu() {
 clear
-echo "--- System's health ---"
+echo "--- System'shealth ---"
 $EXEC dumpsys battery | grep "level"
 $EXEC shell dumpsys cpuinfo | head -n 1
 
@@ -49,11 +40,15 @@ break
 echo "Exiting protocol..."
 exit 0
 ;;
-*) echo -e "${RED}Invalid option. Please choose 1-5.${NC}";;
+*) echo-e "${RED}Invalid option. Please choose 1-5.${NC}" ;;
 esac
 done
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if[ "${BASH_SOURCE[0]}" = "$0" ]; then
+if [ -f "$SOURCES_DIR" ]; then
+source "$SOURCES_DIR"
+sources
+fi
 vl_menu
 fi
