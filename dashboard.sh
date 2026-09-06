@@ -30,7 +30,7 @@ fi
 
 termux_setup
 
-echo -e "before use a script:"
+echo -e "Instructions before starting:"
 echo -e "For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs"
 echo -e "For Ruvomain-installer, place your APK files in ./ruvomain-installer/Apps"
 echo -e "For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups"
