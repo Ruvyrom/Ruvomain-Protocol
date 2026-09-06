@@ -20,6 +20,10 @@ exit 1
 fi
 
 show_logo
+echo -e "${BLUE}=========================================="
+echo -e "URAAM RUVOMAIN ADB APP-MANAGER | RESTORER"
+echo -e "==========================================${NC}"
+
 init_logs_restore 2>/dev/null || true
 env_detect
 ensure_adb || exit 1
