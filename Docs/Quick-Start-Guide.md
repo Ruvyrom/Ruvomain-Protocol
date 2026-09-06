@@ -17,7 +17,7 @@
 
 OR
 
-**2. Use Wireless Debuging:** (recommended for Termux, WSL)
+**2. Use Wireless Debuging:**
 
 <details>
 <summary>Configuration</summary>
@@ -33,7 +33,16 @@ OR
 >
 >>Note down the IP address, the port, and the pairing code.
 
-- On your PC in your terminal (WSL/Linux/Mac):
+- On your terminal
+>
+>>Select "Connect device with wireless ADB" in Dashboard Menu when you execute URAAM or use these command for assisted connection:
+>
+```bash
+cd ./Ruvomain-Protocol
+chmod +x wireless_adb-setup.sh && ./wireless_adb-setup.sh
+```
+>
+>or manually:
 >
 >>Use `adb pair` and `adb connect` in your terminal to link your ADB client to the system server.
 >
@@ -112,7 +121,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 
 </details>
 
-### 📱 For Termux users (Wireless)
+### 📱 For Termux users (You can use with root, Shizuku Rish or wireless ADB)
 
 **1. Semi-Automatic setup execution** (Install adb, pair & connect):
 
