@@ -1,7 +1,7 @@
 # Ruvomain-Protocol - Universal ADB App Manager
 # Usage:
 #   make          (run the dashboard)
-#   make termux   (run Termux setup)
+#   make wadb     (run wireless adb setup)
 #   make debloat  (run debloat script)
 #   make backup   (run backup script)
 #   make restore  (run restore script)
@@ -44,8 +44,8 @@ install:
 ./ruvomain-installer/ruvomain-installer.sh
 
 termux:
-@chmod +x ./termux-setup.sh
-./termux-setup.sh
+@chmod +x ./wireless_adb-setup.sh
+./wireless_adb-setup.sh
 
 clean:
 @echo "Cleaning up temporary files..."
