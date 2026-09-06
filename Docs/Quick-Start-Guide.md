@@ -74,7 +74,7 @@ adb connect <IP>:<PORT>
 
 - `git` for clone repo
 <details>
- <summary>Installation:</summary>
+ <summary>Git installation:</summary>
 
 >>Debian, Ubuntu, WSL
 ```bash
@@ -90,7 +90,7 @@ sudo dnf install -y git
 ```
 </details>
 
-- `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).
+***Note:** `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
 
 2. **Deployment:**
 
@@ -138,6 +138,7 @@ chmod +x dashboard.sh && ./dashboard.sh
 ```bash
 pkg install git
 ```
+*`adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
 
 **Clone the repo:**
 ```bash
