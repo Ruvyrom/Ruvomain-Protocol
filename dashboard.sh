@@ -18,7 +18,7 @@ fi
 
 clear
 show_logo
-echo -e "${BLUE}=========================================="
+echo -e "${CYAN}=========================================="
 echo -e "URAAM RUVOMAIN ADB APP-MANAGER | CONTROL CENTER"
 echo -e "==========================================${NC}"
 
