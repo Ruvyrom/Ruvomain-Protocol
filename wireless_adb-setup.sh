@@ -17,6 +17,11 @@ return 1
 fi
 
 wireless_adb(){
+show_logo
+echo -e "${BLUE}=========================================="
+echo -e "URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP"
+echo -e "==========================================${NC}"
+
 #Guidance for Wireless Debugging
 echo "--------------------------------------------------------"
 echo "CRITICAL STEP: Wireless Debugging"
