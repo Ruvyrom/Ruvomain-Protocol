@@ -20,6 +20,7 @@ exit 1
 fi
 
 # --- Initialization ---
+clear
 show_logo
 echo -e "${BLUE}=========================================="
 echo -e "URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER"
@@ -38,3 +39,4 @@ echo "If URAAM has been useful to you, a star on GitHub is"
 echo "the best way to support the project:"
 echo "https://github.com/Ruvyrom/Ruvomain-Protocol"
 echo "--------------------------------------------------"
+return 1
