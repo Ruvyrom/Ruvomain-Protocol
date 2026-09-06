@@ -17,12 +17,6 @@ return 1
 fi
 
 wireless_adb(){
-#Granting storage access
-echo "[*] Requesting storage access (please confirm the popup)..."
-if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
-termux-setup-storage
-fi
-
 #Guidance for Wireless Debugging
 echo "--------------------------------------------------------"
 echo "CRITICAL STEP: Wireless Debugging"
