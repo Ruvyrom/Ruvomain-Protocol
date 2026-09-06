@@ -60,7 +60,7 @@ bclean:
 help:
 @echo "Ruvomain-Protocol available commands:"
 @echo "  make         - Runs the dashboard"
-@echo "  make termux  - Runs Termux setup"
+@echo "  make wadb.   - Runs wireless adb setup"
 @echo "  make debloat - Runs the debloat module"
 @echo "  make backup  - Runs the backup module"
 @echo "  make restore - Runs the restore module"
