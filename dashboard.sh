@@ -39,6 +39,7 @@ echo "[*] Requesting storage access (please confirm the popup)..."
 
 ensure-adb || exit 1
 ensure-jq || exit 1
+check_adb
 autoperm
 menu
 
