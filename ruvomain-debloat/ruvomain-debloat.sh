@@ -19,6 +19,10 @@ exit 1
 fi
 
 show_logo
+echo -e "${BLUE}=========================================="
+echo -e "URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER"
+echo -e "==========================================${NC}"
+
 init_logs 2>/dev/null || true
 env_detect
 
