@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/usr/bin/env bash
 
 # --- Ruvomain Protocol - Termux Setup Script ---
 # version: v3.0.0
@@ -18,7 +18,9 @@ fi
 
 #Granting storage access
 echo "[*] Requesting storage access (please confirm the popup)..."
+if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
 termux-setup-storage
+fi
 
 #Guidance for Wireless Debugging
 echo "--------------------------------------------------------"
@@ -37,7 +39,7 @@ read -p "[?] Enter IP address and port for CONNECTION (e.g., 192.168.1.5:33456):
 adb connect $connect_target
 
 #Status check
-if adb devices | grep -q "device$"; then
+if adb devices | grep -E -q "[[:space:]]+device$"; then
 echo "[+] SUCCESS: Device connected successfully."
 echo "[+] Ruvomain-Protocol environment is ready."
 else
