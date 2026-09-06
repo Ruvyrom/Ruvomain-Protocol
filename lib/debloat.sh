@@ -32,7 +32,7 @@ mapfile -t PACKAGES < <(jq -r 'if type=="array" then .[] elif .apps then .apps[]
 
 if [ ${#PACKAGES[@]} -eq 0 ]; then
 echo -e "${RED}No packages found. Verify the JSON format.${NC}"
-exit 1
+return 1
 fi
 
 echo -e "${BLUE}Fetching installed packages from device...${NC}"
