@@ -21,6 +21,10 @@ fi
 
 # --- Initialization ---
 show_logo
+echo -e "${BLUE}=========================================="
+echo -e "URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER"
+echo -e "==========================================${NC}"
+
 init_logs
 ensure_adb
 check_adb
