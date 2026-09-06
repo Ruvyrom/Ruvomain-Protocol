@@ -20,5 +20,5 @@ exec> >(tee -a "$LOGFILE") 2>&1
 }
 
 if [ "${BASH_SOURCE[0]}" = "$0" ]; then
-init_logs
+init_logs_backup
 fi
