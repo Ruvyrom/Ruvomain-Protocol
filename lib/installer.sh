@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 installer() {
+# Directory check
+if [ ! -d "$APP_DIR" ]; then
+echo -e "${RED}[ERROR]${NC}Directory $APP_DIR not found."
+return 1
+fi
+
 # Installation process
 echo -e "${GREEN}[INFO]${NC} Deploying packages..."
 
