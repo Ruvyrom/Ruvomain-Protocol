@@ -41,7 +41,7 @@ local pkg_array=($packages)
 local total=${#pkg_array[@]}
 local count=0
 
-for pkg in"${pkg_array[@]}"; do
+for pkg in "${pkg_array[@]}"; do
 count=$((count + 1))
 
 # Writing the appobject
