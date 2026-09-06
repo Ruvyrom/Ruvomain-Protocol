@@ -37,8 +37,8 @@ echo -e "For Ruvomain-restore, use your backup created with ruvomain-backup.sh o
 echo -e "Ruvomain-backup places your backup .json file in /ruvomain-backup/backups"
 echo "[*] Requesting storage access (please confirm the popup)..."
 
-ensure-adb || exit 1
-ensure-jq || exit 1
+ensure_adb || exit 1
+ensure_jq || exit 1
 check_adb
 autoperm
 menu
