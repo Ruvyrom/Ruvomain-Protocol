@@ -24,6 +24,7 @@ init_logs_restore 2>/dev/null || true
 env_detect
 ensure_adb || exit 1
 ensure_jq || exit 1
+check_adb
 
 echo -e "${BLUE}=== Ruvomain-Protocol: Package Restoration ===${NC}"
 
