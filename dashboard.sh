@@ -28,6 +28,8 @@ termux-setup-storage
 fi
 } 
 
+termux_setup
+
 echo -e "before use a script:"
 echo -e "For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs"
 echo -e "For Ruvomain-installer, place your APK files in ./ruvomain-installer/Apps"
