@@ -43,7 +43,7 @@ install:
 @chmod +x ./ruvomain-installer/ruvomain-installer.sh
 ./ruvomain-installer/ruvomain-installer.sh
 
-termux:
+wadb:
 @chmod +x ./wireless_adb-setup.sh
 ./wireless_adb-setup.sh
 
