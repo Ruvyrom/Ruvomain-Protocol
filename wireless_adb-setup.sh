@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# --- Ruvomain Protocol - Termux Setup Script ---
+# --- Ruvomain Protocol - Wireless ADB Setup Script ---
 # version: v3.0.0
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -16,6 +16,7 @@ echo "Error: Could not find $SOURCES_DIR"
 exit 1
 fi
 
+wireless_adb(){
 #Granting storage access
 echo "[*] Requesting storage access (please confirm the popup)..."
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
@@ -44,4 +45,10 @@ echo "[+] SUCCESS: Device connected successfully."
 echo "[+] Ruvomain-Protocol environment is ready."
 else
 echo "[!] ERROR: Connection failed. Please check your IP/Port and try again."
+fi
+return 1
+} 
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+wireless_adb
 fi
