@@ -20,9 +20,10 @@ exit 1
 fi
 
 # --- Initialization ---
-init_logs_backup 2>/dev/null || true
 show_logo
+init_logs_backup 2>/dev/null || true
 ensure_adb || exit 1
+check_adb
 
 # --- Execution
 generate_snapshot
