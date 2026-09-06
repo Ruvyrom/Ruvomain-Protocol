@@ -42,7 +42,3 @@ ensure-jq || exit 1
 check_adb
 autoperm
 menu
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-termux_setup
-fi
