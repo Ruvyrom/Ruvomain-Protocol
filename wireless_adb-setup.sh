@@ -13,7 +13,7 @@ source "$SOURCES_DIR"
 sources
 else
 echo "Error: Could not find $SOURCES_DIR"
-exit 1
+return 1
 fi
 
 wireless_adb(){
