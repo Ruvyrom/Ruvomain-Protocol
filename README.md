@@ -64,10 +64,10 @@ On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 ```
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps 
-- For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
-- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs/debloat.
+- For Ruvomain-installer, place your `APK` files in /Apps 
+- For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in /Configs/backup-restore
+- Ruvomain-backup places your backup .json file in /Configs/backup-restore
 
 **Execute Universal Ruvomain ADB App-Manager (URAAM):**
 ```bash
