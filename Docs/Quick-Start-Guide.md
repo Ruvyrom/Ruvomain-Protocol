@@ -35,15 +35,7 @@ OR
 
 - On your terminal
 >
->>Select "Connect device with wireless ADB" in Dashboard Menu when you execute URAAM or use these command for assisted connection:
->
-```bash
-cd ./Ruvomain-Protocol
-```
->
-```bash
-chmod +x wireless_adb-setup.sh && ./wireless_adb-setup.sh
-```
+>>Select "wireless ADB Setup" in Dashboard Menu when you execute URAAM
 >
 Or manually:
 >
@@ -124,7 +116,7 @@ cd ./Ruvomain-Protocol
 ```
 
 ```bash
-chmod +x dashboard.sh && ./dashboard.sh
+chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 
 </details>
@@ -163,7 +155,7 @@ OR
 
 ```bash
 cd ./Ruvomain-Protocol
-chmod +x dashboard.sh && ./dashboard.sh
+chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 
 ***Note :***
@@ -181,10 +173,11 @@ chmod +x dashboard.sh && ./dashboard.sh
  
 1. Install [Homebrew](https://brew.sh/) if you haven't already.
 
-2. **Install ADB:**
+2. **Prerequisites:**
 ```bash
-brew install git android-platform-tools jq
+brew install git
 ```
+*`adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
 
 3. **Clone the protocol:**
 
@@ -192,14 +185,9 @@ brew install git android-platform-tools jq
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
-4. **Verify device connection:**
-
-```bash
-adb devices
-```
 *(If "unauthorized", check your phonescreen and tap "Always allow")*
 
-5.
+4.
 - For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
 
 - For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
@@ -208,7 +196,7 @@ adb devices
 
 - Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
 
-6. **Execute Universal ADB App-Manager (URAAM) dashboard:**
+5. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
@@ -221,7 +209,7 @@ cd ./Ruvomain-Protocol
 ```
 
 ```bash
-chmod +x ./dashboard.sh && dashboard.sh
+chmod +x ./ruvomain.sh && ruvomain.sh
 ```
 
 </details>
