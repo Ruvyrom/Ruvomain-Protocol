@@ -121,7 +121,7 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 
 </details>
 
-### 📱 For Termux users (You can use with root, Shizuku Rish or wireless ADB)
+### 📱 For Termux users (The script detect if you use with root, Shizuku Rish or wireless ADB)
 
 <details>
 <summary><b></b>Execution:</b></summary>
