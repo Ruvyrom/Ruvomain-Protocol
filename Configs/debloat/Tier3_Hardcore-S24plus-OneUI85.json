@@ -1,0 +1,241 @@
+{
+  "name": "Ruvomain Protocol T3",
+  "description": "Tier 3 - Replacement Required (Advanced)",
+  "createdDate": 1780047654302,
+  "apps": [
+        {
+      "packageName": "com.samsung.android.bixby.agent"
+    },
+    {
+      "packageName": "com.samsung.android.bixbyvision.framework"
+    },
+    {
+      "packageName": "com.samsung.android.visionintelligence"
+    },
+    {
+      "packageName": "com.samsung.android.app.taskedge"
+    },
+    {
+      "packageName": "com.samsung.android.aircommandmanager"
+    },
+    {
+      "packageName": "com.samsung.android.bluelightfilter"
+    },
+    {
+      "packageName": "com.samsung.android.app.earphonetypec"
+    },
+    {
+      "packageName": "com.samsung.android.inputshare"
+    },
+    {
+      "packageName": "com.samsung.android.dqagent"
+    },
+    {
+      "packageName": "com.android.devicediagnostics"
+    },
+    {
+      "packageName": "com.samsung.android.rampart"
+    },
+    {
+      "packageName": "com.samsung.android.bbc.bbcagent"
+    },
+    {
+      "packageName": "com.samsung.android.dsms"
+    },
+    {
+      "packageName": "com.sec.android.app.factorykeystring"
+    },
+    {
+      "packageName": "com.samsung.android.beaconmanager"
+    },
+    {
+      "packageName": "com.samsung.android.mcfds"
+    },
+    {
+      "packageName": "com.samsung.android.mdx.kit"
+    },
+    {
+      "packageName": "com.samsung.cmh"
+    },
+    {
+      "packageName": "com.samsung.android.mcf.autohotspot"
+    },
+    {
+      "packageName": "com.samsung.android.aremojieditor"
+    },
+    {
+      "packageName": "com.android.avatarpicker"
+    },
+    {
+      "packageName": "com.samsung.android.app.camera.sticker.facearavatar.preload"
+    },
+    {
+      "packageName": "com.samsung.android.faceservice"
+    },
+    {
+      "packageName": "com.sec.android.mimage.photoretouching"
+    },
+    {
+      "packageName": "com.samsung.app.newtrim"
+    },
+    {
+      "packageName": "com.samsung.android.vtcamerasettings"
+    },
+    {
+      "packageName": "com.android.dreams.phototable"
+    },
+    {
+      "packageName": "com.android.dreams.basic"
+    },
+    {
+      "packageName": "com.android.egg"
+    },
+    {
+      "packageName": "com.samsung.android.brightnessbackupservice"
+    },
+    {
+      "packageName": "com.samsung.safetyinformation"
+    },
+    {
+      "packageName": "com.sec.android.provider.badge"
+    },
+    {
+      "packageName": "com.samsung.android.forest"
+    },
+    {
+      "packageName": "com.sec.android.app.parser"
+    },
+    {
+      "packageName": "com.samsung.android.aware.service"
+    },
+    {
+      "packageName": "com.samsung.android.mydevice"
+    },
+    {
+      "packageName": "com.samsung.android.mdecservice"
+    },
+    {
+      "packageName": "com.sec.android.easyMover.Agent"
+    },
+    {
+      "packageName": "com.sec.android.easyMover.smartswitchassistant"
+    },
+    {
+      "packageName": "com.samsung.android.callbgprovider"
+    },
+    {
+      "packageName": "com.google.ar.core"
+    },
+    {
+      "packageName": "com.google.android.aicore"
+    },
+    {
+      "packageName": "com.google.android.aicore.services"
+    },
+    {
+      "packageName": "com.google.android.federatedcompute"
+    },
+    {
+      "packageName": "com.google.android.apps.restore"
+    },
+    {
+      "packageName": "com.google.android.as"
+    },
+    {
+      "packageName": "com.google.android.ondevicepersonalization.services"
+    },
+    {
+      "packageName": "com.google.android.appsearch.apk"
+    },
+    {
+      "packageName": "com.google.android.health.connect.backuprestore"
+    },
+    {
+      "packageName": "com.google.android.adservices.api"
+    },
+    {
+      "packageName": "com.samsung.android.net.wifi.wifiguider"
+    },
+    {
+      "packageName": "com.samsung.android.audiomirroring"
+    },
+    {
+      "packageName": "com.sec.android.app.bluetoothagent"
+    },
+    {
+      "packageName": "com.android.bluetoothmidiservice"
+    },
+    {
+      "packageName": "com.android.ons"
+    },
+    {
+      "packageName": "com.sec.hearingadjust"
+    },
+    {
+      "packageName": "com.samsung.android.app.omcagent"
+    },
+    {
+      "packageName": "com.android.bookmarkprovider"
+    },
+    {
+      "packageName": "com.android.calllogbackup"
+    },
+    {
+      "packageName": "com.sec.android.CcInfo"
+    },
+    {
+      "packageName": "com.sec.android.app.chromecustomizations"
+    },
+    {
+      "packageName": "com.android.wallpaperbackup"
+    },
+    {
+      "packageName": "com.android.calllogbackup"
+    },
+    {
+      "packageName": "com.samsung.slsi.telephony.silentlogging"
+    },
+    {
+      "packageName": "com.sec.android.app.qsfastpairoverlay"
+    },
+    {
+      "packageName": "com.touchtype.swiftkey"
+    },
+    {
+      "packageName": "com.sec.android.app.SecSetupWizard"
+    },
+    {
+      "packageName": "com.google.android.setupwizard"
+    },
+    {
+      "packageName": "android.autoinstalls.config.samsung"
+    },
+    {
+      "packageName": "com.samsung.android.app.contacts"
+    },
+    {
+      "packageName": "com.sec.android.widgetapp.easymodecontactswidget"
+    },
+    {
+      "packageName": "com.google.android.verifier"
+    },
+    {
+      "packageName": "com.google.android.verifier.overlay"
+    },
+    {
+      "packageName": "com.samsung.android.authfw"
+    },
+    {
+      "packageName": "com.samsung.android.knox.attestation"
+    },
+    {
+      "packageName": "com.samsung.android.knox.er"
+    },
+    {
+      "packageName": "com.samsung.android.knox.mpos"
+    },
+    {
+      "packageName": "com.sec.bcservice"
+    }
+   ]
+}

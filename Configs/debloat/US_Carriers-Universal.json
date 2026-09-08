@@ -1,0 +1,35 @@
+{
+  "name": "US Carriers Debloat",
+  "description": "Removes carrier-specific bloatware,tracking services, and telemetry from US carriers (Verizon, AT&T, T-Mobile, Sprint).",
+  "author": "Ruvyrom",
+  "version": "1.0",
+  "apps":[
+    {
+    "packageName": "com.vzw.apnservice"
+    },
+    {
+    "packageName": "com.vzw.ecid"
+    },
+    {
+    "packageName": "com.vcast.mediamanager"
+    },
+    {
+    "packageName": "com.att.android.attsmartwifi"
+    },
+    {
+    "packageName": "com.att.myWireless"
+    },
+    {
+    "packageName": "com.att.tv"
+    },
+    {
+    "packageName": "com.tmobile.pr.adapt"
+    },
+    {
+    "packageName": "com.tmobile.pr.mytmobile"
+    },
+    {
+    "packageName": "com.sprint.zone"
+    }
+  ]
+}
