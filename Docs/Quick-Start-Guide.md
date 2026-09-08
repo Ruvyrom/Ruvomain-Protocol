@@ -95,13 +95,13 @@ sudo dnf install -y git
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
   
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+- For Ruvomain-installer, place your `APK` files in /Apps
   
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
   
-- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /Configs/backup-restore
 
 3. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
@@ -137,13 +137,13 @@ pkg install git
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
   
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+- For Ruvomain-installer, place your `APK` files in /Apps
   
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
   
-- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /Configs/backup-restore
 
 **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
@@ -188,13 +188,13 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 *(If "unauthorized", check your phonescreen and tap "Always allow")*
 
 4.
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
 
-- For Ruvomain-installer, place your `APK` files in ./ruvomain-installer/Apps
+- For Ruvomain-installer, place your `APK` files in /Apps
 
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
 
-- Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+- Ruvomain-backup places your backup .json file in /Config/backup-restore
 
 5. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
