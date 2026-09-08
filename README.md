@@ -33,6 +33,7 @@
 The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) scripts are tools to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
 **It is 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
+You can also use this script in Termux with ADB wireless, Shizuku rish and root.
 
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
