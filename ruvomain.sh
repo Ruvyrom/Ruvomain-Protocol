@@ -162,35 +162,55 @@ esac
 wireless_adb(){
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP"
-echo -e "==========================================${NC}"
-
+echo -e "${BLUE}===================================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
+echo -e "${BLUE}===================================================${NC}"
+echo ""
+ensure_adb
 echo "--------------------------------------------------------"
 echo "CRITICAL STEP: Wireless Debugging"
 echo "1. Go to Settings > Developer Options."
 echo "2. Tap on 'Wireless debugging' (the text itself)."
 echo "3. Select 'Pair device with pairing code'."
 echo "--------------------------------------------------------"
+echo "\n"
 
-#Interactive Pairing and Connection
-read -p "[?] Enter IP address and port for PAIRING (e.g., 192.168.1.5:41234): " pair_target
-adb pair $pair_target
+read -rp "Do you need to PAIR first? (y/N): " need_pair
 
-echo "[*] Now, use the connection port displayed in the Wireless debugging menu."
-read -p "[?] Enter IP address and port for CONNECTION (e.g., 192.168.1.5:33456): " connect_target
-adb connect $connect_target
+if [[ "$need_pair" =~ ^[yY]$ ]]; then
+echo -e "\n--- STEP 1: PAIRING ---"
+echo "Check the pairing popup dialog for IP:Port and the 6-digit code."
+read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
+read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
-#Status check
-if adb devices | grep -E -q "[[:space:]]+device$"; then
-echo "[+] SUCCESS: Device connected successfully."
-echo "[+] Ruvomain-Protocol environment is ready."
+if [ -n "$pair_host" ] && [ -n "$pair_code" ]; then
+echo -e "\n[*] Pairing with $pair_host..."
+adb pair "$pair_host" "$pair_code"
 else
-echo "[!] ERROR: Connection failed. Please check your IP/Port and try again."
+echo -e "\n\e[1;31m[!] Pairing aborted: host or code cannot be empty.\e[0m"
 fi
+fi
+
+echo -e "\n--- STEP 2: CONNECTION ---"
+echo "Look at the main Wireless Debugging screen for the CONNECTION port."
+read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
+
+if [ -n "$conn_host" ]; then
+echo -e "\n[*] Connecting to $conn_host..."
+adb connect "$conn_host"
+
 sleep 1
-read -rp "Press Enter to return to main menu"
-return 0
+if adb devices | grep -q "$conn_host.*device"; then
+echo -e "\n${GREEN}[✓] Successfully connected via Wireless ADB!${NC}"
+else
+echo -e "\n${RED}[!] Connection failed. Check IP/Port and make sure screen is on.${NC}"
+fi
+else
+echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
+fi
+
+echo ""
+read -rp "Press Enter to return to main menu..."
 }
 
 check_adb() {
@@ -210,9 +230,9 @@ fi
 ruvomain_debloat() {
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER"
-echo -e "==========================================${NC}"
+echo -e "${BLUE}==========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
+echo -e "${BLUE}==========================================${NC}"
 
 echo -e "${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
 
@@ -299,9 +319,9 @@ return 0
 ruvomain_backup() {
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR"
-echo -e "==========================================${NC}"
+echo -e "${BLUE}===============================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
+echo -e "${BLUE}===============================================${NC}"
 
 init_logs_backup 2>/dev/null || true
 
@@ -370,9 +390,9 @@ return 0
 ruvomain_installer() {
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER"
-echo -e "==========================================${NC}"
+echo -e "${BLUE}==========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
+echo -e "${BLUE}==========================================${NC}"
 
 check_adb
 
@@ -405,9 +425,9 @@ return 0
 ruvomain_restore() {
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | RESTORER"
-echo -e "==========================================${NC}"
+echo -e "${BLUE}=========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
+echo -e "${BLUE}=========================================${NC}"
 
 init_logs_restore 2>/dev/null || true
 
@@ -420,10 +440,9 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
-echo "Configuration files found:"
-echo "----------------------------------------"
+echo -e "Configuration files found:"
+echo -e "----------------------------------------"
 
-# Interactive menu
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
 if [ -n "$short_name" ]; then
