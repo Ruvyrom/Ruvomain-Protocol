@@ -7,7 +7,7 @@
 <br>
 <strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
 <br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
-<strong>for ALL Android devices and compatible with root, Shiziku rish and wireless ADB with Termux</strong>
+<strong>For ALL Android devices and compatible with root, Shiziku rish and wireless ADB with Termux</strong>
 </div>
 
 &nbsp;
