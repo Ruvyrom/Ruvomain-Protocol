@@ -37,10 +37,12 @@ Professional-grade infrastructure for system optimization. Designed for those wh
 <br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
 
 ---
-> **🚀 Latest Updates:**
-> - **2026-09-04:** Added 7 new curated JSON configurations in [/Configs](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs) (Safelists for Samsung Galaxy S26 Ultra, Xiaomi HyperOS, Vivo/Iqoo, TCL Android TV, carrier bloatware and Meta preinstalled services).
-> - **2026-08-28:** Released unified Dashboard TUI + 4 modular core BASH engines for URAAM.
----
+>> **🚀 Latest Updates:**
+>
+> - **2026-09-08 - Major update:** Scripts cleaned up and rewritten into a single all-in-one script 'ruvomain.sh'. 
+
+> - **2026-09-04:** Added 7 new curated JSON configurations in [/Configs/debloat](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs/debloat) (Safelists for Samsung Galaxy S26 Ultra, Xiaomi HyperOS, Vivo/Iqoo, TCL Android TV, carrier bloatware and Meta preinstalled services).
+> - ---
 ## 🚀 Ready to deploy?
 
 **UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
@@ -53,6 +55,8 @@ Settings > About phone > Tap "Build Number" 7 times
 Settings > Developer Options > Enable "USB Debugging"
 
 Connect your device to your PC via USB
+
+OR use Wireless ADB setup option in Dashboard.
 </details>
 
 On Linux:
@@ -74,7 +78,7 @@ OR
 
 ```bash
 cd ./Ruvomain-Protocol
-chmod +x dashboard.sh && ./dashboard.sh
+chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 </details>
 
