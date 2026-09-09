@@ -237,8 +237,8 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-echo -e "${RED}Before finalizing execution, place your personal/Canta JSON lists${NC}"
-echo -e "${RED}or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "\nPlace debloat configurations in ./Configs/debloat/"
+echo -e "(Canta JSON supported)."
 echo -e "${BLUE}------------------------------------------${NC}"
 
 init_logs 2>/dev/null || true
@@ -338,6 +338,7 @@ show_logo
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
 echo -e "${BLUE}===============================================${NC}"
+echo - e "\Backups targets reside in ./Configs/backup-restore/"
 
 init_logs_backup 2>/dev/null || true
 
@@ -417,6 +418,8 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
+echo -e "\nPlace APKs to install in ./Apps/ before starting."
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 ensure_adb || exit 1
 
@@ -461,18 +464,20 @@ show_logo
 echo -e "${BLUE}=========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
 echo -e "${BLUE}=========================================${NC}"
+echo -e "\nRestoration targets reside in ./Configs/backup-restore/"
+echo -e "\n${BLUE}---------------------------------------${NC}"
 
 init_logs_restore 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
 
-echo -e "\n${BLUE}----------------------------------------${NC}"
+echo -e "\n${BLUE}---------------------------------------${NC}"
 check_device || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
-echo -e "\n${BLUE}----------------------------------------${NC}"
+echo -e "\n${BLUE}---------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
@@ -483,9 +488,9 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
-echo -e "\n${BLUE}----------------------------------------${NC}"
+echo -e "\n${BLUE}---------------------------------------${NC}"
 echo -e "\nConfiguration files found:"
-echo -e "\n${BLUE}----------------------------------------${NC}"
+echo -e "\n${BLUE}---------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
@@ -632,11 +637,10 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DASHBOARD${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\nInstructions before starting:"
-echo -e "\nFor Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat"
-echo -e "\nFor Ruvomain-installer, place your APK files in /Apps"
-echo -e "\nFor Ruvomain-restore, use your backup created with ruvomain-backup or place your own backup .json file or Canta .json file list in /Configs/backup-restore"
-echo -e "\nRuvomain-backup creates your backup .json file in /Configs/backup-restore"
+echo -e "\nFolder layout instructions before starting:"
+echo -e "\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON supported)."
+echo -e "\nPlace APKs to install in ./Apps/."
+echo -e "\nBackups and restoration targets reside in ./Configs/backup-restore/
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
