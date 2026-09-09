@@ -24,7 +24,7 @@ dashboard:
 ./ruvomain.sh
 
 update:
-@chmod +x ./update.sh
+@chmod +x ./installer.sh
 
 clean:
 @echo "Cleaning up temporary files..."
