@@ -254,7 +254,7 @@ ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
-echo -e "\n${RED}[!] ERROR: ADB device not conected${NC}"
+echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return to main menu..."
 return 1
 }
@@ -353,7 +353,7 @@ ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
-echo -e "\n${RED}[!] ERROR: ADB device not conected${NC}"
+echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return to main menu..."
 return 1
 }
@@ -431,6 +431,7 @@ ensure_adb || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
+echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
@@ -478,6 +479,7 @@ ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
+echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
