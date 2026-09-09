@@ -47,10 +47,9 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 ---
 >> **🚀 Latest Updates:**
 >
-> - **2026-09-08 - Major update:** Scripts cleaned up and rewritten into a single all-in-one script 'ruvomain.sh'. 
-
-> - **2026-09-04:** Added 7 new curated JSON configurations in [/Configs/debloat](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs/debloat) (Safelists for Samsung Galaxy S26 Ultra, Xiaomi HyperOS, Vivo/Iqoo, TCL Android TV, carrier bloatware and Meta preinstalled services).
-> - ---
+> -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `ruvomain.sh`.
+> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
+>---
 ## 🚀 Ready to deploy?
 
 **UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
@@ -72,30 +71,25 @@ On Linux:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 ```
-- For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs/debloat.
-- For Ruvomain-installer, place your `APK` files in /Apps 
-- For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in /Configs/backup-restore
-- Ruvomain-backup places your backup .json file in /Configs/backup-restore
+
+Folder layout:
+* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
+* Place APKs to install in `./Apps/`.
+* Backups and restoration targets reside in `./Configs/backup-restore/`.
 
 **Execute Universal Ruvomain ADB App-Manager (URAAM):**
 ```bash
 make -C ./Ruvomain-Protocol
 ```
-
-OR
-
+OR run directly in **Bash**:
 ```bash
 cd ./Ruvomain-Protocol
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 
-For more detailed instructions for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
+📖 For platform-specific documentation (Termuxstandalone, macOS, WSL2, Linux rules), refer to the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**.
+Discover all Makefile targets using `make help`.
 
-For execute other make command use help in Makefile:
-```bash
-cd ./Ruvomain-Protocol
-make help
-```
 ---
 ### Table of Contents
 
