@@ -71,18 +71,20 @@ Folder layout:
 * Place APKs to install in `./Apps/`.
 * Backups and restoration targets reside in `./Configs/backup-restore/`.
 
-**Direct execution**
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-make -C ./Ruvomain-Protocol
-```
-OR run directly in **Bash**:
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol
-cd ./Ruvomain-Protocol
-chmod +x ruvomain.sh && ./ruvomain.sh
-```
+### Direct execution
 
+**1-Line Installation (Termux, Linux, macOS)**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh | bash
+```
+> ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
+
+### Usage Anywhere
+
+Once installed, simplyrun the global command from any directory:
+```bash
+uraam
+```
 📖 For platform-specific documentation (Termuxstandalone, macOS, WSL2, Linux rules), refer to the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**.
 Discover all Makefile targets using `make help`.
 
