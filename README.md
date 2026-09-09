@@ -66,18 +66,16 @@ Connect your device to your PC via USB
 OR use Wireless ADB setup option in Dashboard.
 </details>
 
-On Linux:
+**🐧 On Linux:**
 
+**Direct execution**:
+```bash
+curl -sSL https://github.com/Ruvyrom/Ruvomain-Protocol/ruvomain.sh | bash
+```
+Or
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 ```
-
-Folder layout:
-* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
-* Place APKs to install in `./Apps/`.
-* Backups and restoration targets reside in `./Configs/backup-restore/`.
-
-**Execute Universal Ruvomain ADB App-Manager (URAAM):**
 ```bash
 make -C ./Ruvomain-Protocol
 ```
