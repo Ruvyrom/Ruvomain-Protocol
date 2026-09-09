@@ -54,17 +54,24 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 
 **UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
 
-<details>
-<summary>Enable USB Debugging on your device:</summary>
+**1-USB option** ***Enable USB Debugging on your device:***
 
-Settings > About phone > Tap "Build Number" 7 times
+* Settings > About phone > Tap "Build Number" 7 times
 
-Settings > Developer Options > Enable "USB Debugging"
+* Settings > Developer Options > Enable "USB Debugging"
 
-Connect your device to your PC via USB
+* Connect your device to your PC via USB
 
-OR use Wireless ADB setup option in Dashboard.
-</details>
+or
+
+**2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.***
+
+or
+
+**3-Shizuku option** ***(For Termux via Shizuku & Rish):***
+* Start [Shizuku](https://shizuku.rikka.app/).
+* Export the Shizuku shell (`rish`) into Termux environment.
+* URAAM will execute elevated package commands directly on-device.
 
 ### 📁 File Layout (`~/.Ruvomain-Protocol/`)
 | Folder | Purpose|
