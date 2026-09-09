@@ -51,7 +51,7 @@ fi
 chmod +x "$INSTALL_DIR/ruvomain.sh"
 
 BIN_DIR=""
-if[ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
+if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
 BIN_DIR="$PREFIX/bin"
 elif [ -d "/usr/local/bin" ] && [ -w "/usr/local/bin" ];then
 BIN_DIR="/usr/local/bin"
