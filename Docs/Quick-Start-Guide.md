@@ -159,5 +159,4 @@ Install [Homebrew](https://brew.sh/) if you haven't already.
 ```bash
 brew install git android-tools jq
 ```
-**Follow the same quick start than [Linux, Termux...](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/Quick-Start-Guide.md#for-linux-termux-wsl) 
-
+**Follow the same quick start than [Linux, Termux...](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/Quick-Start-Guide.md#for-linux-termux-wsl)**
