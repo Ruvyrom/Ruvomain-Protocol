@@ -72,6 +72,10 @@ Folder layout:
 * Backups and restoration targets reside in `./Configs/backup-restore/`.
 
 **Direct execution**
+```bawh
+curl -sSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/ruvomain.sh | bash
+```
+Or via make:
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 make -C ./Ruvomain-Protocol
