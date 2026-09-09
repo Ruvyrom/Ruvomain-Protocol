@@ -1,5 +1,6 @@
 ## ⚙️ Quick Start
-**Disconnect Samsung account before using tier 2 and 3 in script and for more privacy.**
+
+**Disconnect Samsung account before using tier 2 and 3 in script and for more privacy and toavoid account sync loops.**
 
 ### Universal Ruvomain ADB App-Manager (URAAM)
 
@@ -79,10 +80,12 @@ Once installed, simplyrun the global command from any directory:
 uraam
 ```
 
-## Folder layout:
-* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
-* Place APKs to install in `./Apps/`.
-* Backups and restoration targets reside in `./Configs/backup-restore/`.
+### 📁 File Layout (`~/.Ruvomain-Protocol/`)
+| Folder | Purpose|
+| :--- | :--- |
+| `Configs/debloat/` | Place debloat lists here(*Canta JSON supported*) |
+| `Apps/` | Place APKs to batch-install |
+| `Configs/backup-restore/` | Exported application lists & restore points |
 
 <detail>
 <summaru>Other execution method</sumary>
