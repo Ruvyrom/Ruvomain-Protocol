@@ -73,7 +73,7 @@ Folder layout:
 
 **Direct execution**:
 ```bash
-curl -sSL https://github.com/Ruvyrom/Ruvomain-Protocol/ruvomain.sh | bash
+curl -sSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/ruvomain.sh | bash
 ```
 Or
 ```bash
