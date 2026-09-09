@@ -81,18 +81,21 @@ TARGET_BIN="$PREFIX/bin"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
 printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
+printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 elif [ -w "/usr/local/bin" ]; then
 TARGET_BIN="/usr/local/bin"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
 printf "${GREEN}[✓] Global symlink installed: ${TARGET_BIN}/uraam${NC}\n"
+printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
 TARGET_BIN="/usr/local/bin"
 sudo ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 sudo chmod +x "$TARGET_BIN/uraam"
 printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
+printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 else
 TARGET_BIN="$HOME/.local/bin"
@@ -100,6 +103,7 @@ mkdir -p "$TARGET_BIN"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
 printf "${GREEN}[✓] User symlink installed: ${TARGET_BIN}/uraam${NC}\n"
+printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 case ":$PATH:" in
 *":$TARGET_BIN:"*) ;;
@@ -112,8 +116,6 @@ if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC"2>/dev/null; then
 printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
 printf "${YELLOW}[!] Added ~/.local/bin to PATH in ${SHELL_RC}.${NC}\n"
 printf "${YELLOW}[!] Run 'source %s' or open a new terminal to use 'uraam'.${NC}\n" "$SHELL_RC"
-printf "\n"
-printf "${CYAN}Type 'uraam' to starting the Dashboard.${NC}\n"
 fi
 ;;
 esac
