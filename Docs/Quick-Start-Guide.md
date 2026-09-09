@@ -36,7 +36,7 @@ or
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh | bash
 ```
-> ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
+> ***Note :** The installer auto-install GIT, ADB, JQ after confirm and takes care of cloning the repository.*
 
 ### Usage Anywhere
 
