@@ -63,13 +63,41 @@ adb connect <IP>:<PORT>
 *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 </details>
 
-### 🐧 For Linux & WSL users:
+### For 🐧Linux, 📱Termux, WSL:
+
+### Direct installation
+**1-Line Installation (Termux, Linux, macOS)**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh | bash
+```
+> ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
+
+### Usage Anywhere
+
+Once installed, simplyrun the global command from any directory:
+```bash
+uraam
+```
+
+## Folder layout:
+* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
+* Place APKs to install in `./Apps/`.
+* Backups and restoration targets reside in `./Configs/backup-restore/`.
+
+<detail>
+<summaru>Other execution method</sumary>
+
+<details>
+
 1. **Prerequisites:**
 
 - `git` for clone repo
-<details>
- <summary>Git installation:</summary>
 
+<summary>Git installation:</summary>
+>>Termux
+```bash
+pkg install git
+```
 >>Debian, Ubuntu, WSL
 ```bash
 sudo apt install git -y
@@ -86,7 +114,6 @@ sudo dnf install -y git
 
 ***Note:** `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
 
-2. **Deployment:**
 
 <details>
 <summary><b></b>Execution:</b></summary>
@@ -101,6 +128,7 @@ Folder layout:
 * Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
 * Place APKs to install in `./Apps/`.
 * Backups and restoration targets reside in `./Configs/backup-restore/`.
+
 ```bash
 make -C ./Ruvomain-Protocol
 ```
@@ -113,37 +141,7 @@ cd ./Ruvomain-Protocol
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
 </details>
-
-### 📱 For Termux users (The script detect if you use with root, Shizuku Rish or wireless ADB)
-
-<details>
-<summary><b></b>Execution:</b></summary>
-
-**Install git:**
-```bash
-pkg install git
-```
-*`adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
-
-**Clone the repo:**
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
-```
-
-Folder layout:
-* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
-* Place APKs to install in `./Apps/`.
-* Backups and restoration targets reside in `./Configs/backup-restore/`.
-**Execute Universal ADB App-Manager (URAAM) dashboard:**
-
-```bash
-make -C ./Ruvomain-Protocol
-```
-Or run directly in **Bash**:
-```bash
-cd ./Ruvomain-Protocol
-chmod +x ruvomain.sh && ./ruvomain.sh
-```
+</details>
 
 ***Note :***
 
