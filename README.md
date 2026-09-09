@@ -166,18 +166,6 @@ Discover all Makefile targets using `make help`.
 </details>
 
 ---
-### 📸 Proof Screenshot
-| Updates | Low Consumption |
-| :---: | :---: |
-| <img src="assets/update.jpg" width="200"> | <img src="assets/battery2.jpg" width="200"> |
-| You can make official updates without problem | Low energy consumption in standby mode |
-
-| Resource Management | CPU & Thermal Management |
-| :---: | :---: |
-| <img src="assets/ram1.jpg" width="200"> | <img src="assets/thermalg2.jpg" width="200"> |
-| Optimized background processes in RAM. | The CPU is not overloaded, which limits heat generation and allows for a deep sleep state and 10h+ SOT. |
-
----
 ## ⚖️ Comparison Matrix
 
 | Feature | Standard Approach (Canta/Shizuku)| **Ruvomain URAAM** |
