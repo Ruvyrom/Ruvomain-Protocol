@@ -170,26 +170,31 @@ echo -e "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
 echo -e "\n${CYAN}2. Tap on 'Wireless debugging' (the text itself).${NC}"
 echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
 echo -e "\n${BLUE}--------------------------------------------------------${NC}"
-echo "\n"
+echo ""
+
+while read -r-t 0.05 -n 1000 discard; do :; done
 
 read -rp "Do you need to PAIR first? (y/N): " need_pair
 
 if [[ "$need_pair" =~ ^[yY]$ ]]; then
 echo -e "\n--- STEP 1: PAIRING ---"
-echo "Check the pairing popup dialog for IP:Port and the 6-digit code."
+echo -e "\n${CYAN}Check the pairing popup dialog for IP:Port and the 6-digit code.${NC}"
 read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
 read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
 if [ -n "$pair_host" ] && [ -n "$pair_code" ]; then
-echo -e "\n[*] Pairing with $pair_host..."
+echo -e "\n${GREEN}[*] Pairing with $pair_host...${NC}"
 adb pair "$pair_host" "$pair_code"
 else
-echo -e "\n\e[1;31m[!] Pairing aborted: host or code cannot be empty.\e[0m"
+echo -e "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
 fi
 fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
 echo -e "\nLook at the main Wireless Debugging screen for the CONNECTION port."
+
+while read -r -t 0.05 -n 1000 discard; do :; done
+
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
 if [ -n "$conn_host" ]; then
@@ -323,7 +328,10 @@ echo -e "${BLUE}===============================================${NC}"
 
 init_logs_backup 2>/dev/null || true
 
-check_adb
+if ! check_adb; then
+read-rp "Press Enter to return to main menu..."
+return 1
+fi
 
 mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
@@ -333,7 +341,7 @@ echo -e "\n${CYAN}You are about to create backup.*json.${NC}"
 read -p "Are you sure you want to proceed? (y/N): " confirm
 
 if [[ $confirm != "y" && $confirm != "Y" ]]; then
-echo "/nOperation cancelled."
+echo "\nOperation cancelled."
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 1
