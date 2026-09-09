@@ -83,7 +83,7 @@ printf "${CYAN}[*] Configuring system command alias (uraam)...${NC}\n"
 if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
 TARGET_BIN="$PREFIX/bin"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
-chmod+x "$TARGET_BIN/uraam"
+chmod +x "$TARGET_BIN/uraam"
 printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
 
 elif [ -w "/usr/local/bin" ]; then
