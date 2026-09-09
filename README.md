@@ -65,6 +65,8 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 or
 
 **2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.***
+* Execute script and choose option ***[5] Wireless ADB Setup***
+* Follow instructions.
 
 or
 
