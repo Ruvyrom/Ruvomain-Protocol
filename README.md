@@ -66,8 +66,6 @@ Connect your device to your PC via USB
 OR use Wireless ADB setup option in Dashboard.
 </details>
 
-**🐧 On Linux:**
-
 **Direct execution**:
 ```bash
 curl -sSL https://github.com/Ruvyrom/Ruvomain-Protocol/ruvomain.sh | bash
