@@ -640,7 +640,7 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "\nFolder layout instructions before starting:"
 echo -e "\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON supported)."
 echo -e "\nPlace APKs to install in ./Apps/."
-echo -e "\nBackups and restoration targets reside in ./Configs/backup-restore/
+echo -e "\nBackups and restoration targets reside in ./Configs/backup-restore/"
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
@@ -648,7 +648,7 @@ ensure_jq || exit 1
 check_adb
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n [1] Debloat (Remove Bloatware)"
+echo -e "\n[1] Debloat (Remove Bloatware)"
 echo -e " [2] Install (Batch APK Install)"
 echo -e " [3] Backup (Export Apps List)"
 echo -e " [4] Restore (Revert/Reinstall Apps)"
