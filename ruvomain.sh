@@ -180,7 +180,7 @@ read -rp "Do you need to PAIR first? (y/N): " need_pair
 if [[ "$need_pair" =~ ^[yY]$ ]]; then
 echo -e "\n--- STEP 1: PAIRING ---"
 echo -e "\n${CYAN}Check the pairing popup dialog${NC}"
-echo - e "${CYAN}for IP:Port and the 6-digit code.${NC}"
+echo -e "${CYAN}for IP:Port and the 6-digit code.${NC}"
 read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
 read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
