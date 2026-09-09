@@ -232,6 +232,12 @@ fi
 return 0
 }
 
+check_device() {
+if ! adb devices | grep -q "device$"; then
+return 1
+fi
+}
+
 ruvomain_debloat() {
 clear
 show_logo
@@ -246,7 +252,7 @@ init_logs 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-check_adb || {
+check_device || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
@@ -339,7 +345,7 @@ init_logs_backup 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-check_adb || {
+check_device || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
@@ -412,7 +418,7 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
-check_adb || {
+check_device || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
@@ -456,7 +462,7 @@ init_logs_restore 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-check_adb || {
+check_device || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
