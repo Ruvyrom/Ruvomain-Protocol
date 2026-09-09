@@ -80,6 +80,8 @@ if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
 TARGET_BIN="$PREFIX/bin"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
+printf "${CYAN}[*]Cleaning up...${NC}\n"
+rm -rf "$INSTALL_DIR/installer.sh"
 printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
@@ -87,6 +89,8 @@ elif [ -w "/usr/local/bin" ]; then
 TARGET_BIN="/usr/local/bin"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
+printf "${CYAN}[*]Cleaning up...${NC}\n"
+rm -rf "$INSTALL_DIR/installer.sh"
 printf "${GREEN}[✓] Global symlink installed: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
@@ -94,6 +98,8 @@ elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
 TARGET_BIN="/usr/local/bin"
 sudo ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 sudo chmod +x "$TARGET_BIN/uraam"
+printf "${CYAN}[*]Cleaning up...${NC}\n"
+rm -rf "$INSTALL_DIR/installer.sh"
 printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
@@ -102,6 +108,8 @@ TARGET_BIN="$HOME/.local/bin"
 mkdir -p "$TARGET_BIN"
 ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
 chmod +x "$TARGET_BIN/uraam"
+printf "${CYAN}[*]Cleaning up...${NC}\n"
+rm -rf "$INSTALL_DIR/installer.sh"
 printf "${GREEN}[✓] User symlink installed: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
