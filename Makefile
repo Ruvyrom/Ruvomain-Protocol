@@ -1,19 +1,20 @@
 # Ruvomain-Protocol - Universal ADB App Manager
 # Usage:
 #   make          (run the dashboard)
+#   make update   (run update to lastest)
 #   make clean    (run clean logs)
 #   make bclean   (run clean backup)
 #   make help     (run command help)
 #
-# For Ruvomain-debloat, place your personal or Canta JSON lists in ./Configs
+#Folder layout:
 #
-# For Ruvomain-installer, place your APK files in ./ruvomain-installer/Apps
+#Place debloat configurations in ./Configs/debloat/ (Canta JSON supported).
 #
-# For Ruvomain-restore, use your backup created with ruvomain-backup.sh or place your own backup .json file or Canta .json file list in ./ruvomain-backup/backups
+#Place APKs to install in ./Apps/.
 #
-# Ruvomain-backup places your backup .json file in /ruvomain-backup/backups
+#Backups and restoration targets reside in ./Configs/backup-restore/.
 
-.PHONY: all dashboard termux debloat backup restore install clean bclean help
+.PHONY: all dashboard update clean bclean help
 
 # Default action: run the dashboard
 all: dashboard
@@ -21,6 +22,9 @@ all: dashboard
 dashboard:
 @chmod +x ./ruvomain.sh
 ./ruvomain.sh
+
+update:
+@chmod +x ./update.sh
 
 clean:
 @echo "Cleaning up temporary files..."
