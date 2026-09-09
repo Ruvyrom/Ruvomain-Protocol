@@ -47,10 +47,6 @@ cd "$INSTALL_DIR"
 
 git fetch --all --prune >/dev/null 2>&1
 
-# Forcer la synchronisation avec la branche distante :
-# - Met à jour les fichiers existants modifiés
-# - Télécharge tous les NOUVEAUX fichiers ajoutés au repo
-# - Conserve intacts les fichiers configs/logs créés localement (non versionnés)
 if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
