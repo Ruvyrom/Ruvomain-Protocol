@@ -2,7 +2,14 @@
 #
 # RUVOMAIN-PROTOCOL (URAAM v4.0.0) - All-in-One Edition
 #
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+SOURCE="$(readlink "$SOURCE")"
+[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1
 REPO_DIR="$SCRIPT_DIR"
 CONFIGS_DIR="$REPO_DIR/Configs/debloat"
 BACKUPS_DIR="$REPO_DIR/Configs/backup-restore"
