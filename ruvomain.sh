@@ -211,8 +211,9 @@ else
 echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
 fi
 
-echo -e "\n"
+sleep 1
 read -rp "Press Enter to return to main menu..."
+return 1
 }
 
 check_adb() {
@@ -234,13 +235,19 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "\n${RED}Before finalizing execution, place your personal/Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "${BLUE}==========================================${NC}"
 
 init_logs 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-check_adb
+
+if ! check_adb; then
+read -rp "Press Enter to return to main menu..."
+return1
+fi
+
 sleep 1
 
 shopt -s nullglob
@@ -328,6 +335,9 @@ echo -e "${BLUE}===============================================${NC}"
 
 init_logs_backup 2>/dev/null || true
 
+ensure_adb || exit 1
+ensure_jq || exit 1
+
 if ! check_adb; then
 read-rp "Press Enter to return to main menu..."
 return 1
@@ -337,7 +347,7 @@ mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
 
 echo -e "\n${RED}--- Warning ---${NC}"
-echo -e "\n${CYAN}You are about to create backup.*json.${NC}"
+echo -e "\n${CYAN}You are about to create backup.*json in /Configs/backuo-restore.${NC}"
 read -p "Are you sure you want to proceed? (y/N): " confirm
 
 if [[ $confirm != "y" && $confirm != "Y" ]]; then
@@ -399,7 +409,12 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-check_adb
+ensure_adb || exit 1
+
+if ! check_adb; then
+read -rp "Press Enter to return to main menu..."
+return1
+fi
 
 echo -e "\nCheck Apps Dir"
 if [ ! -d "$APP_DIR" ]; then
@@ -436,6 +451,15 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
 echo -e "${BLUE}=========================================${NC}"
 
 init_logs_restore 2>/dev/null || true
+
+ensure_adb || exit 1
+ensure_jq || exit 1
+
+if ! check_adb; then
+read -rp "Press Enter to return to main menu..."
+return1
+fi
+sleep 1
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
