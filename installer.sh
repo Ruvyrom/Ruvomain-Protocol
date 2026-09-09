@@ -9,7 +9,7 @@ set -e
 REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
 BRANCH="main"
 
-if[ -z "$INSTALL_DIR" ]; then
+if [ -z "$INSTALL_DIR" ]; then
 INSTALL_DIR="$HOME/Ruvomain-Protocol"
 fi
 
