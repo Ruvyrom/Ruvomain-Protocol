@@ -175,8 +175,6 @@ echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
 echo -e "\n${BLUE}--------------------------------------------------------${NC}"
 echo ""
 
-while read -r-t 0.05 -n 1000 discard; do :; done
-
 read -rp "Do you need to PAIR first? (y/N): " need_pair
 
 if [[ "$need_pair" =~ ^[yY]$ ]]; then
@@ -195,8 +193,6 @@ fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
 echo -e "\nLook at the main Wireless Debugging screen for the CONNECTION port."
-
-while read -r -t 0.05 -n 1000 discard; do :; done
 
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
