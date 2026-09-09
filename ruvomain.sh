@@ -244,19 +244,21 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-
-echo -e "\n${RED}Before finalizing execution, place your personal/Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
-echo -e "${BLUE}==========================================${NC}"
+echo -e "${RED}Before finalizing execution, place your personal/Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "${BLUE}------------------------------------------${NC}"
 
 init_logs 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
+
+echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
+echo -e "\n${RED}[!] ERROR: ADB device not conected${NC}"
 read -rp "Press Enter to return to main menu..."
 return 1
 }
-echo -e "${BLUE}==========================================${NC}"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
@@ -274,8 +276,10 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
+echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "\nConfiguration files found:"
-echo -e "\n----------------------------------------"
+echo -e "\n${BLUE}----------------------------------------${NC}"
+
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
@@ -327,8 +331,9 @@ echo -e "\n${RED}Failed${NC}"
 fi
 done
 
-echo -e "\n----------------------------------------"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "Summary: ${GREEN}$SUCCESS removed${NC}, ${YELLOW}$SKIPPED skipped${NC}, ${RED}$FAILED failed${NC}."
+echo -e "\n${BLUE}----------------------------------------${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
@@ -345,11 +350,14 @@ init_logs_backup 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
+
+echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
+echo -e "\n${RED}[!] ERROR: ADB device not conected${NC}"
 read -rp "Press Enter to return to main menu..."
 return 1
 }
-echo -e "${BLUE}==========================================${NC}"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
@@ -365,7 +373,9 @@ read -rp "Press Enter to return to main menu"
 return 1
 fi
 
+echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "\n--- Generating snapshot: $output_file---"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 {
 echo "{"
@@ -418,11 +428,14 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
+
+echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
-echo -e "${BLUE}==========================================${NC}"
+echo -e "\n${BLUE}----------------------------------------${NC}"
+
 
 echo -e "\nCheck Apps Dir"
 if [ ! -d "$APP_DIR" ]; then
@@ -462,11 +475,13 @@ init_logs_restore 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
+
+echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
-echo -e "${BLUE}=========================================${NC}"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
@@ -477,8 +492,9 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
+echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "\nConfiguration files found:"
-echo -e "\n----------------------------------------"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
@@ -520,8 +536,9 @@ echo -e "\n${RED}Failed (already present or not found)${NC}"
 fi
 done
 
-echo -e "\n----------------------------------------"
+echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "\nSummary: ${GREEN}$SUCCESS restored${NC}, ${RED}$FAILED failed/skipped${NC}."
+echo -e "\n${BLUE}----------------------------------------${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
@@ -593,7 +610,6 @@ echo -e " [2] View Restore Logs"
 echo -e " [3] View Backup Logs"
 echo -e " [4] Return to Dashboard"
 echo -e " [5] Exit\n"
-
 read -rp "Enter choice: " choice
 case "$choice" in
 
