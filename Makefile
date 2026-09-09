@@ -1,18 +1,10 @@
 # Ruvomain-Protocol - Universal ADB App Manager
 # Usage:
-#   make          (run the dashboard)
-#   make update   (run update to lastest)
-#   make clean    (run clean logs)
+#   make(run the dashboard)
+#   make update   (run update to latest)
+#   make clean(run clean logs)
 #   make bclean   (run clean backup)
 #   make help     (run command help)
-#
-#Folder layout:
-#
-#Place debloat configurations in ./Configs/debloat/ (Canta JSON supported).
-#
-#Place APKs to install in ./Apps/.
-#
-#Backups and restoration targets reside in ./Configs/backup-restore/.
 
 .PHONY: all dashboard update clean bclean help
 
@@ -21,23 +13,34 @@ all: dashboard
 
 dashboard:
 @chmod +x ./ruvomain.sh
-./ruvomain.sh
+@./ruvomain.sh
 
 update:
-@chmod +x ./installer.sh
+@if [ -f "./update.sh" ]; then \
+chmod +x ./update.sh && ./update.sh; \
+elif [ -d ".git" ]; then \
+echo "Updating via git...";\
+git pull --quiet && echo "Updated successfully."; \
+else \
+echo "Update script orgit repo not found."; \
+fi
 
 clean:
-@echo "Cleaning up temporary files..."
--rm -f ./Logs/debloat/*.log
--rm -f ./Logs/backup/*.log
--rm -f ./Logs/restore/*.log
+@echo "Cleaning up temporary logs..."
+@-rm -f ./Logs/debloat/*.log 2>/dev/null
+@-rm -f ./Logs/backup/*.log 2>/dev/null
+@-rm -f ./Logs/restore/*.log 2>/dev/null
+@echo "[✓] Logs cleaned."
 
 bclean:
 @echo "Cleaning up backup JSON files..."
--rm -f ./Configs/backup-restore/*.json
+@-rm-f ./Configs/backup-restore/*.json 2>/dev/null
+@echo "[✓] Backups cleaned."
 
 help:
 @echo "Ruvomain-Protocol available commands:"
-@echo "  make         - Runs the dashboard"
-@echo "  make clean   - Runs clean logs"
-@echo "  make bclean  - Runs clean backup
+@echo "make         - Runs the dashboard"
+@echo "  make update  - Updates to the latest version"
+@echo "  makeclean   - Cleans debloat/backup/restore logs"
+@echo "  make bclean  - Cleans JSONbackups"
+@echo "  make help    - Displays this help menu"
