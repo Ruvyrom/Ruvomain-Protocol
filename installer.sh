@@ -42,7 +42,7 @@ fi
 printf "${GREEN}[✓] Git is ready.${NC}\n"
 
 if [ -d "$INSTALL_DIR/.git" ]; then
-printf"${CYAN}[*] Updating existing installation...${NC}\n"
+printf "${CYAN}[*] Updating existing installation...${NC}\n"
 cd "$INSTALL_DIR"
 
 git fetch --all --prune >/dev/null2>&1
