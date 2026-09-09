@@ -66,13 +66,14 @@ Connect your device to your PC via USB
 OR use Wireless ADB setup option in Dashboard.
 </details>
 
-Folder layout:
-* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
-* Place APKs to install in `./Apps/`.
-* Backups and restoration targets reside in `./Configs/backup-restore/`.
+### 📁 File Layout (`~/.Ruvomain-Protocol/`)
+| Folder | Purpose|
+| :--- | :--- |
+| `Configs/debloat/` | Place debloat lists here(*Canta JSON supported*) |
+| `Apps/` | Place APKs to batch-install |
+| `Configs/backup-restore/` | Exported application lists & restore points |
 
 ### Direct execution
-
 **1-Line Installation (Termux, Linux, macOS)**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh | bash
