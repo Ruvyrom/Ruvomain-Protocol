@@ -1,70 +1,122 @@
 #!/usr/bin/env bash
+# ==============================================================================
+# URAAM - UniversalRuvyrom Android ADB Manager
+# Remote Installer & Updater Script
+# ==============================================================================
+
 set -e
 
-CYAN='\033[0;36m'
+REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
+BRANCH="main"
+
+if[ -z "$INSTALL_DIR" ]; then
+INSTALL_DIR="$HOME/Ruvomain-Protocol"
+fi
+
+BIN_DIR="$PREFIX/bin"
+[ -z "$PREFIX" ] && BIN_DIR="/usr/local/bin"
+
+RED='\033[0;31m'
 GREEN='\033[0;32m'
-RED='\033[1;31m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
 NC='\033[0m'
 
-INSTALL_DIR="$HOME/.Ruvomain-Protocol"
-REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
+printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
-printf "${CYAN}[*] Installing URAAM...${NC}\n"
-
-if ! command -v git >/dev/null 2>&1; then
-printf "${RED}[!] GIT is required for installation.${NC}\n"
-read -p "Do you want to install GIT now? (y/n): " choice < /dev/tty
-
-case "$choice" in
-y|Y)
-printf "${CYAN}[+] Installing git...${NC}\n"
+if ! command -v git >/dev/null 2>&1;then
+printf "${YELLOW}[!] Git is missing. Attempting automatic installation...${NC}\n"
 if command -v pkg >/dev/null 2>&1; then
-pkg install -y git
-elif command -v apt-get >/dev/null 2>&1; then
-sudo apt-get update && sudo apt-get install -y git
+pkg update -y && pkg install git -y
+elif command -v apt >/dev/null 2>&1; then
+apt update -y && apt install git -y
 elif command -v pacman >/dev/null2>&1; then
 sudo pacman -S --noconfirm git
 elif command -v dnf >/dev/null 2>&1; then
 sudo dnf install -y git
 else
-printf "${RED}[!] Package manager not supported. Please install git manually.${NC}\n" >&2
+printf "${RED}[X] Package manager not found. Please install git manually.${NC}\n"
 exit 1
 fi
-;;
-*)
-printf "${RED}[*] Installation aborted.${NC}\n"
-exit 1
-;;
-esac
-else
-printf "${GREEN}[✓] GIT is ready.${NC}\n"
 fi
+printf "${GREEN}[✓] Git is ready.${NC}\n"
 
 if [ -d "$INSTALL_DIR/.git" ]; then
-printf "${CYAN}[*] Updating existing installation...${NC}\n"
-git -C "$INSTALL_DIR" pull --quiet
+printf"${CYAN}[*] Updating existing installation...${NC}\n"
+cd "$INSTALL_DIR"
+
+git fetch --all --prune >/dev/null2>&1
+
+# Forcer la synchronisation avec la branche distante :
+# - Met à jour les fichiers existants modifiés
+# - Télécharge tous les NOUVEAUX fichiers ajoutés au repo
+# - Conserve intacts les fichiers configs/logs créés localement (non versionnés)
+if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
+printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
-printf "${CYAN}[*] Downloading full environment...${NC}\n"
-git clone --depth=1 "$REPO_URL" "$INSTALL_DIR"
+printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
+exit1
+fi
+else
+printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
+mkdir -p "$(dirname "$INSTALL_DIR")"
+if git clone -b "$BRANCH" "$REPO_URL" "$INSTALL_DIR"; then
+printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
+cd "$INSTALL_DIR"
+else
+printf "${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
+exit 1
+fi
 fi
 
+if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
 chmod +x "$INSTALL_DIR/ruvomain.sh"
 
-BIN_DIR=""
-if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
-BIN_DIR="$PREFIX/bin"
-elif [ -d "/usr/local/bin" ] && [ -w "/usr/local/bin" ]; then
-BIN_DIR="/usr/local/bin"
+find "$INSTALL_DIR" -type f -name "*.sh"-exec chmod +x {} +
 else
-BIN_DIR="$HOME/.local/bin"
-mkdir -p "$BIN_DIR"
+printf "${RED}[X] Critical error: ruvomain.sh was not found in ${INSTALL_DIR}.${NC}\n"
+exit 1
 fi
 
-if [ -n "$BIN_DIR" ]; then
-ln -sf "$INSTALL_DIR/ruvomain.sh" "$BIN_DIR/uraam"
-printf "${GREEN}[✓] Command 'uraam' created in ${BIN_DIR}${NC}\n"
-fi
+printf "${CYAN}[*] Configuring system command alias (uraam)...${NC}\n"
 
-printf "${GREEN}[+] Done! Launching URAAM...${NC}\n"
-cd "$INSTALL_DIR"
-exec ./ruvomain.sh < /dev/tty
+if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
+TARGET_BIN="$PREFIX/bin"
+ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+chmod+x "$TARGET_BIN/uraam"
+printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
+
+elif [ -w "/usr/local/bin" ]; then
+TARGET_BIN="/usr/local/bin"
+ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+chmod +x "$TARGET_BIN/uraam"
+printf "${GREEN}[✓] Global symlink installed: ${TARGET_BIN}/uraam${NC}\n"
+
+elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
+TARGET_BIN="/usr/local/bin"
+sudo ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+sudo chmod +x "$TARGET_BIN/uraam"
+printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
+
+else
+TARGET_BIN="$HOME/.local/bin"
+mkdir -p "$TARGET_BIN"
+ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+chmod +x "$TARGET_BIN/uraam"
+printf "${GREEN}[✓] User symlink installed: ${TARGET_BIN}/uraam${NC}\n"
+
+case ":$PATH:" in
+*":$TARGET_BIN:"*) ;;
+*)
+
+SHELL_RC="$HOME/.bashrc"
+[ -n "$ZSH_VERSION" ] || [ -f "$HOME/.zshrc" ] && SHELL_RC="$HOME/.zshrc"
+
+if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC"2>/dev/null; then
+printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
+printf "${YELLOW}[!] Added ~/.local/bin to PATH in ${SHELL_RC}.${NC}\n"
+printf "${YELLOW}[!] Run 'source %s' or open a new terminal to use 'uraam'.${NC}\n" "$SHELL_RC"
+fi
+;;
+esac
+fi
