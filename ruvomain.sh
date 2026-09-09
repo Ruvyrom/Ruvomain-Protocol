@@ -41,7 +41,7 @@ fi
 export EXEC
 
 show_logo() {
-printf '%b'"${CYAN}"
+printf '%b' "${CYAN}"
 printf '%s\n'
     ____                                    _     
    / __ \__  ___   ______  ____ ___  ____ _(_)___ 
