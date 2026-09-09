@@ -67,7 +67,6 @@ exec> >(tee -a "$LOGFILE") 2>&1
 }
 
 init_logs_backup() {
-
 mkdir -p "$LOGB_DIR"
 
 find "$LOGB_DIR" -name "ruvomain-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
@@ -78,7 +77,6 @@ exec> >(tee -a "$LOGFILE") 2>&1
 }
 
 init_logs_restore() {
-
 mkdir -p "$LOGR_DIR"
 
 find "$LOGR_DIR" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
@@ -266,23 +264,25 @@ file="${files[$((REPLY-1))]}"
 echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
 break
 else
-echo -e "${RED}Invalid selection, please try again.${NC}"
+echo -e "\n${RED}Invalid selection, please try again.${NC}"
 fi
 done
 
 mapfile -t PACKAGES < <(jq -r 'if type=="array" then .[] elif .apps then .apps[].packageName // .apps[] else empty end' "$file" 2>/dev/null)
 
 if [ ${#PACKAGES[@]} -eq 0 ]; then
-echo -e "${RED}No packages found. Verify the JSON format.${NC}"
+echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+sleep 1
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 
-echo -e "${BLUE}Fetching installed packages from device...${NC}"
+echo -e "\n${BLUE}Fetching installed packages from device...${NC}"
 local INSTALLED_PKGS
 INSTALLED_PKGS=$($EXEC pm list packages -u 2>/dev/null | tr -d '\r' | cut -d: -f2)
 
 
-echo -e "${BLUE}Starting debloating of ${#PACKAGES[@]} packages...${NC}"
+echo -e "\n${BLUE}Starting debloating of ${#PACKAGES[@]} packages...${NC}"
 
 local SUCCESS=0
 local SKIPPED=0
@@ -293,21 +293,21 @@ for pkg in "${PACKAGES[@]}"; do
 echo -n "Checking $pkg: "
 
 if ! echo "$INSTALLED_PKGS" | grep -qx "$pkg"; then
-echo -e "${YELLOW}Skipped (not installed)${NC}"
+echo -e "\n${YELLOW}Skipped (not installed)${NC}"
 ((SKIPPED++))
 continue
 fi
 
 if $EXEC pm uninstall -k --user 0 "$pkg">/dev/null 2>&1; then
-echo -e "${GREEN}Success (removed)${NC}"
+echo -e "\n${GREEN}Success (removed)${NC}"
 ((SUCCESS++))
 else
-echo -e "${RED}Failed${NC}"
+echo -e "\n${RED}Failed${NC}"
 ((FAILED++))
 fi
 done
 
-echo "----------------------------------------"
+echo -e "\n----------------------------------------"
 echo -e "Summary: ${GREEN}$SUCCESS removed${NC}, ${YELLOW}$SKIPPED skipped${NC}, ${RED}$FAILED failed${NC}."
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -328,16 +328,18 @@ check_adb
 mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
 
-echo -e "--- Warning ---"
-echo -e "You are about to create backup.*json."
+echo -e "\n${RED}--- Warning ---${NC}"
+echo -e "\n${CYAN}You are about to create backup.*json.${NC}"
 read -p "Are you sure you want to proceed? (y/N): " confirm
 
 if [[ $confirm != "y" && $confirm != "Y" ]]; then
-echo "Operation cancelled."
-exit 0
+echo "/nOperation cancelled."
+sleep 1
+read -rp "Press Enter to return to main menu"
+return 1
 fi
 
-echo -e "--- Generating snapshot: $output_file---"
+echo -e "\n--- Generating snapshot: $output_file---"
 
 {
 echo "{"
@@ -352,7 +354,7 @@ local packages
 packages=$($EXEC pm list packages -u | sed 's/package://g' | tr -d '\r' | grep -v '^$' | sort) || { echo "Error: Failed to retrieve package list."; return 1; }
 
 if [[ -z "$packages" ]]; then
-echo "[!] Error: Unable to retrieve the list of packages. Check ADB."
+echo -e "\n${RED}[!] Error:${NC} Unable to retrieve the list of packages. Check ADB."
 return 0
 fi
 
@@ -376,7 +378,7 @@ done
 echo '  ]' >> "$output_file"
 echo '}' >> "$output_file"
 
-echo -e "Your uninstalled apps list created to /Config/backup-restore."
+echo -e "\n${GREEN}Your uninstalled apps list created to /Config/backup-restore.${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
@@ -391,28 +393,31 @@ echo -e "${BLUE}==========================================${NC}"
 
 check_adb
 
-echo -e "Check Apps Dir"
+echo -e "\nCheck Apps Dir"
 if [ ! -d "$APP_DIR" ]; then
-echo -e "${RED}[ERROR]${NC}Directory $APP_DIR not found."
+echo -e "\n${RED}[ERROR]${NC}Directory $APP_DIR not found."
+sleep 1
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 
-echo -e "${GREEN}[INFO]${NC} Deploying packages..."
+echo -e "\n${GREEN}[INFO]${NC} Deploying packages..."
 
 for apk in "$APP_DIR"/*.apk; do
 if [ -f "$apk" ]; then
-echo -e "Installing: $(basename "$apk")"
+echo -e "\nInstalling: $(basename "$apk")"
 
 if adb install -r -g "$apk" >/dev/null 2>&1; then
 echo -e "${GREEN}✓${NC} Successfully installed."
+read -rp "Press Enter to return to main menu"
+return 1
 else
-echo -e "${RED}✗${NC} Installation failed."
+echo -e "\n${RED}✗${NC} Installation failed."
+read -rp "Press Enter to return to main menu"
+return 1
 fi
 fi
 done
-sleep 1
-read -rp "Press Enter to return to main menu"
-return 0
 }
 
 ruvomain_restore() {
@@ -433,8 +438,8 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
-echo -e "Configuration files found:"
-echo -e "----------------------------------------"
+echo -e "\nConfiguration files found:"
+echo -e "\n----------------------------------------"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
@@ -443,19 +448,22 @@ file="${files[$((REPLY-1))]}"
 echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
 break
 else
-echo -e "${RED}Invalid selection, please try again.${NC}"
+echo -e "\n${RED}Invalid selection, please try again.${NC}"
+read -rp "Press Enter to return to main menu"
+return 1
 fi
 done
 
 mapfile -t PACKAGES < <(jq -r 'if type=="array" then .[] elif .apps then.apps[].packageName // .apps[] else empty end' "$file" 2>/dev/null)
 
 if [ ${#PACKAGES[@]} -eq 0 ]; then
-echo -e "${RED}No packages found. Verify the JSON format.${NC}"
+echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+sleep 1
 read -rp "Press Enter to return to main menu"
 return 1
 fi
 
-echo -e "${BLUE}Starting restoration of ${#PACKAGES[@]} packages...${NC}"
+echo -e "\n${BLUE}Starting restoration of ${#PACKAGES[@]} packages...${NC}"
 
 local SUCCESS=0
 local FAILED=0
@@ -465,16 +473,16 @@ for pkg in "${PACKAGES[@]}"; do
 echo -n "Restoring $pkg: "
 
 if $EXEC pm install-existing --user 0 "$pkg" >/dev/null 2>&1; then
-echo -e "${GREEN}Success${NC}"
+echo -e "\n${GREEN}Success${NC}"
 ((SUCCESS++))
 else
-echo -e "${RED}Failed (already present or not found)${NC}"
+echo -e "\n${RED}Failed (already present or not found)${NC}"
 ((FAILED++))
 fi
 done
 
-echo "----------------------------------------"
-echo -e "Summary: ${GREEN}$SUCCESS restored${NC}, ${RED}$FAILED failed/skipped${NC}."
+echo -e "\n----------------------------------------"
+echo -e "\nSummary: ${GREEN}$SUCCESS restored${NC}, ${RED}$FAILED failed/skipped${NC}."
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
@@ -486,14 +494,14 @@ if command -v nano >/dev/null 2>&1; then
 echo -e "${GREEN}Opening logs with nano...${NC}"
 nano $LOGD_DIR/*.log
 elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
+echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
 cat $LOGD_DIR/*.log | less
 else
-echo -e "${YELLOW}Using cat (no nano/less found):${NC}"
+echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
 cat $LOGD_DIR/*.log
 fi
 else
-echo -e "${RED}No log files found in $LOGD_DIR${NC}"
+echo -e "\n${RED}No log files found in $LOGD_DIR${NC}"
 sleep 2
 fi
 }
@@ -501,17 +509,17 @@ fi
 view_blogs() { 
 if ls $LOGB_DIR/*.log >/dev/null 2>&1; then
 if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
+echo -e "\n${GREEN}Opening logs with nano...${NC}"
 nano $LOGB_DIR/*.log
 elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
+echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
 cat $LOGB_DIR/*.log | less
 else
-echo -e "${YELLOW}Using cat (no nano/less found):${NC}"
+echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
 cat $LOGB_DIR/*.log
 fi
 else
-echo -e "${RED}No log files found in $LOGB_DIR${NC}"
+echo -e "\n${RED}No log files found in $LOGB_DIR${NC}"
 sleep 2
 fi
 }
@@ -519,17 +527,17 @@ fi
 view_rlogs() {
 if ls $LOGR_DIR/*.log >/dev/null 2>&1; then
 if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
+echo -e "\n${GREEN}Opening logs with nano...${NC}"
 nano $LOGR_DIR/*.log
 elif command -v less >/dev/null 2>&1; then
-echo -e "${YELLOW}Nano not found. Using less...${NC}"
+echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
 cat $LOGR_DIR/*.log | less
 else
-echo -e "${YELLOW}Using cat (no nano/less found):${NC}"
+echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
 cat $LOGR_DIR/*.log
 fi
 else
-echo -e "${RED}No log files found in $LOGD_DIR${NC}"
+echo -e "\n${RED}No log files found in $LOGD_DIR${NC}"
 sleep 2
 fi
 }
@@ -537,9 +545,9 @@ fi
 vl_menu() {
 clear
 show_logo
-echo -e "${BLUE}=========================================="
-echo -e "URAAM RUVOMAIN ADB APP-MANAGER | View Logs"
-echo -e "==========================================${NC}"
+echo -e "${BLUE}==========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | View Logs${NC}"
+echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n [1] View Debloat Logs"
 echo -e " [2] View Restore Logs"
@@ -555,19 +563,19 @@ case "$choice" in
 3) clear && view_blogs ;;
 4) return 0 ;;
 5)
-echo "Goodbye!"
+echo -e "\nGoodbye!"
 clear
 exit 0
 ;;
 *)
-echo "Invalide option, please try again."
+echo -e "\nInvalide option, please try again."
 sleep 1
 ;;
 esac
 }
 
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
-echo -e "[*] Requesting storage access (please confirm the popup)..."
+echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
 termux-setup-storage
 fi
 
@@ -583,6 +591,7 @@ echo -e "\nFor Ruvomain-debloat, place your personal or Canta JSON lists in /Con
 echo -e "\nFor Ruvomain-installer, place your APK files in /Apps"
 echo -e "\nFor Ruvomain-restore, use your backup created with ruvomain-backup or place your own backup .json file or Canta .json file list in /Configs/backup-restore"
 echo -e "\nRuvomain-backup creates your backup .json file in /Configs/backup-restore"
+echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
 ensure_jq || exit 1
@@ -606,12 +615,12 @@ case "$choice" in
 5) wireless_adb ;;
 6) vl_menu ;;
 7)
-echo "Goodbye!"
+echo -e "\nGoodbye!"
 clear
 exit 0
 ;;
 *)
-echo "Invalide option, please try again."
+echo -e "\nInvalide option, please try again."
 sleep 1
 ;;
 esac
