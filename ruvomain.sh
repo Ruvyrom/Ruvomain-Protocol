@@ -111,6 +111,8 @@ elif command -v brew >/dev/null; then
 brew install android-platform-tools
 else
 printf "${RED}[!] Package manager not supported. Please install ADB manually.${NC}\n" >&2
+sleep 1
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 ;;
@@ -146,6 +148,7 @@ elif command -v brew >/dev/null; then
 brew install jq
 else
 printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
+read -rp "Press Enter to return to main menu..."
 return 1
 fi
 ;;
@@ -247,8 +250,7 @@ check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
-
-sleep 1
+echo -e "${BLUE}==========================================${NC}"
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
@@ -341,6 +343,7 @@ check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
+echo -e "${BLUE}==========================================${NC}"
 
 mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
@@ -413,6 +416,7 @@ check_adb || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
+echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\nCheck Apps Dir"
 if [ ! -d "$APP_DIR" ]; then
@@ -456,6 +460,7 @@ check_adb || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
+echo -e "${BLUE}=========================================${NC}"
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
@@ -624,6 +629,7 @@ echo -e "${BLUE}==========================================${NC}"
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
+echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n [1] Debloat (Remove Bloatware)"
 echo -e " [2] Install (Batch APK Install)"
