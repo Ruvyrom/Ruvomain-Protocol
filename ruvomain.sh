@@ -235,7 +235,7 @@ check_device() {
 if ! adb devices | grep -q "device$"; then
 echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return to main menu..."
-return 0
+return 1
 fi
 }
 
