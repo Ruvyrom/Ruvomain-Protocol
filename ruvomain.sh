@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# RUVOMAIN-PROTOCOL (URAAM) - All-in-One Edition
+# RUVOMAIN-PROTOCOL (URAAM v4.0.0) - All-in-One Edition
 #
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$SCRIPT_DIR"
@@ -23,20 +23,20 @@ NC='\033[0m'
 if [ -d "/data/data/com.termux" ]; then
 if command -v rish >/dev/null 2>&1; then
 EXEC="rish -c"
-echo -e "${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
+echo -e "\n${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
 elif [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1; then
 EXEC="su -c"
-echo -e "${BLUE}[Termux Mode: Root/su detected]${NC}"
+echo -e "\n${BLUE}[Termux Mode: Root/su detected]${NC}"
 elif command -v adb >/dev/null 2>&1; then
 EXEC="adb shell"
-echo -e "${BLUE}[Local ADB detected]${NC}"
+echo -e "\n${BLUE}[Local ADB detected]${NC}"
 else
 EXEC=""
-echo -e "${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
+echo -e "\n${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
 fi
 else
 EXEC="adb shell"
-echo -e "${BLUE}[Remote Linux/ADB Mode detected]${NC}"
+echo -e "\n${BLUE}[Remote Linux/ADB Mode detected]${NC}"
 fi
 export EXEC
 
@@ -101,7 +101,6 @@ read -p "Do you want to install ADB now? (y/n) : " choice
 case "$choice" in
 y|Y)
 printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
-# 3. Existing installation logic
 if command -v pkg >/dev/null; then
 pkg install -y android-tools
 elif command -v apt-get >/dev/null; then
@@ -167,12 +166,12 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
 echo -e "${BLUE}===================================================${NC}"
 echo ""
 ensure_adb
-echo "--------------------------------------------------------"
-echo "CRITICAL STEP: Wireless Debugging"
-echo "1. Go to Settings > Developer Options."
-echo "2. Tap on 'Wireless debugging' (the text itself)."
-echo "3. Select 'Pair device with pairing code'."
-echo "--------------------------------------------------------"
+echo -e "\n${BLUE}--------------------------------------------------------${NC}"
+echo -e "\n${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
+echo -e "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
+echo -e "\n${CYAN}2. Tap on 'Wireless debugging' (the text itself).${NC}"
+echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
+echo -e "\n${BLUE}--------------------------------------------------------${NC}"
 echo "\n"
 
 read -rp "Do you need to PAIR first? (y/N): " need_pair
@@ -192,7 +191,7 @@ fi
 fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
-echo "Look at the main Wireless Debugging screen for the CONNECTION port."
+echo -e "\nLook at the main Wireless Debugging screen for the CONNECTION port."
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
 if [ -n "$conn_host" ]; then
@@ -209,20 +208,18 @@ else
 echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
 fi
 
-echo ""
+echo -e "\n"
 read -rp "Press Enter to return to main menu..."
 }
 
 check_adb() {
-# ADB binary check
 if ! command -v adb &> /dev/null; then
-echo -e "${RED}[ERROR]${NC} ADB is not installed or notfound in PATH."
+echo -e "\n${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
 return 1
 fi
 
-# Device connection check
 if [ -z "$(adb devices -l | grep 'device$')" ]; then
-echo -e "${RED}[ERROR]${NC} No device detected via ADB."
+echo -e "\n${RED}[ERROR]${NC} No device detected via ADB."
 return 1
 fi
 }
@@ -234,7 +231,7 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "/n${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
 
 init_logs 2>/dev/null || true
 
@@ -248,7 +245,9 @@ local files=("$CONFIGS_DIR"/*.json)
 shopt -u nullglob
 
 if [ ${#files[@]} -eq 0 ]; then
-echo -e "${RED}No .json files found in $CONFIGS_DIR${NC}"
+echo -e "\n${RED}No .json files found in $CONFIGS_DIR${NC}"
+sleep 1
+read -rp "Press Enter to return to main menu..."
 return 1
 fi
 
@@ -257,10 +256,9 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
-echo "Configuration files found:"
-echo "----------------------------------------"
+echo -e "\nConfiguration files found:"
+echo -e "\n----------------------------------------"
 
-# Interactive menu
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
 if [ -n "$short_name" ]; then
@@ -350,7 +348,6 @@ echo '  "version": "2.0",'
 echo '  "apps":['
 } > "$output_file"
 
-# 'pm list packages -u' displays: package:com.example.app
 local packages
 packages=$($EXEC pm list packages -u | sed 's/package://g' | tr -d '\r' | grep -v '^$' | sort) || { echo "Error: Failed to retrieve package list."; return 1; }
 
@@ -369,7 +366,6 @@ count=$((count + 1))
 echo '.   {' >> "$output_file"
 echo '      "packageName": "'$pkg'"' >> "$output_file"
 
-# Managing the comma for JSON
 if [ "$count" -lt "$total" ]; then
 echo '    },' >> "$output_file"
 else
@@ -377,7 +373,6 @@ echo '    }' >> "$output_file"
 fi
 done
 
-# Closing the JSON
 echo '  ]' >> "$output_file"
 echo '}' >> "$output_file"
 
@@ -408,8 +403,6 @@ for apk in "$APP_DIR"/*.apk; do
 if [ -f "$apk" ]; then
 echo -e "Installing: $(basename "$apk")"
 
-# -r: Replace existing application
-# -g: Grant all runtime permissions (minimizes interaction)
 if adb install -r -g "$apk" >/dev/null 2>&1; then
 echo -e "${GREEN}✓${NC} Successfully installed."
 else
@@ -574,19 +567,22 @@ esac
 }
 
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
-echo "[*] Requesting storage access (please confirm the popup)..."
+echo -e "[*] Requesting storage access (please confirm the popup)..."
 termux-setup-storage
 fi
 
 while true; do
 clear
 show_logo
+echo -e "${BLUE}==========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DASHBOARD${NC}"
+echo -e "${BLUE}==========================================${NC}"
 
-echo -e "Instructions before starting:"
-echo -e "For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat"
-echo -e "For Ruvomain-installer, place your APK files in /Apps"
-echo -e "For Ruvomain-restore, use your backup created with ruvomain-backup or place your own backup .json file or Canta .json file list in /Configs/backup-restore"
-echo -e "Ruvomain-backup places your backup .json file in /Configs/backup-restore"
+echo -e "\nInstructions before starting:"
+echo -e "\nFor Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat"
+echo -e "\nFor Ruvomain-installer, place your APK files in /Apps"
+echo -e "\nFor Ruvomain-restore, use your backup created with ruvomain-backup or place your own backup .json file or Canta .json file list in /Configs/backup-restore"
+echo -e "\nRuvomain-backup creates your backup .json file in /Configs/backup-restore"
 
 ensure_adb || exit 1
 ensure_jq || exit 1
