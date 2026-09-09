@@ -72,7 +72,7 @@ fi
 if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
 chmod +x "$INSTALL_DIR/ruvomain.sh"
 
-find "$INSTALL_DIR" -type f -name "*.sh"-exec chmod +x {} +
+find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
 printf "${RED}[X] Critical error: ruvomain.sh was not found in ${INSTALL_DIR}.${NC}\n"
 exit 1
@@ -120,3 +120,4 @@ fi
 ;;
 esac
 fi
+exec ./ruvomain.sh 
