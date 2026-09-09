@@ -45,7 +45,7 @@ if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 cd "$INSTALL_DIR"
 
-git fetch --all --prune >/dev/null2>&1
+git fetch --all --prune >/dev/null 2>&1
 
 # Forcer la synchronisation avec la branche distante :
 # - Met à jour les fichiers existants modifiés
