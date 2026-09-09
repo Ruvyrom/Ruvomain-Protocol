@@ -179,7 +179,8 @@ read -rp "Do you need to PAIR first? (y/N): " need_pair
 
 if [[ "$need_pair" =~ ^[yY]$ ]]; then
 echo -e "\n--- STEP 1: PAIRING ---"
-echo -e "\n${CYAN}Check the pairing popup dialog for IP:Port and the 6-digit code.${NC}"
+echo -e "\n${CYAN}Check the pairing popup dialog${NC}"
+echo - e "${CYAN}for IP:Port and the 6-digit code.${NC}"
 read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
 read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
@@ -192,7 +193,8 @@ fi
 fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
-echo -e "\nLook at the main Wireless Debugging screen for the CONNECTION port."
+echo -e "\nLook at the main Wireless Debugging screen" 
+echo -e "for the CONNECTION port."
 
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
@@ -204,7 +206,8 @@ sleep 1
 if adb devices | grep -q "$conn_host.*device"; then
 echo -e "\n${GREEN}[✓] Successfully connected via Wireless ADB!${NC}"
 else
-echo -e "\n${RED}[!] Connection failed. Check IP/Port and make sure screen is on.${NC}"
+echo -e "\n${RED}[!] Connection failed.${NC}"
+echo -e "Check IP/Port and make sure screen is on."
 fi
 else
 echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
@@ -230,7 +233,9 @@ return 0
 
 check_device() {
 if ! adb devices | grep -q "device$"; then
-return 1
+echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
+read -rp "Press Enter to return to main menu..."
+return 0
 fi
 }
 
@@ -240,7 +245,8 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-echo -e "${RED}Before finalizing execution, place your personal/Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "${RED}Before finalizing execution, place your personal/Canta JSON lists${NC}"
+echo -e "${RED}or use one of the files located in /Configs/debloat via the selection menu.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
 init_logs 2>/dev/null || true
@@ -349,8 +355,6 @@ ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
-echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
-read -rp "Press Enter to return to main menu..."
 return 1
 }
 echo -e "\n${BLUE}----------------------------------------${NC}"
