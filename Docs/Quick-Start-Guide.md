@@ -35,7 +35,9 @@ OR
 
 - On your terminal
 >
->>Select "wireless ADB Setup" in Dashboard Menu when you execute URAAM
+>>Select "wireless ADB Setup" in Dashboard Menu when you execute URAAM and follow instrutions.
+>>>
+> Wireless ADB Setup [Screenshot](/assets/wireless.jpg) (on Termux)
 >
 Or manually:
 >
@@ -95,22 +97,14 @@ sudo dnf install -y git
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
-- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
-  
-- For Ruvomain-installer, place your `APK` files in /Apps
-  
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
-  
-- Ruvomain-backup places your backup .json file in /Configs/backup-restore
-
-3. **Execute Universal ADB App-Manager (URAAM) dashboard:**
-
+Folder layout:
+* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
+* Place APKs to install in `./Apps/`.
+* Backups and restoration targets reside in `./Configs/backup-restore/`.
 ```bash
 make -C ./Ruvomain-Protocol
 ```
-
-OR
-
+Or run directly in **Bash**:
 ```bash
 cd ./Ruvomain-Protocol
 ```
@@ -118,7 +112,6 @@ cd ./Ruvomain-Protocol
 ```bash
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
-
 </details>
 
 ### 📱 For Termux users (The script detect if you use with root, Shizuku Rish or wireless ADB)
@@ -137,22 +130,16 @@ pkg install git
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 ```
 
-- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
-  
-- For Ruvomain-installer, place your `APK` files in /Apps
-  
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
-  
-- Ruvomain-backup places your backup .json file in /Configs/backup-restore
-
+Folder layout:
+* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
+* Place APKs to install in `./Apps/`.
+* Backups and restoration targets reside in `./Configs/backup-restore/`.
 **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
 ```
-
-OR
-
+Or run directly in **Bash**:
 ```bash
 cd ./Ruvomain-Protocol
 chmod +x ruvomain.sh && ./ruvomain.sh
@@ -171,15 +158,15 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 <details>
 <summary><b></b>Execution:</b></summary>
  
-1. Install [Homebrew](https://brew.sh/) if you haven't already.
+Install [Homebrew](https://brew.sh/) if you haven't already.
 
-2. **Prerequisites:**
+**Prerequisites:**
 ```bash
 brew install git
 ```
 *`adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
 
-3. **Clone the protocol:**
+**Clone the repository:**
 
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
@@ -188,26 +175,20 @@ git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
 *(If "unauthorized", check your phonescreen and tap "Always allow")*
 
 4.
-- For Ruvomain-debloat, place your personal or Canta JSON lists in /Configs/debloat
-
-- For Ruvomain-installer, place your `APK` files in /Apps
-
-- For Ruvomain-restore, place your own backup .json file or Canta .json file list in /Configs/backup-restore
-
-- Ruvomain-backup places your backup .json file in /Config/backup-restore
+Folder layout:
+* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
+* Place APKs to install in `./Apps/`.
+* Backups and restoration targets reside in `./Configs/backup-restore/`.
 
 5. **Execute Universal ADB App-Manager (URAAM) dashboard:**
 
 ```bash
 make -C ./Ruvomain-Protocol
 ```
-
-OR
-
+Or run directly in **Bash**:
 ```bash
 cd ./Ruvomain-Protocol
 ```
-
 ```bash
 chmod +x ./ruvomain.sh && ruvomain.sh
 ```
