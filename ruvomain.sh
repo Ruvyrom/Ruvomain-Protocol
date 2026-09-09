@@ -234,7 +234,7 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "/n${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
+echo -e "\n${RED}Before finalizing execution, place your personal Canta JSON lists or use one of the files located in /Configs/debloat via the selection menu.${NC}"
 
 init_logs 2>/dev/null || true
 
