@@ -2,11 +2,11 @@
 <img src="https://img.shields.io/badge/Status | Stable-000000?logo=github&logoColor=white&style=for-the-badge&color=151B22" alt="Status"height="25"> &nbsp; <img src="https://img.shields.io/badge/Clones | 1766 (14 last days)-%23121011.svg?logo=github&logoColor=white&style=for-the-badge&color=151B22" alt="Total clones"height="25">
 </p>
 
-<div align="center"; style="background-color: #151B22; display: inline-block">
+<div align="center" style="background-color: #151B22; display: inline-block">
 <img src="assets/ruvomain.png" width="400">
 <br>
 <strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
-<br><strong>(Debloat, Restore, Backup list [json files] and APK Installer)</strong></br>
+<em><br>(Debloat, Restore, Backup list [json files] and APK Installer)</strong><br><em>
 <strong>For ALL Android devices and compatible with root, Shiziku rish and wireless ADB with Termux</strong>
 </div>
 
@@ -16,7 +16,7 @@
 <img src="https://img.shields.io/badge/| JSON-000?logo=json&logoColor=fff&style=for-the-badge&color=151B22"height="25"> &nbsp;
 <img src="https://img.shields.io/badge/| ADB-3DDC84?logo=android&logoColor=3DDC84&style=for-the-badge&color=151B22"height="25">
 <img src="https://img.shields.io/badge/| Linux-yellow?&logo=linux&logoColor=yellow&style=for-the-badge&color=151B22"height="25"> &nbsp; 
-<img src="https://img.shields.io/badge/| Termux-000000?logo=iterm2&logoColor=fff&style=for-the-badge&color=151B22"height="25" > &nbsp; 
+<img src="https://img.shields.io/badge/| Termux | Shizuku | Root-000000?logo=iterm2&logoColor=fff&style=for-the-badge&color=151B22"height="25" > &nbsp; 
 <img src="https://img.shields.io/badge/| MacOS-magenta?&logo=Apple&logoColor=magenta&style=for-the-badge&color=151B22"height="25" >
 <img src="https://custom-icon-badges.demolab.com/badge/ | WSL-0078D6?logo=windows11&logoColor=blue&style=for-the-badge&color=151B22"height="25">  &nbsp;
 <img src="https://img.shields.io/badge/| Android-3DDC88?logo=android&logoColor=3DDC84&style=for-the-badge&color=151B22"height="25">  &nbsp;
@@ -29,13 +29,20 @@
 <img src="https://img.shields.io/badge/ License GPLv3-black?style=for-the-badge&color=151B22" alt="License"height="25">
 </p>
 
-<div align="center"; style="display: inline-block">
-The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) scripts are tools to surgically remove unwanted apps, restore uninstalled apps, backup uninstalled apps in json file and install your own apk. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
-Professional-grade infrastructure for system optimization. Designed for those who demand total sovereignty over their hardware, this protocol replaces bloated middleware (like Shizuku or Canta) with a native Bash execution model and jq.
-**It is 100% compatible with Canta .json restoration list files. (you can debloat/restore your Canta list without Shizuku/Canta)**
-You can also use this script in Termux with ADB wireless, Shizuku rish and root.
+<div align="center">
+<p>
+<strong>
+The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a surgical terminal toolkit to safely debloat unwanted apps, restore uninstalled apps, backup configurations into structured JSON files and batch-install personal APKs acrossany Android device without requiring root access.. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+Professional-grade infrastructure forsystem optimization. Replace heavy middleware with a native, audited Bash + jq pipeline. Fully compatible with Canta JSON lists out of the box.</em>
+</p>
+<p>
+<em>« I'm not imposing anything on you: I provide infrastructure, you bring yourdata, and you execute code that you can read. »</em>
+</p>
+</div>
 
-<br>*I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read.*</br></div>
+<div align="center" style="display: inline-block">
+<img src="assets/menu_termux.jpg" width="200">
+</div>
 
 ---
 >> **🚀 Latest Updates:**
@@ -81,7 +88,6 @@ OR
 cd ./Ruvomain-Protocol
 chmod +x ruvomain.sh && ./ruvomain.sh
 ```
-</details>
 
 For more detailed instructions for Linux, Termux, MacOS & WSL, read the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**,
 
