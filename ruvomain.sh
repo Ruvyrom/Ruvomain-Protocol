@@ -231,14 +231,6 @@ fi
 return 0
 }
 
-check_device() {
-if ! adb devices | grep -q "device$"; then
-echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
-read -rp "Press Enter to return to main menu..."
-return 1
-fi
-}
-
 ruvomain_debloat() {
 clear
 show_logo
@@ -255,8 +247,7 @@ ensure_adb || exit 1
 ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-check_device || {
-echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
+check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
@@ -354,7 +345,7 @@ ensure_adb || exit 1
 ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-check_device || {
+check_adb || {
 return 1
 }
 echo -e "\n${BLUE}----------------------------------------${NC}"
@@ -430,8 +421,7 @@ echo -e "${BLUE}==========================================${NC}"
 ensure_adb || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-check_device || {
-echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
+check_adb || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
@@ -479,7 +469,6 @@ ensure_jq || exit 1
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_device || {
-echo -e "\n${RED}[!] ERROR:${NC} ADB device not conected"
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
