@@ -71,11 +71,7 @@ Folder layout:
 * Place APKs to install in `./Apps/`.
 * Backups and restoration targets reside in `./Configs/backup-restore/`.
 
-**Direct execution**:
-```bash
-curl -sSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/ruvomain.sh | bash
-```
-Or
+**Direct execution**
 ```bash
 git clone https://github.com/Ruvyrom/Ruvomain-Protocol
 make -C ./Ruvomain-Protocol
