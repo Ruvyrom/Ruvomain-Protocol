@@ -67,4 +67,4 @@ fi
 
 printf "${GREEN}[+] Done! Launching URAAM...${NC}\n"
 cd "$INSTALL_DIR"
-./ruvomain.sh
+exec ./ruvomain.sh < /dev/tty
