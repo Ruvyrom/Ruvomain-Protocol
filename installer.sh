@@ -112,8 +112,9 @@ if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC"2>/dev/null; then
 printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
 printf "${YELLOW}[!] Added ~/.local/bin to PATH in ${SHELL_RC}.${NC}\n"
 printf "${YELLOW}[!] Run 'source %s' or open a new terminal to use 'uraam'.${NC}\n" "$SHELL_RC"
+printf "\n"
+printf "${CYAN}Type 'uraam' to starting the Dashboard.${NC}\n"
 fi
 ;;
 esac
 fi
-uraam
