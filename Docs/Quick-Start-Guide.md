@@ -75,7 +75,7 @@ curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/inst
 
 ### Usage Anywhere
 
-Once installed, simplyrun the global command from any directory:
+Once installed, simply run the global command from any directory:
 ```bash
 uraam
 ```
