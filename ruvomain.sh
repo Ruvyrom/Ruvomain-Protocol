@@ -193,8 +193,8 @@ fi
 fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
-echo -e "\nLook at the main Wireless Debugging screen" 
-echo -e "for the CONNECTION port."
+echo -e "\n${CYAN}Look at the main Wireless Debugging screen${NC}" 
+echo -e "${CYAN}for the CONNECTION port.${NC}"
 
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
