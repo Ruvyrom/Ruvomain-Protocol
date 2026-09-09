@@ -16,13 +16,13 @@ dashboard:
 @./ruvomain.sh
 
 update:
-@if [ -f "./update.sh" ]; then \
-chmod +x ./update.sh && ./update.sh; \
+@if [ -f "./installer.sh" ]; then \
+chmod +x ./installer.sh && ./installer.sh; \
 elif [ -d ".git" ]; then \
 echo "Updating via git...";\
 git pull --quiet && echo "Updated successfully."; \
 else \
-echo "Update script orgit repo not found."; \
+echo "Update script or git repo not found."; \
 fi
 
 clean:
