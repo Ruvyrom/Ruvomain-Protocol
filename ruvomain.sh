@@ -657,7 +657,7 @@ fi
 
 if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
 chmod +x "$INSTALL_DIR/ruvomain.sh"
-find "$INSTALL_DIR" -type f -name "*.sh"-exec chmod +x {} +
+find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
