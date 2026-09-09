@@ -116,4 +116,3 @@ fi
 ;;
 esac
 fi
-exec ./ruvomain.sh
