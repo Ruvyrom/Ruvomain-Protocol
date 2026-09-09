@@ -4,68 +4,32 @@
 
 ### Universal Ruvomain ADB App-Manager (URAAM)
 
-**1. Enable USB Debugging on your Android device:**
+**1-USB option** ***Enable USB Debugging on your device:***
 
-<details>
-<summary>Configuration</summary>
+* Settings > About phone > Tap "Build Number" 7 times
 
->>Settings > About Phone > Tap "Build Number" 7 times
->
->>Settings > Developer Options > Enable "USB Debugging"
->
->>Connect your Android device to your PC via USB
-</details>
+* Settings > Developer Options > Enable "USB Debugging"
 
-OR
+* Connect your device to your PC via USB
 
-**2. Use Wireless Debugging:**
+or
 
-<details>
-<summary>Configuration</summary>
+**2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.***
+* Execute script and choose option ***[5] Wireless ADB Setup***
+* Follow instructions.
 
-- On your phone:
->>Settings > About Phone > Tap "Build Number" 7 times
->
->>Settings > Developer Options > Enable "Wireless Debugging"
->
->>Click the text "Wireless debugging" (not the button) to open the menu
->
->>Click on "Pair device with a QR code" or "Pair with a pairing code"
->
->>Note down the IP address, the port, and the pairing code.
+or
 
-- On your terminal
->
->>Select "wireless ADB Setup" in Dashboard Menu when you execute URAAM and follow instrutions.
->>>
-> Wireless ADB Setup [Screenshot](/assets/wireless.jpg) (on Termux)
->
-Or manually:
->
->>Use `adb pair` and `adb connect` in your terminal to link your ADB client to the system server.
->
->>**Pair the terminal (it will ask you for the code).**
->
-```bash
-adb pair <IP>:<PORT>
-```
->>**Connect the terminal**
->
-```bash
-adb connect <IP>:<PORT>
-```
+**3-Shizuku option** ***(For Termux via Shizuku & Rish):***
+* Start [Shizuku](https://shizuku.rikka.app/).
+* Export the Shizuku shell (`rish`) into Termux environment.
+* URAAM will execute elevated package commands directly on-device.
 
 *Note:*
-
-*Note: `<PORT>` for pairing is differentfrom the connection `<PORT>` on Android 11+.*
-
-*- If adb connection fails, ensure your PC and Android device are on the same Wi-Fi network.*
-
-*- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
-</details>
+* *- If adb connection fails, ensure your PC and Android device are on the same Wi-Fi network.*
+* *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 
 ### For 🐧Linux, 📱Termux, WSL:
-
 ### Direct installation
 **1-Line Installation (Termux, Linux, macOS)**
 ```bash
@@ -91,12 +55,12 @@ uraam
 <summaru>Other execution method</sumary>
 
 <details>
-
-1. **Prerequisites:**
+<sumary>Prerequisites:</sumary>
 
 - `git` for clone repo
 
-<summary>Git installation:</summary>
+Git installation:
+
 >>Termux
 ```bash
 pkg install git
@@ -113,6 +77,7 @@ sudo pacman -S --no-confirm git
 ```bash
 sudo dnf install -y git
 ```
+
 </details>
 
 ***Note:** `adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
