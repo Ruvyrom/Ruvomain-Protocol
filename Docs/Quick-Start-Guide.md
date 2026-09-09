@@ -153,44 +153,11 @@ chmod +x ruvomain.sh && ./ruvomain.sh
 
 ### 🍎 For MacOS users:
 
-<details>
-<summary><b></b>Execution:</b></summary>
- 
 Install [Homebrew](https://brew.sh/) if you haven't already.
 
 **Prerequisites:**
 ```bash
-brew install git
+brew install git android-tools jq
 ```
-*`adb` and `jq` (The script will attempt an android-tools/jq auto-installation if missing).*
+**Follow the same quick start than [Linux, Termux...](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/Quick-Start-Guide.md#for-linux-termux-wsl) 
 
-**Clone the repository:**
-
-```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
-```
-
-*(If "unauthorized", check your phonescreen and tap "Always allow")*
-
-4.
-Folder layout:
-* Place debloat configurations in `./Configs/debloat/` *(Canta JSON supported)*.
-* Place APKs to install in `./Apps/`.
-* Backups and restoration targets reside in `./Configs/backup-restore/`.
-
-5. **Execute Universal ADB App-Manager (URAAM) dashboard:**
-
-```bash
-make -C ./Ruvomain-Protocol
-```
-Or run directly in **Bash**:
-```bash
-cd ./Ruvomain-Protocol
-```
-```bash
-chmod +x ./ruvomain.sh && ruvomain.sh
-```
-
-</details>
-
-**Finalize:** Reboot the device.
