@@ -29,6 +29,7 @@ or
 * *- If adb connection fails, ensure your PC and Android device are on the same Wi-Fi network.*
 * *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 
+---
 ### For 🐧Linux, 📱Termux, WSL:
 ### Direct installation
 **1-Line Installation (Termux, Linux, macOS)**
@@ -51,9 +52,7 @@ uraam
 | `Apps/` | Place APKs to batch-install |
 | `Configs/backup-restore/` | Exported application lists & restore points |
 
-<detail>
-<summaru>Other execution method</sumary>
-
+## Other installation method
 <details>
 <sumary>Prerequisites:</sumary>
 
