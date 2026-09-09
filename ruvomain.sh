@@ -17,6 +17,15 @@ APP_DIR="$REPO_DIR/Apps"
 LOGD_DIR="$REPO_DIR/Logs/debloat"
 LOGB_DIR="$REPO_DIR/Logs/backup"
 LOGR_DIR="$REPO_DIR/Logs/restore"
+REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
+BRANCH="main"
+
+if [ -z "$INSTALL_DIR" ]; then
+INSTALL_DIR="$HOME/Ruvomain-Protocol"
+fi
+
+BIN_DIR="$PREFIX/bin"
+[ -z "$PREFIX" ] && BIN_DIR="/usr/local/bin"
 
 BLUE='\033[0;34m'
 BOLD='\033[1m'
@@ -633,17 +642,30 @@ esac
 }
 
 update_uraam() {
-printf "\n${YELLOW}[!] Updating URAAM tothe latest release...${NC}\n"
+echo -e "${BLUE}========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | Updater${NC}"
+echo -e "${BLUE}========================================${NC}"
+printf "${CYAN}[*] Updating existing installation...${NC}\n"
+git fetch --all --prune >/dev/null2>&1
 
-if curl -fsSL "https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh?$(date +%s)" | tr -d '\r' | bash; then
-printf "${GREEN}[✓] Update completed successfully!${NC}\n"
-printf "${CYAN}Restarting URAAM...\n${NC}"
-sleep1
-
-exec "$INSTALL_DIR/ruvomain.sh" < /dev/tty
+if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
+printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
-printf "${RED}[X] Update failed. Check your internet connection.${NC}\n"
-read -rp "Press Enter to return to menu..." _ < /dev/tty
+printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
+exit1
+fi
+
+if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
+chmod +x "$INSTALL_DIR/ruvomain.sh"
+find "$INSTALL_DIR" -type f -name "*.sh"-exec chmod +x {} +
+sleep 1
+read -rp "Press Enter to return to main menu"
+return 0
+else
+printf "${RED}[X] Critical error: ruvomain.sh was not found in ${INSTALL_DIR}.${NC}\n"
+sleep 1
+read -rp "Press Enter to return to main menu"
+return 0
 fi
 }
 
