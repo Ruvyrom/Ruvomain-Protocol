@@ -473,7 +473,7 @@ ensure_adb || exit 1
 ensure_jq || exit 1
 
 echo -e "\n${BLUE}---------------------------------------${NC}"
-check_device || {
+check_adb || {
 read -rp "Press Enter to return tomain menu..."
 return 1
 }
