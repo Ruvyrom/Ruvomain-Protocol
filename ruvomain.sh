@@ -658,9 +658,9 @@ fi
 if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
 chmod +x "$INSTALL_DIR/ruvomain.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
-sleep 1
-read -rp "Press Enter to return to main menu"
-return 0
+sleep 1 
+read -rp "press Enter to restarting URAAM with new changes..."
+exec "$0" "$@"
 else
 printf "${RED}[X] Critical error: ruvomain.sh was not found in ${INSTALL_DIR}.${NC}\n"
 sleep 1
