@@ -116,4 +116,4 @@ fi
 ;;
 esac
 fi
-exec ./ruvomain.sh 
+exec ./ruvomain.sh < /dev/tty
