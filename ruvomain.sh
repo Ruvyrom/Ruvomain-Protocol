@@ -127,7 +127,7 @@ printf "${GREEN}[✓] JQ is already installed and ready to use.${NC}\n"
 return 0
 fi
 
-printf "${RED}[!] JQ is not detected onyour system.${NC}\n"
+printf "${RED}[!] JQ is not detected on your system.${NC}\n"
 read -p "Do you want to install JQ now? (y/n) : " choice
 
 case "$choice" in
@@ -222,10 +222,11 @@ echo -e "\n${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
 return 1
 fi
 
-if [ -z "$(adb devices -l | grep 'device$')" ]; then
+if ! adb devices | grep -q "device$"; then
 echo -e "\n${RED}[ERROR]${NC} No device detected via ADB."
 return 1
 fi
+return 0
 }
 
 ruvomain_debloat() {
@@ -242,11 +243,10 @@ init_logs 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-
-if ! check_adb; then
+check_adb || {
 read -rp "Press Enter to return to main menu..."
-return1
-fi
+return 1
+}
 
 sleep 1
 
@@ -337,11 +337,10 @@ init_logs_backup 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-
-if ! check_adb; then
-read-rp "Press Enter to return to main menu..."
+check_adb || {
+read -rp "Press Enter to return to main menu..."
 return 1
-fi
+}
 
 mkdir -p "$BACKUPS_DIR"
 local output_file="$BACKUPS_DIR/backup_$(date +%Y%m%d_%H%M%S).json"
@@ -410,11 +409,10 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
-
-if ! check_adb; then
-read -rp "Press Enter to return to main menu..."
-return1
-fi
+check_adb || {
+read -rp "Press Enter to return tomain menu..."
+return 1
+}
 
 echo -e "\nCheck Apps Dir"
 if [ ! -d "$APP_DIR" ]; then
@@ -454,12 +452,10 @@ init_logs_restore 2>/dev/null || true
 
 ensure_adb || exit 1
 ensure_jq || exit 1
-
-if ! check_adb; then
-read -rp "Press Enter to return to main menu..."
-return1
-fi
-sleep 1
+check_adb || {
+read -rp "Press Enter to return tomain menu..."
+return 1
+}
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
