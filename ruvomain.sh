@@ -646,7 +646,7 @@ echo -e "${BLUE}========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | Updater${NC}"
 echo -e "${BLUE}========================================${NC}"
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
-git fetch --all --prune >/dev/null2>&1
+git fetch --all --prune >/dev/null 2>&1
 
 if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
