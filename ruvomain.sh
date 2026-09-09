@@ -452,7 +452,7 @@ for apk in "$APP_DIR"/*.apk; do
 if [ -f "$apk" ]; then
 echo -e "\nInstalling: $(basename "$apk")"
 
-if adb install -r -g "$apk" >/dev/null 2>&1; then
+if $EXEC install -r -g "$apk" >/dev/null 2>&1; then
 echo -e "${GREEN}✓${NC} Successfully installed."
 read -rp "Press Enter to return to main menu"
 return 1
@@ -632,6 +632,21 @@ sleep 1
 esac
 }
 
+update_uraam() {
+printf "\n${YELLOW}[!] Updating URAAM tothe latest release...${NC}\n"
+
+if curl -fsSL "https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh?$(date +%s)" | tr -d '\r' | bash; then
+printf "${GREEN}[✓] Update completed successfully!${NC}\n"
+printf "${CYAN}Restarting URAAM...\n${NC}"
+sleep1
+
+exec "$INSTALL_DIR/ruvomain.sh" < /dev/tty
+else
+printf "${RED}[X] Update failed. Check your internet connection.${NC}\n"
+read -rp "Press Enter to return to menu..." _ < /dev/tty
+fi
+}
+
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
 echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
 termux-setup-storage
@@ -660,8 +675,9 @@ echo -e " [2] Install (Batch APK Install)"
 echo -e " [3] Backup (Export Apps List)"
 echo -e " [4] Restore (Revert/Reinstall Apps)"
 echo -e " [5] Wireless ADB Setup (Pair & Connect)"
-echo -e " [6] View Logs"
-echo -e " [7] Exit\n"
+echo -e " [6] Update (Search/install update from repo)"
+echo -e " [7] View Logs"
+echo -e " [8] Exit\n"
 
 read -rp "Enter choice: " choice
 case "$choice" in
@@ -671,8 +687,9 @@ case "$choice" in
 3) ruvomain_backup ;;
 4) ruvomain_restore ;;
 5) wireless_adb ;;
-6) vl_menu ;;
-7)
+6) update_uraam ;;
+7) vl_menu ;;
+8)
 echo -e "\nGoodbye!"
 clear
 exit 0
