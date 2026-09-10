@@ -1,8 +1,8 @@
-# Ruvomain-Protocol - Universal ADB App Manager
+# URAAM - Universal Ruvomain ADB App-Manager
 # Usage:
-#   make(run the dashboard)
+#   make          (run the dashboard)
 #   make update   (run update to latest)
-#   make clean(run clean logs)
+#   make clean    (run clean logs)
 #   make bclean   (run clean backup)
 #   make help     (run command help)
 
@@ -12,8 +12,8 @@
 all: dashboard
 
 dashboard:
-@chmod +x ./ruvomain.sh
-@./ruvomain.sh
+@chmod +x ./uraam.sh
+@./uraam.sh
 
 update:
 @if [ -f "./installer.sh" ]; then \
@@ -38,9 +38,9 @@ bclean:
 @echo "[✓] Backups cleaned."
 
 help:
-@echo "Ruvomain-Protocol available commands:"
-@echo "make         - Runs the dashboard"
+@echo "URAAM available commands:"
+@echo ". make         - Runs the dashboard"
 @echo "  make update  - Updates to the latest version"
-@echo "  makeclean   - Cleans debloat/backup/restore logs"
+@echo "  makeclean    - Cleans debloat/backup/restore logs"
 @echo "  make bclean  - Cleans JSONbackups"
 @echo "  make help    - Displays this help menu"
