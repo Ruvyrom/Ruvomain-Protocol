@@ -737,7 +737,7 @@ echo -e " [3] Backup (Export Apps List)"
 echo -e " [4] Restore (Revert/Reinstall Apps)"
 echo -e " [5] Wireless ADB Setup (Pair & Connect)"
 echo -e " [6] Update (Search/install update from repo)"
-echo -e " [7] View Logs"
+echo -e " [v] View Logs"
 echo -e " [8] Exit\n"
 
 read -rp "Enter choice: " choice
@@ -749,7 +749,7 @@ case "$choice" in
 4) uraam_restore ;;
 5) wireless_adb ;;
 6) update_uraam ;;
-7) vl_menu ;;
+v) vl_menu ;;
 8)
 echo -e "\nGoodbye!"
 clear
