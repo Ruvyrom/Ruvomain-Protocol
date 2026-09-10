@@ -716,13 +716,12 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DASHBOARD${NC}"
 echo -e "${BLUE}==========================================${NC}"
-
-echo -e "${CYAN}\nFolder layout instructions before starting:${NC}"
+echo -e "${CYAN}Folder layout instructions before starting:${NC}"
 echo -e "${CYAN}\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON supported).${NC}"
 echo -e "${CYAN}\nPlace APKs to install in ./Apps/.${NC}"
 echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
-
+printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
