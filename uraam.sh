@@ -17,7 +17,7 @@ APP_DIR="$REPO_DIR/Apps"
 LOGD_DIR="$REPO_DIR/Logs/debloat"
 LOGB_DIR="$REPO_DIR/Logs/backup"
 LOGR_DIR="$REPO_DIR/Logs/restore"
-REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
+REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="main"
 
 if [ -z "$INSTALL_DIR" ]; then
