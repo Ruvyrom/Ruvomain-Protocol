@@ -22,6 +22,23 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+cleanup() {
+[[ -n "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
+}
+
+target() {
+mkdir -p "$TARGET_BIN"
+ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+}
+
+perm() {
+chmod +x "$TARGET_BIN/uraam"
+}
+
+clprint() {
+printf "${CYAN}[*] Cleaning up...${NC}\n"
+}
+
 printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
 if ! command -v git >/dev/null 2>&1;then
@@ -78,38 +95,38 @@ printf "${CYAN}[*] Configuring system command alias (uraam)...${NC}\n"
 
 if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
 TARGET_BIN="$PREFIX/bin"
-ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
-chmod +x "$TARGET_BIN/uraam"
-printf "${CYAN}[*] Cleaning up...${NC}\n"
-rm -rf "$INSTALL_DIR/installer.sh"
+target
+perm
+clprint
+cleanup
 printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 elif [ -w "/usr/local/bin" ]; then
 TARGET_BIN="/usr/local/bin"
-ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
-chmod +x "$TARGET_BIN/uraam"
-printf "${CYAN}[*]Cleaning up...${NC}\n"
-rm -rf "$INSTALL_DIR/installer.sh"
+target
+perm
+clprint
+cleanup
 printf "${GREEN}[✓] Global symlink installed: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
 TARGET_BIN="/usr/local/bin"
-sudo ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
-sudo chmod +x "$TARGET_BIN/uraam"
-printf "${CYAN}[*]Cleaning up...${NC}\n"
-rm -rf "$INSTALL_DIR/installer.sh"
+sudo target
+perm
+clprint
+cleanup
 printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 else
 TARGET_BIN="$HOME/.local/bin"
 mkdir -p "$TARGET_BIN"
-ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
-chmod +x "$TARGET_BIN/uraam"
-printf "${CYAN}[*]Cleaning up...${NC}\n"
-rm -rf "$INSTALL_DIR/installer.sh"
+target
+perm
+clprint
+cleanup
 printf "${GREEN}[✓] User symlink installed: ${TARGET_BIN}/uraam${NC}\n"
 printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
@@ -123,6 +140,8 @@ SHELL_RC="$HOME/.bashrc"
 if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC"2>/dev/null; then
 printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
 printf "${YELLOW}[!] Added ~/.local/bin to PATH in ${SHELL_RC}.${NC}\n"
+clprint
+cleanup
 printf "${YELLOW}[!] Run 'source %s' or open a new terminal to use 'uraam'.${NC}\n" "$SHELL_RC"
 fi
 ;;
