@@ -85,7 +85,7 @@ or
 ### Direct execution
 **1-Line Installation (Termux, Linux, macOS)**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh | bash
+bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh)
 ```
 > ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
 
