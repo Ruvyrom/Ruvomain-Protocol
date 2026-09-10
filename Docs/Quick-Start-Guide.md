@@ -34,7 +34,7 @@ or
 ### Direct installation
 **1-Line Installation (Termux, Linux, macOS)**
 ```bash
-bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh)
+bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 > ***Note :** The installer auto-install GIT, ADB, JQ after confirm and takes care of cloning the repository.*
 
@@ -45,7 +45,7 @@ Once installed, simply run the global command from any directory:
 uraam
 ```
 
-### 📁 File Layout (`~/.Ruvomain-Protocol/`)
+### 📁 File Layout (`~/.Uraam/`)
 | Folder | Purpose|
 | :--- | :--- |
 | `Configs/debloat/` | Place debloat lists here(*Canta JSON supported*) |
@@ -88,7 +88,7 @@ sudo dnf install -y git
 - **Clone the repo:**
   
 ```bash
-git clone https://github.com/Ruvyrom/Ruvomain-Protocol.git
+git clone https://github.com/Ruvyrom/Uraam.git
 ```
 
 Folder layout:
@@ -97,15 +97,15 @@ Folder layout:
 * Backups and restoration targets reside in `./Configs/backup-restore/`.
 
 ```bash
-make -C ./Ruvomain-Protocol
+make -C ./Uraam
 ```
 Or run directly in **Bash**:
 ```bash
-cd ./Ruvomain-Protocol
+cd ./Uraam
 ```
 
 ```bash
-chmod +x ruvomain.sh && ./ruvomain.sh
+chmod +x uraam.sh && ./uraam.sh
 ```
 </details>
 </details>
