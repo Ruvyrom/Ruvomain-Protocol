@@ -104,7 +104,7 @@ Discover all Makefile targets using `make help`.
 <details>
 <summary><b>Updatable:</b></summary>
 
->You can update the Uraam script directly from Github repo by select option [6] in Dashboard
+>You can update the Uraam script directly from Github repo by select option [u] in Dashboard
 </details>
 
 <details>
@@ -122,32 +122,32 @@ Discover all Makefile targets using `make help`.
 <details>
 <summary><b>Autonomous:</b></summary>
 
->The protocol executes, performs the surgical strike, and terminates. No resident services (daemons) remain in the background.
+>URAAM executes, performs the surgical strike, and terminates. No resident services (daemons) remain in the background.
 </details>
 
 <details>
 <summary><b>APK Installation via ADB:</b></summary>
 
->With ruvomain-installer script you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
+>With URAAM Installer you can install your own multiple apk files via ADB. Just place your apk in ./Apps folder and script run installation for you.
 </details>
 
 <details>
 <summary><b>Backup to .json list</b></summary>
 
->With Backup, backup your uninstalled apps list to .json file for restore later.
+>With URAAM Backup, backup your uninstalled apps list to .json file for restore later.
 >(Compatible with Canta.)
 </details>
 
 <details>
 <summary><b>Restore uninstalled apps via ADB</b></summary>
 
->With Restore, reinstall your uninstalled apps via adb with .json backup files in ./Uraam/backup-restore
+>With URAAM Restore, reinstall your uninstalled apps via adb with your own, Canta/UAD json or backup files in ./Uraam/backup-restore
 </details>
 
 <details>
 <summary><b>Automated:</b></summary>
 
->Automatic installation of GIT, ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
+>Automatic installation of GIT, ADB and JQ for Debian, Arch, and Fedora-based distributions, as well as for Termux and WSL.
 
 >Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and URAAM takes care of the debloating/restoring for you.
 </details>
@@ -183,7 +183,7 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 >An overview of the protocol's global architecture.
 
-- [JSON files importation](https://github.com/Ruvyrom/Uraam/tree/main/Configs#json-files-importation)
+- [JSON files importation](/Docs/structure-example.json)
 
 >How to import your personnal .json list files (for S24+ or other devices) for using with URAAM script.
 
@@ -225,13 +225,13 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
 
-For the Universal Ruvomain ADB App-Manager (URAAM), ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
+For URAAM, ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
 </details>
 
 <details>
 <summary><b>🐚 What is Bash? (Why we use it)</b></summary>
 
-Bash is the scripting language that powers the Ruvomain Protocol. We chose it for one reason: <b>transparency</b>. Unlike closed-source tools that hide their logic in a "blackbox," our Bash scripts are written in plain, readable text. This means you can personally audit, verify, and understand every single command before it touches your device. It is the foundation of a truly trust-based and auditable system.
+Bash is the scripting language that powers URAAM. We chose it for one reason: <b>transparency</b>. Unlike closed-source tools that hide their logic in a "blackbox," our Bash scripts are written in plain, readable text. This means you can personally audit, verify, and understand every single command before it touches your device. It is the foundation of a truly trust-based and auditable system.
 </details>
 
 <details>
