@@ -43,12 +43,22 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 | <div align="center">Termux</div> <div align="center"><img src="/assets/Termux-Icon.webp"></div> | <img src="assets/uraam_termux.jpg" width="200"> <div align="center">Dashboard</div> | <img src="assets/uraam-wireless.jpg" width="200"> <div align="center">Wireless ADB</div> || <div align="center">Linux</div> <div align="center"><img src="/assets/linux128.png" width="95"></div> | <img src="assets/uraam_linux.png" width="400"> <div align="center">Dashboard</div> |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 
----
 >> **🚀 Latest Updates:**
 >
 > -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.
 > - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
 >---
+
+## ⚡ Core Features
+
+* 🗑️ **Debloat (JSON-Powered):** Safely remove or disable bloatware using community-drivenCanta & UAD JSON lists.
+* 📦 **Batch APK Installer:** Drop your APKs into `./Apps/` andinstall them all in one click with automatic handling.
+* 💾 **Smart Backup (JSON):** Export your currentdevice state and package configuration to a portable JSON file.
+* 🔄 **Restore (JSON-Driven):** Revert uninstalled apps or reinstall packages seamlessly from previous backups.
+* 📶 **Wireless ADB Assistant:** Built-in pairing & connectionhelper for seamless PC-free or cable-free setup.
+* 🚀 **Self-Updater:** Keep URAAM up to date directly fromthe official repository with a single keypress.
+* 📜 **Integrated Logs Viewer:** Inspect terminal history and debug operationsinstantly without leaving the dashboard.
+
 ## 🚀 Ready to deploy?
 
 **UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
