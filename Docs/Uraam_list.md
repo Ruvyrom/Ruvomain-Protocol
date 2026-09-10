@@ -1,4 +1,4 @@
-**You can import your personal JSON list file or your Canta restoration JSON list in ./Configs/imports. [instructions](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/Configs/Imports/README.md).**
+**You can import your personal JSON list file or your Canta/UAF JSON list in ./Configs/debloat. [instructions](Configs/debloat/README.md).**
 
 ---
 **This list below is optimized for S24+ (Exynos)**
