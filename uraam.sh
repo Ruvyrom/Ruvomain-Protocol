@@ -19,6 +19,7 @@ LOGB_DIR="$REPO_DIR/Logs/backup"
 LOGR_DIR="$REPO_DIR/Logs/restore"
 REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="main"
+CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
 
 if [ -z "$INSTALL_DIR" ]; then
 INSTALL_DIR="$HOME/Uraam"
@@ -158,7 +159,7 @@ elif command -v brew >/dev/null; then
 brew install jq
 else
 printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
-read -rp "Press Enter to return to main menu..."
+read -rp "${YELLOW}Press Enter to return to main menu...${NC}"
 return 1
 fi
 ;;
@@ -185,7 +186,7 @@ echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
 echo -e "\n${BLUE}--------------------------------------------------------${NC}"
 echo ""
 
-read -rp "Do you need to PAIR first? (y/N): " need_pair
+read -rp "${YELLOW}Do you need to PAIR first? (y/N):${NC} " need_pair
 
 case "$need_pair" in
 y|Y)
@@ -249,8 +250,8 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-echo -e "\nPlace debloat configurations in ./Configs/debloat/"
-echo -e "(Canta JSON, UAD lists & raw packages supported)."
+echo -e "\n${CYAN}Place debloat configurations in ./Configs/debloat/${NC}"
+echo -e "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
 init_logs 2>/dev/null || true
@@ -367,8 +368,8 @@ show_logo
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
 echo -e "${BLUE}===============================================${NC}"
-echo -e "\Backups targets reside in ./Configs/backup-restore/"
-echo -e "\n${BLUE}---------------------------------------------${NC}"
+echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
+echo -e "${BLUE}---------------------------------------------${NC}"
 
 init_logs_backup 2>/dev/null || true
 
@@ -396,7 +397,7 @@ return 1
 fi
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "\n--- Generating snapshot: $output_file---"
+echo -e "${CYAN}\n--- Generating snapshot: $output_file---${NC}"
 echo -e "\n${BLUE}----------------------------------------${NC}"
 
 $EXEC pm list packages -u 2>/dev/null \
@@ -430,7 +431,7 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-echo -e "\nPlace APKs to install in ./Apps/ before starting."
+echo -e "\n${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
 echo -e "\n${BLUE}----------------------------------------${NC}"
 
 ensure_adb || exit 1
@@ -487,7 +488,7 @@ show_logo
 echo -e "${BLUE}=========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
 echo -e "${BLUE}=========================================${NC}"
-echo -e "\nRestoration targets reside in ./Configs/backup-restore/"
+echo -e "\n${CYAN}Restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "\n${BLUE}---------------------------------------${NC}"
 
 init_logs_restore 2>/dev/null || true
@@ -653,7 +654,7 @@ vl_menu() {
 clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | View Logs${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | VIEW LOGS${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n [1] View Debloat Logs"
@@ -682,7 +683,7 @@ esac
 
 update_uraam() {
 echo -e "${BLUE}========================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | Updater${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | UPDATER${NC}"
 echo -e "${BLUE}========================================${NC}"
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 git fetch --all --prune >/dev/null 2>&1
@@ -721,25 +722,26 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DASHBOARD${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\nFolder layout instructions before starting:"
-echo -e "\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON supported)."
-echo -e "\nPlace APKs to install in ./Apps/."
-echo -e "\nBackups and restoration targets reside in ./Configs/backup-restore/"
+echo -e "${CYAN}\nFolder layout instructions before starting:${NC}"
+echo -e "${CYAN}\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON supported).${NC}"
+echo -e "${CYAN}\nPlace APKs to install in ./Apps/.${NC}"
+echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
+printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n [d] Debloat (Remove Bloatware)"
-echo -e " [i] Install (Batch APK Install)"
-echo -e " [b] Backup (Export Apps List)"
-echo -e " [r] Restore (Revert/Reinstall Apps)"
-echo -e " [w] Wireless ADB Setup (Pair & Connect)"
-echo -e " [u] Update (Search/install update from repo)"
-echo -e " [v] View Logs"
-echo -e " [e] Exit\n"
+echo -e "\n ${CYAN}[d]${NC} ${YELLOW}Debloat${NC} (Remove Bloatware)"
+echo -e " ${CYAN}[i]${NC} ${YELLOW}Install${NC} (Batch APK Install)"
+echo -e " ${CYAN}[b]${NC} ${YELLOW}Backup${NC} (Export Apps List)"
+echo -e " ${CYAN}[r]${NC} ${YELLOW}Restore${NC} (Revert/Reinstall Apps)"
+echo -e " ${CYAN}[w]${NC} ${YELLOW}Wireless ADB Setup${NC} (Pair & Connect)"
+echo -e " ${CYAN}[u]${NC} ${YELLOW}Update${NC} (Search/install update from repo)"
+echo -e " ${CYAN}[v]${NC} ${YELLOW}View Logs${NC} (Open & read logs)"
+echo -e " ${RED}[e]${NC} ${RED}Exit\n${NC}"
 
 read -rp "Enter choice: " choice
 case "$choice" in
