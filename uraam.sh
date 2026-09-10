@@ -25,9 +25,6 @@ if [ -z "$INSTALL_DIR" ]; then
 INSTALL_DIR="$HOME/Uraam"
 fi
 
-BIN_DIR="$PREFIX/bin"
-[ -z "$PREFIX" ] && BIN_DIR="/usr/local/bin"
-
 BLUE='\033[0;34m'
 BOLD='\033[1m'
 CYAN='\033[0;36m'
@@ -123,7 +120,7 @@ brew install android-platform-tools
 else
 printf "${RED}[!] Package manager not supported. Please install ADB manually.${NC}\n" >&2
 sleep 1
-read -rp "Press Enter to return to main menu"
+read -rp "Press [Enter] to return to main menu..."
 return 1
 fi
 ;;
@@ -159,7 +156,7 @@ elif command -v brew >/dev/null; then
 brew install jq
 else
 printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
-read -rp "${YELLOW}Press Enter to return to main menu...${NC}"
+read -rp "Press [Enter] to return to main menu..."
 return 1
 fi
 ;;
@@ -186,7 +183,7 @@ echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
 echo -e "\n${BLUE}--------------------------------------------------------${NC}"
 echo ""
 
-read -rp "${YELLOW}Do you need to PAIR first? (y/N):${NC} " need_pair
+read -rp "Do you need to PAIR first? (y/N): " need_pair
 
 case "$need_pair" in
 y|Y)
@@ -259,12 +256,10 @@ init_logs 2>/dev/null || true
 ensure_adb || exit 1
 ensure_jq || exit 1
 
-echo -e "\n${BLUE}----------------------------------------${NC}"
 check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
-echo -e "\n${BLUE}----------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
@@ -618,7 +613,7 @@ nano -v "$LOGB_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
 cat "$LOGB_DIR"/*.log
-echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
+echo -e "\nPress [Enter] to return to the menu..."
 read -r
 fi
 else
@@ -641,7 +636,7 @@ nano -v "$LOGR_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
 cat "$LOGR_DIR"/*.log
-echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
+echo -e "\nPress [Enter] to return to the menu... "
 read -r
 fi
 else
@@ -699,7 +694,7 @@ if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 sleep 1 
-read -rp "${YELLOW}press Enter to restarting URAAM with new changes...${NC}"
+read -rp "press Enter to restarting URAAM with new changes..." 
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 exec "$0" "$@"
 else
@@ -734,14 +729,14 @@ check_adb
 printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n ${CYAN}[d]${NC} ${YELLOW}Debloat${NC} (Remove Bloatware)"
-echo -e " ${CYAN}[i]${NC} ${YELLOW}Install${NC} (Batch APK Install)"
-echo -e " ${CYAN}[b]${NC} ${YELLOW}Backup${NC} (Export Apps List)"
-echo -e " ${CYAN}[r]${NC} ${YELLOW}Restore${NC} (Revert/Reinstall Apps)"
-echo -e " ${CYAN}[w]${NC} ${YELLOW}Wireless ADB Setup${NC} (Pair & Connect)"
-echo -e " ${CYAN}[u]${NC} ${YELLOW}Update${NC} (Search/install update from repo)"
-echo -e " ${CYAN}[v]${NC} ${YELLOW}View Logs${NC} (Open & read logs)"
-echo -e " ${RED}[e]${NC} ${RED}Exit\n${NC}"
+echo -e "\n ${CYAN}[d]${NC} Debloat ${NC}(Remove Bloatware)${NC}"
+echo -e " ${CYAN}[i]${NC} Install ${YELLOW}(Batch APK Install)${NC}"
+echo -e " ${CYAN}[b]${NC} Backup ${YELLOW}(Export Apps List)${NC}"
+echo -e " ${CYAN}[r]${NC} Restore ${YELLOW}(Revert/Reinstall Apps)${NC}"
+echo -e " ${CYAN}[w]${NC} Wireless ADB Setup ${YELLOW}(Pair & Connect)${NC}"
+echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo)${NC}"
+echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
+echo -e " ${RED}[e]${NC} Exit\n"
 
 read -rp "Enter choice: " choice
 case "$choice" in
@@ -754,12 +749,12 @@ w) wireless_adb ;;
 u) update_uraam ;;
 v) vl_menu ;;
 e)
-echo -e "\nGoodbye!"
+echo -e "${CYAN}Goodbye!${NC}"
 clear
 exit 0
 ;;
 *)
-echo -e "\nInvalide option, please try again."
+echo -e "${RED}Invalide option, please try again.${NC}"
 sleep 1
 ;;
 esac
