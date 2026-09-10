@@ -19,7 +19,6 @@ LOGB_DIR="$REPO_DIR/Logs/backup"
 LOGR_DIR="$REPO_DIR/Logs/restore"
 REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="main"
-CURRENT_MODEL=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
 
 if [ -z "$INSTALL_DIR" ]; then
 INSTALL_DIR="$HOME/Uraam"
@@ -705,6 +704,23 @@ return 0
 fi
 }
 
+check_device() {
+local brand model android_ver
+brand=$(adb shell getprop ro.product.manufacturer2>/dev/null | tr -d '\r')
+model=$(adb shell getprop ro.product.model 2>/dev/null | tr -d '\r')
+android_ver=$(adb shell getprop ro.build.version.release 2>/dev/null | tr -d '\r')
+
+brand="${brand:-Unknown}"
+model="${model:-Unknown}"
+android_ver="${android_ver:-Unknown}"
+
+if [[ "$model" == "Unknown" && "$brand" == "Unknown" ]]; then
+CURRENT_MODEL="UnknownDevice"
+else
+CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
+fi
+}
+
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
 echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
 termux-setup-storage
@@ -721,7 +737,7 @@ echo -e "${CYAN}\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON
 echo -e "${CYAN}\nPlace APKs to install in ./Apps/.${NC}"
 echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
-printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
+check_device
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
