@@ -232,6 +232,7 @@ fi
 sleep 1
 read -rp "Press Enter to return to main menu..."
 return 1
+esac
 }
 
 check_adb() {
