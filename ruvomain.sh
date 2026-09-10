@@ -302,7 +302,20 @@ echo -e "\n${RED}Invalid selection, please try again.${NC}"
 fi
 done
 
-mapfile -t PACKAGES < <(jq -r 'if type=="array" then .[] elif .apps then .apps[].packageName // .apps[] else empty end' "$file" 2>/dev/null)
+mapfile -t PACKAGES < <(jq -r '
+[
+..
+| objects
+| (.packageName // .package // .pkg // .id // .name // empty)
+// empty
+] +[
+..
+| strings
+| select(test("^[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)+$"))
+]
+| unique
+| .[]
+' "$file" 2>/dev/null)
 
 if [ ${#PACKAGES[@]} -eq 0 ]; then
 echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
