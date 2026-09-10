@@ -169,34 +169,37 @@ To gain a deeper understanding of the technical and operational aspects of the p
 <details>
 <summary><b>Click to view documentation</b></summary>
 
-- [Protocol Hierarchy](/Docs/Protocol-Hierarchy.md) (3 tiers packages list exemple for S24+)
+>[URAAM Hierarchy](/Docs/Uraam-Hierarchy.md) (3 tiers packages list exemple for S24+)
 
->An overview of the protocol's global architecture.
+>>An overview of the Uraam's global architecture.
 
-- [JSON files importation](/Docs/structure-example.json)
+>[JSON files importation](/Docs/structure-example.json)
 
->How to import your personnal .json list files (for S24+ or other devices) for using with URAAM script.
+>>How to import your personnal .json list files for using with URAAM script.
 
-- [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
+>[Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
 
->Technical details on system hardening and resource management.
+>>Technical details on system hardening and resource management.
 
-- [Package List](Docs/Tiers-list.md) (S24+)
+>[Package List](Docs/Tiers-list.md) (S24+)
 
->A detailed list of components targeted by the protocol.
+>>A detailed list of components targeted by the protocol.
 
-- [Replacement](/Docs/Remplacement.md)
+>[Replacement](/Docs/Remplacement.md)
 
->Documentation regarding software substitution processes and procedures.Users on different hardware or firmware versions should exercise caution and verify package dependencies before execution.
+>>Documentation regarding software substitution processes and procedures.Users on different hardware or firmware versions should exercise caution and verify package dependencies before execution.
 
-- [Interface Setup](/Docs/Interface-Setup.md)
+>[Interface Setup](/Docs/Interface-Setup.md)
+
 >A guide to achieving an AOSP-like aestheticand maximum operational efficiency while retaining native Samsung system optimizations.
 
-- [Monitoring Strategy](/Docs/Monitoring-Strategy.md)
+>>[Monitoring Strategy](/Docs/Monitoring-Strategy.md)
+
 >Methodologies for analyzing system behavior, battery drain, and network telemetry to maintain long-term stability.
 
-- [Safety & Auditing](Docs/Safety-&-Auditing.md)
->Information regarding code transparency, audit processes, and system integrity maintenance.
+>[Safety & Auditing](Docs/Safety-&-Auditing.md)
+
+>>Information regarding code transparency, audit processes, and system integrity maintenance.
 </details>
 
 ---
