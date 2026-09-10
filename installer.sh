@@ -6,7 +6,7 @@
 
 set -e
 
-REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
+REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="main"
 
 if [ -z "$INSTALL_DIR" ]; then
