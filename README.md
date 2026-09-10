@@ -86,7 +86,10 @@ or
 ```bash
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
-> ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
+> ***Note :**
+> The installer auto-install GIT after confirm and takes care of cloning the repository.*
+> *URAAM auto-install ADB and JQ if necessary.*
+
 
 ### Usage Anywhere
 
