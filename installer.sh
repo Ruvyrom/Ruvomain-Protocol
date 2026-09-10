@@ -10,7 +10,7 @@ REPO_URL="https://github.com/Ruvyrom/Ruvomain-Protocol.git"
 BRANCH="main"
 
 if [ -z "$INSTALL_DIR" ]; then
-INSTALL_DIR="$HOME/Ruvomain-Protocol"
+INSTALL_DIR="$HOME/Uraam"
 fi
 
 RED='\033[0;31m'
@@ -26,7 +26,7 @@ printf "${CYAN}[*] Cleaning up...${NC}\n"
 
 target() {
 mkdir -p "$TARGET_BIN"
-ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+ln -sf "$INSTALL_DIR/uraam.sh" "$TARGET_BIN/uraam"
 }
 
 perm() {
@@ -76,12 +76,12 @@ exit 1
 fi
 fi
 
-if [ -f "$INSTALL_DIR/ruvomain.sh" ]; then
-chmod +x "$INSTALL_DIR/ruvomain.sh"
+if [ -f "$INSTALL_DIR/uraam.sh" ]; then
+chmod +x "$INSTALL_DIR/uraam.sh"
 
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
-printf "${RED}[X] Critical error: ruvomain.sh was not found in ${INSTALL_DIR}.${NC}\n"
+printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 exit 1
 fi
 
@@ -105,7 +105,7 @@ printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
 TARGET_BIN="/usr/local/bin"
-sudo ln -sf "$INSTALL_DIR/ruvomain.sh" "$TARGET_BIN/uraam"
+sudo ln -sf "$INSTALL_DIR/uraam.sh" "$TARGET_BIN/uraam"
 perm
 cleanup
 printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
