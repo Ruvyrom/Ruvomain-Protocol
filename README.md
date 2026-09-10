@@ -48,7 +48,7 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 >> **🚀 Latest Updates:**
 >
 > -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `ruvomain.sh`.
-> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
+> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
 >---
 ## 🚀 Ready to deploy?
 
@@ -75,7 +75,7 @@ or
 * Export the Shizuku shell (`rish`) into Termux environment.
 * URAAM will execute elevated package commands directly on-device.
 
-### 📁 File Layout (`~/.Ruvomain-Protocol/`)
+### 📁 File Layout (`~/.Uraam/`)
 | Folder | Purpose|
 | :--- | :--- |
 | `Configs/debloat/` | Place debloat lists here(*Canta JSON supported*) |
@@ -85,7 +85,7 @@ or
 ### Direct execution
 **1-Line Installation (Termux, Linux, macOS)**
 ```bash
-bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Ruvomain-Protocol/main/installer.sh)
+bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 > ***Note :** The installer auto-install GIT after confirm and takes care of cloning the repository.*
 
@@ -101,30 +101,34 @@ Discover all Makefile targets using `make help`.
 ---
 ### Table of Contents
 
-[Features](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#features)
+[Features](https://github.com/Ruvyrom/Uraam/blob/main/README.md#features)
 
-[Contributing](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main#-contributing)
+[Contributing](https://github.com/Ruvyrom/Uraam/tree/main#-contributing)
 
-[Dictionary: Technical Context](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#dictionnary-technical-context) 
+[Dictionary: Technical Context](https://github.com/Ruvyrom/Uraam/blob/main/README.md#dictionnary-technical-context) 
 
-[All Documentation](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/README.md#-documentation)
+[All Documentation](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-documentation)
 
-[Comparaison Matrix](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-comparison-matrix) 
+[Comparaison Matrix](https://github.com/Ruvyrom/Uraam/blob/main/README.md#%EF%B8%8F-comparison-matrix) 
 
-[Proof of Concept](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/README.md#-proof-screenshot)
+[Proof of Concept](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-proof-screenshot)
 
-[Credits](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/README.md#-credits)
+[Credits](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-credits)
 
-[Disclaimer](https://github.com/Ruvyrom/Ruvomain-Protocole/blob/main/README.md#%EF%B8%8F-disclaimer)
+[Disclaimer](https://github.com/Ruvyrom/Uraam/blob/main/README.md#%EF%B8%8F-disclaimer)
 
 ---
-## ⚙️ Features: 
-"Surgical Minimalism" is the art of achieving maximum efficiency through the smallest possible codebase. By eliminating external dependencies, we reduce the system's attack surface and ensure absolute transparency.
+## ⚙️ Features:
+
+<details>
+<summary><b>Updatable:</b></summary>
+
+>You can update the Uraam script directly from Github repo by select option [6] in Dashboard
 
 <details>
 <summary><b>Interoperability:</b></summary>
 
->100% compatible with **Canta** .json restoration lists. (ruvomain-debloat, ruvomain-restore)
+>100% compatible with **Canta** .json, **UAD** lists & **raw** packages. (Debloat, Backup, Restore)
 </details>
 
 <details>
@@ -148,19 +152,20 @@ Discover all Makefile targets using `make help`.
 <details>
 <summary><b>Backup to .json list</b></summary>
 
->With ruvomain-backup, backup your uninstalled apps list to .json file for restore later.
+>With Backup, backup your uninstalled apps list to .json file for restore later.
+>(Compatible with Canta.)
 </details>
 
 <details>
 <summary><b>Restore uninstalled apps via ADB</b></summary>
 
->With ruvomain-restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
+>With Restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
 </details>
 
 <details>
 <summary><b>Automated:</b></summary>
 
->Automatic installation of ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
+>Automatic installation of GIT, ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
 
 >Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and Ruvomain takes care of the debloating/restoring for you.
 </details>
@@ -168,7 +173,7 @@ Discover all Makefile targets using `make help`.
 ---
 ## ⚖️ Comparison Matrix
 
-| Feature | Standard Approach (Canta/Shizuku)| **Ruvomain URAAM** |
+| Feature | Standard Approach (Canta/Shizuku)| **URAAM** |
 | :--- | :--- | :--- |
 | **Dependencies** | Java, Shizuku, Canta | **jq** |
 | **Memory Footprint** | Permanent (Active service) | **None (One-time execution)** |
@@ -180,8 +185,8 @@ Discover all Makefile targets using `make help`.
 
 **You have a specific device? Create your JSON file list or import Canta backup list file!**
 
-Fork this repo, place it in `/Configs`, and submit a Pull Request. Your configuration will then be available to the entire community.
-To create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Configs/README.md#contributing---json-files-importation).
+Fork this repo, place it in `/Configs/debloat`, and submit a Pull Request. Your configuration will then be available to the entire community.
+To create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Uraam/blob/main/Configs/README.md#contributing---json-files-importation).
 
 >**Need help with your first contribution?** *[Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.*
 
@@ -196,9 +201,9 @@ To gain a deeper understanding of the technical and operational aspects of the p
 
 >An overview of the protocol's global architecture.
 
-- [JSON files importation](https://github.com/Ruvyrom/Ruvomain-Protocol/tree/main/Configs#json-files-importation)
+- [JSON files importation](https://github.com/Ruvyrom/Uraam/tree/main/Configs#json-files-importation)
 
->How to import your personnal .json list files (for S24+ or other devices) for using with Ruvomain-pbd script.
+>How to import your personnal .json list files (for S24+ or other devices) for using with URAAM script.
 
 - [Network & Resource Confinement](/Docs/Network-&-Resource-Confinement-Layers.md)
 
