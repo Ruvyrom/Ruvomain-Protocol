@@ -5,7 +5,7 @@
 <div align="center" style="background-color: #151B22; display: inline-block">
 <img src="assets/uraam_logo.jpg" width="200">
 <br>
-<strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
+<strong>[URAAM]-Universal Ruvomain ADB App-Manager</strong>
 <em><br>(Debloat, Restore, Backup list [json files] and APK Installer)</strong><br>
 <strong>For ALL Android devices and compatible with root, Shiziku rish and wireless ADB with Termux</strong></em>
 </div>
