@@ -1,0 +1,6 @@
+Apps/*
+!Apps/.gitkeep
+Configs/backup-restore/*
+!Configs/backup-restore/.gitkeep
+Logs/*
+!Logs/.gitkeep
