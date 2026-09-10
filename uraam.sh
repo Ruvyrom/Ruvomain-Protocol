@@ -725,7 +725,6 @@ printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
-printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n ${CYAN}[d]${NC} Debloat ${YELLOW}(Remove Bloatware)${NC}"
