@@ -3,7 +3,7 @@
 </p>
 
 <div align="center" style="background-color: #151B22; display: inline-block">
-<img src="assets/ruvomain.png" width="400">
+<img src="assets/uraam_logo.jpg" width="200">
 <br>
 <strong>Universal Ruvomain ADB App-Manager [URAAM]</strong>
 <em><br>(Debloat, Restore, Backup list [json files] and APK Installer)</strong><br>
