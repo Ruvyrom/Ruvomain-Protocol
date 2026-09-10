@@ -122,7 +122,6 @@ printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
 
 else
 TARGET_BIN="$HOME/.local/bin"
-mkdir -p "$TARGET_BIN"
 target
 perm
 clprint
