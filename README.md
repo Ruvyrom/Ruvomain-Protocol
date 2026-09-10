@@ -36,7 +36,7 @@ The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a surgical terminal toolkit to
 Professional-grade infrastructure forsystem optimization. Replace heavy middleware with a native, audited Bash + jq pipeline. Fully compatible with Canta/UAD JSON lists out of the box.</em>
 </p>
 <p>
-<em>« I'm not imposing anything on you: I provide infrastructure, you bring yourdata, and you execute code that you can read. »</em>
+<em>« I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read. »</em>
 </p>
 </div>
 
