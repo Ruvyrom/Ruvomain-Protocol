@@ -165,7 +165,7 @@ Discover all Makefile targets using `make help`.
 ---
 ## 👥 Contributing
 
-**You have a specific device? Create your JSON file list or import Canta backup list file!**
+**You have a specific device? Create your JSON file list or import Canta/UAD and raw packages list!**
 
 Fork this repo, place it in `/Configs/debloat`, and submit a Pull Request. Your configuration will then be available to the entire community.
 To create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Uraam/blob/main/Configs/README.md#contributing---json-files-importation).
@@ -243,7 +243,7 @@ JSON acts as our "configuration layer." It is a simple, human-readable format th
 <details>
 <summary><b>🔄 What is Git? (Why it matters)</b></summary>
 
-Git is our "version control" system. Think of it as a time machine for the Ruvomain Protocol. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly howthe protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
+Git is our "version control" system. Think of it as a time machine for URAAM. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly how the protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
 </details>
 
 ---
