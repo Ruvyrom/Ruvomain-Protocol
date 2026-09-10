@@ -732,25 +732,25 @@ check_adb
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n [dD] Debloat (Remove Bloatware)"
-echo -e " [iI] Install (Batch APK Install)"
-echo -e " [bB] Backup (Export Apps List)"
-echo -e " [rR] Restore (Revert/Reinstall Apps)"
-echo -e " [wW] Wireless ADB Setup (Pair & Connect)"
-echo -e " [uU] Update (Search/install update from repo)"
-echo -e " [vV] View Logs"
-echo -e " [eE] Exit\n"
+echo -e " [i] Install (Batch APK Install)"
+echo -e " [b] Backup (Export Apps List)"
+echo -e " [r] Restore (Revert/Reinstall Apps)"
+echo -e " [w] Wireless ADB Setup (Pair & Connect)"
+echo -e " [u] Update (Search/install update from repo)"
+echo -e " [v] View Logs"
+echo -e " [e] Exit\n"
 
 read -rp "Enter choice: " choice
 case "$choice" in
 
-dD) uraam_debloat ;;
-iI) uraam_installer ;;
-bB) uraam_backup ;;
-rR) uraam_restore ;;
-wW) wireless_adb ;;
-uU) update_uraam ;;
-vV) vl_menu ;;
-eE)
+d) uraam_debloat ;;
+i) uraam_installer ;;
+b) uraam_backup ;;
+r) uraam_restore ;;
+w) wireless_adb ;;
+u) update_uraam ;;
+v) vl_menu ;;
+e)
 echo -e "\nGoodbye!"
 clear
 exit 0
