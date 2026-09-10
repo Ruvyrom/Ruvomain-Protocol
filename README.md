@@ -124,6 +124,7 @@ Discover all Makefile targets using `make help`.
 <summary><b>Updatable:</b></summary>
 
 >You can update the Uraam script directly from Github repo by select option [6] in Dashboard
+</details>
 
 <details>
 <summary><b>Interoperability:</b></summary>
