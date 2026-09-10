@@ -99,25 +99,6 @@ uraam
 Discover all Makefile targets using `make help`.
 
 ---
-### Table of Contents
-
-[Features](https://github.com/Ruvyrom/Uraam/blob/main/README.md#features)
-
-[Contributing](https://github.com/Ruvyrom/Uraam/tree/main#-contributing)
-
-[Dictionary: Technical Context](https://github.com/Ruvyrom/Uraam/blob/main/README.md#dictionnary-technical-context) 
-
-[All Documentation](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-documentation)
-
-[Comparaison Matrix](https://github.com/Ruvyrom/Uraam/blob/main/README.md#%EF%B8%8F-comparison-matrix) 
-
-[Proof of Concept](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-proof-screenshot)
-
-[Credits](https://github.com/Ruvyrom/Uraam/blob/main/README.md#-credits)
-
-[Disclaimer](https://github.com/Ruvyrom/Uraam/blob/main/README.md#%EF%B8%8F-disclaimer)
-
----
 ## ⚙️ Features:
 
 <details>
