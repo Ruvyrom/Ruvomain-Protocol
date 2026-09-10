@@ -583,17 +583,17 @@ fi
 view_blogs() {
 clear
 if compgen -G "$LOGB_DIR/*.log" >/dev/null; then
-ifcommand -v less >/dev/null 2>&1; then
+if command -v less >/dev/null 2>&1; then
 echo -e "${GREEN}[*] Viewing logs (Press 'q' to quit, ':n' for next file)...${NC}"
 sleep 1
 less -R "$LOGB_DIR"/*.log
 elif command -v nano >/dev/null 2>&1; then
-echo-e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
+echo -e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
 sleep1
 nano -v "$LOGB_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
-cat"$LOGB_DIR"/*.log
+cat "$LOGB_DIR"/*.log
 echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
 read -r
 fi
@@ -606,17 +606,17 @@ fi
 view_rlogs() {
 clear
 if compgen -G "$LOGD_DIR/*.log" >/dev/null; then
-ifcommand -v less >/dev/null 2>&1; then
+if command -v less >/dev/null 2>&1; then
 echo -e "${GREEN}[*] Viewing logs (Press 'q' to quit, ':n' for next file)...${NC}"
 sleep 1
 less -R "$LOGD_DIR"/*.log
 elif command -v nano >/dev/null 2>&1; then
-echo-e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
+echo -e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
 sleep1
 nano -v "$LOGD_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
-cat"$LOGD_DIR"/*.log
+cat "$LOGD_DIR"/*.log
 echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
 read -r
 fi
