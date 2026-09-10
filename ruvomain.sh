@@ -207,7 +207,6 @@ adb pair "$pair_host" "$pair_code"
 else
 echo -e "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
 fi
-fi
 
 echo -e "\n--- STEP 2: CONNECTION ---"
 echo -e "\n${CYAN}Look at the main Wireless Debugging screen${NC}" 
