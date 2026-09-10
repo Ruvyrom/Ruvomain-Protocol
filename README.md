@@ -51,13 +51,13 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 
 ## ⚡ Core Features
 
-* 🗑️ **Debloat (JSON-Powered):** Safely remove or disable bloatware using community-drivenCanta & UAD JSON lists.
-* 📦 **Batch APK Installer:** Drop your APKs into `./Apps/` andinstall them all in one click with automatic handling.
-* 💾 **Smart Backup (JSON):** Export your currentdevice state and package configuration to a portable JSON file.
+* 🗑️ **Debloat (JSON-Powered):** Safely remove or disable bloatware using community-driven Canta & UAD JSON lists.
+* 📦 **Batch APK Installer:** Drop your APKs into `./Apps/` and install them all in one click with automatic handling.
+* 💾 **Smart Backup (JSON):** Export your current device state and package configuration to a portable JSON file.
 * 🔄 **Restore (JSON-Driven):** Revert uninstalled apps or reinstall packages seamlessly from previous backups.
-* 📶 **Wireless ADB Assistant:** Built-in pairing & connectionhelper for seamless PC-free or cable-free setup.
+* 📶 **Wireless ADB Assistant:** Built-in pairing & connection helper for seamless PC-free or cable-free setup.
 * 🚀 **Self-Updater:** Keep URAAM up to date directly fromthe official repository with a single keypress.
-* 📜 **Integrated Logs Viewer:** Inspect terminal history and debug operationsinstantly without leaving the dashboard.
+* 📜 **Integrated Logs Viewer:** Inspect terminal history and debug operations instantly without leaving the dashboard.
 
 ## 🚀 Ready to deploy?
 
