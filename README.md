@@ -43,10 +43,10 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 | <div align="center">Termux</div> <div align="center"><img src="/assets/Termux-Icon.webp"></div> | <img src="assets/uraam_termux.jpg" width="200"> <div align="center">Dashboard</div> | <img src="assets/uraam-wireless.jpg" width="200"> <div align="center">Wireless ADB</div> || <div align="center">Linux</div> <div align="center"><img src="/assets/linux128.png" width="95"></div> | <img src="assets/uraam_linux.png" width="400"> <div align="center">Dashboard</div> |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 
->> **🚀 Latest Updates:**
+> **🚀 Latest Updates:**
 >
-> -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.
-> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
+>> -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.
+>> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
 >---
 
 ## ⚡ Core Features
@@ -96,9 +96,10 @@ or
 ```bash
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
-> ***Note :**
-> The installer auto-install GIT after confirm and takes care of cloning the repository.*
-> *URAAM auto-install ADB and JQ if necessary.*
+
+> * **Note :**
+>> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
+>> * *URAAM auto-install ADB and JQ if necessary.*
 
 
 ### Usage Anywhere
