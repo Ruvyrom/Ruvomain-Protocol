@@ -111,6 +111,34 @@ uraam
 Discover all Makefile targets using `make help`.
 
 ---
+## Dictionary: Technical Context
+<details>
+<summary><b>⚙️ What is ADB? (Forbeginners)</b></summary>
+
+ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
+
+For URAAM, ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
+</details>
+
+<details>
+<summary><b>🐚 What is Bash? (Why we use it)</b></summary>
+
+Bash is the scripting language that powers URAAM. We chose it for one reason: <b>transparency</b>. Unlike closed-source tools that hide their logic in a "blackbox," our Bash scripts are written in plain, readable text. This means you can personally audit, verify, and understand every single command before it touches your device. It is the foundation of a truly trust-based and auditable system.
+</details>
+
+<details>
+<summary><b>📄 What is JSON? (Our configuration layer)</b></summary>
+
+JSON acts as our "configuration layer." It is a simple, human-readable format that holds the data for the protocol, essentially acting as a map that tells the scripts exactly which packages to target. By separating our data (the JSON files) from our logic (the Bashscripts), we keep the protocol modular and incredibly easy to customize. You don't need to be a coder to manage these lists; you just need to edit the map.
+</details>
+
+<details>
+<summary><b>🔄 What is Git? (Why it matters)</b></summary>
+
+Git is our "version control" system. Think of it as a time machine for URAAM. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly how the protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
+</details>
+
+---
 ## ⚖️ Comparison Matrix
 
 | Feature | Standard Approach (Canta/Shizuku)| **URAAM** |
@@ -126,7 +154,7 @@ Discover all Makefile targets using `make help`.
 **You have a specific device? Create your JSON file list or import Canta/UAD and raw packages list!**
 
 Fork this repo, place it in `/Configs/debloat`, and submit a Pull Request. Your configuration will then be available to the entire community.
-To create your JSON list file or import Canta backup [following the contributing guide](https://github.com/Ruvyrom/Uraam/blob/main/Configs/README.md#contributing---json-files-importation).
+To create your JSON list file or import Canta backup [following the contributing guide](Configs/debloat/README.md).
 
 >**Need help with your first contribution?** *[Consult this guide](https://github.com/firstcontributions/first-contributions) to learn the basics of pull requests.*
 
@@ -175,34 +203,6 @@ To gain a deeper understanding of the technical and operational aspects of the p
 *   Thanks to [Dyokism](https://github.com/dyokism) for code contribution.
 *   **Validation:** Rigorous cross-verification with [Willie_169](https://github.com/Willie169) and OneUI 8.0 JSON config file.
 *   **Community Testing:** Special thanks to @ric69 for empirical field-testing of Tier 1 stability.
-
----
-### Dictionary: Technical Context
-<details>
-<summary><b>⚙️ What is ADB? (Forbeginners)</b></summary>
-
-ADB (Android Debug Bridge) is the core command-line utility that creates a bridge between your computer and your phone’s operating system.
-
-For URAAM, ADB is our primary "privileged channel." It allows us to execute shell commands and surgically modify system packages—all <b>without root access</b>. This is critical for our approach: it lets us strip out bloatware and reclaim device sovereignty while keeping the system’s native security integrity and Samsung Knox completely intact.
-</details>
-
-<details>
-<summary><b>🐚 What is Bash? (Why we use it)</b></summary>
-
-Bash is the scripting language that powers URAAM. We chose it for one reason: <b>transparency</b>. Unlike closed-source tools that hide their logic in a "blackbox," our Bash scripts are written in plain, readable text. This means you can personally audit, verify, and understand every single command before it touches your device. It is the foundation of a truly trust-based and auditable system.
-</details>
-
-<details>
-<summary><b>📄 What is JSON? (Our configuration layer)</b></summary>
-
-JSON acts as our "configuration layer." It is a simple, human-readable format that holds the data for the protocol, essentially acting as a map that tells the scripts exactly which packages to target. By separating our data (the JSON files) from our logic (the Bashscripts), we keep the protocol modular and incredibly easy to customize. You don't need to be a coder to manage these lists; you just need to edit the map.
-</details>
-
-<details>
-<summary><b>🔄 What is Git? (Why it matters)</b></summary>
-
-Git is our "version control" system. Think of it as a time machine for URAAM. Every change, improvement, or optimization we make is recorded in the project's history. This allows us to track exactly how the protocol evolves, roll back to previous versions if needed, and ensures that the project remains a transparent, collaborative, and living system—not just a static file.
-</details>
 
 ---
 ## ✅ Current Status:
