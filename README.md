@@ -78,7 +78,7 @@ or
 ### 📁 File Layout (`~/.Uraam/`)
 | Folder | Purpose|
 | :--- | :--- |
-| `Configs/debloat/` | Place debloat lists here(*Canta JSON supported*) |
+| `Configs/debloat/` | Place debloat lists here (*Canta/UAD, raw JSON supported*) |
 | `Apps/` | Place APKs to batch-install |
 | `Configs/backup-restore/` | Exported application lists & restore points |
 
