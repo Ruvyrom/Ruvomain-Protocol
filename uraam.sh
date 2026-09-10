@@ -731,7 +731,7 @@ ensure_jq || exit 1
 check_adb
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n [dD] Debloat (Remove Bloatware)"
+echo -e "\n [d] Debloat (Remove Bloatware)"
 echo -e " [i] Install (Batch APK Install)"
 echo -e " [b] Backup (Export Apps List)"
 echo -e " [r] Restore (Revert/Reinstall Apps)"
