@@ -697,6 +697,7 @@ fi
 if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
+[[ -n "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 sleep 1 
 read -rp "press Enter to restarting URAAM with new changes..."
 exec "$0" "$@"
