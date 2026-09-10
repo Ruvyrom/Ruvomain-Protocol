@@ -728,7 +728,7 @@ check_adb
 printf "${GREEN}Device detected:${NC}\n ${BOLD}%s${NC}\n" "${CURRENT_MODEL}"
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n ${CYAN}[d]${NC} Debloat ${NC}(Remove Bloatware)${NC}"
+echo -e "\n ${CYAN}[d]${NC} Debloat ${YELLOW}(Remove Bloatware)${NC}"
 echo -e " ${CYAN}[i]${NC} Install ${YELLOW}(Batch APK Install)${NC}"
 echo -e " ${CYAN}[b]${NC} Backup ${YELLOW}(Export Apps List)${NC}"
 echo -e " ${CYAN}[r]${NC} Restore ${YELLOW}(Revert/Reinstall Apps)${NC}"
