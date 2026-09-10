@@ -700,6 +700,7 @@ else
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 sleep 1
 read -rp "Press Enter to return to main menu"
+clear
 return 0
 fi
 }
