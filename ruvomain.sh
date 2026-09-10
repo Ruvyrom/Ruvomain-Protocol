@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# RUVOMAIN-PROTOCOL (URAAM v4.0.0) - All-in-One Edition
+# URAAM - Universal Ruvomain ADB App-Manager v4.2.0 - All-in-One Edition
 #
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -69,9 +69,9 @@ echo -e "${NC}"
 init_logs() {
 mkdir -p "$LOGD_DIR"
 
-find "$LOGD_DIR" -name "ruvomain-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "$LOGD_DIR" -name "uraam-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
 
-LOGFILE="$LOGD_DIR/ruvomain-debloat-$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="$LOGD_DIR/uraam-debloat-$(date +%Y%m%d_%H%M%S).log"
 
 exec> >(tee -a "$LOGFILE") 2>&1
 }
@@ -79,9 +79,9 @@ exec> >(tee -a "$LOGFILE") 2>&1
 init_logs_backup() {
 mkdir -p "$LOGB_DIR"
 
-find "$LOGB_DIR" -name "ruvomain-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "$LOGB_DIR" -name "uraam-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
 
-LOGFILE="$LOGB_DIR/ruvomain-backup-$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="$LOGB_DIR/uraam-backup-$(date +%Y%m%d_%H%M%S).log"
 
 exec> >(tee -a "$LOGFILE") 2>&1
 }
@@ -89,9 +89,9 @@ exec> >(tee -a "$LOGFILE") 2>&1
 init_logs_restore() {
 mkdir -p "$LOGR_DIR"
 
-find "$LOGR_DIR" -name "ruvomain-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
+find "$LOGR_DIR" -name "uraam-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
 
-LOGFILE="$LOGR_DIR/ruvomain-restore-$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="$LOGR_DIR/uraam-restore-$(date +%Y%m%d_%H%M%S).log"
 
 exec> >(tee -a "$LOGFILE") 2>&1
 }
