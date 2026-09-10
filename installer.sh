@@ -56,7 +56,7 @@ fi
 else
 printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
 mkdir -p "$(dirname "$INSTALL_DIR")"
-if git clone -b "$BRANCH" "$REPO_URL" "$INSTALL_DIR"; then
+if git clone --depth 1 -b "$BRANCH" "$REPO_URL" "$INSTALL_DIR"; then
 printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
 cd "$INSTALL_DIR"
 else
