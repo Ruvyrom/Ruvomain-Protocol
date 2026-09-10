@@ -731,26 +731,26 @@ ensure_jq || exit 1
 check_adb
 echo -e "${BLUE}==========================================${NC}"
 
-echo -e "\n [1] Debloat (Remove Bloatware)"
-echo -e " [2] Install (Batch APK Install)"
-echo -e " [3] Backup (Export Apps List)"
-echo -e " [4] Restore (Revert/Reinstall Apps)"
-echo -e " [5] Wireless ADB Setup (Pair & Connect)"
-echo -e " [6] Update (Search/install update from repo)"
+echo -e "\n [d] Debloat (Remove Bloatware)"
+echo -e " [i] Install (Batch APK Install)"
+echo -e " [b] Backup (Export Apps List)"
+echo -e " [r] Restore (Revert/Reinstall Apps)"
+echo -e " [w] Wireless ADB Setup (Pair & Connect)"
+echo -e " [u] Update (Search/install update from repo)"
 echo -e " [v] View Logs"
-echo -e " [8] Exit\n"
+echo -e " [e] Exit\n"
 
 read -rp "Enter choice: " choice
 case "$choice" in
 
-1) uraam_debloat ;;
-2) uraam_installer ;;
-3) uraam_backup ;;
-4) uraam_restore ;;
-5) wireless_adb ;;
-6) update_uraam ;;
+d) uraam_debloat ;;
+i) uraam_installer ;;
+b) uraam_backup ;;
+r) uraam_restore ;;
+w) wireless_adb ;;
+u) update_uraam ;;
 v) vl_menu ;;
-8)
+e)
 echo -e "\nGoodbye!"
 clear
 exit 0
