@@ -33,7 +33,7 @@
 <p>
 <strong>
 The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a surgical terminal toolkit to safely debloat unwanted apps, restore uninstalled apps, backup configurations into structured JSON files and batch-install personal APKs across any Android device without requiring root access.. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
-Professional-grade infrastructure forsystem optimization. Replace heavy middleware with a native, audited Bash + jq pipeline. Fully compatible with Canta JSON lists out of the box.</em>
+Professional-grade infrastructure forsystem optimization. Replace heavy middleware with a native, audited Bash + jq pipeline. Fully compatible with Canta/UAD JSON lists out of the box.</em>
 </p>
 <p>
 <em>« I'm not imposing anything on you: I provide infrastructure, you bring yourdata, and you execute code that you can read. »</em>
