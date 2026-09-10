@@ -45,8 +45,11 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 
 > **🚀 Latest Updates:**
 >
->> -**Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.
->> - **Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).
+> * ***v.4.2.0***
+>>* *Integrated Auto-Updater, One-Line Installer, Improvements.*
+> * ***v4.0/v4.1***
+>>* ***Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.*
+>>* ***Curated Presets:** Added curated debloat configurations in [`./Configs/debloat`](https://github.com/Ruvyrom/Uraam/tree/main/Configs/debloat) (Samsung OneUI, Xiaomi HyperOS, Vivo/iQOO, TCL Android TV, Meta preinstalled daemons & Carrier bloatware).*
 >---
 
 ## ⚡ Core Features
