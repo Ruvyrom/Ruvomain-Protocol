@@ -1,20 +1,18 @@
-# Contributing to Ruvomain Protocol
+# Contributing to URAAM
 
-Thanks for your interest in improving the Ruvomain Protocol!
-
-*The Ruvomain Protocol relies on precision. I do not scrape external lists to avoid technical debt and instability. To ensure the integrity of the Protocol, users are invited to curate, test, and submit their owndevice-specific profiles. Your PR is your signature.*
+Thanks for your interest in improving URAAM!
 
 **You have a specific device?**
 
-- Create your own JSON list manually or with ruvomain-backup, place it in `./Configs`, and submit a Pull Request.
+- Create your own JSON list manually or with Backup or Canta/UAD list and place it in `./Configs/backup-restore`, and submit a Pull Request.
 
 OR
 
-- Create a json file with Canta, rename it follow the "Naming Convention for Imports" below, place it in `./Configs` and submit a Pull Request.
+- Create a json file with Canta, rename it follow the "Naming Convention for Imports" below, place it in `./Configs/debloat` and submit a Pull Request.
 
 Your configuration will then be available to the entire community.
 
-**Create a JSON file [following the protocol schema](https://github.com/Ruvyrom/Ruvomain-Protocol/blob/main/Docs/structure-example.json).
+**Create a JSON file [following the protocol schema](/Docs/structure-example.json).
 
 Please ensure:
 - The JSON syntax is valid.
