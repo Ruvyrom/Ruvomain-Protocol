@@ -21,7 +21,8 @@ NC='\033[0m'
 
 cleanup() {
 printf "${CYAN}[*] Cleaning up...${NC}\n"
-rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
+rm -rf "$INSTALL_DIR/assets"
+rm -f "$0" "$1" 2>/dev/null || true
 }
 
 target() {
