@@ -193,7 +193,8 @@ echo ""
 
 read -rp "Do you need to PAIR first? (y/N): " need_pair
 
-if [[ "$need_pair" =~ ^[yY]$ ]]; then
+case "$need_pair" in
+y|Y)
 echo -e "\n--- STEP 1: PAIRING ---"
 echo -e "\n${CYAN}Check the pairing popup dialog${NC}"
 echo -e "${CYAN}for IP:Port and the 6-digit code.${NC}"
@@ -557,55 +558,70 @@ return 0
 }
 
 view_dlogs() {
-if ls $LOGD_DIR/*.log >/dev/null 2>&1; then
-if command -v nano >/dev/null 2>&1; then
-echo -e "${GREEN}Opening logs with nano...${NC}"
-nano $LOGD_DIR/*.log
-elif command -v less >/dev/null 2>&1; then
-echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
-cat $LOGD_DIR/*.log | less
+clear
+if compgen -G "$LOGD_DIR/*.log" >/dev/null; then
+if command -v less >/dev/null 2>&1; then
+echo -e "${GREEN}[*] Viewing logs (Press 'q' to quit, ':n' for next file)...${NC}"
+sleep 1
+less -R "$LOGD_DIR"/*.log
+elif command -v nano >/dev/null 2>&1; then
+echo-e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
+sleep 1
+nano -v "$LOGD_DIR"/*.log
 else
-echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
-cat $LOGD_DIR/*.log
+echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
+cat "$LOGD_DIR"/*.log
+echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
+read -r
 fi
 else
-echo -e "\n${RED}No log files found in $LOGD_DIR${NC}"
+echo -e "\n${RED}[X] No log files found in $LOGD_DIR${NC}"
 sleep 2
 fi
 }
 
-view_blogs() { 
-if ls $LOGB_DIR/*.log >/dev/null 2>&1; then
-if command -v nano >/dev/null 2>&1; then
-echo -e "\n${GREEN}Opening logs with nano...${NC}"
-nano $LOGB_DIR/*.log
-elif command -v less >/dev/null 2>&1; then
-echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
-cat $LOGB_DIR/*.log | less
+view_blogs() {
+clear
+if compgen -G "$LOGB_DIR/*.log" >/dev/null; then
+ifcommand -v less >/dev/null 2>&1; then
+echo -e "${GREEN}[*] Viewing logs (Press 'q' to quit, ':n' for next file)...${NC}"
+sleep 1
+less -R "$LOGB_DIR"/*.log
+elif command -v nano >/dev/null 2>&1; then
+echo-e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
+sleep1
+nano -v "$LOGB_DIR"/*.log
 else
-echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
-cat $LOGB_DIR/*.log
+echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
+cat"$LOGB_DIR"/*.log
+echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
+read -r
 fi
 else
-echo -e "\n${RED}No log files found in $LOGB_DIR${NC}"
+echo -e "\n${RED}[X] No log files found in $LOGD_DIR${NC}"
 sleep 2
 fi
 }
 
 view_rlogs() {
-if ls $LOGR_DIR/*.log >/dev/null 2>&1; then
-if command -v nano >/dev/null 2>&1; then
-echo -e "\n${GREEN}Opening logs with nano...${NC}"
-nano $LOGR_DIR/*.log
-elif command -v less >/dev/null 2>&1; then
-echo -e "\n${YELLOW}Nano not found. Using less...${NC}"
-cat $LOGR_DIR/*.log | less
+clear
+if compgen -G "$LOGD_DIR/*.log" >/dev/null; then
+ifcommand -v less >/dev/null 2>&1; then
+echo -e "${GREEN}[*] Viewing logs (Press 'q' to quit, ':n' for next file)...${NC}"
+sleep 1
+less -R "$LOGD_DIR"/*.log
+elif command -v nano >/dev/null 2>&1; then
+echo-e "${YELLOW}[!] 'less' not found. Opening with nano in view-mode...${NC}"
+sleep1
+nano -v "$LOGD_DIR"/*.log
 else
-echo -e "\n${YELLOW}Using cat (no nano/less found):${NC}"
-cat $LOGR_DIR/*.log
+echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
+cat"$LOGD_DIR"/*.log
+echo -e "\n${CYAN}Press [Enter] to return to the menu...${NC}"
+read -r
 fi
 else
-echo -e "\n${RED}No log files found in $LOGD_DIR${NC}"
+echo -e "\n${RED}[X] No log files found in $LOGD_DIR${NC}"
 sleep 2
 fi
 }
@@ -625,9 +641,9 @@ echo -e " [5] Exit\n"
 read -rp "Enter choice: " choice
 case "$choice" in
 
-1) clear && view_dlogs;;
-2) clear && view_rlogs ;;
-3) clear && view_blogs ;;
+1) view_dlogs;;
+2) view_rlogs ;;
+3) view_blogs ;;
 4) return 0 ;;
 5)
 echo -e "\nGoodbye!"
