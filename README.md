@@ -141,7 +141,7 @@ Discover all Makefile targets using `make help`.
 <details>
 <summary><b>Restore uninstalled apps via ADB</b></summary>
 
->With Restore, reinstall your uninstalled apps via adb with .json backup files in ./ruvomain-backup/backups
+>With Restore, reinstall your uninstalled apps via adb with .json backup files in ./Uraam/backup-restore
 </details>
 
 <details>
@@ -149,7 +149,7 @@ Discover all Makefile targets using `make help`.
 
 >Automatic installation of GIT, ADB and jq for Debian, Arch, and Fedora-based distributions, as well as for Termux 
 
->Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and Ruvomain takes care of the debloating/restoring for you.
+>Select the list to apply (e.g., Tier1_S24plus-OneUI85.json or your own file), and URAAM takes care of the debloating/restoring for you.
 </details>
 
 ---
