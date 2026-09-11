@@ -237,8 +237,8 @@ tbrand=$(getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufactur
 tmodel=$(getprop ro.product.model 2>/dev/null || echo "Unknown model")
 tandroid_ver=$(getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
 
-CURRENT_MODEL="(${PURPLE}[Target]${NC} ${brand^}) ${model} (Android ${android_ver})"
-CURRENT_TMODEL="(${PURPLE}[Target]${NC} ${tbrand^}) ${tmodel} (Android ${tandroid_ver})"
+CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
+CURRENT_TMODEL="${tbrand^} ${tmodel} (Android ${tandroid_ver})"
 
 if ! command -v adb &> /dev/null; then
 echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
