@@ -145,7 +145,7 @@ mkdir -p "$(dirname "$INSTALL_DIR")"
 
 set -o pipefail
 
-if git clone --depth 1-b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
+if git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
 if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
 percent="${BASH_REMATCH[1]}"
 completed=$((percent / 5 ))
@@ -171,7 +171,7 @@ exit 1
 fi
 fi
 
-if[ -f "$INSTALL_DIR/uraam.sh" ]; then
+if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
