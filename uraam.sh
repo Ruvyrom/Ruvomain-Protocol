@@ -748,9 +748,10 @@ echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo
 echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
 echo -e " ${RED}[e]${NC} Exit\n"
 
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "Enter your choice:"
+printf "%b\n" "${BLUE}--------------------------------------------${NC}"
 
-read -rp "Enter choice: " choice
+read -rp "" choice
 case "$choice" in
 
 d) uraam_debloat ;;
