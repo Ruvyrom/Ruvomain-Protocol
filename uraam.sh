@@ -258,20 +258,20 @@ return 0
 }
 
 wait_for_back() {
-echo -e "\n${RED}[ERROR]Choix invalide : '$choice'${NC}"
-echo -e "  [${PURPLE}r${NC}] Réessayer (Début de la liste)"
-echo -e "  [${PURPLE}d${NC}]Revenir au Dashboard principal"
+echo -e "\n${RED}[ERROR] Invalide choice: '$choice'${NC}"
+echo -e "  [${PURPLE}r${NC}] Try again"
+echo -e "  [${PURPLE}d${NC}] Return to Dashboard"
 echo -e "  [${PURPLE}e${NC}] Quitter URAAM"
 
-read -rsn1 -p "Votre choix : " err_choice
+read -rsn1 -p "Your choice : " err_choice
 echo ""
 
 case "$err_choice" in
 d|D)
-return 0 # Quitte la fonction debloat ->revient au dashboard
+return 0
 ;;
 e|E)
-echo -e "${PURPLE}[*]${NC} Sortie..."
+echo -e "${PURPLE}[*]${NC} Exiting..."
 exit 0
 ;;
 r|R|*)
