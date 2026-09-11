@@ -142,7 +142,7 @@ read -p "Do you want to install JQ now? (y/n) : " choice
 case "$choice" in
 y|Y)
 printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
-# 3. Existing installation logic
+
 if command -v pkg >/dev/null; then
 pkg install -y jq
 elif command -v apt-get >/dev/null; then
