@@ -95,14 +95,6 @@ fi
 fi
 printf "${GREEN}[✓] Git is ready.${NC}\n"
 
-INSTALL_DIR="${INSTALL_DIR:-$HOME/Uraam}"
-
-if [ -d "$INSTALL_DIR/.git" ]; then
-printf "${CYAN}[*] Updating existing installation...${NC}\n"
-cd "$INSTALL_DIR" || exit 1
-
-git fetch --all --prune >/dev/null 2>&1
-
 if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 cd "$INSTALL_DIR" || exit 1
