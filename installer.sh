@@ -31,6 +31,7 @@ REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="${BRANCH:-main}"
 
 cleanup() {
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${CYAN}[*] Cleaning up...${NC}\n"
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 }
