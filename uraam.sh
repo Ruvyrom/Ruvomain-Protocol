@@ -705,8 +705,8 @@ fi
 
 check_device() {
 local brand model android_ver
-brand=$(getprop ro.product.manufacturer 2>/dev/null || adb shell getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer"))
-model=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown"))
+brand=$(getprop ro.product.manufacturer 2>/dev/null || adb shell getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
+model=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
 android_ver=$(getprop ro.build.version.release 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null)
 
 CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
