@@ -110,7 +110,7 @@ percent="${BASH_REMATCH[1]}"
 completed=$(( percent / 5 ))
 remaining=$((20 - completed ))
 bar_done=$(printf "%${completed}s" | tr ' ' '#')
-bar_empty=$(printf"%${remaining}s" | tr ' ' '-')
+bar_empty=$(printf "%${remaining}s" | tr ' ' '-')
 printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
 fi
 done
@@ -146,7 +146,7 @@ mkdir -p "$BIN_DIR"
 fi
 
 ln -sf "$INSTALL_DIR/uraam.sh" "$BIN_DIR/uraam"
-chmod+x "$BIN_DIR/uraam"
+chmod +x "$BIN_DIR/uraam"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
 
 printf "\n${GREEN}==========================================${NC}\n"
