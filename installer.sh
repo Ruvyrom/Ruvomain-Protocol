@@ -145,17 +145,17 @@ chmod +x "$BIN_DIR/uraam"
 printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
 
-if [[ ":$PATH:" != *":$BIN_DIR:"* ]];then
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
 SHELL_NAME="$(basename "${SHELL:-bash}")"
 RC_FILE=""
 
-case "$SHELL_NAME"in
+case "$SHELL_NAME" in
 zsh)  RC_FILE="$HOME/.zshrc" ;;
 bash) RC_FILE="$HOME/.bashrc" ;;
 *)
-if [ -f "$HOME/.bashrc" ];then
+if [ -f "$HOME/.bashrc" ]; then
 RC_FILE="$HOME/.bashrc"
-elif [ -f "$HOME/.profile" ];then
+elif [ -f "$HOME/.profile" ]; then
 RC_FILE="$HOME/.profile"
 fi
 ;;
