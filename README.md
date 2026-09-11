@@ -46,7 +46,7 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 > **🚀 Latest Updates:**
 >
 > * ***v.4.2.0***
-> * *You can install URAAM now in Termux with uuram-termux_4.2.0_all.deb*
+>>* *You can install URAAM now in Termux with uuram-termux_4.2.0_all.deb*
 >>* *Integrated Auto-Updater, One-Line Installer, Improvements.*
 > * ***v4.0/v4.1***
 >>* ***Major Refactoring:** Unified suite bundled into a single zero-overhead master engine: `uraam.sh`.*
