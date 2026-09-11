@@ -108,7 +108,7 @@ git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | wh
 if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
 percent="${BASH_REMATCH[1]}"
 completed=$(( percent / 5 ))
-remaining=$((20 - completed ))
+remaining=$(( 20 - completed ))
 bar_done=$(printf "%${completed}s" | tr ' ' '#')
 bar_empty=$(printf "%${remaining}s" | tr ' ' '-')
 printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
