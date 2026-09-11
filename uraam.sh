@@ -243,7 +243,6 @@ fi
 
 if ! adb devices | printf "$CURRENT_MODEL\n"; then
 echo -e "\n[Target] ${RED}[ERROR]${NC} No device detected via ADB."
-fi
 return 1
 fi
 return 0
