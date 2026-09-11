@@ -749,6 +749,7 @@ echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
 echo -e " ${RED}[e]${NC} Exit\n"
 
 printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+
 read -rp "Enter choice: " choice
 case "$choice" in
 
