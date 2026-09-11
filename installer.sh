@@ -50,7 +50,7 @@ chmod +x "$TARGET_BIN/uraam"
 }
 
 show_logo
-echo -e"${BLUE}==========================================${NC}"
+echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 printf "%b\n" "${CYAN}WELCOME TO URAAM INSTALLER!${NC}"
