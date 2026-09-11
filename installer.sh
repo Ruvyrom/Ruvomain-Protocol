@@ -4,7 +4,7 @@
 # Remote Installer & Updater Script
 # ==============================================================================
 
-set -e
+set -eo pipefail
 
 show_logo() {
 echo -e "${PURPLE}"
@@ -144,6 +144,36 @@ ln -sf "$INSTALL_DIR/uraam.sh" "$BIN_DIR/uraam"
 chmod +x "$BIN_DIR/uraam"
 printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
+
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]];then
+SHELL_NAME="$(basename "${SHELL:-bash}")"
+RC_FILE=""
+
+case "$SHELL_NAME"in
+zsh)  RC_FILE="$HOME/.zshrc" ;;
+bash) RC_FILE="$HOME/.bashrc" ;;
+*)
+if [ -f "$HOME/.bashrc" ];then
+RC_FILE="$HOME/.bashrc"
+elif [ -f "$HOME/.profile" ];then
+RC_FILE="$HOME/.profile"
+fi
+;;
+esac
+
+EXPORT_LINE="export PATH=\"\$PATH:$BIN_DIR\""
+
+if [ -n "$RC_FILE" ]; then
+if ! grep -qsF "$EXPORT_LINE" "$RC_FILE" 2>/dev/null; then
+printf "\n# URAAM ADB Manager\n%s\n" "$EXPORT_LINE" >> "$RC_FILE"
+printf "${GREEN}[✓] Added %s to PATH in%s${NC}\n" "$BIN_DIR" "$RC_FILE"
+printf "${YELLOW}[i] Run 'source %s' or restart your terminal to apply changes.${NC}\n" "$RC_FILE"
+fi
+else
+printf "${YELLOW}[!] Could not detect shell RC file. Please add manually:${NC}\n"
+printf "${YELLOW}    %s${NC}\n" "$EXPORT_LINE"
+fi
+fi
 
 cleanup
 printf "\n${BLUE}============================================${NC}\n"
