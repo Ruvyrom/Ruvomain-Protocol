@@ -51,6 +51,8 @@ bash <(curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-
 pkg install ./uraam-termux_4.2.0_all.deb
 ```
 
+**You can also downlaod latest in [Releases Page](https://github.com/Ruvyrom/Uraam/releases)**
+
 > * **Note :**
 >> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
 >> * *URAAM auto-install ADB and JQ if necessary.*
