@@ -35,15 +35,6 @@ printf "${CYAN}[*] Cleaning up...${NC}\n"
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 }
 
-target() {
-mkdir -p "$TARGET_BIN"
-ln -sf "$INSTALL_DIR/uraam.sh" "$TARGET_BIN/uraam"
-}
-
-perm() {
-chmod +x "$TARGET_BIN/uraam"
-}
-
 clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
@@ -151,6 +142,7 @@ chmod +x "$BIN_DIR/uraam"
 printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
 
+cleanup
 printf "\n${BLUE}==========================================${NC}\n"
 printf "${CYAN}URAAM has been successfully installed!${NC}\n"
 printf "${CYAN}Run 'uraam' to start.${NC}\n"
