@@ -142,7 +142,7 @@ fi
 else
 printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
 mkdir -p "$(dirname "$INSTALL_DIR")"
-if gitclone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
+if git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
 if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
 percent="${BASH_REMATCH[1]}"
 completed=$(( percent /5 ))
