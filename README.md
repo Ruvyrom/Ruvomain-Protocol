@@ -112,6 +112,7 @@ pkg install ./uraam-termux_4.2.0_all.deb
 > * **Note :**
 >> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
 >> * *URAAM auto-install ADB and JQ if necessary.*
+>> * *DEB package install dependencies*
 
 ### Usage Anywhere
 
