@@ -103,16 +103,22 @@ or
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 
-* DEB package installation **only for Termux**:
+DEB installation for Debian with uraam-debian_*.deb**
 ```bash
-curl -LO https://github.com/ton-repo/uraam/releases/download/v1.0.0/uraam-termux_4.2.0_all.deb 
+curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb 
+pkg install ./uraam-debian_4.2.0_all.deb
+```
+
+**DEB installation fo installation with uraam-termux_*.deb**
+```bash
+curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb 
 pkg install ./uraam-termux_4.2.0_all.deb
 ```
 
 > * **Note :**
 >> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
 >> * *URAAM auto-install ADB and JQ if necessary.*
->> * *DEB package install dependencies*
+>> * *DEB packages install dependencies*
 
 ### Usage Anywhere
 
