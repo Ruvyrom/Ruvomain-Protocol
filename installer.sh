@@ -13,10 +13,14 @@ if [ -z "$INSTALL_DIR" ]; then
 INSTALL_DIR="$HOME/Uraam"
 fi
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
 CYAN='\033[0;36m'
+PURPLE='\e[0;35m'
+GREEN='\033[0;32m'
+RED='\033[1;31m'
+WHITE='\033[0;37m'
+YELLOW='\033[0;33m'
 NC='\033[0m'
 
 cleanup() {
@@ -48,16 +52,18 @@ show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-printf "${CYAN}WELCOME TO URAAM INSTALLER!${NC}\n"
-printf "${CYAN}This installer will${NC}\n" 
-printf "${CYAN}Download Uraam from the official repository;${NC}\n"
-printf "${CYAN}Auto-install git if missing (with confirmation);${NC}\n"
-printf "${CYAN}Setup files into ~/Uraam${NC}\n"
-printf "${CYAN}Expose 'uraam' command in PATH(/usr/local/bin or ~/.local/${NC}\n"
+printf "${PURPLE}WELCOME TO URAAM INSTALLER!${NC}\n"
+printf "${PURPLE}This installer will${NC}\n" 
+printf "${PURPLE}Download Uraam from the official repository;${NC}\n"
+printf "${PURPLE}Auto-install git if missing (with confirmation);${NC}\n"
+printf "${PURPLE}Setup files into ~/Uraam${NC}\n"
+printf "${PURPLE}Expose 'uraam' command in PATH(/usr/local/bin or ~/.local/${NC}\n"
+echo -e "${BLUE}--------------------------------------------${NC}"
 read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 
 case "$choice" in
 y|Y)
+printf "\n"
 clear
 printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
