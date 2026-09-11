@@ -295,12 +295,12 @@ local display_names=()
 for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
 if [ -n "$short_name" ]; then
 file="${files[$((REPLY-1))]}"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
 break
 else
@@ -748,6 +748,7 @@ echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo
 echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
 echo -e " ${RED}[e]${NC} Exit\n"
 
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 read -rp "Enter choice: " choice
 case "$choice" in
 
