@@ -95,6 +95,9 @@ if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
 printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
+sleep 1
+read -rp "Press [Enter] to exit..."
+clear
 exit1
 fi
 else
@@ -105,6 +108,9 @@ printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
 cd "$INSTALL_DIR"
 else
 printf "${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
+sleep 1
+read -rp "Press [Enter] to exit..."
+clear
 exit 1
 fi
 fi
@@ -115,6 +121,9 @@ chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
+sleep 1
+read -rp "Press[Enter] to exit..."
+clear
 exit 1
 fi
 ;;
@@ -122,12 +131,15 @@ fi
 n|N)
 printf "${YELLOW}[-] Installation aborted by user.${NC}\n"
 read -rp "Press [Enter] to exit..."
+clear
 exit 0
 ;;
 
 *)
 printf "${RED}[!] Invalid choice. Installation canceled.${NC}\n"
+sleep 1
 read -rp "Press[Enter] to exit..."
+clear
 exit 1
 ;;
 esac
