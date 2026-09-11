@@ -234,22 +234,17 @@ brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown man
 model=$("$EXEC" getprop ro.product.model 2>/dev/null || echo "Unknown model")
 android_ver=$("$EXEC" getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
 
-CURRENT_MODEL="(${PURPLE}[Host]${NC} ${brand^}) ${model} (Android ${android_ver})"
+CURRENT_MODEL="(${PURPLE}[Target]${NC} ${brand^}) ${model} (Android ${android_ver})"
 
 if ! command -v adb &> /dev/null; then
 echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
 return 1
 fi
 
-if ! adb devices | printf "$CURRENT_MODEL\n"; then
-echo -e "\n[Target] ${RED}[ERROR]${NC} No device detected via ADB."
-return 1
-fi
-return 0
-}
-
 if ! adb devices | grep -q "device$"; then
-echo -e "\n${RED}[ERROR]${NC} No device detected via ADB."
+echo -e "\n[Target] ${RED}[ERROR]${NC} No device detected via ADB."
+else
+printf "$CURRENT_MODEL\n"
 return 1
 fi
 return 0
