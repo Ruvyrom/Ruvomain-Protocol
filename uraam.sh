@@ -34,68 +34,6 @@ WHITE='\033[0;37m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
-if [ -d "/data/data/com.termux" ]; then
-if command -v rish >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
-EXEC="rish -c"
-elif [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Termux Mode: Root/su detected]${NC}"
-EXEC="su -c"
-elif command -v adb >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Local ADB detected]${NC}"
-EXEC="adb shell"
-else
-echo -e "\n${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
-EXEC=""
-fi
-else
-echo -e "\n${BLUE}[Remote Linux/ADB Mode detected]${NC}"
-EXEC="adb shell"
-fi
-export EXEC
-
-show_logo() {
-clear
-echo -e "${PURPLE}"
-cat << 'EOF'
-::| ::|::::::\ ::::\  ::::\ ::::::|
-::|_::|::|,::|::|,::|::|,::|:::"::|
-`:::::|::| ::\::| ::|::| ::|::| ::|
-EOF
-echo -e "${NC}"
-}
-
-init_logs() {
-mkdir -p "$LOGD_DIR"
-
-find "$LOGD_DIR" -name "uraam-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
-
-LOGFILE="$LOGD_DIR/uraam-debloat-$(date +%Y%m%d_%H%M%S).log"
-
-exec> >(tee -a "$LOGFILE") 2>&1
-}
-
-init_logs_backup() {
-mkdir -p "$LOGB_DIR"
-
-find "$LOGB_DIR" -name "uraam-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
-
-LOGFILE="$LOGB_DIR/uraam-backup-$(date +%Y%m%d_%H%M%S).log"
-
-exec> >(tee -a "$LOGFILE") 2>&1
-}
-
-init_logs_restore() {
-mkdir -p "$LOGR_DIR"
-
-find "$LOGR_DIR" -name "uraam-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
-
-LOGFILE="$LOGR_DIR/uraam-restore-$(date +%Y%m%d_%H%M%S).log"
-
-exec> >(tee -a "$LOGFILE") 2>&1
-}
-
-
 ensure_adb() {
 if command -v adb >/dev/null; then
 printf "${GREEN}[✓] ADB is already installed and ready to use.${NC}\n"
@@ -168,6 +106,164 @@ return 1
 esac
 }
 
+device_brand() {
+devices=$(adb devices | grep -v "List of devices" | grep "device$" || true)
+brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
+model=$("$EXEC" getprop ro.product.model 2>/dev/null || echo "Unknown model")
+android_ver=$("$EXEC" getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
+tbrand=$(getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
+tmodel=$(getprop ro.product.model 2>/dev/null || echo "Unknown model")
+tandroid_ver=$(getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
+
+CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
+CURRENT_TMODEL="${tbrand^} ${tmodel} (Android ${tandroid_ver})"
+}
+
+
+detect_execution_backend() {
+EXEC=""
+EXEC_TYPE=""
+device_brand
+
+printf "%b\n" "${CYAN}[*] Detecting execution backend...${NC}"
+
+if [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1 && su -c "id" >/dev/null 2>&1; then
+EXEC="su -c"
+EXEC_TYPE="ROOT"
+printf "%b\n" "${GREEN}[✓]Execution backend: ROOT (su)${NC}"
+fi
+
+if command -v rish >/dev/null 2>&1 && echo "exit" | rish >/dev/null 2>&1; then
+EXEC="rish -c"
+EXEC_TYPE="SHIZUKU"
+printf "%b\n" "${GREEN}[✓] Execution backend: SHIZUKU (Rish)${NC}"
+fi
+
+if command -v adb >/dev/null 2>&1; then
+local connected
+connected=$(adb devices 2>/dev/null | grep -v "List of devices" | grep "device$" | head -n 1)
+if [ -n "$connected" ]; then
+EXEC="adb shell"
+EXEC_TYPE="ADB"
+printf "${GREEN}[✓] Execution backend: ADB(Connected)${NC}\n"
+fi
+fi
+
+EXEC_TYPE="NONE"
+printf "%b\n" "${RED}[ERROR] No execution environment detected!${NC}"
+printf "%b\n" "${YELLOW}[!] Make sure one of the following is active:${NC}"
+printf "%b\n" "• Root access granted to Termux"
+printf "%b\n" "  • Shizuku running with 'rish' configured"
+printf "%b\n" "  • ADB connected ('adb devices')\n"
+read -rp "Press [Enter] to return..."
+return 1
+
+ensure_adb || exit 1
+ensure_jq || exit 1
+printf "%b\n" "$CURRENTT_MODEL" 
+printf "%b\n" "$CURRENT_MODEL"
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+}
+
+check_adb() {
+local brand model android_ver tbrand tmodel tandroid_ver devices
+device_brand
+
+if [ -z "$devices" ]; then
+printf "%b\n" "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
+printf "%b\n" "${RED}[ERROR]${NC}No device detected via ADB."
+printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
+printf "%b\n" "1. USB Debugging or Wireless Debugging is enabled."
+printf "%b\n" "  2. You authorizedthis device in the popup prompt."
+printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or Shizuku.\n"
+read -rp "Press [Enter] to return to main menu..."
+return 1
+fi
+return 0
+}
+
+check_adb_menu() {
+local brand model android_ver tbrand tmodel tandroid_ver
+device_brand
+
+if ! command -v adb &> /dev/null; then
+echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
+echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
+return 1
+fi
+
+if ! adb devices | grep -q "device$"; then
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+echo -e "${RED}[ERROR]${NC} No device detected via ADB."
+else
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+printf "${PURPLE}[Target]${NC} $CURRENT_MODEL\n"
+return 1
+fi
+return 0
+}
+
+if [ -d "/data/data/com.termux" ]; then
+if command -v rish >/dev/null 2>&1; then
+echo -e "\n${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
+EXEC="rish -c"
+elif [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1; then
+echo -e "\n${BLUE}[Termux Mode: Root/su detected]${NC}"
+EXEC="su -c"
+elif command -v adb >/dev/null 2>&1; then
+echo -e "\n${BLUE}[Local ADB detected]${NC}"
+EXEC="adb shell"
+else
+echo -e "\n${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
+EXEC=""
+fi
+else
+echo -e "\n${BLUE}[Remote Linux/ADB Mode detected]${NC}"
+EXEC="adb shell"
+fi
+export EXEC
+
+show_logo() {
+clear
+echo -e "${PURPLE}"
+cat << 'EOF'
+::| ::|::::::\ ::::\  ::::\ ::::::|
+::|_::|::|,::|::|,::|::|,::|:::"::|
+`:::::|::| ::\::| ::|::| ::|::| ::|
+EOF
+echo -e "${NC}"
+}
+
+init_logs() {
+mkdir -p "$LOGD_DIR"
+
+find "$LOGD_DIR" -name "uraam-debloat-*.log" -type f -mtime +30 -delete 2>/dev/null
+
+LOGFILE="$LOGD_DIR/uraam-debloat-$(date +%Y%m%d_%H%M%S).log"
+
+exec> >(tee -a "$LOGFILE") 2>&1
+}
+
+init_logs_backup() {
+mkdir -p "$LOGB_DIR"
+
+find "$LOGB_DIR" -name "uraam-backup-*.log" -type f -mtime +30 -delete 2>/dev/null
+
+LOGFILE="$LOGB_DIR/uraam-backup-$(date +%Y%m%d_%H%M%S).log"
+
+exec> >(tee -a "$LOGFILE") 2>&1
+}
+
+init_logs_restore() {
+mkdir -p "$LOGR_DIR"
+
+find "$LOGR_DIR" -name "uraam-restore-*.log" -type f -mtime +30 -delete 2>/dev/null
+
+LOGFILE="$LOGR_DIR/uraam-restore-$(date +%Y%m%d_%H%M%S).log"
+
+exec> >(tee -a "$LOGFILE") 2>&1
+}
+
 wireless_adb(){
 show_logo
 echo -e "${BLUE}===================================================${NC}"
@@ -228,35 +324,6 @@ read -rp "Press Enter to return to main menu..."
 return 1
 }
 
-check_adb() {
-local brand model android_ver tbrand tmodel tandroid_ver
-brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
-model=$("$EXEC" getprop ro.product.model 2>/dev/null || echo "Unknown model")
-android_ver=$("$EXEC" getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
-tbrand=$(getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
-tmodel=$(getprop ro.product.model 2>/dev/null || echo "Unknown model")
-tandroid_ver=$(getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
-
-CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
-CURRENT_TMODEL="${tbrand^} ${tmodel} (Android ${tandroid_ver})"
-
-if ! command -v adb &> /dev/null; then
-echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
-echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
-return 1
-fi
-
-if ! adb devices | grep -q "device$"; then
-echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
-echo -e "${RED}[ERROR]${NC} No device detected via ADB."
-else
-echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
-printf "${PURPLE}[Target]${NC} $CURRENT_MODEL\n"
-return 1
-fi
-return 0
-}
-
 uraam_debloat() {
 show_logo
 echo -e "${BLUE}==========================================${NC}"
@@ -268,13 +335,7 @@ echo -e "${BLUE}------------------------------------------${NC}"
 
 init_logs 2>/dev/null || true
 
-ensure_adb || exit 1
-ensure_jq || exit 1
-
-check_adb || {
-read -rp "Press Enter to return to main menu..."
-return 1
-}
+detect_execution_backend
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
@@ -382,8 +443,7 @@ echo -e "${BLUE}---------------------------------------------${NC}"
 
 init_logs_backup 2>/dev/null || true
 
-ensure_adb || exit 1
-ensure_jq || exit 1
+detect_execution_backend
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 check_adb || {
@@ -443,12 +503,7 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "\n${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
 echo -e "\n${BLUE}----------------------------------------${NC}"
 
-ensure_adb || exit 1
-
-check_adb || {
-read -rp "Press Enter to return tomain menu..."
-return 1
-}
+detect_execution_backend
 
 if [ ! -d "$APP_DIR" ]; then
 echo -e "\n${RED}[ERROR]${NC}Directory $APP_DIR not found."
@@ -501,8 +556,7 @@ echo -e "\n${BLUE}---------------------------------------${NC}"
 
 init_logs_restore 2>/dev/null || true
 
-ensure_adb || exit 1
-ensure_jq || exit 1
+detect_execution_backend
 
 echo -e "\n${BLUE}---------------------------------------${NC}"
 check_adb || {
@@ -736,7 +790,7 @@ echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-res
 echo -e "${BLUE}==========================================${NC}"
 ensure_adb || exit 1
 ensure_jq || exit 1
-check_adb
+check_adb_menu
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n ${CYAN}[d]${NC} Debloat ${YELLOW}(Remove Bloatware)${NC}"
