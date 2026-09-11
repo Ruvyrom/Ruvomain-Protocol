@@ -163,7 +163,7 @@ printf "${BLUE}==========================================${NC}\n"
 
 n|N)
 printf "${YELLOW}[-] Installation aborted by user.${NC}\n"
-exit0
+exit 0
 ;;
 
 *)
