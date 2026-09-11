@@ -295,6 +295,7 @@ local display_names=()
 for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
