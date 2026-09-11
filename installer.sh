@@ -30,11 +30,6 @@ INSTALL_DIR="${INSTALL_DIR:-$HOME/Uraam}"
 REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="${BRANCH:-main}"
 
-clear
-if command -v show_logo >/dev/null 2>&1; then
-show_logo
-fi
-
 cleanup() {
 printf "${CYAN}[*] Cleaning up...${NC}\n"
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
@@ -49,6 +44,7 @@ perm() {
 chmod +x "$TARGET_BIN/uraam"
 }
 
+clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
