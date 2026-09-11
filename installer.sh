@@ -32,7 +32,7 @@ BRANCH="${BRANCH:-main}"
 
 cleanup() {
 printf "%b\n" "${BLUE}------------------------------------------${NC}"
-printf "%b\n" "${CYAN}[*] Cleaning up...${NC}\n"
+printf "%b\n" "${CYAN}[*] Cleaning up...${NC}"
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 }
 
