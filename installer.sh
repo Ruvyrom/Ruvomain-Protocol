@@ -50,17 +50,17 @@ chmod +x "$TARGET_BIN/uraam"
 }
 
 show_logo
-echo -e "${BLUE}==========================================${NC}"
+echo -e"${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
-printf "${CYAN}WELCOME TO URAAM INSTALLER!${NC}\n"
-printf "${CYAN}--------------------------------------------${NC}\n"
-printf "${CYAN}This installer will:\n${NC}"
-printf "• Download URAAM from official repo\n"
-printf "• Auto-install git if missing\n"
-printf "• Setup files into ~/Uraam\n"
-printf "• Expose 'uraam' command in PATH\n"
-echo -e "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "${CYAN}WELCOME TO URAAMINSTALLER!${NC}"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "${CYAN}This installer will:${NC}"
+printf "%b\n" "${CYAN} • Download URAAM from official repo${NC}"
+printf "%b\n" "${CYAN} • Auto-install gitif missing${NC}"
+printf "%b\n" "${CYAN} • Setup files into ~/Uraam${NC}"
+printf "%b\n" "${CYAN} • Expose 'uraam' command in PATH${NC}"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 
 read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 
