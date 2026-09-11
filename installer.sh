@@ -88,7 +88,9 @@ exit 1
 fi
 fi
 printf "${GREEN}[✓] Git is ready.${NC}\n"
+sleep 3
 
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 cd "$INSTALL_DIR" || exit 1
@@ -96,6 +98,7 @@ git fetch --all --prune >/dev/null 2>&1
 if git reset --hard "origin/$BRANCH" >/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
 read -rp "Press [Enter] to exit..."
 exit 1
@@ -120,6 +123,7 @@ printf "\r${GREEN}[####################] 100%%${NC}\n"
 printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
 cd "$INSTALL_DIR" || exit 1
 else
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "\n${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
 read -rp "Press [Enter] to exit..."
 exit 1
@@ -130,8 +134,9 @@ if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
-read -rp "Press [Enter] toexit..."
+read -rp "Press [Enter] to exit..."
 exit 1
 fi
 
@@ -147,12 +152,13 @@ fi
 
 ln -sf "$INSTALL_DIR/uraam.sh" "$BIN_DIR/uraam"
 chmod +x "$BIN_DIR/uraam"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
 
-printf "\n${GREEN}==========================================${NC}\n"
-printf "${GREEN}URAAM has been successfully installed!${NC}\n"
-printf "${GREEN}Run 'uraam' to start.${NC}\n"
-printf "${GREEN}==========================================${NC}\n"
+printf "\n${BLUE}==========================================${NC}\n"
+printf "${CYAN}URAAM has been successfully installed!${NC}\n"
+printf "${CYAN}Run 'uraam' to start.${NC}\n"
+printf "${BLUE}==========================================${NC}\n"
 ;;
 
 n|N)
