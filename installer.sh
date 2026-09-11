@@ -66,26 +66,20 @@ read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 
 case "$choice" in
 y|Y)
-printf "\n"
 clear
 printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
-case "$choice" in
-y|Y)
-clear
-printf "${CYAN}[*] Checking prerequisites...${NC}\n"
-
-if ! command -v git >/dev/null 2>&1;then
+if ! command -v git >/dev/null 2>&1; then
 printf "${YELLOW}[!] Git is missing. Attempting automatic installation...${NC}\n"
 if command -v pkg >/dev/null 2>&1; then
 pkg update -y && pkg install git -y
 elif command -v apt >/dev/null 2>&1; then
 sudo apt update && sudo apt install -y git
-elif command -v pacman >/dev/null 2>&1;then
+elif command -v pacman >/dev/null 2>&1; then
 sudo pacman -Sy --noconfirm git
 elif command -v dnf >/dev/null 2>&1; then
 sudo dnf install -y git
-elif command -v brew>/dev/null 2>&1; then
+elif command -v brew >/dev/null 2>&1; then
 brew install git
 else
 printf "${RED}[X] Package manager not found. Please install git manually.${NC}\n"
@@ -99,7 +93,7 @@ if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 cd "$INSTALL_DIR" || exit 1
 git fetch --all --prune >/dev/null 2>&1
-if git reset --hard "origin/$BRANCH" >/dev/null2>&1; then
+if git reset --hard "origin/$BRANCH" >/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
 else
 printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
@@ -110,13 +104,13 @@ else
 printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
 mkdir -p "$(dirname "$INSTALL_DIR")"
 
-git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1| while IFS= read -r line; do
+git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
 if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
 percent="${BASH_REMATCH[1]}"
-completed=$(( percent /5 ))
-remaining=$(( 20 - completed ))
+completed=$(( percent / 5 ))
+remaining=$((20 - completed ))
 bar_done=$(printf "%${completed}s" | tr ' ' '#')
-bar_empty=$(printf "%${remaining}s" | tr ' ' '-')
+bar_empty=$(printf"%${remaining}s" | tr ' ' '-')
 printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
 fi
 done
@@ -136,70 +130,38 @@ if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
-printf "${RED}[X] Critical error: uraam.shwas not found in ${INSTALL_DIR}.${NC}\n"
+printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 read -rp "Press [Enter] toexit..."
 exit 1
 fi
+
+BIN_DIR=""
+if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
+BIN_DIR="$PREFIX/bin"
+elif [ -w "/usr/local/bin" ]; then
+BIN_DIR="/usr/local/bin"
+else
+BIN_DIR="$HOME/.local/bin"
+mkdir -p "$BIN_DIR"
+fi
+
+ln -sf "$INSTALL_DIR/uraam.sh" "$BIN_DIR/uraam"
+chmod+x "$BIN_DIR/uraam"
+printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
+
+printf "\n${GREEN}==========================================${NC}\n"
+printf "${GREEN}URAAM has been successfully installed!${NC}\n"
+printf "${GREEN}Run 'uraam' to start.${NC}\n"
+printf "${GREEN}==========================================${NC}\n"
 ;;
 
 n|N)
 printf "${YELLOW}[-] Installation aborted by user.${NC}\n"
-exit 0
+exit0
 ;;
 
 *)
-printf "${RED}[!] Invalidchoice. Installation canceled.${NC}\n"
+printf "${RED}[!] Invalid choice. Installation canceled.${NC}\n"
 exit 1
 ;;
 esac
-
-printf "${CYAN}[*] Configuring system command alias (uraam)...${NC}\n"
-
-if [ -n "$PREFIX" ] && [ -d "$PREFIX/bin" ]; then
-TARGET_BIN="$PREFIX/bin"
-target
-perm
-cleanup
-printf "${GREEN}[✓] Symlink installed in Termux: ${TARGET_BIN}/uraam${NC}\n"
-printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
-
-elif [ -w "/usr/local/bin" ]; then
-TARGET_BIN="/usr/local/bin"
-target
-perm
-cleanup
-printf "${GREEN}[✓] Global symlink installed: ${TARGET_BIN}/uraam${NC}\n"
-printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
-
-elif command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
-TARGET_BIN="/usr/local/bin"
-sudo ln -sf "$INSTALL_DIR/uraam.sh" "$TARGET_BIN/uraam"
-perm
-cleanup
-printf "${GREEN}[✓] Global symlink installed via sudo: ${TARGET_BIN}/uraam${NC}\n"
-printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
-
-else
-TARGET_BIN="$HOME/.local/bin"
-target
-perm
-cleanup
-printf "${GREEN}[✓] User symlink installed: ${TARGET_BIN}/uraam${NC}\n"
-printf "${YELLOW}[!] Type 'uraam' to use URAAM.${NC}\n"
-
-case ":$PATH:" in
-*":$TARGET_BIN:"*) ;;
-*)
-
-SHELL_RC="$HOME/.bashrc"
-[ -n "$ZSH_VERSION" ] || [ -f "$HOME/.zshrc" ] && SHELL_RC="$HOME/.zshrc"
-
-if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC"2>/dev/null; then
-printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$SHELL_RC"
-printf "${YELLOW}[!] Added ~/.local/bin to PATH in ${SHELL_RC}.${NC}\n"
-cleanup
-printf "${YELLOW}[!] Run 'source %s' or open a new terminal to use 'uraam'.${NC}\n" "$SHELL_RC"
-fi
-;;
-esac
-fi
