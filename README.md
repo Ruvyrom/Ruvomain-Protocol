@@ -115,17 +115,17 @@ curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_
 pkg install ./uraam-termux_4.2.0_all.deb
 ```
 
-> * **Note :**
->> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
->> * *URAAM auto-install ADB and JQ if necessary.*
->> * *DEB packages install dependencies*
-
 ### Usage Anywhere
 
 Once installed, simply run the global command from any directory:
 ```bash
 uraam
 ```
+> * **Note :**
+>> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
+>> * *URAAM auto-install ADB and JQ if necessary.*
+>> * *DEB packages install dependencies*
+
 📖 For platform-specific documentation (Termuxstandalone, macOS, WSL2, Linux rules), refer to the **[URAAM - Quick Start Guide](Docs/Quick-Start-Guide.md)**.
 Discover all Makefile targets using `make help`.
 
