@@ -708,9 +708,9 @@ fi
 
 check_device() {
 local brand model android_ver
-brand=$(adb shell getprop ro.product.manufacturer2>/dev/null | tr -d '\r')
-model=$(adb shell getprop ro.product.model 2>/dev/null | tr -d '\r')
-android_ver=$(adb shell getprop ro.build.version.release 2>/dev/null | tr -d '\r')
+brand=$(getprop ro.product.manufacturer 2>/dev/null | tr -d '\r')
+model=$(getprop ro.product.model 2>/dev/null | tr -d '\r')
+android_ver=$(getprop ro.build.version.release 2>/dev/null | tr -d '\r')
 
 brand="${brand:-Unknown}"
 model="${model:-Unknown}"
