@@ -130,6 +130,7 @@ printf "\n${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
 read -rp "Press [Enter] to exit..."
 exit 1
 fi
+fi
 
 if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
