@@ -748,8 +748,8 @@ echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo
 echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
 echo -e " ${RED}[e]${NC} Exit\n"
 
-printf "%b\n" "Enter your choice:"
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
+printf "%b\n" "Enter your choice:"
 
 read -rp "" choice
 case "$choice" in
