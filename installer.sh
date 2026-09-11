@@ -155,7 +155,7 @@ printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
 fi
 done
 
-if[ -d "$INSTALL_DIR/.git" ]; then
+if [ -d "$INSTALL_DIR/.git" ]; then
 printf "\r${GREEN}[####################] 100%%${NC}\n"
 printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
 cd "$INSTALL_DIR" || exit 1
