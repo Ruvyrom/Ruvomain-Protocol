@@ -55,6 +55,7 @@ fi
 export EXEC
 
 show_logo() {
+clear
 echo -e "${PURPLE}"
 cat << 'EOF'
 ::| ::|::::::\ ::::\  ::::\ ::::::|
@@ -168,7 +169,6 @@ esac
 }
 
 wireless_adb(){
-clear
 show_logo
 echo -e "${BLUE}===================================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
@@ -242,7 +242,6 @@ return 0
 }
 
 uraam_debloat() {
-clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
@@ -358,7 +357,6 @@ return 0
 }
 
 ruvomain_backup() {
-clear
 show_logo
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
@@ -478,7 +476,6 @@ return 0
 }
 
 uraam_restore() {
-clear
 show_logo
 echo -e "${BLUE}=========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
@@ -646,7 +643,6 @@ fi
 }
 
 vl_menu() {
-clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | VIEW LOGS${NC}"
@@ -677,6 +673,7 @@ esac
 }
 
 update_uraam() {
+show_logo
 echo -e "${BLUE}========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | UPDATER${NC}"
 echo -e "${BLUE}========================================${NC}"
@@ -723,7 +720,6 @@ termux-setup-storage
 fi
 
 while true; do
-clear
 show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DASHBOARD${NC}"
