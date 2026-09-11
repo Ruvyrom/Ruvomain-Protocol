@@ -27,6 +27,7 @@ fi
 BLUE='\033[0;34m'
 BOLD='\033[1m'
 CYAN='\033[0;36m'
+PURPLE='\e[0;35m'
 GREEN='\033[0;32m'
 RED='\033[1;31m'
 WHITE='\033[0;37m'
@@ -54,7 +55,7 @@ fi
 export EXEC
 
 show_logo() {
-echo -e "${CYAN}"
+echo -e "${PURPLE}"
 cat << 'EOF'
 ::| ::|::::::\ ::::\  ::::\ ::::::|
 ::|_::|::|,::|::|,::|::|,::|:::"::|
