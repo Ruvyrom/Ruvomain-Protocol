@@ -55,6 +55,8 @@ read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 case "$choice" in
 y|Y)
 clear
+show_logo
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
 if ! command -v git >/dev/null 2>&1; then
@@ -144,10 +146,10 @@ printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
 
 cleanup
-printf "\n${BLUE}==========================================${NC}\n"
+printf "\n${BLUE}============================================${NC}\n"
 printf "${CYAN}URAAM has been successfully installed!${NC}\n"
 printf "${CYAN}Run 'uraam' to start.${NC}\n"
-printf "${BLUE}==========================================${NC}\n"
+printf "${BLUE}============================================${NC}\n"
 ;;
 
 n|N)
