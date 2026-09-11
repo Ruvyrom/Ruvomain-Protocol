@@ -304,8 +304,24 @@ file="${files[$((REPLY-1))]}"
 echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
 break
 else
-echo -e "\n${RED}Invalid selection, please try again.${NC}"
+echo -e "${RED}Invalide option....${NC}"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+echo -e " ${CYAN}[t]${NC} Try again"
+echo -e " ${CYAN}[e]${NC} Exit"
+
+read -rp "Enter choice: " choice
+case "$choice" in
+
+e)
+echo -e "${CYAN}Goodbye!${NC}"
+clear
+exit 0
+;;
+t)
+echo -e "${RED}Relaunch debloat...${NC}"
+;;
 fi
+esac
 done
 
 mapfile -t PACKAGES < <(jq -r '
