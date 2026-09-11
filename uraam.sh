@@ -168,8 +168,9 @@ printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
 printf "%b\n" "  1. USB Debugging or Wireless Debugging is enabled."
 printf "%b\n" "  2. You authorized this device in the popup prompt."
 printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or configure Shizuku (rish)."
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
-read -rp "Press [Enter] to continue..."
+printf "%b\n" "${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" "Press [Enter] to continue..." 
+read -rp ""
 return 1
 }
 
@@ -195,7 +196,7 @@ printf "%b\n" "${YELLOW}[!] Make sure one of the following is active:${NC}"
 printf "%b\n" "• Root access granted to Termux"
 printf "%b\n" "  • Shizuku running with 'rish' configured"
 printf "%b\n" "  • ADB connected ('adb devices')\n"
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" "${BLUE}--------------------------------------------------------${NC}"
 printf "%b\n" "Press [Enter] to return..."
 read -rp ""
 return 1
