@@ -115,6 +115,8 @@ bash <(curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-
 pkg install ./uraam-termux_4.2.0_all.deb
 ```
 
+**You can also downlaod latest DEB files from [Releases Page](https://github.com/Ruvyrom/Uraam/releases)**
+
 ### Usage Anywhere
 
 Once installed, simply run the global command from any directory:
