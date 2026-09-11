@@ -31,8 +31,8 @@ REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="${BRANCH:-main}"
 
 cleanup() {
-printf "%b\n" "${BLUE}--------------------------------------------${NC}"
-printf "${CYAN}[*] Cleaning up...${NC}\n"
+printf "%b\n" "${BLUE}------------------------------------------${NC}"
+printf "%b\n" "${CYAN}[*] Cleaning up...${NC}\n"
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 }
 
@@ -57,7 +57,7 @@ y|Y)
 clear
 show_logo
 printf "%b\n" "${BLUE}------------------------------------------${NC}"
-printf "${CYAN}[*] Checking prerequisites...${NC}\n"
+printf "%b\n" "${CYAN}[*] Checking prerequisites...${NC}"
 
 if ! command -v git >/dev/null 2>&1; then
 printf "${YELLOW}[!] Git is missing. Attempting automatic installation...${NC}\n"
@@ -72,29 +72,29 @@ sudo dnf install -y git
 elif command -v brew >/dev/null 2>&1; then
 brew install git
 else
-printf "${RED}[X] Package manager not found. Please install git manually.${NC}\n"
+printf "%b\n" "${RED}[X] Package manager not found. Please install git manually.${NC}"
 read -rp "Press [Enter] to exit..."
 exit 1
 fi
 fi
-printf "${GREEN}[✓] Git is ready.${NC}\n"
+printf "%b\n" "${GREEN}[✓] Git is ready.${NC}"
 sleep 3
 
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
 if [ -d "$INSTALL_DIR/.git" ]; then
-printf "${CYAN}[*] Updating existing installation...${NC}\n"
+printf "%b\n" "${CYAN}[*] Updating existing installation...${NC}"
 cd "$INSTALL_DIR" || exit 1
 git fetch --all --prune >/dev/null 2>&1
 if git reset --hard "origin/$BRANCH" >/dev/null 2>&1; then
-printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
+printf "%b\n" "${GREEN}[✓] Core repository updated successfully.${NC}"
 else
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
-printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
+printf "%b\n" "${RED}[X] Git reset failed. Check repository branch status.${NC}"
 read -rp "Press [Enter] to exit..."
 exit 1
 fi
 else
-printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
+printf "%b\n" "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}"
 mkdir -p "$(dirname "$INSTALL_DIR")"
 
 git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
@@ -109,12 +109,12 @@ fi
 done
 
 if [ -d "$INSTALL_DIR/.git" ]; then
-printf "\r${GREEN}[####################] 100%%${NC}\n"
-printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
+printf "%b\n" "\r${GREEN}[####################] 100%%${NC}"
+printf "%b\n" "${GREEN}[✓] Repository cloned successfully.${NC}"
 cd "$INSTALL_DIR" || exit 1
 else
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
-printf "\n${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
+printf "%b\n" "\n${RED}[X] Failed to clone repository. Check your connection.${NC}"
 read -rp "Press [Enter] to exit..."
 exit 1
 fi
@@ -125,7 +125,7 @@ chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
-printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
+printf "%b\n" "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}"
 read -rp "Press [Enter] to exit..."
 exit 1
 fi
@@ -143,7 +143,7 @@ fi
 ln -sf "$INSTALL_DIR/uraam.sh" "$BIN_DIR/uraam"
 chmod +x "$BIN_DIR/uraam"
 printf "%b\n" "${BLUE}--------------------------------------------${NC}"
-printf "${GREEN}[✓] Command 'uraam' linked to %s${NC}\n" "$BIN_DIR"
+printf "%b\n" "${GREEN}[✓] Command 'uraam' linked to %s${NC}" "$BIN_DIR"
 
 if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
 SHELL_NAME="$(basename "${SHELL:-bash}")"
@@ -165,30 +165,30 @@ EXPORT_LINE="export PATH=\"\$PATH:$BIN_DIR\""
 
 if [ -n "$RC_FILE" ]; then
 if ! grep -qsF "$EXPORT_LINE" "$RC_FILE" 2>/dev/null; then
-printf "\n# URAAM ADB Manager\n%s\n" "$EXPORT_LINE" >> "$RC_FILE"
-printf "${GREEN}[✓] Added %s to PATH in%s${NC}\n" "$BIN_DIR" "$RC_FILE"
-printf "${YELLOW}[i] Run 'source %s' or restart your terminal to apply changes.${NC}\n" "$RC_FILE"
+printf "%b\n"  "\n# URAAM ADB Manager\n%s\n" "$EXPORT_LINE" >> "$RC_FILE"
+printf "%b\n"  "${GREEN}[✓] Added %s to PATH in%s${NC}" "$BIN_DIR" "$RC_FILE"
+printf "%b\n"  "${YELLOW}[i] Run 'source %s' or restart your terminal to apply changes.${NC}" "$RC_FILE"
 fi
 else
-printf "${YELLOW}[!] Could not detect shell RC file. Please add manually:${NC}\n"
-printf "${YELLOW}    %s${NC}\n" "$EXPORT_LINE"
+printf "%b\n" "${YELLOW}[!] Could not detect shell RC file. Please add manually:${NC}\n"
+printf "%b\n" "${YELLOW}    %s${NC}\n" "$EXPORT_LINE"
 fi
 fi
 
 cleanup
-printf "\n${BLUE}============================================${NC}\n"
-printf "${CYAN}URAAM has been successfully installed!${NC}\n"
-printf "${CYAN}Run 'uraam' to start.${NC}\n"
-printf "${BLUE}============================================${NC}\n"
+printf "%b\n" "${BLUE}============================================${NC}"
+printf "%b\n" "${CYAN}URAAM has been successfully installed!${NC}"
+printf "%b\n" "${CYAN}Run 'uraam' to start.${NC}"
+printf "%b\n" "${BLUE}============================================${NC}"
 ;;
 
 n|N)
-printf "${YELLOW}[-] Installation aborted by user.${NC}\n"
+printf "%b\n" "${YELLOW}[-] Installation aborted by user.${NC}\n"
 exit 0
 ;;
 
 *)
-printf "${RED}[!] Invalid choice. Installation canceled.${NC}\n"
+printf "%b\n" "${RED}[!] Invalid choice. Installation canceled.${NC}\n"
 exit 1
 ;;
 esac
