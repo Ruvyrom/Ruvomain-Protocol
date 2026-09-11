@@ -38,7 +38,7 @@ chmod +x "$TARGET_BIN/uraam"
 }
 
 show_logo() {
-echo -e "${CYAN}"
+echo -e "${PURPLE}"
 cat << 'EOF'
 ::| ::|::::::\ ::::\  ::::\ ::::::|
 ::|_::|::|,::|::|,::|::|,::|:::"::|
@@ -53,11 +53,12 @@ echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 printf "${PURPLE}WELCOME TO URAAM INSTALLER!${NC}\n"
+echo -e "${BLUE}--------------------------------------------${NC}"
 printf "${PURPLE}This installer will${NC}\n" 
-printf "${PURPLE}Download Uraam from the official repository;${NC}\n"
-printf "${PURPLE}Auto-install git if missing (with confirmation);${NC}\n"
-printf "${PURPLE}Setup files into ~/Uraam${NC}\n"
-printf "${PURPLE}Expose 'uraam' command in PATH(/usr/local/bin or ~/.local/${NC}\n"
+printf "• Download Uraam from the official repository;\n"
+printf "• Auto-install git if missing (with confirmation);\n"
+printf "• Setup files into ~/Uraam\n"
+printf "• Expose 'uraam' command in PATH(/usr/local/bin or ~/.local/\n"
 echo -e "${BLUE}--------------------------------------------${NC}"
 read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 
