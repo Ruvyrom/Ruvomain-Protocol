@@ -36,21 +36,21 @@ NC='\033[0m'
 
 if [ -d "/data/data/com.termux" ]; then
 if command -v rish >/dev/null 2>&1; then
-EXEC="rish -c"
 echo -e "\n${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
+EXEC="rish -c"
 elif [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1; then
-EXEC="su -c"
 echo -e "\n${BLUE}[Termux Mode: Root/su detected]${NC}"
+EXEC="su -c"
 elif command -v adb >/dev/null 2>&1; then
-EXEC="adb shell"
 echo -e "\n${BLUE}[Local ADB detected]${NC}"
+EXEC="adb shell"
 else
-EXEC=""
 echo -e "\n${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
+EXEC=""
 fi
 else
-EXEC="adb shell"
 echo -e "\n${BLUE}[Remote Linux/ADB Mode detected]${NC}"
+EXEC="adb shell"
 fi
 export EXEC
 
@@ -229,10 +229,25 @@ return 1
 }
 
 check_adb() {
+local brand model android_ver
+brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
+model=$("$EXEC" getprop ro.product.model 2>/dev/null || echo "Unknown model")
+android_ver=$("$EXEC" getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
+
+CURRENT_MODEL="(${PURPLE}[Host]${NC} ${brand^}) ${model} (Android ${android_ver})"
+
 if ! command -v adb &> /dev/null; then
-echo -e "\n${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
+echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
 return 1
 fi
+
+if ! adb devices | printf "$CURRENT_MODEL\n"; then
+echo -e "\n[Target] ${RED}[ERROR]${NC} No device detected via ADB."
+fi
+return 1
+fi
+return 0
+}
 
 if ! adb devices | grep -q "device$"; then
 echo -e "\n${RED}[ERROR]${NC} No device detected via ADB."
@@ -701,17 +716,6 @@ sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
 fi
-}
-
-check_device() {
-local brand model android_ver
-brand=$(getprop ro.product.manufacturer 2>/dev/null || adb shell getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
-model=$(getprop ro.product.model 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null || echo "Unknown")
-android_ver=$(getprop ro.build.version.release 2>/dev/null || adb shell getprop ro.product.model 2>/dev/null)
-
-CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
-
-printf "$CURRENT_MODEL\n" 
 }
 
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
