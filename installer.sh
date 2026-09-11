@@ -37,6 +37,38 @@ perm() {
 chmod +x "$TARGET_BIN/uraam"
 }
 
+run_with_spinner() {
+localmsg="$1"
+shift
+local -a spin=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+local pid
+
+tput civis 2>/dev/null || true
+
+"$@" >/dev/null 2>&1 &
+pid=$!
+
+locali=0
+while kill -0 "$pid" 2>/dev/null; do
+printf "\r${CYAN}[${spin[i]}] ${msg}...${NC}"
+i=$(( (i + 1) %10 ))
+sleep 0.1
+done
+
+wait "$pid"
+local status=$?
+
+tputcnorm 2>/dev/null || true
+
+if [[ $status -eq 0 ]]; then
+printf "\r${GREEN}[✓] ${msg} done!${NC}\033[K\n"
+return 0
+else
+printf "\r${RED}[X] ${msg} failed!${NC}\033[K\n"
+return 1
+fi
+}
+
 show_logo() {
 echo -e "${PURPLE}"
 cat << 'EOF'
@@ -110,11 +142,25 @@ fi
 else
 printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
 mkdir -p "$(dirname "$INSTALL_DIR")"
-if git clone --depth 1 -b "$BRANCH" "$REPO_URL" "$INSTALL_DIR"; then
+if gitclone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
+if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
+percent="${BASH_REMATCH[1]}"
+completed=$(( percent /5 ))
+remaining=$(( 20 - completed ))
+
+bar_done=$(printf "%${completed}s" | tr ' ' '#')
+bar_empty=$(printf "%${remaining}s" | tr' ' '-')
+
+printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
+fi
+done
+
+if[ -d "$INSTALL_DIR/.git" ]; then
+printf "\r${GREEN}[####################] 100%%${NC}\n"
 printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
-cd "$INSTALL_DIR"
+cd "$INSTALL_DIR" || exit 1
 else
-printf "${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
+printf "\n${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
 sleep 1
 read -rp "Press [Enter] to exit..."
 clear
