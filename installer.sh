@@ -55,12 +55,12 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
 echo -e "${BLUE}==========================================${NC}"
 printf "${CYAN}WELCOME TO URAAM INSTALLER!${NC}\n"
 printf "${CYAN}--------------------------------------------${NC}\n"
-printf "${CYAN}This installer will:\n"
+printf "${CYAN}This installer will:\n${NC}"
 printf "• Download URAAM from official repo\n"
 printf "• Auto-install git if missing\n"
 printf "• Setup files into ~/Uraam\n"
 printf "• Expose 'uraam' command in PATH\n"
-printf "--------------------------------------------\n"
+echo -e "${CYAN}--------------------------------------------${NC}"
 
 read -p "Do you want to start the installation of URAAM? (y/n) : " choice
 
