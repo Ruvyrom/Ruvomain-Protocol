@@ -275,7 +275,6 @@ check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
