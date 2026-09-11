@@ -31,13 +31,24 @@ or
 
 ---
 ### For 🐧Linux, 📱Termux, WSL:
-### Direct installation
-**1-Line Installation (Termux, Linux, macOS)**
+### Direct execution
+**1-Line Installation**
+
+* Auto-install with confirmation on **Termux, Linux, macOS, WSL**:
 ```bash
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
-> ***Note :** The installer auto-install GIT, ADB, JQ after confirm and takes care of cloning the repository.*
 
+* DEB package installation **only for Termux**:
+```bash
+curl -LO https://github.com/ton-repo/uraam/releases/download/v1.0.0/uraam-termux_4.2.0_all.deb 
+pkg install ./uraam-termux_4.2.0_all.deb
+```
+
+> * **Note :**
+>> * *The installer auto-install GIT after confirm and takes care of cloning the repository.*
+>> * *URAAM auto-install ADB and JQ if necessary.*
+>> * *DEB package install dependencies*
 ### Usage Anywhere
 
 Once installed, simply run the global command from any directory:
