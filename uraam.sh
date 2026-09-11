@@ -696,12 +696,12 @@ find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 sleep 1 
 read -rp "press Enter to restarting URAAM with new changes..." 
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
+clear
 exec "$0" "$@"
 else
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 sleep 1
 read -rp "Press Enter to return to main menu"
-clear
 return 0
 fi
 }
