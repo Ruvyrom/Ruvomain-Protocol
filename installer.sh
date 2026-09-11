@@ -178,7 +178,7 @@ fi
 cleanup
 printf "%b\n" "${BLUE}============================================${NC}"
 printf "%b\n" "${CYAN}URAAM has been successfully installed!${NC}"
-printf "%b\n" "${CYAN}Run 'uraam' to start.${NC}"
+printf "%b\n" "${CYAN}Run '${WHITE}uraam${NC}' to start.${NC}"
 printf "%b\n" "${BLUE}============================================${NC}"
 ;;
 
