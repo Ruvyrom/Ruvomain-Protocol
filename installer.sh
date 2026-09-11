@@ -33,6 +33,32 @@ perm() {
 chmod +x "$TARGET_BIN/uraam"
 }
 
+show_logo() {
+echo -e "${CYAN}"
+cat << 'EOF'
+::| ::|::::::\ ::::\  ::::\ ::::::|
+::|_::|::|,::|::|,::|::|,::|:::"::|
+`:::::|::| ::\::| ::|::| ::|::| ::|
+EOF
+echo -e "${NC}"
+}
+
+clear
+show_logo
+echo -e "${BLUE}==========================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
+echo -e "${BLUE}==========================================${NC}"
+printf "${CYAN}WELCOME TO URAAM INSTALLER!${NC}\n"
+printf "${CYAN)}This installer will:\n" 
+printf "${CYAN}Download Uraam from the official repository;\n"
+printf "${CYAN}Auto-install git if missing (with confirmation);\n"
+printf "${CYAN}Setup files into ~/Uraam\n"
+printf "${CYAN}Expose 'uraam' command in PATH(/usr/local/bin or ~/.local/\n"
+read -p "Do you want to start the installation of URAAM? (y/n) : " choice
+
+case "$choice" in
+y|Y)
+clear
 printf "${CYAN}[*] Checking prerequisites...${NC}\n"
 
 if ! command -v git >/dev/null 2>&1;then
@@ -40,17 +66,24 @@ printf "${YELLOW}[!] Git is missing. Attempting automatic installation...${NC}\n
 if command -v pkg >/dev/null 2>&1; then
 pkg update -y && pkg install git -y
 elif command -v apt >/dev/null 2>&1; then
-apt update -y && apt install git -y
+sudo apt update -y && sudo apt install git -y
 elif command -v pacman >/dev/null2>&1; then
 sudo pacman -S --noconfirm git
 elif command -v dnf >/dev/null 2>&1; then
 sudo dnf install -y git
+elif command -v brew >/dev/null 2>&1; then
+brew install git
 else
 printf "${RED}[X] Package manager not found. Please install git manually.${NC}\n"
+sleep 1
+read -rp "Press [Enter] to exit..."
 exit 1
 fi
 fi
+
 printf "${GREEN}[✓] Git is ready.${NC}\n"
+
+INSTALL_DIR="${INSTALL_DIR:-$HOME/Uraam}"
 
 if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
@@ -84,6 +117,20 @@ else
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 exit 1
 fi
+;;
+
+n|N)
+printf "${YELLOW}[-] Installation aborted by user.${NC}\n"
+read -rp "Press [Enter] to exit..."
+exit 0
+;;
+
+*)
+printf "${RED}[!] Invalid choice. Installation canceled.${NC}\n"
+read -rp "Press[Enter] to exit..."
+exit 1
+;;
+esac
 
 printf "${CYAN}[*] Configuring system command alias (uraam)...${NC}\n"
 
