@@ -229,22 +229,29 @@ return 1
 }
 
 check_adb() {
-local brand model android_ver
+local brand model android_ver tbrand tmodel tandroid_ver
 brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
 model=$("$EXEC" getprop ro.product.model 2>/dev/null || echo "Unknown model")
 android_ver=$("$EXEC" getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
+tbrand=$(getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
+tmodel=$(getprop ro.product.model 2>/dev/null || echo "Unknown model")
+tandroid_ver=$(getprop ro.build.version.release 2>/dev/null || 2>/dev/null)
 
 CURRENT_MODEL="(${PURPLE}[Target]${NC} ${brand^}) ${model} (Android ${android_ver})"
+CURRENT_TMODEL="(${PURPLE}[Target]${NC} ${tbrand^}) ${tmodel} (Android ${tandroid_ver})"
 
 if ! command -v adb &> /dev/null; then
+echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
 echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
 return 1
 fi
 
 if ! adb devices | grep -q "device$"; then
-echo -e "\n[Target] ${RED}[ERROR]${NC} No device detected via ADB."
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+echo -e "${RED}[ERROR]${NC} No device detected via ADB."
 else
-printf "$CURRENT_MODEL\n"
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+printf "${PURPLE}[Target]${NC} $CURRENT_MODEL\n"
 return 1
 fi
 return 0
