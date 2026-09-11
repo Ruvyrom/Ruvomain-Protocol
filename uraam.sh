@@ -734,7 +734,6 @@ echo -e "${CYAN}\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON
 echo -e "${CYAN}\nPlace APKs to install in ./Apps/.${NC}"
 echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
-check_device
 ensure_adb || exit 1
 ensure_jq || exit 1
 check_adb
