@@ -278,7 +278,6 @@ r|R|*)
 continue
 ;;
 esac
-fi
 done
 
 uraam_debloat() {
