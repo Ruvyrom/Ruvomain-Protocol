@@ -275,6 +275,7 @@ check_adb || {
 read -rp "Press Enter to return to main menu..."
 return 1
 }
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$CONFIGS_DIR"/*.json)
@@ -287,15 +288,14 @@ read -rp "Press Enter to return to main menu..."
 return 1
 fi
 
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "Configuration files found:"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+
 local display_names=()
 for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
-
-echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "\nConfiguration files found:"
-echo -e "\n${BLUE}----------------------------------------${NC}"
-
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
