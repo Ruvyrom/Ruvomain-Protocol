@@ -126,9 +126,9 @@ INSTALL_DIR="${INSTALL_DIR:-$HOME/Uraam}"
 
 if [ -d "$INSTALL_DIR/.git" ]; then
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
-cd "$INSTALL_DIR"
+cd "$INSTALL_DIR" || exit 1
 
-git fetch --all --prune >/dev/null 2>&1
+git fetch --all--prune >/dev/null 2>&1
 
 if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
 printf "${GREEN}[✓] Core repository updated successfully.${NC}\n"
@@ -137,29 +137,32 @@ printf "${RED}[X] Git reset failed. Check repository branch status.${NC}\n"
 sleep 1
 read -rp "Press [Enter] to exit..."
 clear
-exit1
+exit 1
 fi
 else
 printf "${CYAN}[*] Performing initial clone to: ${INSTALL_DIR}...${NC}\n"
 mkdir -p "$(dirname "$INSTALL_DIR")"
-if git clone --depth 1 -b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
+
+set -o pipefail
+
+if git clone --depth 1-b "$BRANCH" --progress "$REPO_URL" "$INSTALL_DIR" 2>&1 | while IFS= read -r line; do
 if [[ "$line" =~ Receiving\ objects:[[:space:]]*([0-9]+)% ]]; then
 percent="${BASH_REMATCH[1]}"
-completed=$(( percent /5 ))
+completed=$((percent / 5 ))
 remaining=$(( 20 - completed ))
 
 bar_done=$(printf "%${completed}s" | tr ' ' '#')
-bar_empty=$(printf "%${remaining}s" | tr' ' '-')
+bar_empty=$(printf "%${remaining}s"| tr ' ' '-')
 
 printf "\r${CYAN}[${bar_done}${bar_empty}] ${percent}%%${NC}"
 fi
-done
-
-if [ -d "$INSTALL_DIR/.git" ]; then
+done; then
+set +o pipefail
 printf "\r${GREEN}[####################] 100%%${NC}\n"
 printf "${GREEN}[✓] Repository cloned successfully.${NC}\n"
 cd "$INSTALL_DIR" || exit 1
 else
+set +o pipefail
 printf "\n${RED}[X] Failed to clone repository. Check your connection.${NC}\n"
 sleep 1
 read -rp "Press [Enter] to exit..."
@@ -168,14 +171,13 @@ exit 1
 fi
 fi
 
-if [ -f "$INSTALL_DIR/uraam.sh" ]; then
+if[ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
-
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
 else
-printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
-sleep 1
-read -rp "Press[Enter] to exit..."
+printf "${RED}[X]Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
+sleep1
+read -rp "Press [Enter] to exit..."
 clear
 exit 1
 fi
