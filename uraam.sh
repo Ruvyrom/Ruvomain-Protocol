@@ -257,29 +257,6 @@ fi
 return 0
 }
 
-wait_for_back() {
-echo -e "\n${RED}[ERROR] Invalide choice: '$choice'${NC}"
-echo -e "  [${PURPLE}r${NC}] Try again"
-echo -e "  [${PURPLE}d${NC}] Return to Dashboard"
-echo -e "  [${PURPLE}e${NC}] Quitter URAAM"
-
-read -rsn1 -p "Your choice : " err_choice
-echo ""
-
-case "$err_choice" in
-d|D)
-return 0
-;;
-e|E)
-echo -e "${PURPLE}[*]${NC} Exiting..."
-exit 0
-;;
-r|R|*)
-continue
-;;
-esac
-done
-
 uraam_debloat() {
 show_logo
 echo -e "${BLUE}==========================================${NC}"
@@ -327,7 +304,9 @@ file="${files[$((REPLY-1))]}"
 echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
 break
 else
-wait_for_back
+echo -e "\n${RED}Invalid selection, please try again.${NC}"
+fi
+done
 
 mapfile -t PACKAGES < <(jq -r '
   def extract:
