@@ -320,7 +320,6 @@ exit 0
 t)
 echo -e "${RED}Relaunch debloat...${NC}"
 ;;
-fi
 esac
 done
 
