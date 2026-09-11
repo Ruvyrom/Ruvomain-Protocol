@@ -81,7 +81,7 @@ read -p "Do you want to install JQ now? (y/n) : " choice
 
 case "$choice" in
 y|Y)
-printf "${GREEN}[+] Attempting automatic installation...${NC}\n"
+printf "%b\n" "${GREEN}[+] Attempting automatic installation...${NC}"
 
 if command -v pkg >/dev/null; then
 pkg install -y jq
@@ -94,13 +94,13 @@ sudo dnf install -y jq
 elif command -v brew >/dev/null; then
 brew install jq
 else
-printf "${RED}[!] Package manager not supported. Please install JQ manually.${NC}\n" >&2
+printf "%b\n" "${RED}[!] Package manager not supported. Please install JQ manually.${NC}" >&2
 read -rp "Press [Enter] to return to main menu..."
 return 1
 fi
 ;;
 *)
-printf "${YELLOW}[-] Installation cancelled. JQ is required for the project to work properly.${NC}\n"
+printf "%b\n" "${YELLOW}[-] Installation cancelled. JQ is required for the project to work properly.${NC}"
 return 1
 ;;
 esac
@@ -145,7 +145,7 @@ connected=$(adb devices 2>/dev/null | grep -v "List of devices" | grep "device$"
 if [ -n "$connected" ]; then
 EXEC="adb shell"
 EXEC_TYPE="ADB"
-printf "${GREEN}[✓] Execution backend: ADB(Connected)${NC}\n"
+printf "%b\n" "${GREEN}[✓] Execution backend: ADB(Connected)${NC}\n"
 fi
 fi
 
@@ -175,7 +175,7 @@ printf "%b\n" "${RED}[ERROR]${NC}No device detected via ADB."
 printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
 printf "%b\n" "1. USB Debugging or Wireless Debugging is enabled."
 printf "%b\n" "  2. You authorizedthis device in the popup prompt."
-printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or Shizuku.\n"
+printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or Shizuku."
 read -rp "Press [Enter] to return to main menu..."
 return 1
 fi
@@ -197,31 +197,11 @@ echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
 echo -e "${RED}[ERROR]${NC} No device detected via ADB."
 else
 echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
-printf "${PURPLE}[Target]${NC} $CURRENT_MODEL\n"
+printf "%b\n" "${PURPLE}[Target]${NC} $CURRENT_MODEL"
 return 1
 fi
 return 0
 }
-
-if [ -d "/data/data/com.termux" ]; then
-if command -v rish >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Termux Mode: Shizuku/rish detected]${NC}"
-EXEC="rish -c"
-elif [ "$(id -u)" -eq 0 ] || command -v su >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Termux Mode: Root/su detected]${NC}"
-EXEC="su -c"
-elif command -v adb >/dev/null 2>&1; then
-echo -e "\n${BLUE}[Local ADB detected]${NC}"
-EXEC="adb shell"
-else
-echo -e "\n${BLUE}[Termux Mode detected (Stand-alone)]${NC}"
-EXEC=""
-fi
-else
-echo -e "\n${BLUE}[Remote Linux/ADB Mode detected]${NC}"
-EXEC="adb shell"
-fi
-export EXEC
 
 show_logo() {
 clear
