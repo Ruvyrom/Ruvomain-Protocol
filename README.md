@@ -38,7 +38,9 @@ The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a shell ADB/Shizuku toolkit.
 
 * Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
 
-* Replaces heavy middleware with a native, audited Bash + jq pipeline. Works on Termux with Wireless ADB, Shizuku & Root, Linux: Debian, Arch, & Fedora based distribution; MacOS & WSL.
+* Replaces heavy middleware with a native, audited Bash + jq pipeline & minimale dependencies (git, adb, jq} 
+
+* Works on Termux with Wireless ADB, Shizuku & Root, Linux: Debian, Arch, & Fedora based distribution; MacOS & WSL.
 
 * Shizuku compatible, Uraam provide a wireless ADB + Shizuku moduls for automatic connection in Termux. You can also use Shizuku or root on Termux for debloat, restore & install.
 
