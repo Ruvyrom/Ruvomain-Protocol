@@ -5,6 +5,4 @@ Priority: optional
 Architecture: all
 Depends: bash, adb, jq, curl
 Maintainer: Ruvyrom
-Description: Universal Ruvomain ADB App-Manager
-Hybrid ADB tool for debloating, backups, and app management.
-Compatible with Linux PC environments.
+Description: Universal Ruvomain ADB App-Manager, Hybrid ADB tool for debloating, backups, and app management. Compatible with Linux PC environments.
