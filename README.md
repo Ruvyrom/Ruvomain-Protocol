@@ -79,14 +79,15 @@ or
 
 **2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.***
 * Execute script and choose option ***[w] Wireless ADB Setup***
-* Follow instructions.
+* In "Wireless ADB Mode", you have 2 choice:
+
+* Wireless ADB + Shizuku:  One-Click Wireless ADB auto-connection with Shizuku
+     * [More information & Quick Start Guide](/Docs/Shizuku_wireless.md)
 
 or
 
-**3-Shizuku option** ***(For Termux via Shizuku & Rish):***
-* Start [Shizuku](https://shizuku.rikka.app/).
-* Export the Shizuku shell (`rish`) into Termux environment.
-* URAAM will execute elevated package commands directly on-device.
+* Wireless ADB: Standard wireless ADB debugging connection.
+
 
 ### 📁 File Layout (`~/.Uraam/`)
 | Folder | Purpose|
