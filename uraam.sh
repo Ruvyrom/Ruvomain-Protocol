@@ -314,7 +314,7 @@ read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
 if [ "$need_pair" = "y" ] || [ "$need_pair" = "Y" ]; then
 if [ -z "$pair_host" ] || [ -z "$pair_code" ]; then
-printf "%b\n" "\n[!] Pairing aborted: host or code cannot be empty."
+printf "%b\n" "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
 printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
 printf "%b\n" "Press Enter to return to main menu..."
 read -rp ""
@@ -339,7 +339,7 @@ conn_host="$pair_input"
 fi
 
 if [ -n "$conn_host" ]; then
-printf "%b\n" "\n[*] Connecting to $conn_host..."
+printf "%b\n" "\n${YELLOW}[*] Connecting to $conn_host...${NC}"
 adb connect "$conn_host"
 
 sleep 1
@@ -966,7 +966,7 @@ echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo
 echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
 echo -e " ${RED}[e]${NC} Exit\n"
 
-printf "%b\n" "${BLUE}--------------------------------------------${NC}"
+printf "%b\n" "${BLUE}------------------------------------------${NC}"
 printf "%b\n" "Enter your choice:"
 
 read -rp "" choice
