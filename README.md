@@ -103,13 +103,13 @@ or
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 
-DEB installation for Debian with uraam-debian_*.deb**
+**DEB installation for Debian with uraam-debian_*.deb** (for test)
 ```bash
 curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb
 pkg install ./uraam-termux_4.2.0_all.deb
 ```
 
-**DEB installation fo installation with uraam-termux_*.deb**
+**DEB installation fo installation with uraam-termux_*.deb** (for test)
 ```bash
 curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb
 pkg install ./uraam-termux_4.2.0_all.deb
