@@ -375,7 +375,7 @@ wireless_adb
 return 0 2>/dev/null || exit 0
 fi
 
-if[[ "$EXEC" =~ "rish" ]]; then
+if [[ "$EXEC" =~ "rish" ]]; then
 printf "%b\n" "${GREEN}Shizuku is already active (running under rish context).${NC}"
 else
 SHIZUKU_CHECK=$($EXEC pidof rish 2>/dev/null || $EXEC ps-A 2>/dev/null | grep -i shizuku)
