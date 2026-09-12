@@ -343,12 +343,15 @@ adb connect "$conn_host"
 
 sleep 1
 if adb devices | grep -q "$conn_host.*device"; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "%b\n" "\n${GREEN}[✓] Successfully connected via Wireless ADB!${NC}"
 else
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "%b\n" "\n${RED}[!] Connection failed.${NC}"
 printf "%b\n" "Check IP/Port and make sure screen is on."
 fi
 else
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
 fi
 
