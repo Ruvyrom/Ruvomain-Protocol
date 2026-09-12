@@ -327,7 +327,12 @@ printf "%b\n" "\n--- STEP 2: CONNECTION ---"
 printf "%b\n" "\n${CYAN}Look at the main Wireless Debugging screen${NC}" 
 printf "%b\n" "${CYAN}for the CONNECTION port.${NC}"
 
-read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
+read -rp "Enter CONNECTION host:port or just PORT: " conn_host
+if [[ "$conn_input" =~ ^[0-9]+$ ]]; then
+conn_host="127.0.0.1:$conn_input"
+else
+conn_host="$pair_input"
+fi
 
 if [ -n "$conn_host" ]; then
 printf "%b\n" "\n[*] Connecting to $conn_host..."
