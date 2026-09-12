@@ -15,8 +15,15 @@
 or
 
 **2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.***
-* Execute script and choose option ***[5] Wireless ADB Setup***
-* Follow instructions.
+* Execute script and choose option ***[w] Wireless ADB Setup***
+* In "Wireless ADB Mode", you have 2 choice:
+
+* Wireless ADB + Shizuku:  One-Click Wireless ADB auto-connection with Shizuku
+     * [More information & Quick Start Guide](/Docs/Shizuku_wireless.md)
+
+or
+
+* Wireless ADB: Standard wireless ADB debugging connection.
 
 or
 
