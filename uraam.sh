@@ -586,54 +586,53 @@ return 0
 
 ubackup() {
 local output_dir="$BACKUPS_DIR"
-mkdir -p "output_dir"
+mkdir -p "$output_dir"
+
 local date_str
 date_str="$(date +%Y%m%d_%H%M%S)"
 local output_file="$output_dir/Uraam_Restoration_List_${date_str}.json"
 
-echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "${CYAN}\n--- Generating snapshot: $output_file---${NC}"
-echo -e "\n${BLUE}----------------------------------------${NC}"
+printf "\n%b\n" "${BLUE}----------------------------------------${NC}"
+printf "%b\n" "${CYAN}Generating restoration list...${NC}"
+printf "%b\n" "${BLUE}----------------------------------------${NC}"
 
-local all_pkgs
-all_pkgs=$(eval "$EXEC \"pm list packages -u --user 0\"" 2>/dev/null | tr-d '\r' | sed 's/^package://' | sort)
-
-local active_pkgs
-active_pkgs=$(eval "$EXEC \"pm list packages --user 0\"" 2>/dev/null | tr -d '\r' | sed 's/^package://' | sort)
-
+local all_pkgs active_pkgs
+all_pkgs=$($EXEC pm list packages -u --user 0 2>/dev/null | sed 's/^package://' | tr -d '\r' | sort)
+active_pkgs=$($EXEC pm list packages --user 0 2>/dev/null | sed 's/^package://' | tr -d '\r' | sort)
 
 if [ -z "$all_pkgs" ]; then
-printf "\n%b\n" "${RED}[!] Error:${NC} Unableto communicate with package manager."
+printf "\n%b\n" "${RED}[!] Unable to communicate with package manager.${NC}"
 read -rp "Press [Enter] to return to main menu"
 return 1
 fi
 
 comm -23 <(echo "$all_pkgs") <(echo "$active_pkgs") \
 | jq -R -s --arg date "$date_str" '
-[ split("\n")[] | select(test("^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)+$")) | {packageName: .} ] as $apps
-| {
-name: ("Uraam_Restore_List_" + $date),
-description: "List of debloated packages pending restoration",
-author: "URAAM",
-version: "4.2.0",
-apps: $apps
-}' > "$output_file"
+  [ split("\n")[] 
+    | select(test("^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]+)+$")) 
+    | {packageName: .} 
+  ] as $apps
+  | {
+      name: ("Uraam_Restore_List_" + $date),
+      description: "List of debloated packages pending restoration",
+      author: "URAAM",
+      version: "4.4.0",
+      apps: $apps
+      }
+' > "$output_file"
 
 local count
 count=$(jq '.apps | length' "$output_file" 2>/dev/null || echo 0)
 
 if [ "$count" -eq 0 ]; then
-rm -f"$output_file"
-printf "\n%b\n" "${YELLOW}[i] No debloatedpackages found on this device.${NC}"
-printf "%b\n" "All system packages are currently installed."
-read -rp "Press [Enter] to return to main menu"
-return 0
+rm -f "$output_file"
+printf "\n%b\n" "${YELLOW}[i] No debloated packages found on this device.${NC}"
+else
+printf "\n%b\n" "${GREEN}[✓] Successfully identified $count debloated packages!${NC}"
+printf "%b\n" "${BLUE}[i] File saved to: ${output_file}${NC}"
 fi
 
-printf "\n%b\n" "${GREEN}[✓] Successfully identified ${count} debloated packages!${NC}"
-printf "%b\n" "${BLUE}[i] Restoration file saved to: ${output_file}${NC}"
-read -rp "Press[Enter] to return to main menu"
-return 0
+read -rp "Press [Enter] to return to main menu"
 }
 
 ruvomain_backup() {
