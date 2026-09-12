@@ -82,7 +82,7 @@ or
 * In "Wireless ADB Mode", you have 2 choice:
 
 * Wireless ADB + Shizuku:  One-Click Wireless ADB auto-connection with Shizuku
-     * [More information & Quick Start Guide](/Docs/Shizuku_wireless.md)
+     * [More information & Shizuku auto-connection Quick Start Guide](/Docs/Shizuku_wireless.md)
 
 or
 
