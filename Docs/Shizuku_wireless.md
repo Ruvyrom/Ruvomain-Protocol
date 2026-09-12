@@ -2,7 +2,7 @@
 
 Get rid of cables! With this guide, you only need to connect your phone witha USB cable **once**. The script will automatically start **Shizuku**, switch **ADB** to wireless mode, find your device's IP, and connect to it over Wi-Fi.
 
-Once completed, you can **unplug the cable** and use tools like **URAAM** or **Canta** completely wirelessly.
+Once completed, you can **unplug the cable** and use tools like **URAAM** completely wirelessly.
 
 ---
 
