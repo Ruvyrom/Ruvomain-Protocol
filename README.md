@@ -77,7 +77,7 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 
 or
 
-## 2-Wireless option** ***Use wireless ADB setup assistant option in Dashboard.
+## 2-Wireless option: Use wireless ADB setup assistant option in Dashboard.
 * Execute script and choose option ***[w] Wireless ADB Setup***
 * In "Wireless ADB Mode", you have 2 choice:
 
@@ -88,7 +88,7 @@ or
 
 * Wireless ADB: Standard wireless ADB debugging connection.
 
-## **3-Shizuku option** ***(For Termux via Shizuku & Rish):***
+## 3-Shizuku option (For Termux via Shizuku & Rish):
 * Start [Shizuku](https://shizuku.rikka.app/).
 * Export the Shizuku shell (`rish`) into Termux environment.
 * URAAM will execute elevated package commands directly on-device.
