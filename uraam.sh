@@ -380,7 +380,7 @@ printf "%b\n" "${GREEN}Shizuku is already active (running under rish context).${
 else
 SHIZUKU_CHECK=$($EXEC pidof rish 2>/dev/null || $EXEC ps-A 2>/dev/null | grep -i shizuku)
 
-if[ -z "$SHIZUKU_CHECK" ]; then
+if [ -z "$SHIZUKU_CHECK" ]; then
 printf "%b\n" "${YELLOW}Starting Shizuku service...${NC}"
 $EXEC sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh 2>/dev/null || \
 $EXEC sh /data/user_de/0/moe.shizuku.privileged.api/bin/start.sh 2>/dev/null
