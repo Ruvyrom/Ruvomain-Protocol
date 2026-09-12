@@ -161,7 +161,7 @@ EXEC_TYPE="ROOT"
 ensure_jq || exit 1
 printf "%b\n" "$CURRENTT_MODEL" 
 printf "%b\n" "$CURRENT_MODEL"
-printf "%b\n" "${GREEN}[✓]Execution backend: ROOT (su)${NC}"
+printf "%b\n" "${GREEN}[✓] Execution backend: ROOT (su)${NC}"
 return 0
 fi
 
@@ -210,7 +210,7 @@ if [ -z "$devices" ]; then
 printf "%b\n" "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
 printf "%b\n" "${RED}[ERROR]${NC}No device detected via ADB."
 printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
-printf "%b\n" "1. USB Debugging or Wireless Debugging is enabled."
+printf "%b\n" "  1. USB Debugging or Wireless Debugging is enabled."
 printf "%b\n" "  2. You authorized this device in the popup prompt."
 printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or Shizuku."
 read -rp "Press [Enter] to return to main menu..."
@@ -220,9 +220,9 @@ return 0
 
 printf "%b\n" "${RED}[ERROR] No execution environment detected!${NC}"
 printf "%b\n" "${YELLOW}[!] Make sure one of the following is active:${NC}"
-printf "%b\n" "• Root access granted to Termux"
+printf "%b\n" ". • Root access granted to Termux"
 printf "%b\n" "  • Shizuku running with 'rish' configured"
-printf "%b\n" "  • ADB connected ('adb devices')\n"
+printf "%b\n" "  • ADB connected ('adb devices')"
 printf "%b\n" "${BLUE}--------------------------------------------------------${NC}"
 printf "%b\n" "Press [Enter] to return..."
 read -rp ""
@@ -235,7 +235,7 @@ device_brand
 
 if ! command -v adb &> /dev/null; then
 echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
-echo -e "${RED}[ERROR]${NC} ADB is not installed or not found in PATH."
+echo -e "${RED}[ERROR]${NC}[X] ADB is not installed or not found in PATH."
 return 1
 fi
 
@@ -376,21 +376,21 @@ return 0 2>/dev/null || exit 0
 fi
 
 if [[ "$EXEC" =~ "rish" ]]; then
-printf "%b\n" "${GREEN}Shizuku is already active (running under rish context).${NC}"
+printf "%b\n" "${GREEN}[✓] Shizuku is already active (running under rish context).${NC}"
 else
 SHIZUKU_CHECK=$($EXEC pidof rish 2>/dev/null || $EXEC ps-A 2>/dev/null | grep -i shizuku)
 
 if [ -z "$SHIZUKU_CHECK" ]; then
-printf "%b\n" "${YELLOW}Starting Shizuku service...${NC}"
+printf "%b\n" "${YELLOW}[!] Starting Shizuku service...${NC}"
 $EXEC sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh 2>/dev/null || \
 $EXEC sh /data/user_de/0/moe.shizuku.privileged.api/bin/start.sh 2>/dev/null
 sleep 3
 else
-printf "%b\n" "${GREEN}Shizuku is already running.${NC}"
+printf "%b\n" "${YELLOW}[!] Shizuku is already running.${NC}"
 fi
 fi
 
-printf "%b\n" "${YELLOW}Enabling wireless ADB on port 5555...${NC}"
+printf "%b\n" "${YELLOW}[!] Enabling wireless ADB on port 5555...${NC}"
 adb tcpip 5555
 sleep 2
 
@@ -402,15 +402,17 @@ fi
 
 if [ -z "$IP" ]; then
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
-printf "%b\n" "${RED}[!] Could not automatically determine device IP. Please ensure Wi-Fi is connected.${NC}"
-printf "%b\n" "${YELLOW}You can manually connect using: adb connect${NC} <device-ip>:5555"
+printf "%b\n" "${RED}[X] Could not automatically determine device IP. Please ensure Wi-Fi is connected.${NC}"
+printf "%b\n" "${YELLOW}[*] You can manually connect using: adb connect${NC} <device-ip>:5555"
 else
-printf "%b\n" "${GREEN}Device IP detected:${NC} $IP"
-printf "%b\n" "${YELLOW}Connecting to wireless ADB...${NC}"
+printf "%b\n" "${GREEN}[✓] Device IP detected:${NC} $IP"
+printf "%b\n" "${YELLOW}[!] Connecting to wireless ADB...${NC}"
 adb connect "$IP:5555"
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
-printf "%b\n" "${GREEN}Wireless ADB setup complete!${NC} You can now unplug your cable."
-printf "%b\n" "To reconnect later: adb connect $IP:5555"
+printf "%b\n" "${GREEN}[✓] Wireless ADB setup complete!${NC} You can now unplug your cable."
+printf "%b\n" "${YELLOW}[*] To reconnect later: adb connect $IP:5555${NC}"
+read -rp "Press Enter to return to main menu"
+return 0
 fi
 }
 
@@ -419,16 +421,16 @@ show_logo
 printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB MODE${NC}"
 printf "%b\n" "${BLUE}==================================================${NC}"
-printf "%b\n" "Choose your wireless ADB connection mode"
-printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 ensure_adb || exit 1
 check_adb_menu
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
+printf "%b\n" "Choose your wireless ADB connection mode"
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 
-echo -e "a) Standard Wireless ADB only"
-echo -e "s) Starts Shizuku and enables Wireless ADB ${YELLOW}(Recommended)${NC}"
-echo -e "r) Cancel"
-echo -e "e) Exit"
+echo -e "aA) Standard Wireless [A]DB only"
+echo -e "sS) [S]tarts Shizuku and enables Wireless ADB ${YELLOW}(Recommended)${NC}"
+echo -e "rR) [C]ancel"
+echo -e "eE) [E]xit"
 
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 printf "%b\n" "Select an option:"
@@ -436,11 +438,11 @@ printf "%b\n" "Select an option:"
 read -rp " " choice
 case "$choice" in
 
-a) wireless_adb ;;
-s) wireless_shizuku ;;
-r) return 0 ;;
-e) 
-echo -e "\nGoodbye!"
+aA) wireless_adb ;;
+sS) wireless_shizuku ;;
+rR) return 0 ;;
+eE) 
+echo -e "Goodbye!"
 clear
 exit 0
 ;;
@@ -453,16 +455,17 @@ esac
 
 uuraam_debloat() {
 show_logo
-echo -e "${BLUE}==========================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
-echo -e "${BLUE}==========================================${NC}"
-echo -e "\n${CYAN}Place debloat configurations in ./Configs/debloat/${NC}"
-echo -e "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
+printf "%b\n" "${BLUE}==========================================${NC}"
+printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
+printf "%b\n" "${BLUE}==========================================${NC}"
+printf "%b\n" "${CYAN}Place debloat configurations in ./Configs/debloat/${NC}"
+printf "%b\n" "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
+printf "%b\n" "\n${CYAN}You have the choice to ${WHITE}[D]${NC}isable or ${WITHE}[U]${NC}ninstall packages.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
 detect_execution_backend || return 1
 
-printf "%b\n" "[*] Fetching installed packages..."
+printf "%b\n" "${YELLOW}[*] Fetching installed packages...${NC}"
 local installed_packages
 installed_packages=$($EXEC pm list packages 2>/dev/null | sed 's/^package://' | tr -d '\r')
 
@@ -488,14 +491,14 @@ done
 fi
 
 if [ ${#files[@]} -eq 0 ]; then
-echo -e "\n${RED}No .json files found in $CONFIGS_DIR${NC}"
+printf "%b\n" "\n${RED}[X] No .json files found in $CONFIGS_DIR${NC}"
 read -rp "Press Enter to return to main menu..."
 return 1
 fi
 
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
-printf "%b\n" "Configuration files found:"
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${GREEN}[✓] Configuration files found:${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 
 local display_names=()
 for f in "${files[@]}"; do
@@ -506,11 +509,13 @@ PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
 if [ -n "$short_name" ]; then
 file="${files[$((REPLY-1))]}"
-printf "%b\n" "${CYAN}--------------------------------------------${NC}"
-echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${YELLOW}[!] Selected file:${NC} ${GREEN}${short_name}${NC}"
 break
 else
-echo -e "\n${RED}Invalid selection, please try again.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "\n${RED}[X] Invalid selection, please try again.${NC}"
+sleep 4
 fi
 done
 
@@ -534,13 +539,14 @@ mapfile -t PACKAGES < <(jq -r '
  ' "$file" 2>/dev/null | sort -u)
 
  if [ ${#PACKAGES[@]} -eq 0 ]; then
- echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+ printf "%b\n" "${BLUE}---------------------------------------${NC}"
+ printf "%b\n" "${RED}[X] No packages found. Verify the JSON format.${NC}"
  sleep 1
  read -rp "Press Enter to return to main menu"
  return 1
  fi
 
-printf "\n%b" "${YELLOW}[?] Choose action: [U]ninstall  /  [D]isable  /  [C]ancel: ${NC}"
+echo -e "${YELLOW}[?] Choose action: [U]ninstall  /  [D]isable  /  [C]ancel: ${NC}"
 read -r action
 
 case "$action" in
@@ -553,24 +559,30 @@ ACTION="disable"
 ACTION_LABEL="disabled"
 ;;
 *)
-echo -e "\n${YELLOW}Operation cancelled.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${YELLOW}[X] Operation cancelled.${NC}"
 sleep 1
+read -rp "Press Enter to return to main menu"
 return 0
 ;;
 esac
 
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b" "${YELLOW}[?] You are about to $ACTION packages... continue? [y/N]: ${NC}"
 read -r confirm
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
-printf "%b\n" "Operation canceled."
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${YELLOW}[X] Operation canceled.${NC}"
 return 0
 fi
 
-echo -e "\n${BLUE}Fetching installed packages from device...${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${YELLOW}[!] Fetching installed packages from device...${NC}"
 local INSTALLED_PKGS
 INSTALLED_PKGS=$($EXEC pm list packages -u 2>/dev/null | tr -d '\r' | cut -d: -f2)
 
-echo -e "\n${BLUE}Starting $ACTION of ${#PACKAGES[@]} packages...${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${YELLOW}[!] Starting $ACTION of ${#PACKAGES[@]} packages...${NC}"
 
 local SUCCESS=0
 local SKIPPED=0
@@ -578,37 +590,36 @@ local FAILED=0
 
 for pkg in "${PACKAGES[@]}"; do
 [ -z "$pkg" ] && continue
-echo -n "Checking $pkg: "
+echo -n "${YELLOW}Checking${NC} $pkg: "
 
 if ! echo "$INSTALLED_PKGS" | grep -qx "$pkg"; then
-echo -e "\n${YELLOW}Skipped (not installed)${NC}"
+printf "%b\n" "${YELLOW}[*] Skipped (not installed)${NC}"
 ((SKIPPED++))
 continue
 fi
 
 if [ "$ACTION" = "uninstall" ]; then
 if $EXEC pm uninstall -k --user 0 "$pkg" >/dev/null 2>&1; then
-echo -e "\n${GREEN}Success ($ACTION_LABEL)${NC}"
+echo -e "\n${GREEN}[✓] Success ($ACTION_LABEL)${NC}"
 ((SUCCESS++))
 else
-echo -e "\n${RED}Failed${NC}"
+echo -e "\n${RED}[X] Failed${NC}"
 ((FAILED++))
 fi
 else
 
-if $EXEC pm disable-user --user 0 "$pkg" >/dev/null 2>&1 || \
-$EXEC pm disable --user 0 "$pkg" >/dev/null 2>&1; then
-echo -e "\n${GREEN}Success ($ACTION_LABEL)${NC}"
+if $EXEC pm disable-user --user 0 "$pkg" >/dev/null 2>&1 || $EXEC pm disable --user 0 "$pkg" >/dev/null 2>&1; then
+echo -e "\n${GREEN}[✓] Success ($ACTION_LABEL)${NC}"
 ((SUCCESS++))
 else
-echo -e "\n${RED}Failed${NC}"
+echo -e "\n${RED}[X] Failed${NC}"
 ((FAILED++))
 fi
 fi
 done
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "Summary: ${GREEN}$SUCCESS $ACTION_LABEL${NC}, ${YELLOW}$SKIPPED skipped${NC}, ${RED}$FAILED failed${NC}."
+echo -e "Summary: ${GREEN}$SUCCESS [✓] $ACTION_LABEL${NC}, ${YELLOW}$SKIPPED[*] skipped${NC}, ${RED}$FAILED [X] failed${NC}."
 echo -e "\n${BLUE}----------------------------------------${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -624,7 +635,7 @@ date_str="$(date +%Y%m%d_%H%M%S)"
 local output_file="$output_dir/Uraam_Restoration_List_${date_str}.json"
 
 printf "\n%b\n" "${BLUE}----------------------------------------${NC}"
-printf "%b\n" "${CYAN}Generating restoration list...${NC}"
+printf "%b\n" "${YELLOW}Generating restoration list...${NC}"
 printf "%b\n" "${BLUE}----------------------------------------${NC}"
 
 local all_pkgs active_pkgs
@@ -632,13 +643,13 @@ all_pkgs=$($EXEC pm list packages -u --user 0 2>/dev/null | sed 's/^package://' 
 active_pkgs=$($EXEC pm list packages --user 0 2>/dev/null | sed 's/^package://' | tr -d '\r' | sort)
 
 if [ -z "$all_pkgs" ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b\n" "${RED}[!] Unable to communicate with package manager.${NC}"
 read -rp "Press [Enter] to return to main menu"
 return 1
 fi
 
-comm -23 <(echo "$all_pkgs") <(echo "$active_pkgs") \
-| jq -R -s --arg date "$date_str" '
+comm -23 <(echo "$all_pkgs") <(echo "$active_pkgs") | jq -R -s --arg date "$date_str" '
   [ split("\n")[] 
     | select(test("^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]+)+$")) 
     | {packageName: .} 
@@ -657,10 +668,12 @@ count=$(jq '.apps | length' "$output_file" 2>/dev/null || echo 0)
 
 if [ "$count" -eq 0 ]; then
 rm -f "$output_file"
-printf "\n%b\n" "${YELLOW}[i] No debloated packages found on this device.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "\n%b\n" "${YELLOW}[X] No debloated packages found on this device.${NC}"
 else
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b\n" "${GREEN}[✓] Successfully identified $count debloated packages!${NC}"
-printf "%b\n" "${BLUE}[i] File saved to: ${output_file}${NC}"
+printf "%b\n" "${BLUE}[!] File saved to: ${output_file}${NC}"
 fi
 
 read -rp "Press [Enter] to return to main menu"
@@ -676,12 +689,13 @@ echo -e "${BLUE}-----------------------------------------------${NC}"
 
 detect_execution_backend || return 1
 
-echo -e "\n${RED}--- Warning ---${NC}"
-echo -e "\n${CYAN}You are about to create backup.*json in /Configs/backuo-restore.${NC}"
+printf "%b\n" "\n${RED}--- Warning ---${NC}"
+echo -e "${CYAN}[?] You are about to create backup.*json in /Configs/backuo-restore.${NC}"
 read -p "Are you sure you want to proceed? (y/N): " confirm
 
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
-echo "\nOperation cancelled."
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+echo "${RED}[X] Operation cancelled.${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 1
@@ -693,15 +707,16 @@ fi
 uraam_installer() {
 clear
 show_logo
-echo -e "${BLUE}==========================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
-echo -e "${BLUE}==========================================${NC}"
-echo -e "\n${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
-echo -e "\n${BLUE}----------------------------------------${NC}"
+printf "%b\n" "${BLUE}==========================================${NC}"
+printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | INSTALLER${NC}"
+printf "%b\n" "${BLUE}==========================================${NC}"
+printf "%b\n" "${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
+printf "%b\n" "${BLUE}----------------------------------------${NC}"
 
 detect_execution_backend || return 1
 
 if [ ! -d "$APP_DIR" ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 echo -e "\n${RED}[ERROR]${NC}Directory $APP_DIR not found."
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -712,30 +727,31 @@ shopt -s nullglob
 local apks=("$APP_DIR"/*.apk)
 shopt -u nullglob
 
-if [ ${#apks[@]} -eq 0 ];then
-echo -e "\n${RED}[ERROR]${NC} No APK files found in $APP_DIR."
+if [ ${#apks[@]} -eq 0 ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+echo -e "\n${RED}[ERROR]${NC}[X] No APK files found in $APP_DIR."
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 1
 fi
 
-echo -e "\n${GREEN}[INFO]${NC} Deploying ${#apks[@]} package(s)..."
+echo -e "\n${PURPLE}[INFO]${NC} ${YELLOW}[!] Deploying${NC} ${#apks[@]} ${YELLOW}package(s)...${NC}"
 
 local ok=0
 local fail=0
 for apk in "${apks[@]}"; do
-echo -n "Installing: $(basename "$apk") ... "
-if $EXEC pminstall -r -g "$apk" >/dev/null 2>&1; then
-echo -e"${GREEN}✓ Success${NC}"
+echo -n "${YELLOW}Installing:${NC} $(basename "$apk") ... "
+if $EXEC pm install -r -g "$apk" >/dev/null 2>&1; then
+echo -e "${GREEN}[✓] Success${NC}"
 ((ok++))
 else
-echo -e "${RED}✗ Failed${NC}"
+echo -e "${RED}[X] Failed${NC}"
 ((fail++))
 fi
 done
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "Summary: ${GREEN}$ok installed${NC}, ${RED}$fail failed${NC}."
+echo -e "Summary: ${GREEN}$ok [✓] Installed${NC}, ${RED}$fail [X] Failed${NC}."
 echo -e "${BLUE}----------------------------------------${NC}\n"
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -762,17 +778,18 @@ display_names+=("$(basename "$f")")
 done
 
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
-printf "%b\n" "${GREEN}Configuration files found:${NC}"
+printf "%b\n" "${GREEN}[✓] Configuration files found:${NC}"
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
 if [ -n "$short_name" ]; then
 file="${files[$((REPLY-1))]}"
-echo -e "\nSelected file: ${GREEN}${short_name}${NC}"
+echo -e "\n${YELLOW}[!] Selected file:${NC} ${GREEN}${short_name}${NC}"
 break
 else
-echo -e "\n${RED}Invalid selection, please try again.${NC}"
+printf "%b\n" "${BLUE}--------------------------------------------${NC}"
+echo -e "\n${RED}[X] Invalid selection, please try again.${NC}"
 read -rp "Press Enter to return to main menu"
 return 1
 fi
@@ -798,32 +815,34 @@ mapfile -t PACKAGES < <(jq -r '
 ' "$file" 2>/dev/null | sort -u)
 
 if [ ${#PACKAGES[@]} -eq 0 ]; then
-echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+echo -e "\n${RED}[X] No packages found. Verify the JSON format.${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
 return 1
 fi
 
-echo -e "\n${BLUE}Starting restoration of ${#PACKAGES[@]} packages...${NC}"
+printf "%b\n" "${BLUE}--------------------------------------------${NC}"
+printf "%b\n" "${BLUE}[!] Starting restoration of ${#PACKAGES[@]} packages...${NC}"
 
 local SUCCESS=0
 local FAILED=0
 
 for pkg in "${PACKAGES[@]}"; do
 [ -z "$pkg" ] && continue
-echo -n "Restoring $pkg: "
+echo -n "${YELLOW}[!] Restoring${NC} $pkg: "
 
 if $EXEC pm install-existing --user 0 "$pkg" >/dev/null 2>&1; then
-echo -e "\n${GREEN}Success${NC}"
+echo -e "\n${GREEN}[✓] Success${NC}"
 ((SUCCESS++))
 else
-echo -e "\n${RED}Failed (already present or not found)${NC}"
+echo -e "\n${RED}[X] Failed (already present or not found)${NC}"
 ((FAILED++))
 fi
 done
 
-echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "\nSummary: ${GREEN}$SUCCESS restored${NC}, ${RED}$FAILED failed/skipped${NC}."
+printf "%b\n" "\n${BLUE}----------------------------------------${NC}"
+printf "%b\n" "\nSummary: ${GREEN}$SUCCESS [✓] restored${NC}, ${RED}$FAILED [X] failed/skipped${NC}."
 echo -e "\n${BLUE}----------------------------------------${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -867,7 +886,7 @@ nano -v "$LOGB_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
 cat "$LOGB_DIR"/*.log
-echo -e "\nPress [Enter] to return to the menu..."
+echo -e "Press Enter to return to the menu..."
 read -r
 fi
 else
@@ -890,7 +909,7 @@ nano -v "$LOGR_DIR"/*.log
 else
 echo -e "\n${YELLOW}[!] Displaying raw logs:${NC}\n"
 cat "$LOGR_DIR"/*.log
-echo -e "\nPress [Enter] to return to the menu... "
+echo -e "Press [Enter] to return to the menu... "
 read -r
 fi
 else
@@ -923,7 +942,7 @@ clear
 exit 0
 ;;
 *)
-echo -e "\n${RED}[!] Invalid option.${NC} Please try again."
+echo -e "\n${RED}[X] Invalid option.${NC} Please try again."
 ;;
 esac
 }
@@ -936,10 +955,12 @@ echo -e "${BLUE}========================================${NC}"
 printf "\n%b" "${YELLOW}[?] You are about to update URAAM. Do you want to download and install it? [y/N]: ${NC}"
 read -r confirm
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
-printf "%b\n" "Update canceled."
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
+printf "%b\n" "[X] Update canceled."
+
 return 0
 fi
-printf "${CYAN}[*] Updating existing installation...${NC}\n"
+printf "${YELLOW}[*] Updating existing installation...${NC}\n"
 git fetch --all --prune >/dev/null 2>&1
 
 if git reset --hard "origin/$BRANCH">/dev/null 2>&1; then
@@ -952,12 +973,14 @@ fi
 if [ -f "$INSTALL_DIR/uraam.sh" ]; then
 chmod +x "$INSTALL_DIR/uraam.sh"
 find "$INSTALL_DIR" -type f -name "*.sh" -exec chmod +x {} +
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 sleep 1 
 read -rp "press Enter to restart URAAM with new changes..." 
 rm -rf "$INSTALL_DIR/assets" "$INSTALL_DIR/installer.sh"
 clear
 exec "$0" "$@"
 else
+printf "%b\n" "${CYAN}--------------------------------------------${NC}"
 printf "${RED}[X] Critical error: uraam.sh was not found in ${INSTALL_DIR}.${NC}\n"
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -997,7 +1020,9 @@ local latest_tag
 latest_tag=$(echo "$release_json" | jq -r '.tag_name // empty' | tr -d '\r')
 
 if [ -z "$latest_tag" ]; then
-printf "%b\n" "${RED}[!] Error: Unable to fetch release info from GitHub.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${RED}[X] Error: Unable to fetch release info from GitHub.${NC}"
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 
@@ -1007,10 +1032,11 @@ local local_ver
 local_ver=$(dpkg-query -W -f='${Version}' uraam 2>/dev/null | tr -d '\r')
 local_ver="${local_ver#v}"
 
-printf "%b\n" "Current version :${BLUE}${local_ver}${NC}"
-printf "%b\n" "Latest version  : ${GREEN}${remote_ver}${NC}"
+printf "%b\n" "${YELLOW}Current version:${NC} ${local_ver}"
+printf "%b\n" "${GREEN}Latest version:${NC} ${remote_ver}"
 
 if [ "$local_ver" = "$remote_ver" ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b\n" "${GREEN}[✓] URAAM is already up to date!${NC}"
 read -rp "Press [Enter] to return to menu..."
 return 0
@@ -1020,6 +1046,7 @@ local deb_url
 deb_url=$(echo "$release_json" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url' | head -n1)
 
 if [ -z "$deb_url" ] ||[ "$deb_url" = "null" ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b\n" "${RED}[!] New version found (${latest_tag}),but no .deb asset is available.${NC}"
 read -rp "Press [Enter] to return to menu..."
 return 1
@@ -1028,7 +1055,9 @@ fi
 printf "\n%b" "${YELLOW}[?] A new update is available. Do you want to download and install it? [y/N]: ${NC}"
 read -r confirm
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
-printf "%b\n" "Update canceled."
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${RED}[X] Update canceled.${NC}"
+read -rp "Press Enter to return to main menu"
 return 0
 fi
 
@@ -1036,8 +1065,10 @@ local tmp_deb="/tmp/uraam_update.deb"
 
 printf "\n%b\n" "${CYAN}[*] Downloading: ${deb_url}${NC}"
 if ! curl -L --progress-bar -o "$tmp_deb" "$deb_url"; then
-printf "%b\n" "${RED}[!] Download failed.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${RED}[X] Download failed.${NC}"
 rm -f "$tmp_deb"
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 
@@ -1046,17 +1077,21 @@ if sudo dpkg -i "$tmp_deb"; then
 sudo apt-get install -f -y >/dev/null 2>&1
 rm -f "$tmp_deb"
 printf "\n%b\n" "${GREEN}[✓] URAAM successfully updated to ${latest_tag}!${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "%b\n" "${YELLOW}[!] Please restart URAAM to apply changes.${NC}"
 exit0
 else
-printf "\n%b\n" "${RED}[!] Installation failed.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "\n%b\n" "${RED}[X] Installation failed.${NC}"
 rm -f "$tmp_deb"
+read -rp "Press Enter to return to main menu"
 return 1
 fi
 }
 
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
 if [ ! -d "$HOME/storage/shared" ]; then
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
 termux-setup-storage
 sleep 1
@@ -1085,7 +1120,7 @@ echo -e " ${CYAN}[r]${NC} Restore ${YELLOW}(Revert/Reinstall Apps)${NC}"
 echo -e " ${CYAN}[w]${NC} Wireless ADB Setup ${YELLOW}(Pair & Connect)${NC}"
 echo -e " ${CYAN}[u]${NC} Update Uraam ${YELLOW}(Search/install update from repo)${NC}"
 echo -e " ${CYAN}[v]${NC} View Logs ${YELLOW}(Open & read logs)${NC}"
-echo -e " ${RED}[e]${NC} Exit\n"
+echo -e " ${RED}[e]${NC} Exit"
 
 printf "%b\n" "${BLUE}------------------------------------------${NC}"
 printf "%b\n" "Enter your choice:"
@@ -1106,7 +1141,7 @@ clear
 exit 0
 ;;
 *)
-echo -e "${RED}Invalide option, please try again.${NC}"
+echo -e "${RED}[X] Invalide option, please try again.${NC}"
 sleep 1
 ;;
 esac
