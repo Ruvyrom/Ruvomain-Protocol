@@ -42,7 +42,7 @@ jobs:
           ln -s "/$PREFIX/share/uraam/uraam.sh" "$PKG_DIR/$PREFIX/bin/uraam"
           chmod +x "$PKG_DIR/$PREFIX/share/uraam/uraam.sh"
           sed "s/VERSION_PLACEHOLDER/$VERSION/" packaging/termux/DEBIAN/control > "$PKG_DIR/DEBIAN/control"
-          dpkg-deb--build "$PKG_DIR"
+          dpkg-deb --build "$PKG_DIR"
 
       - name: Upload DEB Assets to Release
         uses: softprops/action-gh-release@v2
