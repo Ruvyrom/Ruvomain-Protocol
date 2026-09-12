@@ -466,7 +466,7 @@ printf "%b\n" "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 printf "%b\n" "\n${CYAN}You have the choice to ${WHITE}[D]${NC}isable or ${WITHE}[U]${NC}ninstall packages.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
-detect_execution_backend
+detect_execution_backend || return 1
 
 printf "%b\n" "${YELLOW}[*] Fetching installed packages...${NC}"
 local installed_packages
@@ -992,14 +992,17 @@ fi
 }
 
 is_installed_via_deb() {
+local package_name="${1:-uraam}"
+
 if [ -n "$PREFIX" ] && [[ "$PREFIX" == *com.termux* ]]; then
 return 1
 fi
 
 if command -v dpkg-query >/dev/null 2>&1; then
-local pkg_status
-pkg_status=$(dpkg-query -W -f='${Status}' uraam 2>/dev/null)
-if [[ "$pkg_status" == *"install ok installed"* ]]; then
+local package_status
+package_status=$(dpkg-query -W -f='${Status}' "$package_name" 2>/dev/null)
+        
+if [[ "$package_status" == *"install ok installed"* ]]; then
 return 0
 fi
 fi
@@ -1011,7 +1014,7 @@ check_and_update() {
 if ! is_installed_via_deb; then
 update_uraam
 return $?
-fi
+    fi
 
 printf "%b\n" "${CYAN}[*] Debian .deb installation detected.${NC}"
 printf "%b\n" "${CYAN}[*] Checking for updates on GitHub...${NC}"
@@ -1048,9 +1051,9 @@ fi
 local deb_url
 deb_url=$(echo "$release_json" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url' | head -n1)
 
-if [ -z "$deb_url" ] ||[ "$deb_url" = "null" ]; then
+if [ -z "$deb_url" ] || [ "$deb_url" = "null" ]; then
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
-printf "\n%b\n" "${RED}[!] New version found (${latest_tag}),but no .deb asset is available.${NC}"
+printf "\n%b\n" "${RED}[!] New version found (${latest_tag}), but no .deb asset is available.${NC}"
 read -rp "Press [Enter] to return to menu..."
 return 1
 fi
@@ -1082,7 +1085,7 @@ rm -f "$tmp_deb"
 printf "\n%b\n" "${GREEN}[✓] URAAM successfully updated to ${latest_tag}!${NC}"
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "%b\n" "${YELLOW}[!] Please restart URAAM to apply changes.${NC}"
-exit0
+exit 0
 else
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "\n%b\n" "${RED}[X] Installation failed.${NC}"
