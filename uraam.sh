@@ -451,7 +451,7 @@ sleep 1
 esac
 }
 
-uraam_debloat() {
+uuraam_debloat() {
 show_logo
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
@@ -526,24 +526,43 @@ mapfile -t PACKAGES < <(jq -r '
       empty
     end;
 
-  if .apps then .apps[] | extract
-  elif .packages then .packages[] | extract
-  elif type == "array" then .[] | extract
-  else extract
-  end
-' "$file" 2>/dev/null | sort -u)
+ if .apps then .apps[] | extract
+ elif .packages then .packages[] | extract
+ elif type == "array" then .[] | extract
+ else extract
+ end
+ ' "$file" 2>/dev/null | sort -u)
 
-if [ ${#PACKAGES[@]} -eq 0 ]; then
-echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+ if [ ${#PACKAGES[@]} -eq 0 ]; then
+ echo -e "\n${RED}No packages found. Verify the JSON format.${NC}"
+ sleep 1
+ read -rp "Press Enter to return to main menu"
+ return 1
+ fi
+
+printf "\n%b" "${YELLOW}[?] Choose action: [U]ninstall  /  [D]isable  /  [C]ancel: ${NC}"
+read -r action
+
+case "$action" in
+[u])
+ACTION="uninstall"
+ACTION_LABEL="removed"
+;;
+[Dd])
+ACTION="disable"
+ACTION_LABEL="disabled"
+;;
+*)
+echo -e "\n${YELLOW}Operation cancelled.${NC}"
 sleep 1
-read -rp "Press Enter to return to main menu"
-return 1
-fi
+return 0
+;;
+esac
 
-printf "\n%b" "${YELLOW}[?] You are about to debloat your device... do you want continue? [y/N]: ${NC}"
+printf "\n%b" "${YELLOW}[?] You are about to $ACTION packages... continue? [y/N]: ${NC}"
 read -r confirm
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
-printf "%b\n" "Update canceled."
+printf "%b\n" "Operation canceled."
 return 0
 fi
 
@@ -551,7 +570,7 @@ echo -e "\n${BLUE}Fetching installed packages from device...${NC}"
 local INSTALLED_PKGS
 INSTALLED_PKGS=$($EXEC pm list packages -u 2>/dev/null | tr -d '\r' | cut -d: -f2)
 
-echo -e "\n${BLUE}Starting debloating of ${#PACKAGES[@]} packages...${NC}"
+echo -e "\n${BLUE}Starting $ACTION of ${#PACKAGES[@]} packages...${NC}"
 
 local SUCCESS=0
 local SKIPPED=0
@@ -567,17 +586,29 @@ echo -e "\n${YELLOW}Skipped (not installed)${NC}"
 continue
 fi
 
-if $EXEC pm uninstall -k --user 0 "$pkg">/dev/null 2>&1; then
-echo -e "\n${GREEN}Success (removed)${NC}"
+if [ "$ACTION" = "uninstall" ]; then
+if $EXEC pm uninstall -k --user 0 "$pkg" >/dev/null 2>&1; then
+echo -e "\n${GREEN}Success ($ACTION_LABEL)${NC}"
 ((SUCCESS++))
 else
 echo -e "\n${RED}Failed${NC}"
 ((FAILED++))
 fi
+else
+
+if $EXEC pm disable-user --user 0 "$pkg" >/dev/null 2>&1 || \
+$EXEC pm disable --user 0 "$pkg" >/dev/null 2>&1; then
+echo -e "\n${GREEN}Success ($ACTION_LABEL)${NC}"
+((SUCCESS++))
+else
+echo -e "\n${RED}Failed${NC}"
+((FAILED++))
+fi
+fi
 done
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
-echo -e "Summary: ${GREEN}$SUCCESS removed${NC}, ${YELLOW}$SKIPPED skipped${NC}, ${RED}$FAILED failed${NC}."
+echo -e "Summary: ${GREEN}$SUCCESS $ACTION_LABEL${NC}, ${YELLOW}$SKIPPED skipped${NC}, ${RED}$FAILED failed${NC}."
 echo -e "\n${BLUE}----------------------------------------${NC}"
 sleep 1
 read -rp "Press Enter to return to main menu"
