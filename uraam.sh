@@ -442,34 +442,12 @@ read -rp "Press Enter to return to main menu"
 return 0
 }
 
-ruvomain_backup() {
-show_logo
-echo -e "${BLUE}===============================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
-echo -e "${BLUE}===============================================${NC}"
-echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
-echo -e "${BLUE}---------------------------------------------${NC}"
-
-init_logs_backup 2>/dev/null || true
-
-detect_execution_backend || return 1
-
+ubackup() {
 local output_dir="$BACKUPS_DIR"
 mkdir -p "output_dir"
 local date_str
 date_str="$(date +%Y%m%d_%H%M%S)"
 local output_file="$output_dir/Uraam_Restoration_List_${date_str}.json"
-
-echo -e "\n${RED}--- Warning ---${NC}"
-echo -e "\n${CYAN}You are about to create backup.*json in /Configs/backuo-restore.${NC}"
-read -p "Are you sure you want to proceed? (y/N): " confirm
-
-if [[ $confirm != "y" && $confirm != "Y" ]]; then
-echo "\nOperation cancelled."
-sleep 1
-read -rp "Press Enter to return to main menu"
-return 1
-fi
 
 echo -e "\n${BLUE}----------------------------------------${NC}"
 echo -e "${CYAN}\n--- Generating snapshot: $output_file---${NC}"
@@ -514,6 +492,29 @@ printf "\n%b\n" "${GREEN}[✓] Successfully identified ${count} debloated packag
 printf "%b\n" "${BLUE}[i] Restoration file saved to: ${output_file}${NC}"
 read -rp "Press[Enter] to return to main menu"
 return 0
+}
+
+ruvomain_backup() {
+show_logo
+echo -e "${BLUE}===============================================${NC}"
+echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
+echo -e "${BLUE}===============================================${NC}"
+echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
+echo -e "${BLUE}---------------------------------------------${NC}"
+
+detect_execution_backend || return 1
+echo -e "\n${RED}--- Warning ---${NC}"
+echo -e "\n${CYAN}You are about to create backup.*json in /Configs/backuo-restore.${NC}"
+read -p "Are you sure you want to proceed? (y/N): " confirm
+
+if [[ $confirm != "y" && $confirm != "Y" ]]; then
+echo "\nOperation cancelled."
+sleep 1
+read -rp "Press Enter to return to main menu"
+return 1
+else
+ubackup
+fi
 }
 
 uraam_installer() {
