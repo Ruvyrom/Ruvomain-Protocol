@@ -266,32 +266,32 @@ exec> >(tee -a "$LOGFILE") 2>&1
 
 wireless_adb(){
 show_logo
-echo -e "${BLUE}===================================================${NC}"
-echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
-echo -e "${BLUE}===================================================${NC}"
-echo ""
+printf "%b\n" "${BLUE}===================================================${NC}"
+printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
+printf "%b\n" "${BLUE}===================================================${NC}"
+printf "%b\n" ""
 ensure_adb
-echo -e "\n${BLUE}--------------------------------------------------------${NC}"
-echo -e "\n${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
-echo -e "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
-echo -e "\n${CYAN}2. Tap on 'Wireless debugging' (the text itself).${NC}"
-echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
-echo -e "\n${BLUE}--------------------------------------------------------${NC}"
-echo ""
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" "\n${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
+printf "%b\n" "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
+printf "%b\n" "\n${CYAN}2. Tap on 'Wireless debugging' (the text itself).${NC}"
+printf "%b\n" "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" ""
 
-printf "%b\n" "Do you need to PAIR first? (y/N)"
-read -rp "": " need_pair
+printf "%b\n" "Do you need to PAIR first (y/N)" 
+read -rp " " need_pair
 
 case "$need_pair" in
 y|Y)
-echo -e "\n--- STEP 1: PAIRING ---"
-echo -e "\n${CYAN}Check the pairing popup dialog${NC}"
-echo -e "${CYAN}for IP:Port and the 6-digit code.${NC}"
+printf "%b\n" "\n--- STEP 1: PAIRING ---"
+printf "%b\n" "\n${CYAN}Check the pairing popup dialog${NC}"
+printf "%b\n" "${CYAN}for IP:Port and the 6-digit code.${NC}"
 read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
 read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
 if [ -n "$pair_host" ] && [ -n "$pair_code" ]; then
-echo -e "\n${GREEN}[*] Pairing with $pair_host...${NC}"
+printf "%b\n" "\n${GREEN}[*] Pairing with $pair_host...${NC}"
 adb pair "$pair_host" "$pair_code"
 else
 echo -e "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
@@ -299,29 +299,30 @@ fi
 ;;
 esac
 
-echo -e "\n--- STEP 2: CONNECTION ---"
-echo -e "\n${CYAN}Look at the main Wireless Debugging screen${NC}" 
-echo -e "${CYAN}for the CONNECTION port.${NC}"
+printf "%b\n" "\n--- STEP 2: CONNECTION ---"
+printf "%b\n" "\n${CYAN}Look at the main Wireless Debugging screen${NC}" 
+printf "%b\n" "${CYAN}for the CONNECTION port.${NC}"
 
 read -rp "Enter CONNECTION host:port (e.g., 127.0.0.1:41235): " conn_host
 
 if [ -n "$conn_host" ]; then
-echo -e "\n[*] Connecting to $conn_host..."
+printf "%b\n" "\n[*] Connecting to $conn_host..."
 adb connect "$conn_host"
 
 sleep 1
 if adb devices | grep -q "$conn_host.*device"; then
-echo -e "\n${GREEN}[✓] Successfully connected via Wireless ADB!${NC}"
+printf "%b\n" "\n${GREEN}[✓] Successfully connected via Wireless ADB!${NC}"
 else
-echo -e "\n${RED}[!] Connection failed.${NC}"
-echo -e "Check IP/Port and make sure screen is on."
+printf "%b\n" "\n${RED}[!] Connection failed.${NC}"
+printf "%b\n" "Check IP/Port and make sure screen is on."
 fi
 else
 echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
 fi
 
-sleep 1
-read -rp "Press Enter to return to main menu..."
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" Press Enter to return to main menu... 
+read -rp ""
 return 1
 }
 
