@@ -5,6 +5,4 @@ Priority: optional
 Architecture: all
 Depends: bash, android-tools, jq, curl
 Maintainer: Ruvyrom
-Description: Universal Ruvomain ADB App-Manager (Termux)
-Hybrid ADB tool for debloating, backups, and app management.
-Compatible with Termux on Android.
+Description: Universal Ruvomain ADB App-Manager (Termux). Hybrid ADB tool for debloating, backups, and app management. Compatible with Termux on Android.
