@@ -40,7 +40,7 @@ The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a shell ADB/Shizuku toolkit.
 
 * Replaces heavy middleware with a native, audited Bash + jq pipeline. Works on Termux with Wireless ADB, Shizuku & Root, Linux: Debian, Arch, & Fedora based distribution; MacOS & WSL.
 
-* Shizuku compatible, Uraam provide a wireless ADB + Shizuku moduls for automatic connection in Termux. You can also use Shizuku & Termux for debloat, restore & install.
+* Shizuku compatible, Uraam provide a wireless ADB + Shizuku moduls for automatic connection in Termux. You can also use Shizuku or root on Termux for debloat, restore & install.
 
 * Easy one-command for install URAAM automtically with installer script or DEB packages for Debian based distribution and Termux.
 
