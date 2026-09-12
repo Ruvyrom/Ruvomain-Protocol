@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# URAAM - Universal Ruvomain ADB App-Manager v4.2.0
+# URAAM - Universal Ruvomain ADB App-Manager v4.4.0
 #
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -466,7 +466,7 @@ printf "%b\n" "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 printf "%b\n" "\n${CYAN}You have the choice to ${WHITE}[D]${NC}isable or ${WITHE}[U]${NC}ninstall packages.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
-detect_execution_backend || return 1
+detect_execution_backend
 
 printf "%b\n" "${YELLOW}[*] Fetching installed packages...${NC}"
 local installed_packages
