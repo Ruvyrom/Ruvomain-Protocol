@@ -280,13 +280,12 @@ LOGFILE="$LOGR_DIR/uraam-restore-$(date +%Y%m%d_%H%M%S).log"
 exec> >(tee -a "$LOGFILE") 2>&1
 }
 
-wireless_adb(){
+wireless_adb() {
 show_logo
 printf "%b\n" "${BLUE}===================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
 printf "%b\n" "${BLUE}===================================================${NC}"
 printf "%b\n" ""
-ensure_adb
 printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
 printf "%b\n" "\n${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
 printf "%b\n" "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
@@ -357,6 +356,89 @@ printf "%b\n" "\n${BLUE}--------------------------------------------------------
 printf "%b\n" "Press Enter to return to main menu..."
 read -rp ""
 return 1
+}
+
+wireless_shizuku() {
+printf "%b\n" "${BLUE}==================================================${NC}"
+printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS SHIZUKU${NC}"
+printf "%b\n" "${BLUE}==================================================${NC}"
+printf "%b\n" "${CYAN}WIRELESS ADB & SHIZUKU SETUP${NC}"
+printf "%b\n" " ${CYAN}Starts Shizuku and enables Wireless ADB in a single step.${NC}"
+printf "%b\n" " ${CYAN}Unplug your USB cable:no need to plug it in again!${NC}"
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" ""
+if ! $EXEC pm path moe.shizuku.privileged.api >/dev/null2>&1; then
+wireless_adb
+return 0 2>/dev/null || exit 0
+fi
+
+if[[ "$EXEC" =~ "rish" ]]; then
+printf "%b\n" "${GREEN}Shizuku is already active (running under rish context).${NC}"
+else
+SHIZUKU_CHECK=$($EXEC pidof rish 2>/dev/null || $EXEC ps-A 2>/dev/null | grep -i shizuku)
+
+if[ -z "$SHIZUKU_CHECK" ]; then
+printf "%b\n" "${YELLOW}Starting Shizuku service...${NC}"
+$EXEC sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh 2>/dev/null || \
+$EXEC sh /data/user_de/0/moe.shizuku.privileged.api/bin/start.sh 2>/dev/null
+sleep 3
+else
+printf "%b\n" "${GREEN}Shizuku is already running.${NC}"
+fi
+fi
+
+printf "%b\n" "${YELLOW}Enabling wireless ADB on port 5555...${NC}"
+adb tcpip 5555
+sleep 2
+
+IP=$(adb shell ip -finet addr show wlan0 2>/dev/null | awk '/inet / {print $2}' | cut -d/ -f1)
+
+if [ -z "$IP" ]; then
+IP=$(adb shell ip route 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $i}' | head -n1)
+fi
+
+if [ -z "$IP" ]; then
+printf "%b\n" "${RED}[!] Could not automatically determine device IP. Please ensure Wi-Fi is connected.${NC}"
+printf "%b\n" "You can manually connect using: adb connect <device-ip>:5555"
+else
+printf "%b\n" "${GREEN}Device IP detected:${NC} $IP"
+printf "%b\n" "${YELLOW}Connecting to wireless ADB...${NC}"
+adb connect "$IP:5555"
+printf "%b\n" ""
+printf "%b\n" "${GREEN}Wireless ADB setup complete!${NC} You can now unplug your cable."
+printf "%b\n" "To reconnect later: adb connect $IP:5555"
+fi
+}
+
+wireless_menu(){
+show_logo
+printf "%b\n" "${BLUE}==================================================${NC}"
+printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB MODE${NC}"
+printf "%b\n" "${BLUE}==================================================${NC}"
+printf "%b\n" "".     
+ensure_adb
+
+printf "%b\n" "1) Wireless ADB + Start Shizuku (Recommended)"
+printf "%b\n" "2) Standard Wireless ADB only"
+printf "%b\n" "3) Cancel"
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
+printf "%b\n" "Select anoption [1-3] (default: 1):"
+read -rp " " choice
+
+case "$choice" in
+2)
+echo"Configuring Wireless ADB with Shizuku..."
+wireless_shizuku
+;;
+3)
+echo "Aborted."
+return 0 2>/dev/null || exit 0
+;;
+*)
+echo "Switching to standard Wireless ADB..."
+wireless_adb
+;;
+esac
 }
 
 uraam_debloat() {
@@ -639,9 +721,9 @@ for f in "${files[@]}"; do
 display_names+=("$(basename "$f")")
 done
 
-echo -e "\n${BLUE}---------------------------------------${NC}"
-echo -e "\nConfiguration files found:"
-echo -e "\n${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
+printf "%b\n" "${GREEN}Configuration files found:${NC}"
+printf "%b\n" "${BLUE}---------------------------------------${NC}"
 
 PS3="Select the file number (1-${#files[@]}): "
 select short_name in "${display_names[@]}"; do
@@ -976,7 +1058,7 @@ d) uraam_debloat ;;
 i) uraam_installer ;;
 b) uraam_backup ;;
 r) uraam_restore ;;
-w) wireless_adb ;;
+w) wireless_menu ;;
 u) check_and_update ;;
 v) vl_menu ;;
 e)
