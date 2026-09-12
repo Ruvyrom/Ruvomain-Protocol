@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# URAAM - Universal Ruvomain ADB App-Manager v4.4.0
+# URAAM - Universal Ruvomain ADB App-Manager v4.4.1
 #
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -992,7 +992,7 @@ fi
 }
 
 is_installed_via_deb() {
-local package_name="${1:-uraam}"
+local package_name="${1:-uraam-debian}"
 
 if [ -n "$PREFIX" ] && [[ "$PREFIX" == *com.termux* ]]; then
 return 1
@@ -1011,23 +1011,46 @@ return 1
 }
 
 check_and_update() {
+show_logo
+ensure_jq || exit 1
+
 if ! is_installed_via_deb; then
 update_uraam
 return $?
-    fi
+fi
 
 printf "%b\n" "${CYAN}[*] Debian .deb installation detected.${NC}"
 printf "%b\n" "${CYAN}[*] Checking for updates on GitHub...${NC}"
 
+local api_url
+if [[ "$REPO_URL" == *"api.github.com"* ]]; then
+api_url="${REPO_URL%/}/releases/latest"
+else
+local repo_path
+repo_path=$(echo "$REPO_URL" | sed -E 's#^https?://github.com/##; s#/$##; s#\.git$##')
+api_url="https://api.github.com/repos/${repo_path}/releases/latest"
+fi
+
 local release_json
-release_json=$(curl -s "$REPO_URL/releases/latest")
+release_json=$(curl -sSL \
+-H "Accept: application/vnd.github+json" \
+-H "User-Agent: URAAM-Updater" \
+"$api_url")
 
 local latest_tag
-latest_tag=$(echo "$release_json" | jq -r '.tag_name // empty' | tr -d '\r')
+latest_tag=$(echo "$release_json" | jq -r '.tag_name // empty' 2>/dev/null | tr -d '\r')
 
 if [ -z "$latest_tag" ]; then
+local error_message
+error_message=$(echo "$release_json" | jq -r '.message // empty' 2>/dev/null)
+
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
 printf "%b\n" "${RED}[X] Error: Unable to fetch release info from GitHub.${NC}"
+        
+if [ -n "$error_message" ]; then
+printf "%b\n" "${RED}[X] GitHub API response: ${error_message}${NC}"
+fi
+        
 read -rp "Press Enter to return to main menu"
 return 1
 fi
@@ -1036,6 +1059,9 @@ local remote_ver="${latest_tag#v}"
 
 local local_ver
 local_ver=$(dpkg-query -W -f='${Version}' uraam 2>/dev/null | tr -d '\r')
+if [ -z "$local_ver" ]; then
+local_ver=$(dpkg-query -W -f='${Version}' uraam-debian 2>/dev/null | tr -d '\r')
+fi
 local_ver="${local_ver#v}"
 
 printf "%b\n" "${YELLOW}Current version:${NC} ${local_ver}"
@@ -1049,7 +1075,7 @@ return 0
 fi
 
 local deb_url
-deb_url=$(echo "$release_json" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url' | head -n1)
+deb_url=$(echo "$release_json" | jq -r '.assets[] | select(.name | test("uraam-debian*\\.deb$")) | .browser_download_url' | head -n1)
 
 if [ -z "$deb_url" ] || [ "$deb_url" = "null" ]; then
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
@@ -1067,7 +1093,7 @@ read -rp "Press Enter to return to main menu"
 return 0
 fi
 
-local tmp_deb="/tmp/uraam_update.deb"
+local tmp_deb="/tmp/uraam-debian_${remote_ver}_all.deb"
 
 printf "\n%b\n" "${CYAN}[*] Downloading: ${deb_url}${NC}"
 if ! curl -L --progress-bar -o "$tmp_deb" "$deb_url"; then
@@ -1079,8 +1105,7 @@ return 1
 fi
 
 printf "\n%b\n" "${CYAN}[*] Installing package (sudo required)...${NC}"
-if sudo dpkg -i "$tmp_deb"; then
-sudo apt-get install -f -y >/dev/null 2>&1
+if sudo apt-get install -y "$tmp_deb"; then
 rm -f "$tmp_deb"
 printf "\n%b\n" "${GREEN}[✓] URAAM successfully updated to ${latest_tag}!${NC}"
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
