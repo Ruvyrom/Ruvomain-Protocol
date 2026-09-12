@@ -103,12 +103,12 @@ or
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 
-**DEB auto-installation for Debian with uraam-debian_*.deb** (for test)
+**DEB package auto-installation for Debian with `uraam-debian_*.deb`** (for test)
 ```bash
 curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep "browser_download_url.*uraam-debian.*\.deb" | cut-d '"' -f 4 | xargs curl -sL -o /tmp/uraam.deb&& sudo apt install -y /tmp/uraam.deb && rm -f /tmp/uraam.deb
 ```
 
-**DEB auto-installation fo installation with uraam-termux_*.deb** (for test)
+**DEB auto-installation fo installation with `uraam-termux_*.deb`** (for test)
 ```bash
 curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep "browser_download_url.*uraam-termux.*\.deb" | cut -d '"'-f 4 | xargs curl -sL -o "$PREFIX/tmp/uraam.deb" &&apt install -y "$PREFIX/tmp/uraam.deb" && rm -f "$PREFIX/tmp/uraam.deb"
 ```
