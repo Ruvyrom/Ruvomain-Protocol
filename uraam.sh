@@ -22,8 +22,12 @@ fi
 
 APP_DIR="$REPO_DIR/Apps"
 CONFIGS_DIR="$REPO_DIR/Configs/debloat"
-USER_DEBLOAT_DIR="$USER_CONFIG_DIR/debloat"
 BACKUPS_DIR="$USER_DATA_DIR/Configs/backup-restore"
+LOGB_DIR="$REPO_DIR/logs/backup"
+LOGD_DIR="$REPO_DIR/logs/debloat"
+LOGR_DIR="$REPO_DIR/logs/restore"
+USER_DEBLOAT_DIR="$USER_CONFIG_DIR/debloat"
+USER_BACKUPS_DIR="$USER_DATA_DIR/Configs/backup-restore"
 LOGD_DIR="$USER_DATA_DIR/Logs/debloat"
 LOGB_DIR="$USER_DATA_DIR/Logs/backup"
 LOGR_DIR="$USER_DATA_DIR/Logs/restore"
@@ -519,7 +523,7 @@ comm -23 <(echo "$all_pkgs") <(echo "$active_pkgs") \
 name: ("Uraam_Restore_List_" + $date),
 description: "List of debloated packages pending restoration",
 author: "URAAM",
-version: "2.0",
+version: "4.2.0",
 apps: $apps
 }' > "$output_file"
 
@@ -625,13 +629,6 @@ echo -e "\n${CYAN}Restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "\n${BLUE}---------------------------------------${NC}"
 
 detect_execution_backend || return 1
-
-echo -e "\n${BLUE}---------------------------------------${NC}"
-check_adb || {
-read -rp "Press Enter to return tomain menu..."
-return 1
-}
-echo -e "\n${BLUE}---------------------------------------${NC}"
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
