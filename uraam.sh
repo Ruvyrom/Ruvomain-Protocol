@@ -456,7 +456,7 @@ sleep 1
 esac
 }
 
-uuraam_debloat() {
+uraam_debloat() {
 show_logo
 printf "%b\n" "${BLUE}==========================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | DEBLOATER${NC}"
@@ -682,7 +682,7 @@ fi
 read -rp "Press [Enter] to return to main menu"
 }
 
-ruvomain_backup() {
+uraam_backup() {
 show_logo
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
