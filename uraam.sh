@@ -771,6 +771,12 @@ show_logo
 echo -e "${BLUE}========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | UPDATER${NC}"
 echo -e "${BLUE}========================================${NC}"
+printf "\n%b" "${YELLOW}[?] You are about to update URAAM. Do you want to download and install it?[y/N]: ${NC}"
+read -r confirm
+if [[ ! "$confirm" =~ ^[yY]$ ]]; then
+printf "%b\n" "Update canceled."
+return 0
+fi
 printf "${CYAN}[*] Updating existing installation...${NC}\n"
 git fetch --all --prune >/dev/null 2>&1
 
@@ -796,6 +802,101 @@ read -rp "Press Enter to return to main menu"
 return 0
 fi
 }
+
+is_installed_via_deb() {
+if [ -n "$PREFIX" ] && [[ "$PREFIX" == *com.termux* ]]; then
+return 1
+fi
+
+if command -v dpkg-query >/dev/null 2>&1; then
+local pkg_status
+pkg_status=$(dpkg-query -W -f='${Status}' uraam 2>/dev/null)
+if [[ "$pkg_status" == *"install ok installed"* ]]; then
+return 0
+fi
+fi
+
+return 1
+}
+
+check_and_update() {
+if ! is_installed_via_deb; then
+update_uraam
+return $?
+fi
+
+printf "%b\n" "${CYAN}[*] Debian .deb installation detected.${NC}"
+printf "%b\n" "${CYAN}[*] Checking for updates on GitHub...${NC}"
+
+local repo="Ruvomain/Uraam"
+local api_url="https://api.github.com/repos/${repo}/releases/latest"
+local release_json
+release_json=$(curl -s "$api_url")
+
+local latest_tag
+latest_tag=$(echo "$release_json" | jq -r '.tag_name // empty' | tr -d '\r')
+
+if [ -z "$latest_tag" ]; then
+printf "%b\n" "${RED}[!] Error: Unable to fetch release info from GitHub.${NC}"
+return 1
+fi
+
+local remote_ver="${latest_tag#v}"
+
+local local_ver
+local_ver=$(dpkg-query -W -f='${Version}' uraam 2>/dev/null | tr -d '\r')
+local_ver="${local_ver#v}"
+
+printf "%b\n" "Current version :${BLUE}${local_ver}${NC}"
+printf "%b\n" "Latest version  : ${GREEN}${remote_ver}${NC}"
+
+if [ "$local_ver" = "$remote_ver" ]; then
+printf "\n%b\n" "${GREEN}[✓] URAAM is already up to date!${NC}"
+read -rp "Press [Enter] to return to menu..."
+return 0
+fi
+
+local deb_url
+deb_url=$(echo "$release_json" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url' | head -n1)
+
+if [ -z "$deb_url" ] ||[ "$deb_url" = "null" ]; then
+printf "\n%b\n" "${RED}[!] New version found (${latest_tag}),but no .deb asset is available.${NC}"
+read -rp "Press [Enter] to return to menu..."
+return 1
+fi
+
+printf "\n%b" "${YELLOW}[?] A new update is available. Do you want to download and install it? [y/N]: ${NC}"
+read -r confirm
+if [[ ! "$confirm" =~ ^[yY]$ ]]; then
+printf "%b\n" "Update canceled."
+return 0
+fi
+
+local tmp_deb="/tmp/uraam_update.deb"
+
+printf "\n%b\n" "${CYAN}[*] Downloading: ${deb_url}${NC}"
+if ! curl -L --progress-bar -o "$tmp_deb" "$deb_url"; then
+printf "%b\n" "${RED}[!] Download failed.${NC}"
+rm -f "$tmp_deb"
+return 1
+fi
+
+printf "\n%b\n" "${CYAN}[*] Installingpackage (sudo required)...${NC}"
+if sudo dpkg -i "$tmp_deb"; then
+sudo apt-get install -f -y >/dev/null 2>&1
+rm -f "$tmp_deb"
+printf "\n%b\n" "${GREEN}[✓] URAAM successfully updated to ${latest_tag}!${NC}"
+printf "%b\n" "${YELLOW}[!] Please restart URAAM to apply changes.${NC}"
+exit0
+else
+printf "\n%b\n" "${RED}[!] Installation failed.${NC}"
+rm -f "$tmp_deb"
+return 1
+fi
+}
+
+
+
 
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
 echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
@@ -837,7 +938,7 @@ i) uraam_installer ;;
 b) uraam_backup ;;
 r) uraam_restore ;;
 w) wireless_adb ;;
-u) update_uraam ;;
+u) check_and_update ;;
 v) vl_menu ;;
 e)
 echo -e "${CYAN}Goodbye!${NC}"
