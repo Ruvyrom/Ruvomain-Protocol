@@ -183,14 +183,13 @@ printf "%b\n" "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
 printf "%b\n" "${RED}[ERROR]${NC}No device detected via ADB."
 printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
 printf "%b\n" "1. USB Debugging or Wireless Debugging is enabled."
-printf "%b\n" "  2. You authorizedthis device in the popup prompt."
+printf "%b\n" "  2. You authorized this device in the popup prompt."
 printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or Shizuku."
 read -rp "Press [Enter] to return to main menu..."
 return 1
 fi
 return 0
 
-EXEC_TYPE="NONE"
 printf "%b\n" "${RED}[ERROR] No execution environment detected!${NC}"
 printf "%b\n" "${YELLOW}[!] Make sure one of the following is active:${NC}"
 printf "%b\n" "• Root access granted to Termux"
@@ -335,8 +334,6 @@ echo -e "\n${CYAN}Place debloat configurations in ./Configs/debloat/${NC}"
 echo -e "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
-init_logs 2>/dev/null || true
-
 detect_execution_backend || return 1
 
 printf "%b\n" "[*] Fetching installed packages..."
@@ -406,10 +403,16 @@ read -rp "Press Enter to return to main menu"
 return 1
 fi
 
+printf "\n%b" "${YELLOW}[?] You are about to debloat your device... do you want continue? [y/N]: ${NC}"
+read -r confirm
+if [[ ! "$confirm" =~ ^[yY]$ ]]; then
+printf "%b\n" "Update canceled."
+return 0
+fi
+
 echo -e "\n${BLUE}Fetching installed packages from device...${NC}"
 local INSTALLED_PKGS
 INSTALLED_PKGS=$($EXEC pm list packages -u 2>/dev/null | tr -d '\r' | cut -d: -f2)
-
 
 echo -e "\n${BLUE}Starting debloating of ${#PACKAGES[@]} packages...${NC}"
 
@@ -502,14 +505,15 @@ echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | BACKUP CREATOR${NC}"
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
-echo -e "${BLUE}---------------------------------------------${NC}"
+echo -e "${BLUE}-----------------------------------------------${NC}"
 
 detect_execution_backend || return 1
+
 echo -e "\n${RED}--- Warning ---${NC}"
 echo -e "\n${CYAN}You are about to create backup.*json in /Configs/backuo-restore.${NC}"
 read -p "Are you sure you want to proceed? (y/N): " confirm
 
-if [[ $confirm != "y" && $confirm != "Y" ]]; then
+if [[ ! "$confirm" =~ ^[yY]$ ]]; then
 echo "\nOperation cancelled."
 sleep 1
 read -rp "Press Enter to return to main menu"
@@ -578,8 +582,6 @@ echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | RESTORER${NC}"
 echo -e "${BLUE}=========================================${NC}"
 echo -e "\n${CYAN}Restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "\n${BLUE}---------------------------------------${NC}"
-
-init_logs_restore 2>/dev/null || true
 
 detect_execution_backend || return 1
 
@@ -772,7 +774,7 @@ show_logo
 echo -e "${BLUE}========================================${NC}"
 echo -e "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | UPDATER${NC}"
 echo -e "${BLUE}========================================${NC}"
-printf "\n%b" "${YELLOW}[?] You are about to update URAAM. Do you want to download and install it?[y/N]: ${NC}"
+printf "\n%b" "${YELLOW}[?] You are about to update URAAM. Do you want to download and install it? [y/N]: ${NC}"
 read -r confirm
 if [[ ! "$confirm" =~ ^[yY]$ ]]; then
 printf "%b\n" "Update canceled."
