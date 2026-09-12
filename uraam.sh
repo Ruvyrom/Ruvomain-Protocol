@@ -423,29 +423,30 @@ printf "%b\n" "Choose your wireless ADB connection mode"
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 ensure_adb || exit 1
 check_adb_menu
-printf "%b\n" "1) Standard Wireless ADB only"
-printf "%b\n" "    ${YELLOW}→ Just enables wireless debugging over Wi-Fi.${NC}"
-printf "%b\n" "2) Starts Shizuku and enables Wireless ADB ${YELLOW}(Recommended)${NC}"
-printf "%b\n" "    ${YELLOW}→ Unplug your cable: no need to plug it in again!$NC}"
-printf "%b\n" "3) Cancel"
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
-printf "%b\n" "Select an option [1-2]:"
-read -rp " " choice
 
+echo -e "a) Standard Wireless ADB only"
+echo -e "s) Starts Shizuku and enables Wireless ADB ${YELLOW}(Recommended)${NC}"
+echo -e "r) Cancel"
+echo -e "e) Exit"
+
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
+printf "%b\n" "Select an option:"
+
+read -rp " " choice
 case "$choice" in
-1)
-wireless_adb
-;;
-2)
-wireless_shizuku
-;;
-0)
-return 0 2>/dev/null || exit 0
+
+a) wireless_adb ;;
+s) wireless_shizuku ;;
+r) return 0 ;;
+e) 
+echo -e "\nGoodbye!"
+clear
+exit 0
 ;;
 *)
-echo -e "\n${RED}[!]Invalid option.${NC} Please try again."
+echo -e "\n${RED}[!] Invalid option.${NC} Please try again."
 sleep 1
-wireless_menu
 ;;
 esac
 }
@@ -892,8 +893,7 @@ clear
 exit 0
 ;;
 *)
-echo -e "\nInvalide option, please try again."
-sleep 1
+echo -e "\n${RED}[!] Invalid option.${NC} Please try again."
 ;;
 esac
 }
