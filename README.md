@@ -93,7 +93,8 @@ or
 * Export the Shizuku shell (`rish`) into Termux environment.
 * URAAM will execute elevated package commands directly on-device.
 
-### 📁 File Layout (`~/.Uraam/`)
+## 📁 File Layout (`~/.Uraam/`)
+
 | Folder | Purpose|
 | :--- | :--- |
 | `Configs/debloat/` | Place debloat lists here (*Canta/UAD, raw JSON supported*) |
