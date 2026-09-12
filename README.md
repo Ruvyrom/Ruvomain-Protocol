@@ -88,6 +88,10 @@ or
 
 * Wireless ADB: Standard wireless ADB debugging connection.
 
+**3-Shizuku option** ***(For Termux via Shizuku & Rish):***
+* Start [Shizuku](https://shizuku.rikka.app/).
+* Export the Shizuku shell (`rish`) into Termux environment.
+* URAAM will execute elevated package commands directly on-device.
 
 ### 📁 File Layout (`~/.Uraam/`)
 | Folder | Purpose|
