@@ -49,7 +49,7 @@ The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a shell ADB/Shizuku toolkit.
 * Provide a one-click self-update option for script download from Github repository and Debian package, download from Github Latest Release. (Termux DEB auto-update coming soon...).</em> 
 </p>
 <p>
-<em>« I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read. »
+<em>« I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read. »</em>
 </p>
 </div>
 
@@ -83,7 +83,7 @@ The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a shell ADB/Shizuku toolkit.
 
 **UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM):**
 
-## 1-USB option** ***Enable USB Debugging on your device:
+## 1-USB option: Enable USB Debugging on your device:
 
 * Settings > About phone > Tap "Build Number" 7 times
 
