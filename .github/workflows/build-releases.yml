@@ -17,8 +17,8 @@ uses: actions/checkout@v4
 - name: Extract version tag
 id: get_version
 run: |
-VERSION=${GITHUB_REF_NAME#v}
-echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+VERSION="${GITHUB_REF_NAME#v}"
+echo "VERSION=${VERSION}" >> "${GITHUB_OUTPUT}"
 
 - name: Build Debian Package
 run: |
