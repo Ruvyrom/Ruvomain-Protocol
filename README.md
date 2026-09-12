@@ -40,9 +40,9 @@ Professional-grade infrastructure forsystem optimization. Replace heavy middlewa
 </p>
 </div>
 
-| <div align="center">Termux</div> <div align="center"><img src="/assets/Termux-Icon.webp"></div> | <img src="assets/uraam-termux.jpg" width="200"> | <img src="assets/uraam-wireless.jpg" width="200"> || <div align="center">Linux</div> <div align="center"><img src="/assets/linux128.png" width="95"></div> | <img src="assets/uraam_linux.png" width="400"> |
+| <div align="center">Termux</div> <div align="center"><img src="/assets/Termux-Icon.webp"></div> | <img src="assets/uraam-termux.jpg" width="200"> | <img src="assets/uraam-wireless.jpg" width="200"> || <div align="center">Debian</div> <div align="center"><img src="/assets/debian_logo.png" width="150"></div> | <div align="center"><img src="assets/debupdate.png" width="400"></div> |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|| <div align="center">Dashboard</div> | <div align="center">Wireless ADB</div> ||| <div align="center">Dashboard</div> |
+|| <div align="center">Dashboard</div> | <div align="center">Wireless ADB</div> || | Uraam DEB Update |
 
 
 > **🚀 Latest Updates:**
