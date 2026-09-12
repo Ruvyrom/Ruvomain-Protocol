@@ -1,4 +1,4 @@
-name: Build and Release DEB Packages
+name: Build and ReleaseDEB Packages
 
 on:
 release:
@@ -11,30 +11,28 @@ permissions:
 contents: write
 
 steps:
--name: Checkout repository
+- name: Checkout repository
 uses: actions/checkout@v4
 
 - name: Extract version tag
 id: get_version
 run: |
 VERSION="${GITHUB_REF_NAME#v}"
-echo "VERSION=${VERSION}" >> "${GITHUB_OUTPUT}"
+echo "VERSION=${VERSION}" >>"$GITHUB_OUTPUT"
 
 - name: Build Debian Package
 run: |
 VERSION="${{ steps.get_version.outputs.VERSION }}"
 PKG_DIR="uraam-debian_${VERSION}_all"
-mkdir-p "$PKG_DIR/usr/bin" "$PKG_DIR/usr/share/uraam" "$PKG_DIR/DEBIAN"
+mkdir -p "$PKG_DIR/usr/bin" "$PKG_DIR/usr/share/uraam" "$PKG_DIR/DEBIAN"
 
 cp uraam.sh "$PKG_DIR/usr/share/uraam/"
-cp -r Configs "$PKG_DIR/usr/share/uraam/"
-
-ln -s /usr/share/uraam/uraam.sh "$PKG_DIR/usr/bin/uraam"
-chmod +x"$PKG_DIR/usr/share/uraam/uraam.sh"
+cp -rConfigs "$PKG_DIR/usr/share/uraam/"
+ln -s /usr/share/uraam/uraam.sh"$PKG_DIR/usr/bin/uraam"
+chmod +x "$PKG_DIR/usr/share/uraam/uraam.sh"
 
 sed "s/VERSION_PLACEHOLDER/$VERSION/" packaging/debian/DEBIAN/control > "$PKG_DIR/DEBIAN/control"
-
-dpkg-deb --build "$PKG_DIR"
+dpkg-deb --build"$PKG_DIR"
 
 - name: Build Termux Package
 run: |
@@ -45,15 +43,13 @@ mkdir -p "$PKG_DIR/$PREFIX/bin" "$PKG_DIR/$PREFIX/share/uraam" "$PKG_DIR/DEBIAN"
 
 cp uraam.sh "$PKG_DIR/$PREFIX/share/uraam/"
 cp -r Configs "$PKG_DIR/$PREFIX/share/uraam/"
-
 ln -s "/$PREFIX/share/uraam/uraam.sh" "$PKG_DIR/$PREFIX/bin/uraam"
 chmod +x "$PKG_DIR/$PREFIX/share/uraam/uraam.sh"
 
 sed "s/VERSION_PLACEHOLDER/$VERSION/" packaging/termux/DEBIAN/control > "$PKG_DIR/DEBIAN/control"
+dpkg-deb--build "$PKG_DIR"
 
-dpkg-deb --build "$PKG_DIR"
-
-- name:Upload DEB Assets to Release
+- name: Upload DEB Assets to Release
 uses: softprops/action-gh-release@v2
 with:
 files: |
