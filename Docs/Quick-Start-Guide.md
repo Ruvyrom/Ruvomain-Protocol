@@ -46,7 +46,7 @@ curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep "brows
 
 **DEB auto-installation fo installation with `uraam-termux_*.deb`** (for test)
 ```bash
-curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep "browser_download_url.*uraam-termux.*\.deb" | cut -d '"'-f 4 | xargs curl -sL -o "$PREFIX/tmp/uraam.deb" &&apt install -y "$PREFIX/tmp/uraam.deb" && rm -f "$PREFIX/tmp/uraam.deb"
+curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep "browser_download_url.*uraam-termux.*\.deb" | cut -d '"'-f 4 | xargs curl -sL -o "$PREFIX/tmp/uraam.deb" && apt install -y "$PREFIX/tmp/uraam.deb" && rm -f "$PREFIX/tmp/uraam.deb"
 ```
 
 **You can also downlaod latest DEB files from [Releases Page](https://github.com/Ruvyrom/Uraam/releases)**
