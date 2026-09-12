@@ -193,9 +193,9 @@ fi
 printf "%b\n" "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
 printf "%b\n" "${RED}[ERROR]${NC} No device or execution method detected."
 printf "%b\n" "${YELLOW}[!] Make sure:${NC}"
-printf "%b\n" "  1. USB Debugging or Wireless Debugging is enabled."
-printf "%b\n" "  2. You authorized this device in the popup prompt."
-printf "%b\n" "  3. If on Termux, use 'Wireless ADB setup' in Dashboard or configure Shizuku (rish)."
+printf "%b\n" "  ${CYAN}1. USB Debugging or Wireless Debugging is enabled.${NC}"
+printf "%b\n" "  ${CYAN}2. You authorized this device in the popup prompt.${NC}"
+printf "%b\n" "  ${CYAN}3. If on Termux, use 'Wireless ADB setup' in Dashboard or configure Shizuku (rish).${NC}"
 printf "%b\n" "${BLUE}--------------------------------------------------------${NC}"
 printf "%b\n" "Press [Enter] to continue..." 
 read -rp ""
@@ -364,8 +364,8 @@ printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS SHIZUKU${NC}"
 printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}WIRELESS ADB & SHIZUKU SETUP${NC}"
-printf "%b\n" " ${CYAN}Starts Shizuku and enables Wireless ADB in a single step.${NC}"
-printf "%b\n" " ${CYAN}Unplug your USB cable:no need to plug it in again!${NC}"
+printf "%b\n" " ${CYAN}1.Starts Shizuku and enables Wireless ADB in a single step.${NC}"
+printf "%b\n" " ${CYAN}2.Unplug your USB cable:no need to plug it in again!${NC}"
 printf "%b\n" "\n${BLUE}------------------------------------------------${NC}"
 ensure_adb || exit 1
 check_adb_menu
@@ -427,21 +427,21 @@ printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 printf "%b\n" "Choose your wireless ADB connection mode"
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 
-echo -e "aA) Standard Wireless [A]DB only"
-echo -e "sS) [S]tarts Shizuku and enables Wireless ADB ${YELLOW}(Recommended)${NC}"
-echo -e "rR) [C]ancel"
-echo -e "eE) [E]xit"
+echo -e "a) ${CYAN}Standard Wireless ADB only${NC}"
+echo -e "s) ${CYAN}Starts Shizuku and enables Wireless ADB${NC} ${YELLOW}(Recommended)${NC}"
+echo -e "${YELLOW}r)${NC} ${CYAN}Return to Dashboard${NC}"
+echo -e "${RED}e)${NC} ${CYAN}Exit${NC}"
 
-printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
+printf "%b\n" "${BLUE}--------------------------------------------------${NC}"
 printf "%b\n" "Select an option:"
 
 read -rp " " choice
 case "$choice" in
 
-aA) wireless_adb ;;
-sS) wireless_shizuku ;;
-rR) return 0 ;;
-eE) 
+a) wireless_adb ;;
+s) wireless_shizuku ;;
+r) return 0 ;;
+e) 
 echo -e "Goodbye!"
 clear
 exit 0
