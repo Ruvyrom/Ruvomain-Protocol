@@ -98,11 +98,12 @@ or
 
 ## 📁 File Layout (`~/.Uraam/`)
 
-| Folder | Purpose|
-| :--- | :--- |
-| `Configs/debloat/` | Place debloat lists here (*Canta/UAD, raw JSON supported*) |
-| `Apps/` | Place APKs to batch-install |
-| `Configs/backup-restore/` | Exported application lists & restore points |
+| Folder | Purpose|| On Debian with DEB version |
+| :--- | :--- | :--- | :--- |
+| Configs | `Configs/debloat/` | Place debloat lists here (*Canta/UAD, raw JSON supported*) | $HOME/.local/share/uraam/Configs
+| Apps | `Apps/` | Place APKs to batch-install | $HOME/.local/share/uraam/Apps
+| backup-restore | `Configs/backup-restore/` | Exported application lists & restore points | $HOME/.local/share/uraam/backup-restore
+
 
 ## Direct execution
 **1-Line Installation**
