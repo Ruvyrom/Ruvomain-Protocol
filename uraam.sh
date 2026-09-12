@@ -896,12 +896,12 @@ return 1
 fi
 }
 
-
-
-
 if [ -d "/data/data/com.termux" ] && command -v termux-setup-storage >/dev/null 2>&1; then
+if [ ! -d "$HOME/storage/shared" ]; then
 echo -e "\n${CYAN}[*] Requesting storage access (please confirm the popup)...${NC}"
 termux-setup-storage
+sleep 1
+fi
 fi
 
 while true; do
