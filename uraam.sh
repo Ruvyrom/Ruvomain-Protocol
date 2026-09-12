@@ -279,7 +279,8 @@ echo -e "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
 echo -e "\n${BLUE}--------------------------------------------------------${NC}"
 echo ""
 
-read -rp "Do you need to PAIR first? (y/N): " need_pair
+printf "%b\n" "Do you need to PAIR first? (y/N)"
+read -rp "": " need_pair
 
 case "$need_pair" in
 y|Y)
