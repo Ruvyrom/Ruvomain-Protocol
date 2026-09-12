@@ -105,14 +105,14 @@ bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.co
 
 **DEB installation for Debian with uraam-debian_*.deb** (for test)
 ```bash
-curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb
-pkg install ./uraam-termux_4.2.0_all.deb
+curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.3.0/uraam-termux_4.3.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.3.0_all.deb
+pkg install ./uraam-termux_4.3.0_all.deb
 ```
 
 **DEB installation fo installation with uraam-termux_*.deb** (for test)
 ```bash
-curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.2.0_all.deb
-pkg install ./uraam-termux_4.2.0_all.deb
+curl -LO https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.3.0_all.deb || wget https://github.com/Ruvyrom/Uraam/releases/download/v4.2.0/uraam-termux_4.3.0_all.deb
+pkg install ./uraam-termux_4.3.0_all.deb
 ```
 
 **You can also downlaod latest DEB files from [Releases Page](https://github.com/Ruvyrom/Uraam/releases)**
