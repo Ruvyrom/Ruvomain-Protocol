@@ -299,14 +299,26 @@ y|Y)
 printf "%b\n" "\n--- STEP 1: PAIRING ---"
 printf "%b\n" "\n${CYAN}Check the pairing popup dialog${NC}"
 printf "%b\n" "${CYAN}for IP:Port and the 6-digit code.${NC}"
-read -rp "Enter PAIRING host:port (e.g., 127.0.0.1:37123): " pair_host
+read -rp "Enter PAIRING host:port or just PORT: " pair_input
+if [[ "$pair_input" =~ ^[0-9]+$ ]]; then
+pair_host="127.0.0.1:$pair_input"
+else
+pair_host="$pair_input"
+fi
+
 read -rp "Enter 6-digit PAIRING CODE: " pair_code
 
-if [ -n "$pair_host" ] && [ -n "$pair_code" ]; then
-printf "%b\n" "\n${GREEN}[*] Pairing with $pair_host...${NC}"
+if [ "$need_pair" = "y" ] || [ "$need_pair" = "Y" ]; then
+if [ -z "$pair_host" ] || [ -z "$pair_code" ]; then
+printf "%b\n" "\n[!] Pairing aborted: host or code cannot be empty."
+printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" "Press Enter to return to main menu..."
+read -rp ""
+return 1
+fi
 adb pair "$pair_host" "$pair_code"
 else
-echo -e "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
+printf "%b\n" "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
 fi
 ;;
 esac
@@ -333,7 +345,7 @@ echo -e "\n${RED}[!] Connection aborted: host empty.${NC}"
 fi
 
 printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
-printf "%b\n" Press Enter to return to main menu... 
+printf "%b\n" "Press Enter to return to main menu..."
 read -rp ""
 return 1
 }
