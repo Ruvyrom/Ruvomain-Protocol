@@ -134,6 +134,9 @@ return 1
 esac
 }
 
+return 1
+}
+
 device_brand() {
 devices=$(adb devices | grep -v "List of devices" | grep "device$" || true)
 brand=$("$EXEC" getprop ro.product.manufacturer 2>/dev/null || echo "Unknown manufacturer")
@@ -147,10 +150,7 @@ CURRENT_MODEL="${brand^} ${model} (Android ${android_ver})"
 CURRENT_TMODEL="${tbrand^} ${tmodel} (Android ${tandroid_ver})"
 }
 
-
 detect_execution_backend() {
-EXEC=""
-EXEC_TYPE=""
 device_brand
 
 printf "%b\n" "${CYAN}[*] Detecting execution backend...${NC}"
@@ -202,6 +202,66 @@ read -rp ""
 return 1
 }
 
+check_adb_menu() {
+local brand model android_ver tbrand tmodel tandroid_ver
+device_brand
+
+if ! command -v adb &> /dev/null; then
+echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
+echo -e "${RED}[ERROR]${NC}[X] ADB is not installed or not found in PATH."
+return 1
+fi
+
+if ! adb devices | grep -q "device$"; then
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+echo -e "${RED}[ERROR]${NC} No device detected via ADB."
+else
+echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
+printf "%b\n" "${PURPLE}[Target]${NC} $CURRENT_MODEL"
+return 1
+fi
+return 0
+}
+
+is_installed_via_deb() {
+local package_name="${1:-uraam-debian}"
+
+if [ -n "$PREFIX" ] && [[ "$PREFIX" == *com.termux* ]]; then
+return 1
+fi
+
+if command -v dpkg-query >/dev/null 2>&1; then
+local package_status
+package_status=$(dpkg-query -W -f='${Status}' "$package_name" 2>/dev/null)
+        
+if [[ "$package_status" == *"install ok installed"* ]]; then
+return 0
+fi
+fi
+
+detect_execution_backend_deb() {
+EXEC=""
+EXEC_TYPE=""
+
+if ! is_installed_via_deb; then
+detect_execution_backend
+return $?
+fi
+
+if command -v adb >/dev/null 2>&1; then
+local connected
+connected=$(adb devices 2>/dev/null | grep -v "List of devices" | grep "device$" | head -n 1)
+if [ -n "$connected" ]; then
+EXEC="adb shell"
+EXEC_TYPE="ADB"
+ensure_adb || exit 1
+ensure_jq || exit 1
+check_adb_menu
+printf "%b\n" "${GREEN}[✓] Execution backend: ADB${NC}"
+return 0
+fi
+fi
+
 check_adb() {
 local brand model android_ver tbrand tmodel tandroid_ver devices
 device_brand
@@ -227,27 +287,6 @@ printf "%b\n" "${BLUE}--------------------------------------------------------${
 printf "%b\n" "Press [Enter] to return..."
 read -rp ""
 return 1
-}
-
-check_adb_menu() {
-local brand model android_ver tbrand tmodel tandroid_ver
-device_brand
-
-if ! command -v adb &> /dev/null; then
-echo -e "${PURPLE}[HOST]${NC} $CURRENT_TMODEL"
-echo -e "${RED}[ERROR]${NC}[X] ADB is not installed or not found in PATH."
-return 1
-fi
-
-if ! adb devices | grep -q "device$"; then
-echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
-echo -e "${RED}[ERROR]${NC} No device detected via ADB."
-else
-echo -e "${PURPLE}[Host]${NC} $CURRENT_TMODEL"
-printf "%b\n" "${PURPLE}[Target]${NC} $CURRENT_MODEL"
-return 1
-fi
-return 0
 }
 
 init_logs() {
@@ -466,7 +505,7 @@ printf "%b\n" "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 printf "%b\n" "\n${CYAN}You have the choice to ${WHITE}[D]${NC}isable or ${WITHE}[U]${NC}ninstall packages.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
-detect_execution_backend || return 1
+detect_execution_backend_deb || return 1
 
 printf "%b\n" "${YELLOW}[*] Fetching installed packages...${NC}"
 local installed_packages
@@ -690,7 +729,7 @@ echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
 echo -e "${BLUE}-----------------------------------------------${NC}"
 
-detect_execution_backend || return 1
+detect_execution_backend_deb || return 1
 
 printf "%b\n" "\n${RED}--- Warning ---${NC}"
 echo -e "${CYAN}[?] You are about to create backup.*json in /Configs/backuo-restore.${NC}"
@@ -716,7 +755,7 @@ printf "%b\n" "${BLUE}==========================================${NC}"
 printf "%b\n" "${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
 printf "%b\n" "${BLUE}----------------------------------------${NC}"
 
-detect_execution_backend || return 1
+detect_execution_backend_deb || return 1
 
 if [ ! -d "$APP_DIR" ]; then
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
@@ -769,7 +808,7 @@ echo -e "${BLUE}=========================================${NC}"
 echo -e "\n${CYAN}Restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "\n${BLUE}---------------------------------------${NC}"
 
-detect_execution_backend || return 1
+detect_execution_backend_deb || return 1
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
@@ -916,7 +955,7 @@ echo -e "Press [Enter] to return to the menu... "
 read -r
 fi
 else
-echo -e "\n${RED}[X] No log files found in $LOGR_DIR${NC}"
+echo -e "${RED}[X] No log files found in $LOGR_DIR${NC}"
 sleep 2
 fi
 }
@@ -945,7 +984,7 @@ clear
 exit 0
 ;;
 *)
-echo -e "\n${RED}[X] Invalid option.${NC} Please try again."
+echo -e "${RED}[X] Invalid option.${NC} Please try again."
 ;;
 esac
 }
@@ -989,25 +1028,6 @@ sleep 1
 read -rp "Press Enter to return to main menu"
 return 0
 fi
-}
-
-is_installed_via_deb() {
-local package_name="${1:-uraam-debian}"
-
-if [ -n "$PREFIX" ] && [[ "$PREFIX" == *com.termux* ]]; then
-return 1
-fi
-
-if command -v dpkg-query >/dev/null 2>&1; then
-local package_status
-package_status=$(dpkg-query -W -f='${Status}' "$package_name" 2>/dev/null)
-        
-if [[ "$package_status" == *"install ok installed"* ]]; then
-return 0
-fi
-fi
-
-return 1
 }
 
 check_and_update() {
@@ -1139,9 +1159,7 @@ echo -e "${CYAN}\nPlace debloat configurations in ./Configs/debloat/ (Canta JSON
 echo -e "${CYAN}\nPlace APKs to install in ./Apps/.${NC}"
 echo -e "${CYAN}\nBackups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
-ensure_adb || exit 1
-ensure_jq || exit 1
-check_adb_menu
+detect_execution_backend_deb || return 1
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n ${CYAN}[d]${NC} Debloat ${YELLOW}(Remove Bloatware)${NC}"
