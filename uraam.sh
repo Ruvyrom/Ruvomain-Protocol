@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# URAAM - Universal Ruvomain ADB App-Manager v4.2.0 - All-in-One Edition
+# URAAM - Universal Ruvomain ADB App-Manager v4.2.0
 #
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -11,12 +11,25 @@ done
 SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 cd "$SCRIPT_DIR" || exit 1
 REPO_DIR="$SCRIPT_DIR"
-CONFIGS_DIR="$REPO_DIR/Configs/debloat"
-BACKUPS_DIR="$REPO_DIR/Configs/backup-restore"
+
+if [[ "$REPO_DIR" == /usr/* ]]; then
+USER_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/uraam"
+USER_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/uraam"
+else
+USER_DATA_DIR="$REPO_DIR"
+USER_CONFIG_DIR="$REPO_DIR/Configs"
+fi
+
 APP_DIR="$REPO_DIR/Apps"
-LOGD_DIR="$REPO_DIR/Logs/debloat"
-LOGB_DIR="$REPO_DIR/Logs/backup"
-LOGR_DIR="$REPO_DIR/Logs/restore"
+CONFIGS_DIR="$REPO_DIR/Configs/debloat"
+USER_DEBLOAT_DIR="$USER_CONFIG_DIR/debloat"
+BACKUPS_DIR="$USER_DATA_DIR/Configs/backup-restore"
+LOGD_DIR="$USER_DATA_DIR/Logs/debloat"
+LOGB_DIR="$USER_DATA_DIR/Logs/backup"
+LOGR_DIR="$USER_DATA_DIR/Logs/restore"
+
+mkdir -p "$USER_DEBLOAT_DIR" "$BACKUPS_DIR" "$LOGD_DIR" "$LOGB_DIR" "$LOGR_DIR"
+
 REPO_URL="https://github.com/Ruvyrom/Uraam"
 BRANCH="main"
 
@@ -33,6 +46,17 @@ RED='\033[1;31m'
 WHITE='\033[0;37m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
+
+show_logo() {
+clear
+echo -e "${PURPLE}"
+cat << 'EOF'
+::| ::|::::::\ ::::\  ::::\ ::::::|
+::|_::|::|,::|::|,::|::|,::|:::"::|
+`:::::|::| ::\::| ::|::| ::|::| ::|
+EOF
+echo -e "${NC}"
+}
 
 ensure_adb() {
 if command -v adb >/dev/null; then
@@ -222,17 +246,6 @@ fi
 return 0
 }
 
-show_logo() {
-clear
-echo -e "${PURPLE}"
-cat << 'EOF'
-::| ::|::::::\ ::::\  ::::\ ::::::|
-::|_::|::|,::|::|,::|::|,::|:::"::|
-`:::::|::| ::\::| ::|::| ::|::| ::|
-EOF
-echo -e "${NC}"
-}
-
 init_logs() {
 mkdir -p "$LOGD_DIR"
 
@@ -346,9 +359,20 @@ read -rp "Press [Enter] to return..."
 return 1
 fi
 
+local files=()
+
 shopt -s nullglob
-local files=("$CONFIGS_DIR"/*.json)
+files+=("$CONFIGS_DIR"/*.json)
+if [ "$USER_DEBLOAT_DIR" != "$CONFIGS_DIR" ]; then
+files+=("$USER_DEBLOAT_DIR"/*.json)
+fi
 shopt -u nullglob
+
+if [ "$USER_DEBLOAT_DIR" != "$CONFIGS_DIR" ]; then
+for f in "$USER_DEBLOAT_DIR"/*.json; do
+[ -e "$f" ] && files+=("$f")
+done
+fi
 
 if [ ${#files[@]} -eq 0 ]; then
 echo -e "\n${RED}No .json files found in $CONFIGS_DIR${NC}"
@@ -831,10 +855,8 @@ fi
 printf "%b\n" "${CYAN}[*] Debian .deb installation detected.${NC}"
 printf "%b\n" "${CYAN}[*] Checking for updates on GitHub...${NC}"
 
-local repo="Ruvomain/Uraam"
-local api_url="https://api.github.com/repos/${repo}/releases/latest"
 local release_json
-release_json=$(curl -s "$api_url")
+release_json=$(curl -s "$REPO_URL/releases/latest")
 
 local latest_tag
 latest_tag=$(echo "$release_json" | jq -r '.tag_name // empty' | tr -d '\r')
@@ -884,7 +906,7 @@ rm -f "$tmp_deb"
 return 1
 fi
 
-printf "\n%b\n" "${CYAN}[*] Installingpackage (sudo required)...${NC}"
+printf "\n%b\n" "${CYAN}[*] Installing package (sudo required)...${NC}"
 if sudo dpkg -i "$tmp_deb"; then
 sudo apt-get install -f -y >/dev/null 2>&1
 rm -f "$tmp_deb"
