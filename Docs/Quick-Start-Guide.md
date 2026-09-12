@@ -37,22 +37,23 @@ or
 * *- If the pairing code is rejected, turn off Wireless Debugging and turn it back on to refresh the token.*
 
 ---
-### For 🐧Linux, 📱Termux, WSL:
-### Direct execution
-**1-Line Installation**
+## ⚡ Quick &Direct Installation
 
-* Auto-install with confirmation on **Termux, Linux, macOS, WSL**:
+### 📦 Universal 1-Line Installer (Recommended)
+Automatically detects your environment and installs Uraam on **Termux, Linux, macOS, or WSL**:
 ```bash
 bash <(command -v curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh || wget -qO- https://raw.githubusercontent.com/Ruvyrom/Uraam/main/installer.sh)
 ```
 
-**DEB package auto-installation for Debian with `uraam-debian_*.deb`** (for test)
+### 🐧 Debian / Ubuntu / Mint / Kali (DEB Package)
+One-line download and installation of the latest `.deb` package via `apt`:
 ```bash
 DEB_URL=$(curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep -o '"browser_download_url": "[^"]*uraam-debian[^"]*"' | cut -d '"' -f 4)
 curl -sL "$DEB_URL" -o /tmp/uraam.deb && sudo apt install -y /tmp/uraam.deb && rm -f /tmp/uraam.deb
 ```
 
-**DEB auto-installation fo installation with `uraam-termux_*.deb`** (for test)
+### 📱 Termux (DEB Package)
+One-line download and installation for Termux on Android:
 ```bash
 DEB_URL=$(curl -s https://api.github.com/repos/Ruvyrom/Uraam/releases/latest | grep -o '"browser_download_url": "[^"]*uraam-termux[^"]*"' | cut -d '"' -f 4)
 curl -sL "$DEB_URL" -o $PREFIX/tmp/uraam.deb && pkg install -y $PREFIX/tmp/uraam.deb && rm -f $PREFIX/tmp/uraam.deb
