@@ -29,14 +29,25 @@
 <img src="https://img.shields.io/badge/ License GPLv3-black?style=for-the-badge&color=151B22" alt="License"height="25">
 </p>
 
-<div align="center">
+<div>
 <p>
 <strong>
-The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a terminal toolkit to safely debloat unwanted apps, restore uninstalled apps, backup configurations into structured JSON files and batch-install personal APKs across any Android device without requiring root access.. Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
-Professional-grade infrastructure forsystem optimization. Replace heavy middleware with a native, audited Bash + jq pipeline. Fully compatible with Canta/UAD JSON lists out of the box.</em>
+The UNIVERSAL RUVOMAIN ADB APP-MANAGER (URAAM) is a shell ADB/Shizuku toolkit.
+    
+* Fully compatible with Canta/UAD lists, you can safely disable/uninstall bloatware or unwanted apps, restore uninstalled apps, backup configurations into structured JSON packages lists and batch-install personal APKs across any Android device without requiring root access..
+
+* Compatible with all Android phones without needing root access via ADB. It’s designed to be safe, clean, and keep your device integrity intact.
+
+* Replaces heavy middleware with a native, audited Bash + jq pipeline. Works on Termux with Wireless ADB, Shizuku & Root, Linux: Debian, Arch, & Fedora based distribution; MacOS & WSL.
+
+* Shizuku compatible, Uraam provide a wireless ADB + Shizuku moduls for automatic connection in Termux. You can also use Shizuku & Termux for debloat, restore & install.
+
+* Easy one-command for install URAAM automtically with installer script or DEB packages for Debian based distribution and Termux.
+
+* Provide a one-click self-update option for script download from Github repository and Debian package, download from Github Latest Release. (Termux DEB auto-update coming soon...).</em> 
 </p>
 <p>
-<em>« I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read. »</em>
+<em>« I'm not imposing anything on you: I provide infrastructure, you bring your data, and you execute code that you can read. »
 </p>
 </div>
 
