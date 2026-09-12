@@ -544,7 +544,7 @@ printf "\n%b" "${YELLOW}[?] Choose action: [U]ninstall  /  [D]isable  /  [C]ance
 read -r action
 
 case "$action" in
-[u])
+[Uu])
 ACTION="uninstall"
 ACTION_LABEL="removed"
 ;;
