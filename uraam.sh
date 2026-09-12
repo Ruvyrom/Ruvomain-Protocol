@@ -285,14 +285,14 @@ show_logo
 printf "%b\n" "${BLUE}===================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB SETUP${NC}"
 printf "%b\n" "${BLUE}===================================================${NC}"
-printf "%b\n" ""
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
-printf "%b\n" "\n${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
-printf "%b\n" "\n${CYAN}1. Go to Settings > Developer Options.${NC}"
-printf "%b\n" "\n${CYAN}2. Tap on 'Wireless debugging' (the text itself).${NC}"
-printf "%b\n" "\n${CYAN}3. Select 'Pair device with pairing code'.${NC}"
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
-printf "%b\n" ""
+printf "%b\n" "${CYAN}CRITICAL STEP: Wireless Debugging.${NC}"
+printf "%b\n" "${CYAN} 1. Go to Settings > Developer Options.${NC}"
+printf "%b\n" "${CYAN} 2. Tap on 'Wireless debugging' (the text itself).${NC}"
+printf "%b\n" "${CYAN} 3. Select 'Pair device with pairing code'.${NC}"
+printf "%b\n" "${BLUE}---------------------------------------------------${NC}"
+ensure_adb || exit 1
+check_adb_menu
+printf "%b\n" "\n${BLUE}-------------------------------------------------${NC}"
 
 printf "%b\n" "Do you need to PAIR first (y/N)" 
 read -rp " " need_pair
@@ -314,7 +314,7 @@ read -rp "Enter 6-digit PAIRING CODE: " pair_code
 if [ "$need_pair" = "y" ] || [ "$need_pair" = "Y" ]; then
 if [ -z "$pair_host" ] || [ -z "$pair_code" ]; then
 printf "%b\n" "\n${RED}[!] Pairing aborted: host or code cannot be empty.${NC}"
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
+printf "%b\n" "\n${BLUE}----------------------------------------------------${NC}"
 printf "%b\n" "Press Enter to return to main menu..."
 read -rp ""
 return 1
@@ -359,14 +359,17 @@ return 1
 }
 
 wireless_shizuku() {
+show_logo
 printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS SHIZUKU${NC}"
 printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}WIRELESS ADB & SHIZUKU SETUP${NC}"
 printf "%b\n" " ${CYAN}Starts Shizuku and enables Wireless ADB in a single step.${NC}"
 printf "%b\n" " ${CYAN}Unplug your USB cable:no need to plug it in again!${NC}"
-printf "%b\n" "\n${BLUE}--------------------------------------------------------${NC}"
-printf "%b\n" ""
+printf "%b\n" "\n${BLUE}------------------------------------------------${NC}"
+ensure_adb || exit 1
+check_adb_menu
+printf "%b\n" "\n${BLUE}------------------------------------------------${NC}"
 if ! $EXEC pm path moe.shizuku.privileged.api >/dev/null2>&1; then
 wireless_adb
 return 0 2>/dev/null || exit 0
@@ -398,31 +401,33 @@ IP=$(adb shell ip route 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i ~ /^[0-9]+\
 fi
 
 if [ -z "$IP" ]; then
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 printf "%b\n" "${RED}[!] Could not automatically determine device IP. Please ensure Wi-Fi is connected.${NC}"
-printf "%b\n" "You can manually connect using: adb connect <device-ip>:5555"
+printf "%b\n" "${YELLOW}You can manually connect using: adb connect${NC} <device-ip>:5555"
 else
 printf "%b\n" "${GREEN}Device IP detected:${NC} $IP"
 printf "%b\n" "${YELLOW}Connecting to wireless ADB...${NC}"
 adb connect "$IP:5555"
-printf "%b\n" ""
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
 printf "%b\n" "${GREEN}Wireless ADB setup complete!${NC} You can now unplug your cable."
 printf "%b\n" "To reconnect later: adb connect $IP:5555"
 fi
 }
 
-wireless_menu(){
+wireless_menu() {
 show_logo
 printf "%b\n" "${BLUE}==================================================${NC}"
 printf "%b\n" "${CYAN}URAAM RUVOMAIN ADB APP-MANAGER | WIRELESS ADB MODE${NC}"
 printf "%b\n" "${BLUE}==================================================${NC}"
-printf "%b\n" "".     
-ensure_adb
-
-printf "%b\n" "1) Wireless ADB + Start Shizuku (Recommended)"
-printf "%b\n" "2) Standard Wireless ADB only"
+printf "%b\n" "Choose your wireless ADB connection mode"
+printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
+ensure_adb || exit 1
+check_adb_menu
+printf "%b\n" "1) Standard Wireless ADB only ${YELLOW}(défaut)${NC}"
+printf "%b\n" "2) Wireless ADB + Start Shizuku ${YELLOW}(Recommended)${NC}"
 printf "%b\n" "3) Cancel"
 printf "%b\n" "\n${BLUE}--------------------------------------------------${NC}"
-printf "%b\n" "Select anoption [1-3] (default: 1):"
+printf "%b\n" "Select an option [1-3] (default: 1):"
 read -rp " " choice
 
 case "$choice" in
