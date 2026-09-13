@@ -465,7 +465,7 @@ printf "%b\n" "${CYAN}(Canta JSON, UAD lists & raw packages supported).${NC}"
 printf "%b\n" "\n${CYAN}You have the choice to ${WHITE}[D]${NC}isable or ${WITHE}[U]${NC}ninstall packages.${NC}"
 echo -e "${BLUE}------------------------------------------${NC}"
 
-detect_execution_backend_deb
+require_backend ||return 1
 
 printf "%b\n" "${YELLOW}[*] Fetching installed packages...${NC}"
 local installed_packages
@@ -689,7 +689,7 @@ echo -e "${BLUE}===============================================${NC}"
 echo -e "${CYAN}Backups targets reside in ./Configs/backup-restore/"
 echo -e "${BLUE}-----------------------------------------------${NC}"
 
-detect_execution_backend_deb
+require_backend ||return 1
 
 printf "%b\n" "\n${RED}--- Warning ---${NC}"
 echo -e "${CYAN}[?] You are about to create backup.*json in /Configs/backuo-restore.${NC}"
@@ -715,7 +715,7 @@ printf "%b\n" "${BLUE}==========================================${NC}"
 printf "%b\n" "${CYAN}Place APKs to install in ./Apps/ before starting.${NC}"
 printf "%b\n" "${BLUE}----------------------------------------${NC}"
 
-detect_execution_backend_deb
+require_backend ||return 1
 
 if [ ! -d "$APP_DIR" ]; then
 printf "%b\n" "${BLUE}---------------------------------------${NC}"
@@ -768,7 +768,7 @@ echo -e "${BLUE}=========================================${NC}"
 echo -e "\n${CYAN}Restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "\n${BLUE}---------------------------------------${NC}"
 
-detect_execution_backend_deb
+require_backend ||return 1
 
 shopt -s nullglob
 local files=("$BACKUPS_DIR"/*.json)
@@ -1119,7 +1119,7 @@ echo -e "${CYAN}Place debloat configurations in ./Configs/debloat/ (Canta JSON s
 echo -e "${CYAN}Place APKs to install in ./Apps/.${NC}"
 echo -e "${CYAN}Backups and restoration targets reside in ./Configs/backup-restore/${NC}"
 echo -e "${BLUE}==========================================${NC}"
-detect_execution_backend_deb
+detect_backend_status
 echo -e "${BLUE}==========================================${NC}"
 
 echo -e "\n ${CYAN}[d]${NC} Debloat ${YELLOW}(Remove Bloatware)${NC}"
