@@ -195,7 +195,7 @@ printf "%b\n" "${RED}[!] No target device connected via ADB.${NC}"
 return 1
 fi
 
-if [ "$(id -u)" -eq 0 ] || {command -v su >/dev/null 2>&1 && su -c "id" >/dev/null 2>&1; }; then
+if [ "$(id -u)" -eq 0 ] || { command -v su >/dev/null 2>&1 && su -c "id" >/dev/null 2>&1; }; then
 EXEC="su -c"
 EXEC_TYPE="ROOT"
 device_brand
